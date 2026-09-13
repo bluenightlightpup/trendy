@@ -704,10 +704,18 @@ a {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
   .heat-dot {
     transition: none;
+  }
+  .trend-card:active {
+    transform: none;
+  }
+  .bubble-typing .dots::after {
+    animation: none !important;
   }
 }
 
@@ -760,4 +768,122 @@ a {
   0% { opacity: 0.2; }
   50% { opacity: 1; }
   100% { opacity: 0.2; }
+}
+
+/* —— Phase 3: save / follow —— */
+.trend-card {
+  position: relative;
+  padding-right: calc(var(--space-md) + 2.5rem);
+}
+.trend-card-body {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border-radius: calc(var(--radius-card) - 4px);
+}
+.trend-card-body:focus-visible {
+  outline: 2px solid var(--heat-cool);
+  outline-offset: 2px;
+}
+.trend-card-actions {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 1;
+}
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--ink-border);
+  background: rgba(11, 13, 18, 0.85);
+  color: var(--ink-muted);
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  transition: color var(--transition), border-color var(--transition), background var(--transition), transform var(--transition);
+}
+.save-btn:hover,
+.save-btn:focus-visible {
+  color: var(--heat-hot);
+  border-color: rgba(255, 45, 149, 0.45);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 45, 149, 0.25);
+}
+.save-btn.is-saved {
+  color: var(--heat-hot);
+  border-color: rgba(255, 45, 149, 0.55);
+  background: rgba(255, 45, 149, 0.12);
+}
+.save-btn-prominent {
+  min-width: auto;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+.save-glyph {
+  font-size: 1.1rem;
+}
+.detail-actions {
+  margin: 0 0 var(--space-md);
+}
+.empty-state-inline {
+  padding: var(--space-md) 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+.saved-feed {
+  gap: var(--space-sm);
+}
+.saved-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--ink-border);
+  background: var(--ink-elevated);
+  color: var(--ink-text);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+.saved-row:hover,
+.saved-row:focus-visible {
+  border-color: #3a4258;
+  background: var(--ink-elevated-2);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(45, 226, 230, 0.25);
+}
+.saved-row-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+#home-chips {
+  margin-bottom: var(--space-md);
+}
+
+/* Stronger focus ring baseline */
+:focus-visible {
+  outline: 2px solid var(--heat-cool);
+  outline-offset: 2px;
+}
+.tab:focus-visible,
+.chip:focus-visible,
+.back-btn:focus-visible,
+.btn-send:focus-visible,
+.save-btn:focus-visible,
+.saved-row:focus-visible,
+.decode-suggest button:focus-visible {
+  outline: 2px solid var(--heat-cool);
+  outline-offset: 2px;
 }

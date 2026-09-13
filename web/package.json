@@ -1,0 +1,9 @@
+{
+  "name": "trendy-web",
+  "private": true,
+  "description": "Trendy PWA — static shell + node tests",
+  "scripts": {
+    "test": "node --test tests/*.mjs",
+    "serve": "npx --yes serve -l 4173"
+  }
+}

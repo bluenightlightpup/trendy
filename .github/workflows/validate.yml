@@ -47,3 +47,16 @@ jobs:
           grep -q 'Copyright (c) 2026 bluenightlightpup' LICENSE
           grep -qi 'Permission is hereby granted' LICENSE
           echo "LICENSE MIT check passed"
+
+  node-web-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run PWA unit tests
+        working-directory: web
+        run: npm test

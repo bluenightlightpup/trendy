@@ -41,7 +41,9 @@ Publish the contents of `web/` (or `/docs` copy) as Pages. Keep relative paths (
 |------|------|
 | `index.html` | App shell + tabs |
 | `styles.css` | Dark “signal” UI |
-| `app.js` | Feed, decode, prefs |
+| `app.js` | Feed, decode, prefs, save/follow |
+| `decode-ai.js` | Never-blank Decode pipeline |
+| `saved.js` | Saved-trend localStorage helpers |
 | `data/trends.json` | Mock trends |
 | `data/slang.json` | Decode dictionary |
 | `manifest.webmanifest` | PWA manifest |
@@ -49,6 +51,15 @@ Publish the contents of `web/` (or `/docs` copy) as Pages. Keep relative paths (
 | `icons/` | SVG icons |
 
 Prefs (worlds, digest, New here) persist in `localStorage` under `trendy.you.prefs.v1`.
+
+Saved / followed trend IDs use `trendy.saved.v1` (see `saved.js`). Hearts on cards and detail toggle without leaving the feed; **You → Saved trends** lists them; Home has an optional **All | Saved** filter.
+
+### Phase 3 (PWA)
+
+- Save/follow + a11y/reduced-motion polish
+- Offline cache bumped to `trendy-v5` (precache includes `decode-ai.js` + `saved.js`)
+- Node tests: `npm test` (or `node --test tests/*.mjs`) from this folder
+
 
 ## Data refresh (Trend Radar)
 

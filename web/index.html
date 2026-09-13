@@ -33,6 +33,10 @@
         <h2 class="view-title">Home</h2>
         <p class="view-hint">Sorted by heat</p>
       </div>
+      <div id="home-chips" class="chip-row" role="toolbar" aria-label="Filter Home feed">
+        <button type="button" class="chip" data-home-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-home-filter="saved" aria-pressed="false">Saved</button>
+      </div>
       <div id="home-feed" class="feed" role="list"></div>
       <div id="home-empty" class="empty-state" hidden>
         <p class="empty-title">No trends in your worlds</p>
@@ -97,6 +101,16 @@
         <p class="view-hint">Prefs stay on this device</p>
       </div>
 
+      <div class="prefs-card" id="saved-trends-card">
+        <h3 class="prefs-heading">Saved trends</h3>
+        <p class="prefs-desc">Bookmarks you keep for later — on this device only.</p>
+        <div id="you-saved-list" class="feed saved-feed" role="list"></div>
+        <div id="you-saved-empty" class="empty-state empty-state-inline" hidden>
+          <p class="empty-title">Nothing saved yet</p>
+          <p class="empty-body">Tap the heart on any trend when you want to keep it. No rush — culture will still be there.</p>
+        </div>
+      </div>
+
       <div class="prefs-card">
         <h3 class="prefs-heading">Worlds</h3>
         <p class="prefs-desc">Home feed shows trends from worlds you enable.</p>
@@ -130,25 +144,27 @@
     </section>
   </main>
 
-  <nav class="tab-bar" aria-label="Primary">
-    <button type="button" class="tab" data-tab="home" aria-current="page">
+  <nav class="tab-bar" aria-label="Primary navigation">
+    <button type="button" class="tab" data-tab="home" aria-current="page" aria-label="Home tab">
       <span class="tab-icon" aria-hidden="true">⌂</span>
       <span class="tab-label">Home</span>
     </button>
-    <button type="button" class="tab" data-tab="decode">
+    <button type="button" class="tab" data-tab="decode" aria-label="Decode tab">
       <span class="tab-icon" aria-hidden="true">✦</span>
       <span class="tab-label">Decode</span>
     </button>
-    <button type="button" class="tab" data-tab="explore">
+    <button type="button" class="tab" data-tab="explore" aria-label="Explore tab">
       <span class="tab-icon" aria-hidden="true">◎</span>
       <span class="tab-label">Explore</span>
     </button>
-    <button type="button" class="tab" data-tab="you">
+    <button type="button" class="tab" data-tab="you" aria-label="You tab">
       <span class="tab-icon" aria-hidden="true">●</span>
       <span class="tab-label">You</span>
     </button>
   </nav>
 
+  <script src="decode-ai.js" defer></script>
+  <script src="saved.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>

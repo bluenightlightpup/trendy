@@ -174,8 +174,8 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** Save toggle on card/detail; You or Home section for saved; local persistence.
 - **Out of scope:** Social following of people.
 - **Acceptance:**
-  - [ ] User can save and unsaved a trend
-  - [ ] Saved list survives relaunch
+  - [x] User can save and unsaved a trend (PWA; iOS stub)
+  - [x] Saved list survives relaunch (PWA `trendy.saved.v1`)
 - **Agents/skills:** `ios-engineer`, `ios-swiftui-feature`
 - **Depends on:** T0008, T0012
 - **Effort:** M

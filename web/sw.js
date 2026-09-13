@@ -1,10 +1,11 @@
 /* Trendy PWA — basic offline shell + data cache */
-const CACHE = "trendy-v4";
+const CACHE = "trendy-v5";
 const PRECACHE = [
   "./",
   "./index.html",
   "./styles.css",
   "./decode-ai.js",
+  "./saved.js",
   "./app.js",
   "./manifest.webmanifest",
   "./data/trends.json",

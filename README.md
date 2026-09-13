@@ -15,7 +15,7 @@
 | **Explore** | Browse by world: TikTok, internet culture, abbreviations, gaming |
 | **You** | Interest toggles, digest frequency, **New here mode** |
 
-Later: save / follow trends.
+Save / follow trends: **live in the PWA** (localStorage); iOS stub + TestFlight pending Mac.
 
 Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan temperature scale; Space Grotesk + JetBrains Mono vibe (system fallbacks OK initially). See `docs/design-tokens.md`.
 
@@ -32,7 +32,7 @@ Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan
 | **P0** | PRD, repo, backlog | Done |
 | **P1** | SwiftUI shell, Home heat feed, Explore | Done (XcodeGen on Mac) |
 | **P2** | Decode + You + APIs | PWA Decode/You live; iOS Claude API next |
-| **P3** | Save/follow, polish, TestFlight | Pending |
+| **P3** | Save/follow, polish, TestFlight | Partially done (PWA save/follow + polish; TestFlight pending Mac) |
 | **Radar** | 24/7 multi-platform ingest | Live (TikTok/IG stubs) |
 | **P4** | **Consider CLI + MCP** for integrated AI tools | Decision gate — see below |
 | **P5** | Landscape (Urban Dictionary & peers) + novelty uses | Open — research |
@@ -99,6 +99,7 @@ Minimum iOS: **17.0** (documented in architecture).
 | `docs/xcode-setup.md` | Create Xcode project from this tree |
 | `docs/ideas/` | Owner idea extracts (plain text) |
 | `docs/radar.md` | Trend Radar continuous ingest (24/7 slang/trends) |
+| `docs/testflight.md` | TestFlight / App Store Connect checklist (Mac) |
 
 ## Sync note
 

@@ -46,13 +46,14 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Outcome:** Retention features, quality bar, external beta.
 
-- Save / follow trends
-- Polish heat meter, motion, accessibility, empty/error states
-- Unit + UI tests (`ios-testing`); debugging playbook (`ios-debugging`)
-- TestFlight via `ios-app-store-release`
-- Backlog grooming for post-v1 (social light features only if justified)
+- [x] Save / follow trends (**PWA primary**) — `trendy.saved.v1`, card ♡/♥, detail toggle, You “Saved trends”, Home All|Saved filter
+- [x] Polish heat meter, motion, accessibility, empty/error states (reduced-motion, stronger aria-labels, focus-visible, New-here empty copy)
+- [x] Unit tests for Decode + saved helpers (`web/tests/*.mjs`, `npm test` / CI `node-web-tests`)
+- [ ] iOS UI tests / full native save UI (`ios-testing`) — stub `SavedTrendsStore` only for now
+- [ ] TestFlight via `ios-app-store-release` — see `docs/testflight.md` (**needs Mac**)
+- [ ] Backlog grooming for post-v1 (social light features only if justified)
 
-**Exit criteria:** TestFlight build; save/follow works; tests green on CI where applicable.
+**Exit criteria:** TestFlight build *(pending Mac)*; PWA save/follow works; node tests green on CI.
 
 
 ## Phase Radar — Continuous multi-platform training

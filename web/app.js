@@ -10,13 +10,17 @@
     newHere: true,
   };
 
+  const Saved = () => globalThis.TrendySaved;
+
   const state = {
     trends: [],
     slang: null,
     abbreve: { entries: [] },
     prefs: loadPrefs(),
+    savedIds: [],
     tab: "home",
     exploreWorld: "All",
+    homeFilter: "all",
     detailId: null,
     detailFrom: "home",
   };
@@ -43,6 +47,27 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state.prefs));
   }
 
+  function loadSaved() {
+    state.savedIds = Saved() ? Saved().loadSavedIds() : [];
+  }
+
+  function persistSaved() {
+    if (!Saved()) return;
+    state.savedIds = Saved().persistSavedIds(state.savedIds);
+  }
+
+  function isTrendSaved(id) {
+    return Saved() ? Saved().isSaved(state.savedIds, id) : false;
+  }
+
+  function toggleSave(id) {
+    if (!Saved() || !id) return false;
+    const result = Saved().toggleSavedId(state.savedIds, id);
+    state.savedIds = result.ids;
+    persistSaved();
+    return result.saved;
+  }
+
   function heatPct(score) {
     const s = Math.min(1, Math.max(0, Number(score) || 0));
     return Math.round(s * 100);
@@ -59,11 +84,11 @@
   function heatMeterHtml(score) {
     const pct = heatPct(score);
     return `
-      <div class="heat-row" aria-label="Heat score ${pct}">
-        <div class="heat-track">
+      <div class="heat-row" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="Heat score ${pct} out of 100">
+        <div class="heat-track" aria-hidden="true">
           <span class="heat-dot" style="left:${pct}%"></span>
         </div>
-        <span class="heat-score">${pct}</span>
+        <span class="heat-score" aria-hidden="true">${pct}</span>
       </div>`;
   }
 
@@ -73,27 +98,52 @@
       .join("");
   }
 
-  function trendCardHtml(trend) {
+  function saveBtnHtml(trend, { prominent = false } = {}) {
+    const saved = isTrendSaved(trend.id);
+    const cls = prominent
+      ? `save-btn save-btn-prominent${saved ? " is-saved" : ""}`
+      : `save-btn${saved ? " is-saved" : ""}`;
+    const glyph = saved ? "♥" : "♡";
+    const label = saved
+      ? `Unsave ${trend.title}`
+      : `Save ${trend.title}`;
+    const text = prominent ? (saved ? "Saved" : "Save") : "";
     return `
-      <button type="button" class="trend-card" role="listitem" data-trend-id="${escapeHtml(trend.id)}">
-        <div class="trend-card-top">
-          <h3 class="trend-title">${escapeHtml(trend.title)}</h3>
-          <span class="lifecycle lifecycle-${escapeHtml(trend.lifecycle)}">${escapeHtml(trend.lifecycle)}</span>
-        </div>
-        <p class="trend-summary">${escapeHtml(trend.summary)}</p>
-        <div class="trend-meta">
-          <span class="world-pill">${escapeHtml(trend.world)}</span>
-          ${tagsHtml(trend.tags)}
-        </div>
-        ${heatMeterHtml(trend.heatScore)}
+      <button type="button" class="${cls}" data-save-id="${escapeHtml(trend.id)}" aria-pressed="${saved}" aria-label="${escapeHtml(label)}">
+        <span class="save-glyph" aria-hidden="true">${glyph}</span>${
+          text ? `<span class="save-text">${text}</span>` : ""
+        }
       </button>`;
   }
 
+  function trendCardHtml(trend) {
+    return `
+      <article class="trend-card" role="listitem" data-trend-id="${escapeHtml(trend.id)}">
+        <div class="trend-card-body" data-open-trend="${escapeHtml(trend.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(trend.title)} origin story">
+          <div class="trend-card-top">
+            <h3 class="trend-title">${escapeHtml(trend.title)}</h3>
+            <span class="lifecycle lifecycle-${escapeHtml(trend.lifecycle)}">${escapeHtml(trend.lifecycle)}</span>
+          </div>
+          <p class="trend-summary">${escapeHtml(trend.summary)}</p>
+          <div class="trend-meta">
+            <span class="world-pill">${escapeHtml(trend.world)}</span>
+            ${tagsHtml(trend.tags)}
+          </div>
+          ${heatMeterHtml(trend.heatScore)}
+        </div>
+        <div class="trend-card-actions">
+          ${saveBtnHtml(trend)}
+        </div>
+      </article>`;
+  }
+
   function filteredHomeTrends() {
-    return state.trends
-      .filter((t) => state.prefs.worlds[t.world] !== false)
-      .slice()
-      .sort((a, b) => b.heatScore - a.heatScore);
+    let list = state.trends.filter((t) => state.prefs.worlds[t.world] !== false);
+    if (state.homeFilter === "saved") {
+      const set = new Set(state.savedIds);
+      list = list.filter((t) => set.has(t.id));
+    }
+    return list.slice().sort((a, b) => b.heatScore - a.heatScore);
   }
 
   function filteredExploreTrends() {
@@ -104,13 +154,48 @@
     return list.slice().sort((a, b) => b.heatScore - a.heatScore);
   }
 
+  function savedTrendsList() {
+    const set = new Set(state.savedIds);
+    const order = new Map(state.savedIds.map((id, i) => [id, i]));
+    return state.trends
+      .filter((t) => set.has(t.id))
+      .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
+  }
+
+  function homeEmptyCopy() {
+    if (state.homeFilter === "saved") {
+      return {
+        title: "No saved trends here",
+        body: state.prefs.newHere
+          ? "When something clicks, tap the heart on a card. Nothing wrong with an empty list — you’re just browsing."
+          : "Save a trend from Home or Explore, then it shows up here.",
+      };
+    }
+    return {
+      title: "No trends in your worlds",
+      body: "Flip on some interests under <strong>You</strong>, or clear filters.",
+    };
+  }
+
+  function renderHomeChips() {
+    $$("#home-chips .chip").forEach((chip) => {
+      const on = chip.dataset.homeFilter === state.homeFilter;
+      chip.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
   function renderHome() {
+    renderHomeChips();
     const feed = $("#home-feed");
     const empty = $("#home-empty");
     const items = filteredHomeTrends();
     if (!items.length) {
       feed.innerHTML = "";
       empty.hidden = false;
+      const copy = homeEmptyCopy();
+      empty.innerHTML =
+        `<p class="empty-title">${copy.title}</p>` +
+        `<p class="empty-body">${copy.body}</p>`;
       return;
     }
     empty.hidden = true;
@@ -125,7 +210,7 @@
         (w) =>
           `<button type="button" class="chip" data-world="${escapeHtml(w)}" aria-pressed="${
             state.exploreWorld === w
-          }">${escapeHtml(w)}</button>`
+          }" aria-label="Filter Explore by ${escapeHtml(w)}">${escapeHtml(w)}</button>`
       )
       .join("");
 
@@ -153,6 +238,9 @@
         <h2>${escapeHtml(trend.title)}</h2>
         <span class="lifecycle lifecycle-${escapeHtml(trend.lifecycle)}">${escapeHtml(trend.lifecycle)}</span>
       </div>
+      <div class="detail-actions">
+        ${saveBtnHtml(trend, { prominent: true })}
+      </div>
       <p class="trend-summary">${escapeHtml(trend.summary)}</p>
       <div class="trend-meta">
         <span class="world-pill">${escapeHtml(trend.world)}</span>
@@ -161,6 +249,33 @@
       ${heatMeterHtml(trend.heatScore)}
       <p class="origin"><strong>Origin story</strong>${escapeHtml(trend.originStory)}</p>
     `;
+  }
+
+  function renderYouSaved() {
+    const list = $("#you-saved-list");
+    const empty = $("#you-saved-empty");
+    const items = savedTrendsList();
+    if (!items.length) {
+      list.innerHTML = "";
+      empty.hidden = false;
+      const body = state.prefs.newHere
+        ? "Tap the heart on any trend when you want to keep it. No rush — culture will still be there."
+        : "Save trends from Home or Explore to collect them here.";
+      empty.innerHTML =
+        `<p class="empty-title">Nothing saved yet</p>` +
+        `<p class="empty-body">${body}</p>`;
+      return;
+    }
+    empty.hidden = true;
+    list.innerHTML = items
+      .map(
+        (t) => `
+      <button type="button" class="saved-row" role="listitem" data-open-saved="${escapeHtml(t.id)}" aria-label="Open saved trend ${escapeHtml(t.title)}">
+        <span class="saved-row-title">${escapeHtml(t.title)}</span>
+        <span class="world-pill">${escapeHtml(t.world)}</span>
+      </button>`
+      )
+      .join("");
   }
 
   function renderYou() {
@@ -174,7 +289,7 @@
           </span>
           <input type="checkbox" class="toggle-input world-toggle" data-world="${escapeHtml(w)}" ${
             on ? "checked" : ""
-          } />
+          } aria-label="Include ${escapeHtml(w)} world" />
           <span class="toggle-ui" aria-hidden="true"></span>
         </label>`;
     }).join("");
@@ -182,6 +297,7 @@
     $("#digest-freq").value = state.prefs.digest;
     $("#new-here").checked = !!state.prefs.newHere;
     updateDecodeHint();
+    renderYouSaved();
   }
 
   function updateDecodeHint() {
@@ -189,6 +305,13 @@
     hint.textContent = state.prefs.newHere
       ? "AI slang search · New here on"
       : "AI slang search · ask anything";
+  }
+
+  function refreshVisibleFeeds() {
+    if (state.tab === "home") renderHome();
+    else if (state.tab === "explore") renderExplore();
+    else if (state.tab === "you") renderYouSaved();
+    else if (state.tab === "detail" && state.detailId) renderDetail(state.detailId);
   }
 
   function setTab(tab) {
@@ -220,7 +343,8 @@
     if (tab === "decode") seedChat();
     if (tab === "detail" && state.detailId) renderDetail(state.detailId);
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   }
 
   function openDetail(id, from) {
@@ -229,13 +353,14 @@
     setTab("detail");
   }
 
-  function normalize(s) {
-    return window.TrendyDecodeAI
-      ? window.TrendyDecodeAI.normalize(s)
-      : String(s || "")
-          .toLowerCase()
-          .trim()
-          .replace(/\s+/g, " ");
+  function handleSaveClick(e) {
+    const btn = e.target.closest("[data-save-id]");
+    if (!btn) return false;
+    e.preventDefault();
+    e.stopPropagation();
+    toggleSave(btn.dataset.saveId);
+    refreshVisibleFeeds();
+    return true;
   }
 
   function appendBubble(role, htmlOrText, isHtml = false) {
@@ -288,6 +413,21 @@
     log.scrollTop = log.scrollHeight;
   }
 
+  function bindFeedOpen(root, fromTab) {
+    root.addEventListener("click", (e) => {
+      if (handleSaveClick(e)) return;
+      const open = e.target.closest("[data-open-trend]");
+      if (open) openDetail(open.dataset.openTrend, fromTab);
+    });
+    root.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const open = e.target.closest("[data-open-trend]");
+      if (!open) return;
+      e.preventDefault();
+      openDetail(open.dataset.openTrend, fromTab);
+    });
+  }
+
   function bindEvents() {
     $$(".tab").forEach((btn) => {
       btn.addEventListener("click", () => setTab(btn.dataset.tab));
@@ -297,14 +437,18 @@
       setTab(state.detailFrom || "home");
     });
 
-    $("#home-feed").addEventListener("click", (e) => {
-      const card = e.target.closest("[data-trend-id]");
-      if (card) openDetail(card.dataset.trendId, "home");
+    $("#detail-article").addEventListener("click", (e) => {
+      handleSaveClick(e);
     });
 
-    $("#explore-feed").addEventListener("click", (e) => {
-      const card = e.target.closest("[data-trend-id]");
-      if (card) openDetail(card.dataset.trendId, "explore");
+    bindFeedOpen($("#home-feed"), "home");
+    bindFeedOpen($("#explore-feed"), "explore");
+
+    $("#home-chips").addEventListener("click", (e) => {
+      const chip = e.target.closest("[data-home-filter]");
+      if (!chip) return;
+      state.homeFilter = chip.dataset.homeFilter;
+      renderHome();
     });
 
     $("#explore-chips").addEventListener("click", (e) => {
@@ -312,6 +456,11 @@
       if (!chip) return;
       state.exploreWorld = chip.dataset.world;
       renderExplore();
+    });
+
+    $("#you-saved-list").addEventListener("click", (e) => {
+      const row = e.target.closest("[data-open-saved]");
+      if (row) openDetail(row.dataset.openSaved, "you");
     });
 
     $("#you-worlds").addEventListener("change", (e) => {
@@ -330,6 +479,7 @@
       state.prefs.newHere = e.target.checked;
       savePrefs();
       updateDecodeHint();
+      renderYouSaved();
     });
 
     $("#decode-form").addEventListener("submit", async (e) => {
@@ -374,6 +524,7 @@
   }
 
   async function init() {
+    loadSaved();
     bindEvents();
     try {
       await loadData();
