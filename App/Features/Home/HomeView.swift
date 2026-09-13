@@ -1,85 +1,80 @@
 import SwiftUI
 
 struct HomeView: View {
-    private let service: TrendServing = MockTrendService()
+    @State private var viewModel = HomeViewModel()
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVStack(spacing: 12) {
-                    ForEach(service.trendsSortedByMomentum()) { trend in
-                        NavigationLink(value: trend) {
-                            TrendCard(trend: trend)
-                        }
-                        .buttonStyle(.plain)
-                    }
+            Group {
+                switch viewModel.state {
+                case .loading:
+                    loadingState
+                case .empty:
+                    emptyState
+                case .loaded(let trends):
+                    feed(trends)
                 }
-                .padding(16)
             }
             .background(TrendyColors.inkBg.ignoresSafeArea())
             .navigationTitle("Home")
             .navigationDestination(for: Trend.self) { trend in
                 OriginStoryView(trend: trend)
             }
-        }
-    }
-}
-
-struct TrendCard: View {
-    let trend: Trend
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(trend.title)
-                    .font(TrendyTypography.headline(18))
-                    .foregroundStyle(TrendyColors.textPrimary)
-                Spacer()
-                Text(trend.world.rawValue.uppercased())
-                    .font(TrendyTypography.mono(10))
-                    .foregroundStyle(TrendyColors.textSecondary)
+            .task {
+                if case .loading = viewModel.state {
+                    await viewModel.load()
+                }
             }
-
-            Text(trend.summary)
-                .font(TrendyTypography.body(14))
-                .foregroundStyle(TrendyColors.textSecondary)
-                .lineLimit(2)
-
-            HeatMeter(score: trend.heatScore)
-
-            Text(trend.heatLevel.rawValue.uppercased())
-                .font(TrendyTypography.mono(11))
-                .foregroundStyle(TrendyColors.heatColor(for: trend.heatLevel))
         }
-        .padding(16)
-        .background(TrendyColors.inkElevated)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(TrendyColors.inkBorder, lineWidth: 1)
-        )
     }
-}
 
-struct OriginStoryView: View {
-    let trend: Trend
+    private var loadingState: some View {
+        VStack(spacing: 12) {
+            ProgressView()
+                .tint(TrendyColors.heatHot)
+            Text("Scanning signals…")
+                .font(TrendyTypography.mono(12))
+                .foregroundStyle(TrendyColors.textSecondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Loading trends")
+    }
 
-    var body: some View {
+    private var emptyState: some View {
+        ContentUnavailableView {
+            Label("Nothing heating up", systemImage: "flame")
+        } description: {
+            Text("Pull to refresh — mock signals will show up offline.")
+                .font(TrendyTypography.body(14))
+        }
+        .foregroundStyle(TrendyColors.textSecondary)
+        .refreshable {
+            await viewModel.load()
+        }
+    }
+
+    private func feed(_ trends: [Trend]) -> some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                HeatMeter(score: trend.heatScore)
-                Text(trend.originStory)
-                    .font(TrendyTypography.body(16))
-                    .foregroundStyle(TrendyColors.textPrimary)
-                Text(trend.tags.map { "#\($0)" }.joined(separator: " "))
+            LazyVStack(alignment: .leading, spacing: 12) {
+                Text("What’s heating up")
                     .font(TrendyTypography.mono(12))
                     .foregroundStyle(TrendyColors.textSecondary)
+                    .padding(.horizontal, 4)
+                    .accessibilityAddTraits(.isHeader)
+
+                ForEach(trends) { trend in
+                    NavigationLink(value: trend) {
+                        TrendCard(trend: trend)
+                    }
+                    .buttonStyle(.plain)
+                }
             }
             .padding(16)
         }
-        .background(TrendyColors.inkBg.ignoresSafeArea())
-        .navigationTitle(trend.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .refreshable {
+            await viewModel.load()
+        }
     }
 }
 

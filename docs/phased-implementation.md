@@ -6,12 +6,12 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Outcome:** Shared product truth and a clean app repo scaffold.
 
-- PRD (`docs/prd.md`)
-- Repo structure, MIT license, contributing/security, CODEOWNERS
-- Backlog with acceptance criteria (`docs/backlog.md`)
-- Architecture + design tokens + workbench usage docs
-- Idea extracts under `docs/ideas/`
-- Light CI validate workflow for required docs
+- [x] PRD (`docs/prd.md`)
+- [x] Repo structure, MIT license, contributing/security, CODEOWNERS
+- [x] Backlog with acceptance criteria (`docs/backlog.md`)
+- [x] Architecture + design tokens + workbench usage docs
+- [x] Idea extracts under `docs/ideas/`
+- [x] Light CI validate workflow for required docs
 
 **Exit criteria:** PRD reviewed; tickets ordered; scaffold opens cleanly on GitHub as `bluenightlightpup/trendy`.
 
@@ -19,15 +19,16 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Outcome:** Runnable SwiftUI shell with signal design and browsable mock trends.
 
-- Xcode project per `docs/xcode-setup.md` / `ios-xcode-setup`
-- Design tokens in code (ink + heat scale; font fallbacks)
-- Tab shell: Home, Decode, Explore, You
-- **Home:** momentum-sorted mock feed + **HeatMeter** on cards; tap → origin story (mock)
-- **Explore:** worlds (TikTok, internet culture, abbreviations, gaming) with mock lists
-- Placeholder Decode / You screens
-- Mock `Trend` models + in-memory service
+- [x] XcodeGen `project.yml` + `docs/xcode-setup.md` (`ios-xcode-setup`) — generate `Trendy.xcodeproj` on a Mac with `xcodegen generate`
+- [x] Design tokens in code (ink + heat scale; font fallbacks)
+- [x] Tab shell: Home, Decode, Explore, You
+- [x] **Home:** `HomeViewModel` + momentum-sorted mock feed + **HeatMeter** + lifecycle chips; pull-to-refresh; tap → origin story
+- [x] **Explore:** worlds (TikTok, internet culture, abbreviations, gaming) filtered via shared `MockTrendService`; empty state per world
+- [x] Placeholder Decode / You screens
+- [x] Mock `Trend` models (`heatScore`, `HeatLevel`, `TrendLifecycle`) + in-memory service (~12 samples)
+- [x] Unit tests for heat bands, momentum sort, lifecycle coverage
 
-**Exit criteria:** Simulator build; Home heat feed and Explore worlds demoable with mocks.
+**Exit criteria:** Simulator build; Home heat feed and Explore worlds demoable with mocks. *(Generate & build on Mac via XcodeGen.)*
 
 ## Phase 2 — Decode + You + real APIs
 

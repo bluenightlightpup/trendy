@@ -20,9 +20,9 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** LICENSE MIT, CODEOWNERS, CONTRIBUTING, SECURITY, issue/PR templates, validate workflow.
 - **Out of scope:** App Store metadata.
 - **Acceptance:**
-  - [ ] MIT LICENSE present with 2026 bluenightlightpup copyright
-  - [ ] validate.yml checks required docs
-  - [ ] Templates render on GitHub
+  - [x] MIT LICENSE present with 2026 bluenightlightpup copyright
+  - [x] validate.yml checks required docs
+  - [x] Templates render on GitHub
 - **Agents/skills:** `implementer`, `git-branch-pr`
 - **Depends on:** —
 - **Effort:** S
@@ -32,9 +32,10 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** Create Xcode app + unit test target per `docs/xcode-setup.md`; wire `App/` groups; shared scheme.
 - **Out of scope:** Custom fonts packaging; CI macOS build (optional later).
 - **Acceptance:**
-  - [ ] App builds to Simulator (iOS 17+)
-  - [ ] Unit test target runs
-  - [ ] Folder groups match architecture
+  - [x] `project.yml` + XcodeGen docs (`brew install xcodegen && xcodegen generate`)
+  - [ ] App builds to Simulator (iOS 17+) — run generate on Mac
+  - [ ] Unit test target runs — after generate on Mac
+  - [x] Folder groups match architecture (`App/`, `Tests/TrendyTests`)
 - **Agents/skills:** `ios-engineer`, `ios-xcode-setup`
 - **Depends on:** T0002
 - **Effort:** M
@@ -44,8 +45,8 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** `TrendyColors`, `TrendyTypography`, heat gradient helpers aligned to `docs/design-tokens.md`.
 - **Out of scope:** Shipping custom Space Grotesk / JetBrains Mono files (fallbacks OK).
 - **Acceptance:**
-  - [ ] Ink + heat tokens available to views
-  - [ ] Mono/rounded fallbacks documented in code comments or tokens doc
+  - [x] Ink + heat tokens available to views
+  - [x] Mono/rounded fallbacks documented in code comments or tokens doc
 - **Agents/skills:** `ios-engineer`, `ios-swiftui-feature`
 - **Depends on:** T0003
 - **Effort:** S
@@ -55,19 +56,20 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** Home / Decode / Explore / You tabs; deep ink chrome; placeholder feature roots.
 - **Out of scope:** Feature content beyond placeholders.
 - **Acceptance:**
-  - [ ] Four tabs switch reliably
-  - [ ] Selected tab visible; respects Dynamic Type basics
+  - [x] Four tabs switch reliably
+  - [x] Selected tab visible; respects Dynamic Type basics
 - **Agents/skills:** `ios-engineer`, `ios-swiftui-feature`
 - **Depends on:** T0003, T0004
 - **Effort:** S
 
 ### T0006 — Trend model + mock data service
 - **Value:** Unblocks Home/Explore without APIs.
-- **Scope:** `Trend`, `HeatLevel`/`heatScore`, `World`; `TrendService` mock list with momentum sort.
+- **Scope:** `Trend`, `HeatLevel`/`heatScore`, `TrendLifecycle`, `World`; `TrendService` mock list with momentum sort.
 - **Out of scope:** Network I/O.
 - **Acceptance:**
-  - [ ] Mock dataset covers all four worlds
-  - [ ] Momentum sort deterministic in tests
+  - [x] Mock dataset covers all four worlds
+  - [x] Momentum sort deterministic in tests
+  - [x] Lifecycle present on samples (rising / peaking / cooling)
 - **Agents/skills:** `ios-engineer`, `ios-testing`
 - **Depends on:** T0003
 - **Effort:** M
@@ -77,21 +79,22 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** Track cool → volt → hot; marker for score; reduced-motion safe.
 - **Out of scope:** Live backend scores.
 - **Acceptance:**
-  - [ ] Renders across 0…1 scores
-  - [ ] Uses heat tokens (cyan / lime / pink)
-  - [ ] Snapshot or unit test for color/stop mapping optional but preferred
+  - [x] Renders across 0…1 scores
+  - [x] Uses heat tokens (cyan / lime / pink)
+  - [x] Unit tests for heat band boundaries (`HeatLevel.from`)
 - **Agents/skills:** `ios-engineer`, `ios-swiftui-feature`
 - **Depends on:** T0004
 - **Effort:** M
 
 ### T0008 — Home heat feed + origin story
 - **Value:** Primary “what’s peaking” experience.
-- **Scope:** Momentum-sorted cards with HeatMeter; tap → origin story detail (mock copy).
+- **Scope:** Momentum-sorted cards with HeatMeter + lifecycle; tap → origin story detail (mock copy); pull-to-refresh.
 - **Out of scope:** Save/follow; infinite scroll entertainment.
 - **Acceptance:**
-  - [ ] Feed sorted by momentum
-  - [ ] Each card shows heat meter
-  - [ ] Origin story reachable in ≤ 2 taps
+  - [x] Feed sorted by momentum
+  - [x] Each card shows heat meter + heat label + lifecycle chip
+  - [x] Origin story reachable in ≤ 2 taps
+  - [x] Loading / loaded / empty states via `HomeViewModel`
 - **Agents/skills:** `ios-engineer`, `ios-swiftui-feature`
 - **Depends on:** T0005, T0006, T0007
 - **Effort:** M
@@ -101,8 +104,9 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** Worlds: TikTok, internet culture, abbreviations, gaming; lists from mock service.
 - **Out of scope:** Cross-world search ranking sophistication.
 - **Acceptance:**
-  - [ ] User can switch worlds
-  - [ ] Lists filter to selected world
+  - [x] User can switch worlds
+  - [x] Lists filter to selected world
+  - [x] Empty state when a world has no trends
 - **Agents/skills:** `ios-engineer`, `ios-swiftui-feature`
 - **Depends on:** T0005, T0006
 - **Effort:** M

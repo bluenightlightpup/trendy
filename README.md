@@ -30,7 +30,15 @@ docs/                PRD, phases, backlog, architecture, design tokens, ideas
 
 ## Getting started (Xcode)
 
-Source files live under `App/`. A checked-in `.xcodeproj` is optional for this scaffold — follow **`docs/xcode-setup.md`** (aligned with workbench skill `ios-xcode-setup`) to create the project, add folders, and run on simulator.
+Source files live under `App/`. Generate the Xcode project on a Mac with [XcodeGen](https://github.com/yonaskolb/XcodeGen):
+
+```bash
+brew install xcodegen
+xcodegen generate
+open Trendy.xcodeproj
+```
+
+See **`docs/xcode-setup.md`** (aligned with workbench skill `ios-xcode-setup`) for details and a manual fallback.
 
 Minimum iOS: **17.0** (documented in architecture).
 
