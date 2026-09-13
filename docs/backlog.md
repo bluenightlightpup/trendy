@@ -258,6 +258,44 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 
 ---
 
+
+### T0022 — Phase 5 landscape review (Urban Dictionary & peers)
+- **Value:** Avoid cloning UD; target real gaps (heat, New here, Radar).
+- **Scope:** Complete matrix in `docs/product-landscape.md`; 5–8 competitors; differentiator lock.
+- **Out of scope:** Building partnership integrations this ticket.
+- **Acceptance:**
+  - [ ] Matrix filled
+  - [ ] Top 3 differentiators written into PRD addendum or landscape doc
+  - [ ] Owner reviewed
+- **Agents/skills:** `product-strategist`, `researcher`
+- **Depends on:** —
+- **Effort:** M
+
+### T0023 — Rank and ticket novelty bets
+- **Value:** Expand Trendy beyond lookup into sticky, ownable moments.
+- **Scope:** Rank list in `docs/novelty-use-cases.md`; create tickets for top 2.
+- **Out of scope:** Full build of all novelty ideas.
+- **Acceptance:**
+  - [ ] Top 2 bets chosen
+  - [ ] Each has acceptance criteria ticket
+  - [ ] Non-goals confirmed
+- **Agents/skills:** `product-strategist`
+- **Depends on:** T0022
+- **Effort:** S
+
+### T0024 — Prototype one novelty bet on PWA (after choice)
+- **Value:** Learn fast on phone without waiting for iOS TestFlight.
+- **Scope:** Ship a thin PWA experiment for chosen bet (e.g. anti-FOMO digest or paste-a-thread Decode).
+- **Out of scope:** App Store release of the experiment.
+- **Acceptance:**
+  - [ ] Prototype usable on phone
+  - [ ] Feedback notes captured
+  - [ ] Keep / kill / iterate decision
+- **Agents/skills:** `implementer`, `ios-engineer` (if porting), `product-strategist`
+- **Depends on:** T0023
+- **Effort:** M
+
+
 ## Suggested order
 
-T0001 → T0002 → T0003 → T0004 → T0005 → T0006 → T0007 → T0008 / T0009 / T0010 → T0012 → T0011 → T0013 → T0014 → T0015 → T0016 → T0017 → T0018 → **T0019** → (if GO) T0020 → T0021
+T0001 → … → T0018 → T0019 → (if GO) T0020 → T0021 → **T0022 → T0023 → T0024**

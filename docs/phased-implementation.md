@@ -78,6 +78,7 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 | **P3** | Save/follow, polish, tests, TestFlight |
 | **Radar** | Continuous ingest → web/data (LIVE Reddit/seed; STUB TikTok/IG) |
 | **P4** | **Decision gate:** CLI + MCP for integrated AI tools (see `docs/cli-mcp-integration.md`) |
+| **P5** | Product landscape (Urban Dictionary & peers) + novelty use cases |
 
 
 ## Phase 4 — CLI & MCP integration (decision gate)
@@ -112,3 +113,17 @@ This phase is a **consideration + design** phase first. Implementation only proc
 - Shipping a public hosted MCP without auth decision
 
 **Exit criteria:** Written go/no-go in ADR (or explicit defer); if go, spike merged behind clear README docs; if no-go, backlog tickets cancelled with rationale.
+
+
+## Phase 5 — Product landscape & novelty
+
+**Outcome:** Know the slang-translator landscape (Urban Dictionary, Gen Z apps, AI translators) and choose novel Trendy uses that competitors under-serve.
+
+- [ ] Competitive matrix vs Urban Dictionary, Slangora, Wordyex, Musely, GenZ translator apps, general LLMs
+- [ ] Lock Trendy differentiators (heat/lifecycle, New here, Radar, judgment-free Decode)
+- [ ] Explore novelty concepts (family translator, classroom-safe, creator brief, anti-doomscroll digest, agent workflows, time machine, etc.)
+- [ ] Pick ≥2 novelty bets for backlog; update PRD non-goals if needed
+
+**Docs:** [`docs/product-landscape.md`](product-landscape.md) · [`docs/novelty-use-cases.md`](novelty-use-cases.md)
+
+**Exit criteria:** Owner-reviewed landscape + ranked novelty bets; tickets filed.

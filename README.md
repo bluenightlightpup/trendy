@@ -35,12 +35,16 @@ Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan
 | **P3** | Save/follow, polish, TestFlight | Pending |
 | **Radar** | 24/7 multi-platform ingest | Live (TikTok/IG stubs) |
 | **P4** | **Consider CLI + MCP** for integrated AI tools | Decision gate — see below |
+| **P5** | Landscape (Urban Dictionary & peers) + novelty uses | Open — research |
 
 Details: [`docs/phased-implementation.md`](docs/phased-implementation.md) · tickets in [`docs/backlog.md`](docs/backlog.md).
 
 ## Phase 4 — CLI & MCP for integrated AI tools *(consider)*
 
-Should Trendy expose a **CLI** and/or **MCP server** so Cursor, workbench agents, and scripts can decode slang, pull hot trends, and trigger Radar — without opening the phone UI?
+**CLI** = terminal commands for humans/scripts (`trendy decode 67`).  
+**MCP** = a plug so AI tools (Cursor, Claude, workbench agents) can call Trendy as tools automatically.
+
+Should we expose them so agents/scripts decode slang and pull hot trends without the phone UI?
 
 This is a **go / no-go phase**, not automatic build work. Design brief: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md).
 
@@ -48,6 +52,14 @@ This is a **go / no-go phase**, not automatic build work. Design brief: [`docs/c
 **If NO-GO / defer:** keep polishing Phase 3 phone experience first.
 
 Owner decision tracked as backlog **T0019**.
+
+## Phase 5 — Landscape & novelty *(research)*
+
+Review slang translators (Urban Dictionary, Slangora, Wordyex, Musely, GenZ apps, general LLMs) and explore novel Trendy uses (family Decode, anti-FOMO digest, heat time machine, creator “am I late?”, agent briefs, …).
+
+- Landscape: [`docs/product-landscape.md`](docs/product-landscape.md)
+- Novelty bets: [`docs/novelty-use-cases.md`](docs/novelty-use-cases.md)
+- Tickets: **T0022–T0024**
 
 
 ## Repo layout
