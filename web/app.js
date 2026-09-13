@@ -186,8 +186,8 @@
   function updateDecodeHint() {
     const hint = $("#decode-mode-hint");
     hint.textContent = state.prefs.newHere
-      ? "New here · extra context on"
-      : "Judgment-free slang help";
+      ? "AI slang search · New here on"
+      : "AI slang search · ask anything";
   }
 
   function setTab(tab) {
@@ -206,7 +206,7 @@
 
     const subs = {
       home: "Signal, not scroll.",
-      decode: "Ask anything slang-y.",
+      decode: "AI search — any word.",
       explore: "Worlds of culture.",
       you: "Your filters & tone.",
       detail: "Origin story.",
@@ -216,6 +216,7 @@
     if (tab === "home") renderHome();
     if (tab === "explore") renderExplore();
     if (tab === "you") renderYou();
+    if (tab === "decode") seedChat();
     if (tab === "detail" && state.detailId) renderDetail(state.detailId);
 
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -228,67 +229,12 @@
   }
 
   function normalize(s) {
-    return String(s || "")
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ");
-  }
-
-  function findSlang(query) {
-    const q = normalize(query);
-    if (!q || !state.slang) return null;
-    const entries = state.slang.entries || [];
-
-    for (const entry of entries) {
-      for (const term of entry.terms) {
-        if (normalize(term) === q) return entry;
-      }
-    }
-
-    let best = null;
-    let bestLen = 0;
-    for (const entry of entries) {
-      for (const term of entry.terms) {
-        const t = normalize(term);
-        if (t.length < 2) continue;
-        if (q.includes(t) || (q.length >= 3 && t.includes(q))) {
-          if (t.length > bestLen) {
-            best = entry;
-            bestLen = t.length;
-          }
-        }
-      }
-    }
-    return best;
-  }
-
-  function botReplyHtml(entry) {
-    const newHere = !!state.prefs.newHere;
-
-    if (!entry) {
-      const fb = state.slang.fallback;
-      let body = escapeHtml(fb.explain || fb.short);
-      if (newHere) {
-        body +=
-          "<br><br>Tip: try the core phrase (e.g. <em>rizz</em> instead of a whole sentence), or say where you saw it.";
-      }
-      return `<span class="bubble-meta">Trendy · no match</span>${body}`;
-    }
-
-    // Always lead with short + explain; New here adds fuller origin framing
-    let body = `<strong>${escapeHtml(entry.short)}</strong><br>${escapeHtml(entry.explain || "")}`;
-
-    if (newHere && entry.origin) {
-      body += `<div class="origin-note"><strong style="color:var(--ink-text)">Where it comes from</strong><br>${escapeHtml(
-        entry.origin
-      )}</div>`;
-    } else if (newHere) {
-      body += `<div class="origin-note">You're doing great asking — slang is a moving target.</div>`;
-    } else if (entry.origin) {
-      body += `<div class="origin-note">${escapeHtml(entry.origin)}</div>`;
-    }
-
-    return `<span class="bubble-meta">Trendy</span>${body}`;
+    return window.TrendyDecodeAI
+      ? window.TrendyDecodeAI.normalize(s)
+      : String(s || "")
+          .toLowerCase()
+          .trim()
+          .replace(/\s+/g, " ");
   }
 
   function appendBubble(role, htmlOrText, isHtml = false) {
@@ -299,21 +245,45 @@
     else div.innerHTML = `<span class="bubble-meta">You</span>${escapeHtml(htmlOrText)}`;
     log.appendChild(div);
     log.scrollTop = log.scrollHeight;
+    return div;
   }
 
   function seedChat() {
     const log = $("#chat-log");
     if (log.childElementCount) return;
     const welcome = state.prefs.newHere
-      ? "Hey — drop any slang, meme, or abbreviation. I'll explain it judgment-free, with a bit of origin when I can."
-      : "Drop slang or an abbreviation. I'll decode it — no judgment.";
+      ? "I'm your slang & trends AI search. Ask what any word means — e.g. “what does 67 mean?” or just type a term. Judgment-free."
+      : "AI search for slang and trends. Ask what any word means.";
     appendBubble("bot", `<span class="bubble-meta">Trendy</span>${escapeHtml(welcome)}`, true);
   }
 
-  function handleDecode(query) {
+  async function handleDecode(query) {
     appendBubble("user", query, false);
-    const entry = findSlang(query);
-    appendBubble("bot", botReplyHtml(entry), true);
+    const typing = appendBubble(
+      "bot",
+      `<span class="bubble-meta">Trendy</span><span class="bubble-typing"><span class="dots">Thinking</span></span>`,
+      true
+    );
+    typing.classList.add("bubble-typing");
+
+    try {
+      const answer = await window.TrendyDecodeAI.decodeQuery(query, {
+        slang: state.slang,
+        trends: state.trends,
+        newHere: state.prefs.newHere,
+      });
+      const html = window.TrendyDecodeAI.formatAnswerHtml(answer, escapeHtml);
+      typing.classList.remove("bubble-typing");
+      typing.innerHTML = html;
+    } catch (err) {
+      console.error(err);
+      typing.classList.remove("bubble-typing");
+      typing.innerHTML =
+        `<span class="bubble-meta">Trendy</span>Something glitched while searching. Try again with just the word.`;
+    }
+
+    const log = $("#chat-log");
+    log.scrollTop = log.scrollHeight;
   }
 
   function bindEvents() {
@@ -360,15 +330,25 @@
       updateDecodeHint();
     });
 
-    $("#decode-form").addEventListener("submit", (e) => {
+    $("#decode-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const input = $("#decode-input");
       const q = input.value.trim();
       if (!q) return;
-      handleDecode(q);
       input.value = "";
+      await handleDecode(q);
       input.focus();
     });
+
+    const suggest = $("#decode-suggest");
+    if (suggest) {
+      suggest.addEventListener("click", async (e) => {
+        const btn = e.target.closest("[data-q]");
+        if (!btn) return;
+        setTab("decode");
+        await handleDecode(btn.dataset.q);
+      });
+    }
   }
 
   async function loadData() {

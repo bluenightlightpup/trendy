@@ -52,21 +52,27 @@
     <section id="view-decode" class="view view-decode" data-view="decode" hidden>
       <div class="view-toolbar">
         <h2 class="view-title">Decode</h2>
-        <p class="view-hint" id="decode-mode-hint">Judgment-free slang help</p>
+        <p class="view-hint" id="decode-mode-hint">AI search for slang & trends</p>
+      </div>
+      <div class="decode-suggest" id="decode-suggest" role="group" aria-label="Try an example">
+        <button type="button" data-q="what does 67 mean?">what does 67 mean?</button>
+        <button type="button" data-q="rizz">rizz</button>
+        <button type="button" data-q="define skill issue">define skill issue</button>
+        <button type="button" data-q="aura">aura</button>
       </div>
       <div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-relevant="additions"></div>
       <form id="decode-form" class="chat-compose" autocomplete="off">
-        <label class="sr-only" for="decode-input">Slang or abbreviation</label>
+        <label class="sr-only" for="decode-input">Ask what any word or trend means</label>
         <input
           id="decode-input"
           name="q"
-          type="text"
-          enterkeyhint="send"
-          placeholder="e.g. rizz, iykyk, skill issue…"
-          maxlength="120"
+          type="search"
+          enterkeyhint="search"
+          placeholder="Ask what any word means…"
+          maxlength="160"
           required
         />
-        <button type="submit" class="btn-send" aria-label="Send">Send</button>
+        <button type="submit" class="btn-send" aria-label="Search">Ask</button>
       </form>
     </section>
 
@@ -120,7 +126,7 @@
         </label>
       </div>
 
-      <p class="prefs-foot">Mock digests only — nothing is sent off-device in this PWA.</p>
+      <p class="prefs-foot">Decode may call a free public dictionary API for unknown English words. Slang hits stay on-device. Digests are local-only.</p>
     </section>
   </main>
 
