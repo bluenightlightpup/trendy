@@ -13,6 +13,7 @@
   const state = {
     trends: [],
     slang: null,
+    abbreve: { entries: [] },
     prefs: loadPrefs(),
     tab: "home",
     exploreWorld: "All",
@@ -270,6 +271,7 @@
       const answer = await window.TrendyDecodeAI.decodeQuery(query, {
         slang: state.slang,
         trends: state.trends,
+        abbreve: state.abbreve,
         newHere: state.prefs.newHere,
       });
       const html = window.TrendyDecodeAI.formatAnswerHtml(answer, escapeHtml);
@@ -352,15 +354,17 @@
   }
 
   async function loadData() {
-    const [trendsRes, slangRes] = await Promise.all([
+    const [trendsRes, slangRes, abbreveRes] = await Promise.all([
       fetch("data/trends.json"),
       fetch("data/slang.json"),
+      fetch("data/abbreve.json"),
     ]);
     if (!trendsRes.ok || !slangRes.ok) {
       throw new Error("Failed to load data files");
     }
     state.trends = await trendsRes.json();
     state.slang = await slangRes.json();
+    state.abbreve = abbreveRes.ok ? await abbreveRes.json() : { entries: [] };
   }
 
   function registerSW() {
