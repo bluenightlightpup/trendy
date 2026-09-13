@@ -1,0 +1,27 @@
+{
+  "name": "Trendy",
+  "short_name": "Trendy",
+  "description": "Trends + slang decoder — catch culture without the FOMO spiral.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0B0D12",
+  "theme_color": "#0B0D12",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["lifestyle", "education", "social"]
+}

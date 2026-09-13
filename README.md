@@ -23,6 +23,7 @@ Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan
 
 ```
 App/                 SwiftUI source (create Xcode project via docs/xcode-setup.md)
+web/                 Progressive Web App (static; try on phone without Xcode)
 Tests/TrendyTests/   Unit test stubs
 docs/                PRD, phases, backlog, architecture, design tokens, ideas
 .github/             Issue/PR templates + light validate workflow
@@ -58,6 +59,18 @@ Minimum iOS: **17.0** (documented in architecture).
 ## Sync note
 
 Local idea path may be Desktop “trendy docs”; **this app repo is separate from my-workbench**. Agents/skills stay in the workbench; product code and app docs live here.
+
+
+## Try on your phone
+
+A static **Progressive Web App** lives in [`web/`](web/) — same tabs (Home, Decode, Explore, You), mock trends, and slang decoder. No Xcode required.
+
+```bash
+npx --yes serve web -l 4173
+# or: python3 -m http.server 4173 --directory web
+```
+
+Open the URL on your phone (same Wi‑Fi), then Add to Home Screen. Details: [`web/README.md`](web/README.md).
 
 ## Contributing
 

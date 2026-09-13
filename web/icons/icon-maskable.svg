@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Trendy">
+  <rect width="512" height="512" fill="#0B0D12"/>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DE2E6"/>
+      <stop offset="50%" stop-color="#C8F135"/>
+      <stop offset="100%" stop-color="#FF2D95"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="120" fill="none" stroke="#232836" stroke-width="24"/>
+  <circle cx="256" cy="256" r="120" fill="none" stroke="url(#g)" stroke-width="24" stroke-linecap="round"
+          stroke-dasharray="500" stroke-dashoffset="110" transform="rotate(-90 256 256)"/>
+  <circle cx="256" cy="136" r="18" fill="#FF2D95"/>
+  <text x="256" y="278" text-anchor="middle" font-family="ui-rounded, system-ui, sans-serif" font-weight="700" font-size="100" fill="#F4F6FB">T</text>
+</svg>

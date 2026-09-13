@@ -68,3 +68,7 @@ tmp/
 temp/
 .tmp/
 coverage/
+
+# Web PWA (if someone adds a bundler later)
+web/node_modules/
+web/dist/
