@@ -72,3 +72,15 @@ coverage/
 # Web PWA (if someone adds a bundler later)
 web/node_modules/
 web/dist/
+
+# Trend Radar
+radar/out/raw/
+radar/out/*.tmp
+radar/__pycache__/
+radar/**/__pycache__/
+radar/.venv/
+radar/venv/
+__pycache__/
+*.py[cod]
+.venv/
+venv/

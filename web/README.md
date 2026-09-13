@@ -49,3 +49,7 @@ Publish the contents of `web/` (or `/docs` copy) as Pages. Keep relative paths (
 | `icons/` | SVG icons |
 
 Prefs (worlds, digest, New here) persist in `localStorage` under `trendy.you.prefs.v1`.
+
+## Data refresh (Trend Radar)
+
+`data/trends.json` and `data/slang.json` may be refreshed by the **Trend Radar** ingest (`radar/run_ingest.py` / GitHub Actions cron). Schema for the PWA stays the same (`id/title/summary/...` and `entries[].terms/short/explain/origin`); Radar may add optional fields the UI ignores. See [`../docs/radar.md`](../docs/radar.md).

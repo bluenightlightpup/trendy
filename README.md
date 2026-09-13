@@ -24,9 +24,10 @@ Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan
 ```
 App/                 SwiftUI source (create Xcode project via docs/xcode-setup.md)
 web/                 Progressive Web App (static; try on phone without Xcode)
+radar/               Trend Radar — continuous multi-platform ingest → web/data
 Tests/TrendyTests/   Unit test stubs
 docs/                PRD, phases, backlog, architecture, design tokens, ideas
-.github/             Issue/PR templates + light validate workflow
+.github/             Issue/PR templates + validate + radar-ingest cron
 ```
 
 ## Getting started (Xcode)
@@ -55,6 +56,7 @@ Minimum iOS: **17.0** (documented in architecture).
 | `docs/workbench.md` | How this repo uses my-workbench |
 | `docs/xcode-setup.md` | Create Xcode project from this tree |
 | `docs/ideas/` | Owner idea extracts (plain text) |
+| `docs/radar.md` | Trend Radar continuous ingest (24/7 slang/trends) |
 
 ## Sync note
 
@@ -71,6 +73,22 @@ npx --yes serve web -l 4173
 ```
 
 Open the URL on your phone (same Wi‑Fi), then Add to Home Screen. Details: [`web/README.md`](web/README.md).
+
+
+## Trend Radar (continuous training)
+
+Radar ingests public signals on a schedule, normalizes them, and merges into `web/data/trends.json` + `web/data/slang.json` so the PWA stays fresh.
+
+```bash
+pip install -r radar/requirements.txt
+python3 radar/run_ingest.py
+```
+
+- **LIVE now:** Reddit (public JSON), mock seed, best-effort YouTube RSS / Wikipedia.
+- **STUB:** TikTok & Instagram (official APIs / partner feeds when you add keys — no ToS-violating scrapers).
+- **Cron:** GitHub Actions every 2 hours UTC (`.github/workflows/radar-ingest.yml`).
+
+Details: [`radar/README.md`](radar/README.md) · [`docs/radar.md`](docs/radar.md).
 
 ## Contributing
 

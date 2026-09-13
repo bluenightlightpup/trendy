@@ -54,6 +54,20 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Exit criteria:** TestFlight build; save/follow works; tests green on CI where applicable.
 
+
+## Phase Radar — Continuous multi-platform training
+
+**Outcome:** 24/7 Trend Radar ingests slang/trend signals and refreshes `web/data` without ToS-violating scrapers.
+
+- [x] Pluggable adapters (`radar/adapters/`) — LIVE Reddit + mock_seed; STUB TikTok/Instagram; optional Wikipedia/YouTube
+- [x] Normalize → heat → merge pipeline into PWA JSON schemas
+- [x] Slang heuristics (short tokens, ALLCAPS, quoted phrases) with `confidence: low` placeholders
+- [x] `radar/run_ingest.py` CLI + `radar/out/last-run.json` summary
+- [x] GitHub Actions cron every 2 hours UTC + `workflow_dispatch`
+- [x] Docs: `docs/radar.md`, `radar/README.md`; ethics / official-API notes
+
+**Exit criteria:** Local ingest run succeeds (partial OK if Reddit blocks); PWA JSON remains valid; stubs document key requirements for TikTok/IG.
+
 ## Phase map (quick)
 
 | Phase | Focus |
@@ -62,3 +76,4 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 | **P1** | Skeleton, design tokens, Home heat feed, Explore worlds, mock data |
 | **P2** | Decode Claude chat, You personalization, real APIs |
 | **P3** | Save/follow, polish, tests, TestFlight |
+| **Radar** | Continuous ingest → web/data (LIVE Reddit/seed; STUB TikTok/IG) |

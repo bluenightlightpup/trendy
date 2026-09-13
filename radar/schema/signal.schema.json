@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trendy.local/radar/signal.schema.json",
+  "title": "RadarSignal",
+  "description": "Normalized signal from any Radar adapter before merge into PWA trend/slang catalogs.",
+  "type": "object",
+  "required": ["id", "source", "fetched_at", "title"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable adapter-scoped id, e.g. reddit:abc123"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["reddit", "wikipedia", "youtube", "mock_seed", "tiktok", "instagram"]
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "title": { "type": "string" },
+    "text": {
+      "type": "string",
+      "description": "Body / selftext / description"
+    },
+    "url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "world_hint": {
+      "type": ["string", "null"],
+      "description": "Suggested PWA world: TikTok | Internet culture | Abbreviations | Gaming"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "mentions": { "type": "number" },
+        "score": { "type": "number" },
+        "comments": { "type": "number" },
+        "velocity": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+    "raw_refs": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,53 @@
+# Trendy Trend Radar — ingest configuration
+# Official TikTok/Instagram APIs are limited / ToS-sensitive; stubs stay off until keys exist.
+
+schedule_hint: "every 2 hours (GitHub Actions cron)"
+user_agent: "TrendyRadar/0.1 (+https://github.com/bluenightlightpup/trendy; polite research bot)"
+
+rate_limits:
+  default_requests_per_minute: 10
+  reddit_min_interval_seconds: 2
+
+paths:
+  trends: web/data/trends.json
+  slang: web/data/slang.json
+  last_run: radar/out/last-run.json
+  raw_dir: radar/out/raw
+
+sources:
+  mock_seed:
+    enabled: true
+    mode: live
+  reddit:
+    enabled: true
+    mode: live
+    subreddits:
+      - OutOfTheLoop
+      - explainlikeimfive
+      - NoStupidQuestions
+      - tiktokcringe
+      - internet_culture
+    listing: hot
+    limit: 25
+  wikipedia_current:
+    enabled: true
+    mode: live
+  youtube:
+    enabled: true
+    mode: live  # public channel Atom feeds (no API key)
+    feeds:
+      - "https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA"
+      - "https://www.youtube.com/feeds/videos.xml?channel_id=UCY1kMZp36IQSyNx_9h4mpCg"
+  tiktok:
+    enabled: false
+    mode: stub
+    notes: "Needs TikTok Research API / partner feed + owner keys"
+  instagram:
+    enabled: false
+    mode: stub
+    notes: "Needs Meta Graph / official partner access + owner keys"
+
+slang_heuristics:
+  min_token_len: 2
+  max_token_len: 24
+  max_new_per_run: 40

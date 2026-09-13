@@ -1,0 +1,40 @@
+name: radar-ingest
+
+on:
+  schedule:
+    # Every 2 hours UTC
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Radar deps
+        run: pip install -r radar/requirements.txt
+
+      - name: Run Trend Radar ingest
+        run: python3 radar/run_ingest.py
+
+      - name: Commit updated web/data if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/data/trends.json web/data/slang.json radar/out/last-run.json || true
+          if git diff --staged --quiet; then
+            echo "No catalog changes to commit."
+          else
+            git commit -m "chore(radar): refresh web/data from Trend Radar ingest"
+            git push
+          fi

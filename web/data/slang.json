@@ -1,121 +1,194 @@
 {
   "entries": [
     {
-      "terms": ["lol", "lmao", "lmfao"],
+      "terms": [
+        "lol",
+        "lmao",
+        "lmfao"
+      ],
       "short": "Laughing out loud (or a softer chuckle online).",
       "explain": "Originally meant actual laughing. Now it's often just a softener — 'lol ok' can mean acknowledgment, awkwardness, or mild amusement. LMAO / LMFAO are louder variants. Nobody is judging you for using it; almost everyone does.",
       "origin": "Early internet / SMS culture, 1980s–90s Usenet and chat rooms."
     },
     {
-      "terms": ["iykyk"],
+      "terms": [
+        "iykyk"
+      ],
       "short": "If You Know, You Know.",
       "explain": "A wink that the joke or reference is for people already in on it. Used in captions when explaining would kill the vibe. Related energy: 'you had to be there.'",
       "origin": "Social captions and stan Twitter; now everywhere."
     },
     {
-      "terms": ["rizz", "rizzed", "rizzler", "unspoken rizz", "rizzless"],
+      "terms": [
+        "rizz",
+        "rizzed",
+        "rizzler",
+        "unspoken rizz",
+        "rizzless"
+      ],
       "short": "Charisma — especially flirtation game.",
       "explain": "Having rizz means you can charm someone. Unspoken rizz is magnetism without trying. Rizzless means the opposite. It's playful slang, not a clinical diagnosis of your dating life.",
       "origin": "Streamers / Gen Z slang (popularized by Kai Cenat); Oxford Word of the Year 2023."
     },
     {
-      "terms": ["skill issue"],
+      "terms": [
+        "skill issue"
+      ],
       "short": "The problem is your skill, not the game (or situation).",
       "explain": "A gaming roast that migrated to general internet use. Can be affectionate teasing ('skill issue fr') or a dunk. Tone depends on the friend group.",
       "origin": "Competitive gaming chats; now general meme slang."
     },
     {
-      "terms": ["npc", "npc energy", "npcs"],
+      "terms": [
+        "npc",
+        "npc energy",
+        "npcs"
+      ],
       "short": "Non-player character — acting scripted or background.",
       "explain": "From games: characters that follow fixed paths and repeat lines. Calling someone NPC energy suggests they're predictable or not 'main character.' Can be self-deprecating or mean — context matters.",
       "origin": "Gaming → meme culture / TikTok."
     },
     {
-      "terms": ["gg", "gg ez", "ez"],
+      "terms": [
+        "gg",
+        "gg ez",
+        "ez"
+      ],
       "short": "Good game — polite match ending (EZ = toxic gloat).",
       "explain": "GG is sportsmanship after a match. GG EZ (easy) is a taunt. Many communities frown on EZ spam. Alone, GG still means 'respect, match over.'",
       "origin": "Competitive gaming etiquette."
     },
     {
-      "terms": ["touch grass", "go touch grass"],
+      "terms": [
+        "touch grass",
+        "go touch grass"
+      ],
       "short": "Log off and go outside / reconnect with reality.",
       "explain": "Tells someone they're too online. Can be caring ('maybe touch grass') or a roast. Pair often with 'chronically online.'",
       "origin": "Meme and gaming spaces → mainstream."
     },
     {
-      "terms": ["delulu", "delulu is the solulu"],
+      "terms": [
+        "delulu",
+        "delulu is the solulu"
+      ],
       "short": "Delusional — often playfully aspirational.",
       "explain": "Softened 'delusional,' especially about crushes, fame fantasies, or shipping. 'Delulu is the solulu' jokes that believing your fantasy is a coping strategy. Usually affectionate chaos, not a medical claim.",
       "origin": "K-pop / stan spaces → TikTok mainstream."
     },
     {
-      "terms": ["fomo", "jomo"],
+      "terms": [
+        "fomo",
+        "jomo"
+      ],
       "short": "Fear / Joy of Missing Out.",
       "explain": "FOMO is anxiety that others are having more fun. JOMO is the flip: pleasure in missing the party on purpose. Both show up in wellness and social media discourse.",
       "origin": "Marketing / social media vocabulary (2000s–2010s)."
     },
     {
-      "terms": ["slay", "slayed", "slaying"],
+      "terms": [
+        "slay",
+        "slayed",
+        "slaying"
+      ],
       "short": "To do something impressively well.",
       "explain": "Praise for looks, performance, or confidence. 'You slayed' ≈ you crushed it. Roots in ballroom / drag culture; mainstreamed via social media.",
       "origin": "Ballroom and LGBTQ+ vernacular → viral TikTok / Twitter."
     },
     {
-      "terms": ["cap", "no cap", "capping"],
+      "terms": [
+        "cap",
+        "no cap",
+        "capping"
+      ],
       "short": "Cap = lie; no cap = not lying / for real.",
       "explain": "If someone is capping, they're exaggerating or lying. 'No cap' means you're being honest. Common in captions and voice notes.",
       "origin": "AAVE → wider Gen Z slang."
     },
     {
-      "terms": ["bet"],
+      "terms": [
+        "bet"
+      ],
       "short": "Agreement / 'okay, let's do it' / affirmation.",
       "explain": "Like saying 'alright' or 'sounds good.' Context can also mean 'challenge accepted.' Short, casual, friendly.",
       "origin": "AAVE → mainstream youth slang."
     },
     {
-      "terms": ["sus", "sussy"],
+      "terms": [
+        "sus",
+        "sussy"
+      ],
       "short": "Suspicious — popularized hard by Among Us.",
       "explain": "Something or someone feels off. Among Us made it ubiquitous; still used for anything shady or questionable.",
       "origin": "Older slang; exploded with Among Us (2020)."
     },
     {
-      "terms": ["based", "based and redpilled"],
+      "terms": [
+        "based",
+        "based and redpilled"
+      ],
       "short": "Unapologetically authentic (or agreeing with a take).",
       "explain": "Originally from rapper Lil B's positivity; later picked up in meme politics. In casual use it often just means 'I respect that take' or 'standing on business.' Be aware it can carry edgier connotations in some corners.",
       "origin": "Lil B → 4chan / meme culture → general internet."
     },
     {
-      "terms": ["mid"],
+      "terms": [
+        "mid"
+      ],
       "short": "Mediocre; nothing special.",
       "explain": "A soft roast. Calling something mid means it's average or disappointing — not the worst, just not it.",
       "origin": "Gen Z slang / gaming adjacent."
     },
     {
-      "terms": ["ate", "ate that", "ate and left no crumbs"],
+      "terms": [
+        "ate",
+        "ate that",
+        "ate and left no crumbs"
+      ],
       "short": "Performed or looked so good there's nothing left to critique.",
       "explain": "High praise, often about fashion, makeup, or a performance. 'Left no crumbs' doubles down: flawless.",
       "origin": "Black Twitter / LGBTQ+ slang → TikTok."
     },
     {
-      "terms": ["brb", "afk", "ttyl", "imo", "imho", "tbh", "idk", "smh", "nvm", "omg", "wtf"],
+      "terms": [
+        "brb",
+        "afk",
+        "ttyl",
+        "imo",
+        "imho",
+        "tbh",
+        "idk",
+        "smh",
+        "nvm",
+        "omg",
+        "wtf"
+      ],
       "short": "Classic chat abbreviations.",
       "explain": "BRB = be right back; AFK = away from keyboard; TTYL = talk to you later; IMO/IMHO = in my (humble) opinion; TBH = to be honest; IDK = I don't know; SMH = shaking my head; NVM = never mind; OMG / WTF = surprise / frustration. Old-school but still everywhere.",
       "origin": "Early chat rooms, SMS, and forums."
     },
     {
-      "terms": ["girl dinner"],
+      "terms": [
+        "girl dinner"
+      ],
       "short": "A snack plate that counts as dinner — vibes over rules.",
       "explain": "Assembling random fridge finds into a meal without guilt. Celebrates low-effort eating; not gendered in practice despite the name.",
       "origin": "TikTok trend / confession format."
     },
     {
-      "terms": ["main character", "main character energy"],
+      "terms": [
+        "main character",
+        "main character energy"
+      ],
       "short": "Living like the protagonist of your own story.",
       "explain": "Confidence aesthetic: walking with purpose, romanticizing your day. Opposite vibe of NPC energy. Usually playful self-mythologizing.",
       "origin": "TikTok / self-help adjacent meme culture."
     },
     {
-      "terms": ["ratio", "ratioed"],
+      "terms": [
+        "ratio",
+        "ratioed"
+      ],
       "short": "When replies vastly outnumber likes — usually a dunk.",
       "explain": "On Twitter/X, getting ratioed means the crowd disagreed hard. People reply 'ratio' to try to make it happen. A social-proof roast.",
       "origin": "Twitter culture."

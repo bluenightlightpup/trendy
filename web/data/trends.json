@@ -1,43 +1,19 @@
 [
   {
-    "id": "t01",
-    "title": "Girl dinner",
-    "summary": "A snack plate that somehow counts as a meal — vibes over macros.",
-    "originStory": "Started as a tongue-in-cheek TikTok confession: assembling cheese, crackers, leftover fries, and whatever's in the fridge into a 'meal' with zero plating guilt. It snowballed into a celebration of low-effort eating and a gentle pushback on performative wellness. Brands and restaurants briefly tried to monetize it; the internet kept the joke.",
-    "world": "TikTok",
-    "heatScore": 0.82,
-    "lifecycle": "peaking",
-    "tags": ["food", "relatable", "tiktok"]
-  },
-  {
-    "id": "t02",
-    "title": "Roman Empire",
-    "summary": "The viral bit that men think about Rome 'often' — turned into a culture gag.",
-    "originStory": "A 2023 TikTok trend asked women how often their partners think about the Roman Empire. Shockingly frequent answers became a meme about hyperfixation, history nerd energy, and gendered conversational weirdness. It spawned endless variants ('what's your Roman Empire?') for any oddly recurring thought.",
-    "world": "TikTok",
-    "heatScore": 0.55,
-    "lifecycle": "cooling",
-    "tags": ["meme", "history", "gender"]
-  },
-  {
-    "id": "t03",
-    "title": "Quiet quitting",
-    "summary": "Doing your job — not your boss's ambition — without the unpaid overtime.",
-    "originStory": "Coined in workplace discourse around 2022, 'quiet quitting' reframed boundary-setting as rebellion: meet the job description, skip hustle culture. Critics called it laziness; defenders called it sanity. It rode LinkedIn and TikTok, then cooled as 'quiet luxury' and 'loud quitting' variants took the mic.",
+    "id": "t07",
+    "title": "Rizz",
+    "summary": "Charisma as a verb and a noun — especially flirtation game.",
+    "originStory": "Short for charisma, popularized by streamer Kai Cenat and Gen Z slang. 'Having rizz' means you can charm; 'unspoken rizz' is magnetism without trying; 'rizzless' is the opposite. Oxford named it Word of the Year in 2023, which only accelerated both adoption and eye-rolls.",
     "world": "Internet culture",
-    "heatScore": 0.38,
-    "lifecycle": "cooling",
-    "tags": ["work", "boundaries", "discourse"]
-  },
-  {
-    "id": "t04",
-    "title": "IYKYK",
-    "summary": "If You Know, You Know — insider shorthand that gates the joke.",
-    "originStory": "An abbreviation that signals shared context without explaining it. Used in captions, group chats, and product drops to create belonging (or FOMO). Closely related to 'you had to be there' energy, but shorter and more smug.",
-    "world": "Abbreviations",
-    "heatScore": 0.71,
+    "heatScore": 0.91,
     "lifecycle": "peaking",
-    "tags": ["abbrev", "insider", "captions"]
+    "tags": [
+      "slang",
+      "dating",
+      "gen-z",
+      "seed",
+      "radar"
+    ]
   },
   {
     "id": "t05",
@@ -47,57 +23,13 @@
     "world": "Gaming",
     "heatScore": 0.88,
     "lifecycle": "peaking",
-    "tags": ["gaming", "roast", "slang"]
-  },
-  {
-    "id": "t06",
-    "title": "NPC energy",
-    "summary": "Acting like a background character — scripted, predictable, unbothered.",
-    "originStory": "From gaming's non-player characters: entities that repeat lines and follow fixed paths. Online, calling someone an 'NPC' implies they lack originality or agency. The 'NPC meme' wave amplified it into a whole aesthetic of blank stares and canned phrases — sometimes self-deprecating, sometimes cruel.",
-    "world": "Gaming",
-    "heatScore": 0.76,
-    "lifecycle": "rising",
-    "tags": ["gaming", "meme", "identity"]
-  },
-  {
-    "id": "t07",
-    "title": "Rizz",
-    "summary": "Charisma as a verb and a noun — especially flirtation game.",
-    "originStory": "Short for charisma, popularized by streamer Kai Cenat and Gen Z slang. 'Having rizz' means you can charm; 'unspoken rizz' is magnetism without trying; 'rizzless' is the opposite. Oxford named it Word of the Year in 2023, which only accelerated both adoption and eye-rolls.",
-    "world": "Internet culture",
-    "heatScore": 0.91,
-    "lifecycle": "peaking",
-    "tags": ["slang", "dating", "gen-z"]
-  },
-  {
-    "id": "t08",
-    "title": "Corecore",
-    "summary": "Edit compilations that feel like an existential moodboard with sad audio.",
-    "originStory": "A TikTok / YouTube edit style stacking unrelated clips — consumerism, loneliness, late-capitalism vibes — into an emotional gut punch. Named as a parody of endless '-core' aesthetics (cottagecore, weirdcore). Less a fashion look, more a feeling delivered via montage.",
-    "world": "TikTok",
-    "heatScore": 0.64,
-    "lifecycle": "rising",
-    "tags": ["edits", "aesthetic", "mood"]
-  },
-  {
-    "id": "t09",
-    "title": "Touch grass",
-    "summary": "Go outside. Log off. Reconnect with reality (gently or not).",
-    "originStory": "Internet shorthand telling someone they're too online. Can be caring advice or a dunk. Paired often with 'chronically online.' Originated in meme and gaming spaces, then became mainstream parental and coworker vocabulary — which made the phrase itself feel a little NPC.",
-    "world": "Internet culture",
-    "heatScore": 0.69,
-    "lifecycle": "peaking",
-    "tags": ["advice", "dunk", "offline"]
-  },
-  {
-    "id": "t10",
-    "title": "GG / GG EZ",
-    "summary": "Good game — or the toxic cousin that gloats after a win.",
-    "originStory": "'GG' is polite end-of-match etiquette from competitive gaming. 'GG EZ' (good game, easy) twists it into a taunt. Many communities auto-mute or shame EZ spam. Still, GG alone remains the universal handshake of 'match over, respect.'",
-    "world": "Gaming",
-    "heatScore": 0.48,
-    "lifecycle": "cooling",
-    "tags": ["gaming", "etiquette", "abbrev"]
+    "tags": [
+      "gaming",
+      "roast",
+      "slang",
+      "seed",
+      "radar"
+    ]
   },
   {
     "id": "t11",
@@ -107,7 +39,102 @@
     "world": "Internet culture",
     "heatScore": 0.85,
     "lifecycle": "rising",
-    "tags": ["slang", "stan", "tiktok"]
+    "tags": [
+      "slang",
+      "stan",
+      "tiktok",
+      "seed",
+      "radar"
+    ]
+  },
+  {
+    "id": "t01",
+    "title": "Girl dinner",
+    "summary": "A snack plate that somehow counts as a meal — vibes over macros.",
+    "originStory": "Started as a tongue-in-cheek TikTok confession: assembling cheese, crackers, leftover fries, and whatever's in the fridge into a 'meal' with zero plating guilt. It snowballed into a celebration of low-effort eating and a gentle pushback on performative wellness. Brands and restaurants briefly tried to monetize it; the internet kept the joke.",
+    "world": "TikTok",
+    "heatScore": 0.82,
+    "lifecycle": "peaking",
+    "tags": [
+      "food",
+      "relatable",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "t06",
+    "title": "NPC energy",
+    "summary": "Acting like a background character — scripted, predictable, unbothered.",
+    "originStory": "From gaming's non-player characters: entities that repeat lines and follow fixed paths. Online, calling someone an 'NPC' implies they lack originality or agency. The 'NPC meme' wave amplified it into a whole aesthetic of blank stares and canned phrases — sometimes self-deprecating, sometimes cruel.",
+    "world": "Gaming",
+    "heatScore": 0.76,
+    "lifecycle": "rising",
+    "tags": [
+      "gaming",
+      "meme",
+      "identity"
+    ]
+  },
+  {
+    "id": "t04",
+    "title": "IYKYK",
+    "summary": "If You Know, You Know — insider shorthand that gates the joke.",
+    "originStory": "An abbreviation that signals shared context without explaining it. Used in captions, group chats, and product drops to create belonging (or FOMO). Closely related to 'you had to be there' energy, but shorter and more smug.",
+    "world": "Abbreviations",
+    "heatScore": 0.71,
+    "lifecycle": "peaking",
+    "tags": [
+      "abbrev",
+      "insider",
+      "captions",
+      "seed",
+      "radar"
+    ]
+  },
+  {
+    "id": "t09",
+    "title": "Touch grass",
+    "summary": "Go outside. Log off. Reconnect with reality (gently or not).",
+    "originStory": "Internet shorthand telling someone they're too online. Can be caring advice or a dunk. Paired often with 'chronically online.' Originated in meme and gaming spaces, then became mainstream parental and coworker vocabulary — which made the phrase itself feel a little NPC.",
+    "world": "Internet culture",
+    "heatScore": 0.69,
+    "lifecycle": "peaking",
+    "tags": [
+      "advice",
+      "dunk",
+      "offline",
+      "meme",
+      "seed",
+      "radar"
+    ]
+  },
+  {
+    "id": "t08",
+    "title": "Corecore",
+    "summary": "Edit compilations that feel like an existential moodboard with sad audio.",
+    "originStory": "A TikTok / YouTube edit style stacking unrelated clips — consumerism, loneliness, late-capitalism vibes — into an emotional gut punch. Named as a parody of endless '-core' aesthetics (cottagecore, weirdcore). Less a fashion look, more a feeling delivered via montage.",
+    "world": "TikTok",
+    "heatScore": 0.64,
+    "lifecycle": "rising",
+    "tags": [
+      "edits",
+      "aesthetic",
+      "mood"
+    ]
+  },
+  {
+    "id": "t02",
+    "title": "Roman Empire",
+    "summary": "The viral bit that men think about Rome 'often' — turned into a culture gag.",
+    "originStory": "A 2023 TikTok trend asked women how often their partners think about the Roman Empire. Shockingly frequent answers became a meme about hyperfixation, history nerd energy, and gendered conversational weirdness. It spawned endless variants ('what's your Roman Empire?') for any oddly recurring thought.",
+    "world": "TikTok",
+    "heatScore": 0.55,
+    "lifecycle": "cooling",
+    "tags": [
+      "meme",
+      "history",
+      "gender"
+    ]
   },
   {
     "id": "t12",
@@ -117,6 +144,157 @@
     "world": "Abbreviations",
     "heatScore": 0.52,
     "lifecycle": "rising",
-    "tags": ["abbrev", "wellness", "social"]
+    "tags": [
+      "abbrev",
+      "wellness",
+      "social"
+    ]
+  },
+  {
+    "id": "t10",
+    "title": "GG / GG EZ",
+    "summary": "Good game — or the toxic cousin that gloats after a win.",
+    "originStory": "'GG' is polite end-of-match etiquette from competitive gaming. 'GG EZ' (good game, easy) twists it into a taunt. Many communities auto-mute or shame EZ spam. Still, GG alone remains the universal handshake of 'match over, respect.'",
+    "world": "Gaming",
+    "heatScore": 0.48,
+    "lifecycle": "cooling",
+    "tags": [
+      "gaming",
+      "etiquette",
+      "abbrev"
+    ]
+  },
+  {
+    "id": "t03",
+    "title": "Quiet quitting",
+    "summary": "Doing your job — not your boss's ambition — without the unpaid overtime.",
+    "originStory": "Coined in workplace discourse around 2022, 'quiet quitting' reframed boundary-setting as rebellion: meet the job description, skip hustle culture. Critics called it laziness; defenders called it sanity. It rode LinkedIn and TikTok, then cooled as 'quiet luxury' and 'loud quitting' variants took the mic.",
+    "world": "Internet culture",
+    "heatScore": 0.38,
+    "lifecycle": "cooling",
+    "tags": [
+      "work",
+      "boundaries",
+      "discourse"
+    ]
+  },
+  {
+    "id": "r_178c8fcf2f",
+    "title": "Wikipedia: Portal:Current events",
+    "summary": "Wikimedia portal",
+    "originStory": "Observed via Radar source `wikipedia` Source link: https://en.wikipedia.org/wiki/Portal%3ACurrent_events This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.293,
+    "lifecycle": "cooling",
+    "tags": [
+      "wikipedia",
+      "current-events",
+      "radar"
+    ],
+    "radarSource": "wikipedia",
+    "radarUrl": "https://en.wikipedia.org/wiki/Portal%3ACurrent_events",
+    "radarSignalId": "wikipedia:current-events"
+  },
+  {
+    "id": "r_3d159e77b9",
+    "title": "The Scariest Chart In Engineering",
+    "summary": "Why is the Smith Chart one of the scariest charts in electrical engineering?",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/O3a99HNskNk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "cooling",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/O3a99HNskNk",
+    "radarSignalId": "youtube:O3a99HNskNk"
+  },
+  {
+    "id": "r_399597a4e7",
+    "title": "The Most Dangerous Escalator In Europe",
+    "summary": "In 2018 football fans were leaving a stadium in Rome. They boarded an escalator down to the metro. Suddenly the machine sprung a fault.",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/oR94cicO7xM This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "cooling",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/oR94cicO7xM",
+    "radarSignalId": "youtube:oR94cicO7xM"
+  },
+  {
+    "id": "r_f1c0f04219",
+    "title": "A Physics Professor Bet Me $10,000 I'm Wrong...",
+    "summary": "A UCLA Physics Professor bet me $10,000 that my video (https://youtu.be/jyQwgBAaBag) about going downwind faster than the wind was wrong.",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/F5_G0AHfYhI This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "cooling",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/F5_G0AHfYhI",
+    "radarSignalId": "youtube:F5_G0AHfYhI"
+  },
+  {
+    "id": "r_60ece1bb12",
+    "title": "Why Do People Pass Out On Roller Coasters?",
+    "summary": "Why Do People Pass Out On Roller Coasters?",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/67LFeTgFv3Y This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "cooling",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/67LFeTgFv3Y",
+    "radarSignalId": "youtube:67LFeTgFv3Y"
+  },
+  {
+    "id": "r_f70f89ed45",
+    "title": "Why the Moon Never Changes",
+    "summary": "Why the Moon Never Changes",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/KLJxCWeYGoE This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "cooling",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/KLJxCWeYGoE",
+    "radarSignalId": "youtube:KLJxCWeYGoE"
+  },
+  {
+    "id": "r_67e4212a9d",
+    "title": "$100 Slime Challenge",
+    "summary": "Pick up your CrunchLabs Slime Prank Lab from Walmart, Target, or Amazon today.",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/KwqeKTM9M_8 This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "cooling",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/KwqeKTM9M_8",
+    "radarSignalId": "youtube:KwqeKTM9M_8"
   }
 ]
