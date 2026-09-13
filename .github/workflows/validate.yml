@@ -1,0 +1,49 @@
+name: validate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  required-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Required paths exist
+        run: |
+          set -euo pipefail
+          required=(
+            README.md
+            LICENSE
+            CONTRIBUTING.md
+            SECURITY.md
+            CODEOWNERS
+            CLAUDE.md
+            AGENTS.md
+            docs/prd.md
+            docs/phased-implementation.md
+            docs/backlog.md
+            docs/architecture.md
+            docs/design-tokens.md
+            docs/workbench.md
+            docs/xcode-setup.md
+            App/TrendyApp.swift
+            App/ContentView.swift
+          )
+          for f in "${required[@]}"; do
+            if [[ ! -e "$f" ]]; then
+              echo "Missing required path: $f"
+              exit 1
+            fi
+            echo "ok $f"
+          done
+
+      - name: LICENSE looks like MIT
+        run: |
+          set -euo pipefail
+          grep -qi 'MIT License' LICENSE
+          grep -q 'Copyright (c) 2026 bluenightlightpup' LICENSE
+          grep -qi 'Permission is hereby granted' LICENSE
+          echo "LICENSE MIT check passed"
