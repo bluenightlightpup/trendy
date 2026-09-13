@@ -77,3 +77,38 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 | **P2** | Decode Claude chat, You personalization, real APIs |
 | **P3** | Save/follow, polish, tests, TestFlight |
 | **Radar** | Continuous ingest → web/data (LIVE Reddit/seed; STUB TikTok/IG) |
+| **P4** | **Decision gate:** CLI + MCP for integrated AI tools (see `docs/cli-mcp-integration.md`) |
+
+
+## Phase 4 — CLI & MCP integration (decision gate)
+
+**Outcome:** A deliberate go / no-go on shipping **CLI** and **MCP** surfaces so integrated AI tools (Cursor, Claude Desktop, custom agents, scripts) can query Trendy’s radar, slang lexicon, and decode pipeline — without blocking phone UX work.
+
+This phase is a **consideration + design** phase first. Implementation only proceeds after an explicit approve.
+
+### Why consider it
+- Agents already live in [my-workbench](https://github.com/bluenightlightpup/my-workbench); a Trendy MCP server would let them pull live slang/trends instead of pasting JSON.
+- A `trendy` CLI would let Radar ops, Decode experiments, and CI scripts share one interface (`trendy decode 67`, `trendy radar run`, `trendy trends --hot`).
+- Aligns with owner intent: continuous training + AI-native tooling.
+
+### Decision criteria (must answer before building)
+1. **Audience:** Just us (private ops) vs other AI tools / contributors?
+2. **Trust boundary:** Read-only lexicon/trends vs write (ingest, lexicon edits)?
+3. **Auth:** Local-only stdio MCP vs remote HTTP + tokens?
+4. **Scope v1:** Decode + trends read enough, or full Radar control?
+5. **Cost/complexity:** Does this delay Phase 3 polish / TestFlight?
+
+### Proposed deliverables (if GO)
+- [ ] ADR: `docs/adr/0001-cli-mcp-integration.md` (decision recorded)
+- [ ] `docs/cli-mcp-integration.md` — product/eng design (drafted this phase)
+- [ ] Optional spike: `packages/trendy-cli` or `radar/cli.py` + MCP server stub exposing:
+  - `get_trends` / `search_slang` / `decode_term` / `radar_status`
+- [ ] Wire README “AI tooling” section with install snippets
+- [ ] Security review: no secrets in MCP tool results; rate limits
+
+### Non-goals (this phase)
+- Replacing the PWA or iOS app
+- Scraping TikTok/IG via MCP (still official APIs only)
+- Shipping a public hosted MCP without auth decision
+
+**Exit criteria:** Written go/no-go in ADR (or explicit defer); if go, spike merged behind clear README docs; if no-go, backlog tickets cancelled with rationale.

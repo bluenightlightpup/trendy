@@ -3,7 +3,7 @@
 **Trendy** is a phone-first iOS app: an AI assistant that helps you stay current on trends, memes, and slang **without** burning hours of screentime. Catch up on culture, decode abbreviations judgment-free, and keep signals organized in one place — built for people who don’t want FOMO and for older users who want slang context.
 
 > **License:** MIT · Copyright (c) 2026 bluenightlightpup  
-> **GitHub (planned):** `bluenightlightpup/trendy`  
+> **GitHub:** https://github.com/bluenightlightpup/trendy  
 > **Workbench (agents/skills):** [my-workbench](https://github.com/bluenightlightpup/my-workbench) — this app repo is separate; do not clone the workbench into here.
 
 ## Product snapshot
@@ -18,6 +18,37 @@
 Later: save / follow trends.
 
 Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan temperature scale; Space Grotesk + JetBrains Mono vibe (system fallbacks OK initially). See `docs/design-tokens.md`.
+
+## App preview
+
+![Trendy Home — heat feed with 67, rizz, and skill issue](docs/images/trendy-home.png)
+
+![Trendy Decode — judgment-free slang chat](docs/images/trendy-decode.png)
+
+## Roadmap phases
+
+| Phase | Focus | Status |
+|-------|--------|--------|
+| **P0** | PRD, repo, backlog | Done |
+| **P1** | SwiftUI shell, Home heat feed, Explore | Done (XcodeGen on Mac) |
+| **P2** | Decode + You + APIs | PWA Decode/You live; iOS Claude API next |
+| **P3** | Save/follow, polish, TestFlight | Pending |
+| **Radar** | 24/7 multi-platform ingest | Live (TikTok/IG stubs) |
+| **P4** | **Consider CLI + MCP** for integrated AI tools | Decision gate — see below |
+
+Details: [`docs/phased-implementation.md`](docs/phased-implementation.md) · tickets in [`docs/backlog.md`](docs/backlog.md).
+
+## Phase 4 — CLI & MCP for integrated AI tools *(consider)*
+
+Should Trendy expose a **CLI** and/or **MCP server** so Cursor, workbench agents, and scripts can decode slang, pull hot trends, and trigger Radar — without opening the phone UI?
+
+This is a **go / no-go phase**, not automatic build work. Design brief: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md).
+
+**If GO:** thin CLI + local stdio MCP (read-mostly: `decode`, `trends`, `radar status`).  
+**If NO-GO / defer:** keep polishing Phase 3 phone experience first.
+
+Owner decision tracked as backlog **T0019**.
+
 
 ## Repo layout
 
@@ -49,7 +80,6 @@ Minimum iOS: **17.0** (documented in architecture).
 | Doc | Purpose |
 |-----|---------|
 | `docs/prd.md` | Product requirements |
-| `docs/phased-implementation.md` | Phase 0–3 plan |
 | `docs/backlog.md` | Numbered tickets (T0001+) |
 | `docs/architecture.md` | App structure & boundaries |
 | `docs/design-tokens.md` | Colors, type, heat scale |

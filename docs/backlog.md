@@ -217,6 +217,47 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 
 ---
 
+
+### T0019 — Phase 4 decision: CLI & MCP for AI tools
+- **Value:** Decide whether integrated AI tools get first-class Trendy access without derailing phone polish.
+- **Scope:** Review `docs/cli-mcp-integration.md`; record go/no-go/defer in ADR; update phase checklist.
+- **Out of scope:** Full MCP implementation (that's T0020+ if GO).
+- **Acceptance:**
+  - [ ] Owner decision recorded (go / no-go / defer-until-P3)
+  - [ ] ADR or decision table in `docs/cli-mcp-integration.md` updated
+  - [ ] README phase map matches decision
+- **Agents/skills:** `product-strategist`, `architecture-decision`
+- **Depends on:** Radar phase docs
+- **Effort:** S
+
+### T0020 — Spike CLI (if Phase 4 GO)
+- **Value:** Scriptable decode + radar ops for humans and CI.
+- **Scope:** Thin CLI over lexicon + trends + `radar/run_ingest.py`.
+- **Out of scope:** Remote API server.
+- **Acceptance:**
+  - [ ] `trendy decode <term>` prints judgment-free explain from slang.json
+  - [ ] `trendy trends` lists hot items
+  - [ ] `trendy radar run` invokes ingest
+  - [ ] Documented in README
+- **Agents/skills:** `implementer`, `software-dev-loop`
+- **Depends on:** T0019 = GO
+- **Effort:** M
+
+### T0021 — Spike MCP server (if Phase 4 GO)
+- **Value:** Cursor / workbench agents can call Trendy tools natively.
+- **Scope:** Local stdio MCP: `search_slang`, `get_trends`, `decode_term`, `radar_status`.
+- **Out of scope:** Hosted remote MCP; write tools without auth story.
+- **Acceptance:**
+  - [ ] MCP server starts via documented command
+  - [ ] Tools return valid JSON against web/data
+  - [ ] Security notes in docs (no secrets leaked)
+  - [ ] Optional workbench connector instructions
+- **Agents/skills:** `implementer`, `architecture-decision`
+- **Depends on:** T0019 = GO, T0020 preferred first
+- **Effort:** L
+
+---
+
 ## Suggested order
 
-T0001 → T0002 → T0003 → T0004 → T0005 → T0006 → T0007 → T0008 / T0009 / T0010 → T0012 → T0011 → T0013 → T0014 → T0015 → T0016 → T0017 → T0018
+T0001 → T0002 → T0003 → T0004 → T0005 → T0006 → T0007 → T0008 / T0009 / T0010 → T0012 → T0011 → T0013 → T0014 → T0015 → T0016 → T0017 → T0018 → **T0019** → (if GO) T0020 → T0021
