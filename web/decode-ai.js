@@ -2,6 +2,46 @@
 (function (global) {
   "use strict";
 
+  // Always-on classic abbrevs so Decode never blank on jk/brb/etc. even if JSON lags
+  const CORE_ABBREVS = {
+    jk: { terms: ["jk", "j/k", "j.k.", "just kidding"], short: "Just kidding.", explain: "Used after a joke or to soften a serious-sounding line. Classic texting slang.", origin: "Early SMS/IM culture; still ubiquitous." },
+    idk: { terms: ["idk"], short: "I don’t know.", explain: "You don’t have the answer right now.", origin: "Texting shorthand." },
+    brb: { terms: ["brb"], short: "Be right back.", explain: "Stepping away briefly.", origin: "Chat/IM classic." },
+    ttyl: { terms: ["ttyl"], short: "Talk to you later.", explain: "Friendly pause/sign-off.", origin: "Texting shorthand." },
+    lol: { terms: ["lol"], short: "Laughing out loud (or a soft chuckle).", explain: "Often acknowledgment, not literal loud laughing.", origin: "Early internet/SMS." },
+    omg: { terms: ["omg"], short: "Oh my god.", explain: "Surprise or emphasis.", origin: "Texting shorthand." },
+    smh: { terms: ["smh"], short: "Shaking my head.", explain: "Disappointment or disbelief.", origin: "Internet slang." },
+    tbh: { terms: ["tbh"], short: "To be honest.", explain: "Flags a frank opinion.", origin: "Texting shorthand." },
+    ngl: { terms: ["ngl"], short: "Not gonna lie.", explain: "Honesty marker before a take.", origin: "Internet slang." },
+    fr: { terms: ["fr", "fr fr"], short: "For real.", explain: "Agreement or emphasis.", origin: "AAVE → mainstream internet." },
+    nvm: { terms: ["nvm"], short: "Never mind.", explain: "Cancel what you just said.", origin: "Texting shorthand." },
+    wyd: { terms: ["wyd"], short: "What (are) you doing?", explain: "Casual check-in.", origin: "Texting shorthand." },
+    hmu: { terms: ["hmu"], short: "Hit me up.", explain: "Message me later.", origin: "Texting shorthand." },
+    gtg: { terms: ["gtg", "g2g"], short: "Got to go.", explain: "Leaving the chat.", origin: "IM classic." },
+    afk: { terms: ["afk"], short: "Away from keyboard.", explain: "Not at the device.", origin: "Gaming/chat." },
+    sus: { terms: ["sus"], short: "Suspicious.", explain: "Something feels shady.", origin: "Slang boom via Among Us." },
+    fyi: { terms: ["fyi"], short: "For your information.", explain: "Heads-up.", origin: "Workplace + texting." },
+    btw: { terms: ["btw"], short: "By the way.", explain: "Side note.", origin: "Texting shorthand." },
+    asap: { terms: ["asap"], short: "As soon as possible.", explain: "Urgency.", origin: "Common abbreviation." },
+    idc: { terms: ["idc"], short: "I don’t care.", explain: "Dismissive or boundary — tone varies.", origin: "Texting shorthand." },
+    rn: { terms: ["rn"], short: "Right now.", explain: "Currently / at this moment.", origin: "Texting shorthand." },
+    ofc: { terms: ["ofc"], short: "Of course.", explain: "Agreement or “obviously.”", origin: "Texting shorthand." },
+    ikr: { terms: ["ikr"], short: "I know, right?", explain: "Strong agreement.", origin: "Texting shorthand." },
+    lmk: { terms: ["lmk"], short: "Let me know.", explain: "Ask for an update.", origin: "Texting shorthand." },
+    np: { terms: ["np"], short: "No problem.", explain: "It’s fine / you’re welcome.", origin: "Texting shorthand." },
+    ty: { terms: ["ty", "thx"], short: "Thank you / thanks.", explain: "Gratitude shorthand.", origin: "Texting shorthand." },
+    yw: { terms: ["yw"], short: "You’re welcome.", explain: "Reply to thanks.", origin: "Texting shorthand." },
+    omw: { terms: ["omw"], short: "On my way.", explain: "En route.", origin: "Texting shorthand." },
+    irl: { terms: ["irl"], short: "In real life.", explain: "Offline / not online.", origin: "Internet slang." },
+    tldr: { terms: ["tldr", "tl;dr"], short: "Too long; didn’t read — summary follows.", explain: "Prefaces a short version.", origin: "Forum culture." },
+    imo: { terms: ["imo", "imho"], short: "In my (humble) opinion.", explain: "Personal take marker.", origin: "Forum/texting." },
+    ong: { terms: ["ong"], short: "On God — I swear / for real.", explain: "Emphasis of seriousness.", origin: "Internet slang." },
+    fs: { terms: ["fs"], short: "For sure.", explain: "Agreement.", origin: "Texting shorthand." },
+    dw: { terms: ["dw"], short: "Don’t worry.", explain: "Reassurance.", origin: "Texting shorthand." },
+    pls: { terms: ["pls", "plz"], short: "Please.", explain: "Softener.", origin: "Texting shorthand." },
+  };
+
+
   const QUESTION_PATTERNS = [
     /^what\s+does\s+(.+?)\s+mean\??$/i,
     /^what(?:'s| is)\s+(?:the\s+)?(?:meaning\s+of\s+)?(.+?)\??$/i,
@@ -38,22 +78,38 @@
 
   function findSlangEntry(slang, term) {
     const q = normalize(term);
-    if (!q || !slang) return null;
-    const entries = slang.entries || [];
+    if (!q) return null;
 
+    // 1) Built-in classic abbrevs (jk, brb, ...)
+    const coreKey = q.replace(/[^a-z0-9]/g, "");
+    if (CORE_ABBREVS[q] || CORE_ABBREVS[coreKey]) {
+      const entry = CORE_ABBREVS[q] || CORE_ABBREVS[coreKey];
+      return { entry, match: "exact" };
+    }
+    for (const entry of Object.values(CORE_ABBREVS)) {
+      for (const t of entry.terms || []) {
+        if (normalize(t) === q) return { entry, match: "exact" };
+      }
+    }
+
+    const entries = (slang && slang.entries) || [];
+
+    // 2) Exact lexicon match (including 2-letter like jk)
     for (const entry of entries) {
       for (const t of entry.terms || []) {
         if (normalize(t) === q) return { entry, match: "exact" };
       }
     }
 
+    // 3) Partial / contains (allow 2-char terms)
     let best = null;
     let bestLen = 0;
     for (const entry of entries) {
       for (const t of entry.terms || []) {
         const nt = normalize(t);
         if (nt.length < 2) continue;
-        if (q.includes(nt) || (q.length >= 2 && nt.includes(q))) {
+        if (q === nt) return { entry, match: "exact" };
+        if (q.includes(nt) || nt.includes(q)) {
           if (nt.length > bestLen) {
             best = entry;
             bestLen = nt.length;

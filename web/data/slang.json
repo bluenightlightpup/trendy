@@ -2,6 +2,556 @@
   "entries": [
     {
       "terms": [
+        "u",
+        "ur"
+      ],
+      "short": "You / your.",
+      "explain": "Texting shorthand.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "pls",
+        "plz"
+      ],
+      "short": "Please.",
+      "explain": "Softener.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ppl"
+      ],
+      "short": "People.",
+      "explain": "Abbreviation.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "w/o"
+      ],
+      "short": "Without.",
+      "explain": "Abbreviation.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "w/"
+      ],
+      "short": "With.",
+      "explain": "Abbreviation.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "bc",
+        "b/c"
+      ],
+      "short": "Because.",
+      "explain": "Abbreviation.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "nbd"
+      ],
+      "short": "No big deal.",
+      "explain": "Downplays something.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "fs"
+      ],
+      "short": "For sure.",
+      "explain": "Agreement.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ong"
+      ],
+      "short": "On God — I swear / for real.",
+      "explain": "Emphasis of truthfulness.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ib",
+        "inspo"
+      ],
+      "short": "Inspired by / inspiration.",
+      "explain": "Credits a look or idea source.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "pov"
+      ],
+      "short": "Point of view.",
+      "explain": "TikTok/caption framing: experience something as if you are there.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ootd"
+      ],
+      "short": "Outfit of the day.",
+      "explain": "Fashion social post label.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "mfw"
+      ],
+      "short": "My face when…",
+      "explain": "Reaction-image caption classic.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "tfw"
+      ],
+      "short": "That feeling when…",
+      "explain": "Sets up a relatable mood/meme caption.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "af"
+      ],
+      "short": "As f*** — intensifier.",
+      "explain": "Amplifies an adjective: “tired AF.” Use carefully; strong language.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "irl"
+      ],
+      "short": "In real life.",
+      "explain": "Offline / not on the internet.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "omw"
+      ],
+      "short": "On my way.",
+      "explain": "En route.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "yw"
+      ],
+      "short": "You’re welcome.",
+      "explain": "Reply to thanks.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ty",
+        "thx",
+        "tysm"
+      ],
+      "short": "Thank you / thanks / thank you so much.",
+      "explain": "Gratitude shorthand.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "np"
+      ],
+      "short": "No problem.",
+      "explain": "You’re welcome / it’s fine.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "dw"
+      ],
+      "short": "Don’t worry.",
+      "explain": "Reassurance.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ily",
+        "ilysm"
+      ],
+      "short": "I love you / I love you so much.",
+      "explain": "Affection shorthand.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "idc"
+      ],
+      "short": "I don’t care.",
+      "explain": "Dismissive or boundary-setting, tone varies.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "btw"
+      ],
+      "short": "By the way.",
+      "explain": "Side note.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "asap"
+      ],
+      "short": "As soon as possible.",
+      "explain": "Urgency marker.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "fyi"
+      ],
+      "short": "For your information.",
+      "explain": "Heads-up / sharing info.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "afaik"
+      ],
+      "short": "As far as I know.",
+      "explain": "Hedges a statement as not absolute.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "tldr",
+        "tl;dr"
+      ],
+      "short": "Too long; didn’t read — here’s the summary.",
+      "explain": "Prefaces a short version.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "lmk"
+      ],
+      "short": "Let me know.",
+      "explain": "Ask for an update.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "cringe"
+      ],
+      "short": "Embarrassing / awkward secondhand shame.",
+      "explain": "Reaction to something socially painful.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "it's giving",
+        "its giving"
+      ],
+      "short": "The vibe resembles X.",
+      "explain": "“It’s giving main character” = that energy.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "understood the assignment"
+      ],
+      "short": "Nailed exactly what was expected.",
+      "explain": "Praise for getting the vibe/task right.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "say less"
+      ],
+      "short": "Understood / I’m in — no more explanation needed.",
+      "explain": "Agreement to a plan.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "periodt",
+        "period"
+      ],
+      "short": "End of discussion — I’m right.",
+      "explain": "Emphasis after a firm statement (periodt = stylized).",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "bussin",
+        "bussin'"
+      ],
+      "short": "Really good (often food).",
+      "explain": "Enthusiastic approval.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "fire"
+      ],
+      "short": "Excellent / awesome.",
+      "explain": "Compliment: “that song is fire.”",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "goat"
+      ],
+      "short": "Greatest of all time.",
+      "explain": "Highest praise for a person, player, or thing.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ghost",
+        "ghosted",
+        "ghosting"
+      ],
+      "short": "Suddenly cutting off contact with no explanation.",
+      "explain": "Dating/friendship slang for disappearing mid-conversation.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "highkey",
+        "high-key"
+      ],
+      "short": "Openly / very much.",
+      "explain": "Opposite vibe of lowkey — not hiding it.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "lowkey",
+        "low-key"
+      ],
+      "short": "Kinda / secretly / quietly.",
+      "explain": "Softens intensity: “I lowkey love that.”",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "glhf"
+      ],
+      "short": "Good luck, have fun.",
+      "explain": "Pre-match goodwill in gaming.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "wp"
+      ],
+      "short": "Well played.",
+      "explain": "Compliment after a good move (games/competition).",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "gtg",
+        "g2g"
+      ],
+      "short": "Got to go.",
+      "explain": "Leaving the chat.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "rn"
+      ],
+      "short": "Right now.",
+      "explain": "Timing marker — happening currently.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ofc"
+      ],
+      "short": "Of course.",
+      "explain": "Agreement or “obviously.”",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ikr"
+      ],
+      "short": "I know, right?",
+      "explain": "Strong agreement with someone’s point.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "hmu"
+      ],
+      "short": "Hit me up.",
+      "explain": "Message me / contact me later.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "wya"
+      ],
+      "short": "Where (are) you at?",
+      "explain": "Asking location, casually.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "wyd"
+      ],
+      "short": "What (are) you doing?",
+      "explain": "Casual check-in opener.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "istg"
+      ],
+      "short": "I swear to God.",
+      "explain": "Strong emphasis that you’re serious (or jokingly dramatic).",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "fr",
+        "fr fr"
+      ],
+      "short": "For real.",
+      "explain": "Agreement or emphasis — “FR” ≈ seriously / agreed.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "ngl"
+      ],
+      "short": "Not gonna lie.",
+      "explain": "Signals honesty, often before a spicy or vulnerable take.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
+        "jk",
+        "j/k",
+        "j.k.",
+        "just kidding"
+      ],
+      "short": "Just kidding.",
+      "explain": "Used after a joke or to soften something that might sound serious. Classic texting slang — still everywhere.",
+      "origin": "Long-running internet/texting slang; still widely used alongside newer TikTok-era terms.",
+      "confidence": "high",
+      "updated_at": "2026-09-13T23:38:42Z"
+    },
+    {
+      "terms": [
         "skibidi",
         "skibidi toilet"
       ],
@@ -202,7 +752,11 @@
         "smh",
         "nvm",
         "omg",
-        "wtf"
+        "wtf",
+        "i dunno",
+        "omfg",
+        "n/m",
+        "never mind"
       ],
       "short": "Classic chat abbreviations.",
       "explain": "BRB = be right back; AFK = away from keyboard; TTYL = talk to you later; IMO/IMHO = in my (humble) opinion; TBH = to be honest; IDK = I don't know; SMH = shaking my head; NVM = never mind; OMG / WTF = surprise / frustration. Old-school but still everywhere.",
