@@ -54,6 +54,28 @@
     bruh: { terms: ["bruh"], short: "Like “bro,” often for surprise, disbelief, or secondhand embarrassment.", explain: "As much a reaction (“bruh…”) as an address.", origin: "Phonetic casual bro; meme reaction." },
     dude: { terms: ["dude"], short: "Casual address for a person; also a “wow” reaction.", explain: "Daily informal English for a person; greeting, emphasis, or disbelief.", origin: "Older American slang still in heavy use." },
     fam: { terms: ["fam"], short: "Close friends / chosen family.", explain: "Your people — not only blood relatives.", origin: "AAVE/youth slang → broad use." },
+    skibidi: {
+      terms: [
+        "skibidi",
+        "skibidi toilet",
+        "skibidi toilets",
+        "skibiti",
+        "skibiti toilet",
+        "skibiti toilets",
+        "skibity",
+        "skibity toilet",
+        "skibidy",
+        "skibidy toilet",
+        "skibiddi",
+        "skibidi toillet",
+        "skibidi tiolet",
+      ],
+      short: "YouTube/TikTok horror-comedy series by DaFuq!?Boom! with heads in toilets; kids also chant “skibidi” as brainrot noise.",
+      explain: "Skibidi Toilet is a surreal animated series by DaFuq!?Boom! (Alexey Gerasimov): singing human heads in toilets fight camera-headed people (Cameramen) and other hardware-headed factions. On playgrounds and the FYP, “skibidi” is often just a nonsense chant — participation, not a secret code. Asking what it means is normal; the joke is how little dictionary sense it has.",
+      origin: "YouTube series by DaFuq!?Boom!, 2023–; exploded on TikTok and in Gen Alpha schoolyard/brainrot culture.",
+      source: "core",
+      confidence: "high",
+    },
   };
 
   function normalize(s) {
@@ -88,58 +110,233 @@
       .trim();
   }
 
-  function findInEntryList(entries, q) {
-    if (!entries) return null;
-    for (const entry of entries) {
-      for (const t of entry.terms || []) {
-        if (normalize(t) === q) return { entry, match: "exact" };
+  const STOPWORDS = new Set([
+    "a", "an", "the", "of", "to", "and", "or", "what", "does", "mean", "meaning",
+    "is", "are", "do", "did", "how", "why", "who", "please", "define", "explain",
+    "tell", "me", "about", "whats", "for", "in", "on", "with", "from",
+  ]);
+
+  const FUZZY_ALIASES = {
+    skibiti: "skibidi",
+    skibity: "skibidi",
+    skibidy: "skibidi",
+    skibiddi: "skibidi",
+    skibidii: "skibidi",
+    gyat: "gyatt",
+    gyattt: "gyatt",
+    looksmaxing: "looksmaxxing",
+    "looks-maxxing": "looksmaxxing",
+    mewin: "mewing",
+    moggin: "mogging",
+    fanumtax: "fanum tax",
+    "skibidi-toilet": "skibidi toilet",
+  };
+
+  const PHRASE_ALIASES = {
+    "skibiti toilet": "skibidi toilet",
+    "skibiti toilets": "skibidi toilet",
+    "skibidi toilets": "skibidi toilet",
+    "skibidi toillet": "skibidi toilet",
+    "skibidi tiolet": "skibidi toilet",
+    "skibity toilet": "skibidi toilet",
+    "skibidy toilet": "skibidi toilet",
+    "skibidi tolet": "skibidi toilet",
+    "skibiti toillet": "skibidi toilet",
+    "skibidi toilet meme": "skibidi toilet",
+    "skibiti toilet meme": "skibidi toilet",
+    "looks maxxing": "looksmaxxing",
+    "fanum taxx": "fanum tax",
+    "only in ohio": "ohio",
+    "sigma male": "sigma",
+    "sigma grindset": "sigma",
+  };
+
+  function tokenize(s) {
+    return normalize(s)
+      .split(/[^a-z0-9]+/i)
+      .filter(Boolean);
+  }
+
+  function applyAlias(raw) {
+    const n = normalize(raw);
+    if (!n) return n;
+    if (PHRASE_ALIASES[n]) return PHRASE_ALIASES[n];
+    if (FUZZY_ALIASES[n]) return FUZZY_ALIASES[n];
+    const mapped = n.split(/\s+/).map((tok) => FUZZY_ALIASES[tok] || tok);
+    const joined = mapped.join(" ");
+    return PHRASE_ALIASES[joined] || joined;
+  }
+
+  function escapeRe(s) {
+    return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function wordBoundaryIncludes(haystack, needle) {
+    if (!haystack || !needle) return false;
+    const re = new RegExp("(?:^|[^a-z0-9])" + escapeRe(needle) + "(?:$|[^a-z0-9])", "i");
+    return re.test(haystack);
+  }
+
+  function queryTokens(q) {
+    return tokenize(q).filter((t) => t && !STOPWORDS.has(t));
+  }
+
+  function rankBonus(entry, bucket) {
+    if (bucket === "core") return 4000;
+    const src = String((entry && entry.source) || "").toLowerCase();
+    const conf = String((entry && entry.confidence) || "").toLowerCase();
+    if (src === "core") return 4000;
+    if (src === "curated" || conf === "high") return 3000;
+    if (bucket === "slang" && !src) return 2500; // hand-written lexicon rows
+    if (src === "abbreve" || bucket === "abbreve") return 0;
+    return 500;
+  }
+
+  function scoreTermAgainstQuery(term, fullQuery, tokens) {
+    const t = normalize(term);
+    if (!t) return { score: 0, kind: null, termLen: 0 };
+    const tLen = t.length;
+    const tTokens = tokenize(t);
+
+    if (t === fullQuery) {
+      return { score: 100000 + tLen * 10, kind: "exact", termLen: tLen };
+    }
+    if (tokens.includes(t)) {
+      return { score: 80000 + tLen * 10, kind: "exact-token", termLen: tLen };
+    }
+    if (tTokens.length && tTokens.every((tok) => tokens.includes(tok))) {
+      return { score: 75000 + tLen * 10, kind: "token-set", termLen: tLen };
+    }
+
+    // Whole-word term inside the query (never for 1–2 letter abbrevs into longer words)
+    if (tLen >= 3 && wordBoundaryIncludes(fullQuery, t)) {
+      return { score: 50000 + tLen * 10, kind: "word-in-query", termLen: tLen };
+    }
+
+    // Query is a distinctive whole word inside a longer term (skibidi ⊂ skibidi toilet)
+    if (tLen >= 3 && fullQuery.length >= 3 && wordBoundaryIncludes(t, fullQuery)) {
+      const longestTok = tTokens.reduce((a, b) => (a.length >= b.length ? a : b), "");
+      if (fullQuery === tTokens[0] || fullQuery === longestTok || tokens[0] === tTokens[0]) {
+        return { score: 40000 + tLen * 10, kind: "query-in-term", termLen: tLen };
       }
     }
-    let best = null;
-    let bestLen = 0;
-    for (const entry of entries) {
-      for (const t of entry.terms || []) {
-        const nt = normalize(t);
-        if (nt.length < 2) continue;
-        if (q.includes(nt) || nt.includes(q)) {
-          if (nt.length > bestLen) {
-            best = entry;
-            bestLen = nt.length;
-          }
-        }
+
+    // Substring fallback: NEVER for terms shorter than 3 chars into longer words
+    if (tLen >= 3 && fullQuery.length >= 3) {
+      if (wordBoundaryIncludes(fullQuery, t) || wordBoundaryIncludes(t, fullQuery)) {
+        return { score: 12000 + tLen * 10, kind: "partial", termLen: tLen };
+      }
+      // last-resort contiguous substring only if the short side is still >= 3
+      if (fullQuery.includes(t) || t.includes(fullQuery)) {
+        return { score: 1000 + tLen * 10, kind: "substring", termLen: tLen };
       }
     }
-    return best ? { entry: best, match: "partial" } : null;
+    return { score: 0, kind: null, termLen: 0 };
+  }
+
+  function scoreEntry(entry, fullQuery, tokens) {
+    let best = { score: 0, kind: null, termLen: 0 };
+    for (const term of entry.terms || []) {
+      const got = scoreTermAgainstQuery(term, fullQuery, tokens);
+      if (got.score > best.score || (got.score === best.score && got.termLen > best.termLen)) {
+        best = got;
+      }
+    }
+    return best;
+  }
+
+  function pickBestHit(candidates) {
+    if (!candidates.length) return null;
+    candidates.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (b.termLen !== a.termLen) return b.termLen - a.termLen;
+      const order = { core: 3, slang: 2, abbreve: 1 };
+      return (order[b.bucket] || 0) - (order[a.bucket] || 0);
+    });
+    const top = candidates[0];
+    return { entry: top.entry, match: top.kind || "partial" };
   }
 
   function findSlangEntry(slang, abbreve, term) {
-    const q = normalize(term);
+    const aliased = applyAlias(term);
+    const q = normalize(aliased);
     if (!q) return null;
+    const tokens = queryTokens(q);
+    const candidates = [];
 
-    if (CORE_ABBREVS[q]) return { entry: CORE_ABBREVS[q], match: "exact" };
-    for (const entry of Object.values(CORE_ABBREVS)) {
-      for (const t of entry.terms || []) {
-        if (normalize(t) === q) return { entry, match: "exact" };
+    const coreEntries = Object.values(CORE_ABBREVS);
+    for (const entry of coreEntries) {
+      const got = scoreEntry(entry, q, tokens);
+      if (got.score > 0) {
+        candidates.push({
+          entry,
+          score: got.score + rankBonus(entry, "core"),
+          termLen: got.termLen,
+          kind: got.kind,
+          bucket: "core",
+        });
       }
     }
 
-    const fromSlang = findInEntryList(slang && slang.entries, q);
-    if (fromSlang) return fromSlang;
-    return findInEntryList(abbreve && abbreve.entries, q);
+    for (const [bucket, list] of [
+      ["slang", slang && slang.entries],
+      ["abbreve", abbreve && abbreve.entries],
+    ]) {
+      if (!list) continue;
+      for (const entry of list) {
+        const got = scoreEntry(entry, q, tokens);
+        if (got.score <= 0) continue;
+        candidates.push({
+          entry,
+          score: got.score + rankBonus(entry, bucket),
+          termLen: got.termLen,
+          kind: got.kind,
+          bucket,
+        });
+      }
+    }
+
+    return pickBestHit(candidates);
   }
 
   function findTrend(trends, term) {
-    const q = normalize(term);
-    if (!q || !Array.isArray(trends)) return null;
+    if (!Array.isArray(trends)) return null;
+    const q = normalize(applyAlias(term));
+    if (!q) return null;
+    const tokens = queryTokens(q);
     const exact = trends.find((t) => normalize(t.title) === q);
     if (exact) return exact;
-    return (
-      trends.find((t) => {
-        const title = normalize(t.title);
-        const tags = (t.tags || []).map(normalize);
-        return title.includes(q) || q.includes(title) || tags.some((tag) => tag === q);
-      }) || null
-    );
+    const tagHit = trends.find((t) => (t.tags || []).map(normalize).includes(q));
+    if (tagHit) return tagHit;
+
+    let best = null;
+    let bestScore = 0;
+    for (const trend of trends) {
+      const title = normalize(trend.title);
+      if (!title) continue;
+      let score = 0;
+      if (title === q) score = 100000 + title.length;
+      else if (tokens.includes(title) || queryTokens(title).every((tok) => tokens.includes(tok) && tok.length >= 3)) {
+        score = 80000 + title.length;
+      } else if (title.length >= 3 && wordBoundaryIncludes(q, title)) {
+        score = 50000 + title.length;
+      } else if (q.length >= 3 && wordBoundaryIncludes(title, q)) {
+        const tToks = queryTokens(title);
+        const longestTok = tToks.reduce((a, b) => (a.length >= b.length ? a : b), "");
+        if (q === tToks[0] || q === longestTok) score = 40000 + title.length;
+      } else if (title.length >= 3 && q.length >= 3 && (wordBoundaryIncludes(q, title) || wordBoundaryIncludes(title, q))) {
+        score = 10000 + title.length;
+      }
+      const tags = (trend.tags || []).map(normalize);
+      if (tags.some((tag) => tag === q || tokens.includes(tag))) {
+        score = Math.max(score, 70000 + q.length);
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        best = trend;
+      }
+    }
+    return best;
   }
 
   async function fetchJson(url, ms) {
@@ -317,9 +514,10 @@
 
   async function decodeQuery(raw, { slang, trends, abbreve, newHere }) {
     const term = extractTerm(raw) || String(raw || "").trim();
-    const slangHit = findSlangEntry(slang, abbreve, term);
-    const trend = findTrend(trends, term);
-    const heuristics = heuristicInternetSpeak(term);
+    const searchTerm = applyAlias(term);
+    const slangHit = findSlangEntry(slang, abbreve, searchTerm);
+    const trend = findTrend(trends, searchTerm);
+    const heuristics = heuristicInternetSpeak(searchTerm);
 
     let dict = null;
     if (!slangHit) {
@@ -354,5 +552,6 @@
     decodeQuery,
     formatAnswerHtml,
     normalize,
+    applyAlias,
   };
 })(typeof window !== "undefined" ? window : globalThis);

@@ -2,6 +2,271 @@
   "entries": [
     {
       "terms": [
+        "skibidi",
+        "skibidi toilet",
+        "skibidi toilets",
+        "skibiti",
+        "skibiti toilet",
+        "skibiti toilets",
+        "skibity",
+        "skibity toilet",
+        "skibidy",
+        "skibidy toilet",
+        "skibiddi",
+        "skibidi toillet",
+        "skibidi tiolet",
+        "skibidi tolet"
+      ],
+      "short": "YouTube/TikTok horror-comedy series by DaFuq!?Boom! with heads in toilets; kids also chant “skibidi” as brainrot noise.",
+      "explain": "Skibidi Toilet is a surreal animated series by DaFuq!?Boom! (Alexey Gerasimov): singing human heads in toilets fight camera-headed people (Cameramen) and other hardware-headed factions. On playgrounds and the FYP, “skibidi” is often just a nonsense chant — participation, not a secret code. Asking what it means is normal; the joke is how little dictionary sense it has.",
+      "origin": "YouTube series by DaFuq!?Boom!, 2023–; exploded on TikTok and in Gen Alpha schoolyard/brainrot culture.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "ohio",
+        "only in ohio",
+        "ohio rizz",
+        "ohio final boss"
+      ],
+      "short": "Catch-all punchline for anything chaotic, cursed, or strangely specific — rarely about the actual state.",
+      "explain": "Gen Alpha / TikTok treats Ohio as the capital of weird internet energy. “Only in Ohio” captions cursed clips; “you’re Ohio” just means you’re being weird. Judgment-free: it’s a meme geography, not a travel review.",
+      "origin": "TikTok / Gen Alpha brainrot meme.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "gyatt",
+        "gyat",
+        "gyattt",
+        "gyatt damn"
+      ],
+      "short": "A loud reaction to someone’s body, especially hips/backside — like an exaggerated “goddamn.”",
+      "explain": "Used as a hype shout, caption, or joke. It can feel objectifying depending on tone; Trendy just explains the slang, not the stare. Not a rating system.",
+      "origin": "Stream/TikTok slang (from ‘goddamn’); brainrot vocabulary.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "fanum tax",
+        "fanumtax",
+        "fanum"
+      ],
+      "short": "Playfully taking a bite of someone else’s food — a ‘tax’ named after streamer Fanum.",
+      "explain": "Friends joke that a bite of your snack is owed as Fanum tax. It’s a bit from AMP / Kai Cenat’s circle, not a real fee. Asking is allowed; nobody expects you to already know the streamer lore.",
+      "origin": "Streamer Fanum (AMP); TikTok/YouTube clips.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "mewing",
+        "mew",
+        "mewed"
+      ],
+      "short": "Tongue-posture trend people claim will change a jawline.",
+      "explain": "Looksmaxxing lore: rest your tongue on the roof of your mouth. Some treat it as a glow-up hack; others treat it as a joke pose. Not medical advice — just internet face-training slang.",
+      "origin": "Orthotropics discourse → TikTok looksmaxxing explainers.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "sigma",
+        "sigma male",
+        "sigma grindset",
+        "sigma rizz"
+      ],
+      "short": "Lone-wolf ‘unbothered’ archetype — often a joke, sometimes played straight.",
+      "explain": "Sigma is a meme personality: independent, quiet-confident, not chasing the group. TikTok uses it for edits, grindset parody, and irony. Not a psychology diagnosis.",
+      "origin": "Internet archetype memes remixed on TikTok.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "mogging",
+        "mogged",
+        "mog",
+        "mogger"
+      ],
+      "short": "Looking so much more attractive that you ‘mog’ someone else’s looks by comparison.",
+      "explain": "Looksmaxxing slang for winning a looks comparison (face, height, vibe). Can be a joke ranking or a mean dunk. Explaining the word isn’t endorsing the hierarchy.",
+      "origin": "Looksmaxxing forums → TikTok/brainrot speech.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "looksmaxxing",
+        "looksmaxing",
+        "looksmaxx",
+        "looks maxxing"
+      ],
+      "short": "Trying to optimize appearance with routines, tips, and sometimes extreme advice.",
+      "explain": "Covers everything from skincare and gym to controversial ‘maxxing’ discourse. Trendy explains the term people are seeing, not an ideology. Glow-up curiosity is allowed.",
+      "origin": "Forum slang that hit TikTok explainers.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "edging",
+        "edging it"
+      ],
+      "short": "Hovering at the edge of a payoff without finishing — a joke about delay and tension.",
+      "explain": "People say they’re edging when they stretch a wait (a reveal, a win, or an innuendo) without going over. In casual TikTok use it’s usually a bit, not a how-to. Keep it PG: the slang is about delay, not instructions.",
+      "origin": "Older slang recycled as a TikTok/stream joke.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "vibe check",
+        "vibe-check",
+        "vibecheck"
+      ],
+      "short": "A snap read of whether the energy is good, off, or a little dangerous.",
+      "explain": "Can be a joke (‘vibe check ✨’) or a real ‘are you OK / is this room safe’ scan. Passing a vibe check just means the energy landed.",
+      "origin": "2010s internet → still common on TikTok and in group chats.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "brainrot",
+        "brain rot",
+        "brain-rot"
+      ],
+      "short": "Content so absurd or repetitive it feels like it rewires your brain — often said with affection.",
+      "explain": "A self-aware label for hyper-online meme loops (skibidi, 67, Ohio, etc.). Calling something brainrot can mean ‘this is unserious and I love it’ more than an insult. Nobody is behind for not speaking fluent brainrot yet.",
+      "origin": "Internet-culture label; TikTok FYP is the main greenhouse.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "aura",
+        "aura farming",
+        "aura points",
+        "lost aura",
+        "gained aura"
+      ],
+      "short": "Invisible cool-points — you gain or lose aura based on how a moment lands.",
+      "explain": "Aura farming is doing something on purpose to look effortlessly cool. Losing aura is secondhand cringe. Playful social scoring, not mysticism.",
+      "origin": "Gaming/stream slang → TikTok.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "glazing",
+        "glaze",
+        "glazed",
+        "stop glazing"
+      ],
+      "short": "Over-the-top praise or riding for someone — complimenting so hard it gets embarrassing.",
+      "explain": "If you’re glazing, you’re hyping a person (or yourself) past the point of chill. Can be teasing (‘stop glazing’) or a roast. Not a baking tutorial.",
+      "origin": "AAVE/rap slang → TikTok captions and live chat.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "cooked",
+        "you’re cooked",
+        "you're cooked",
+        "we cooked",
+        "they cooked"
+      ],
+      "short": "Doomed, in trouble, or exhausted — the situation is already over.",
+      "explain": "‘You’re cooked’ means you messed up or you’re about to. Opposite energy of ‘let him cook’ (let them cook = let them cook / they’re on a roll). Tone is usually playful panic.",
+      "origin": "Internet slang; sports and school chats use it constantly.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "yap",
+        "yapping",
+        "yapped",
+        "yap session"
+      ],
+      "short": "Talking a lot — rambling, oversharing, or excitedly going on.",
+      "explain": "A yapper is someone who will not stop talking. Can be affectionate (‘let her yap’) or a ‘please get to the point.’ Very online, very harmless.",
+      "origin": "Older slang revived as TikTok/stream chat vocabulary.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "crash out",
+        "crashing out",
+        "crashed out"
+      ],
+      "short": "Losing it — overreacting, spiraling, or going off after holding it in.",
+      "explain": "A crash out is a blow-up (anger, tears, reckless choices). People also joke ‘don’t crash out’ as a vibe-check. Describes the moment; doesn’t diagnose anyone.",
+      "origin": "AAVE → TikTok/Twitter mainstream.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "67",
+        "6 7",
+        "6-7",
+        "six seven",
+        "six-seven",
+        "six7"
+      ],
+      "short": "Gen Alpha / TikTok brainrot catchphrase — yelled for the bit, not a literal code.",
+      "explain": "Kids shout ‘six seven’ with a hand gesture because the sound/meme is the joke. There isn’t a hidden dictionary meaning; participating in the noise is the point. You’re not late for asking.",
+      "origin": "TikTok sounds (notably Skrilla’s “Doot Doot (6 7)”) and hallway copycat energy.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "bussin",
+        "bussin'",
+        "bussing"
+      ],
+      "short": "Really good — especially food, but also fits, music, or a moment.",
+      "explain": "‘This is bussin’ ≈ this slaps / this is delicious. Casual praise; not a technical review.",
+      "origin": "AAVE → wider Gen Z/TikTok use.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "locked in",
+        "lock in",
+        "locked-in"
+      ],
+      "short": "Fully focused — no distractions, main-character concentration.",
+      "explain": "Sports, school, and streamers say lock in before a grind session. Opposite of crashing out or yapping through the assignment.",
+      "origin": "Sports/gaming talk → TikTok study/grind culture.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
+        "let him cook",
+        "let her cook",
+        "let them cook",
+        "let me cook"
+      ],
+      "short": "Let them cook — don’t interrupt, they’re onto something.",
+      "explain": "A hype green light: give the person room to finish the idea, play, or rant. Opposite of shutting someone down mid-yap. Not about actual cooking unless the video is.",
+      "origin": "Sports/internet hype phrase; everywhere on TikTok.",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "terms": [
         "lol",
         "lmao",
         "lmfao"
@@ -24,11 +289,18 @@
         "rizzed",
         "rizzler",
         "unspoken rizz",
-        "rizzless"
+        "rizzless",
+        "w rizz",
+        "l rizz",
+        "the rizzler",
+        "rizz up",
+        "rizz god"
       ],
       "short": "Charisma — especially flirtation game.",
       "explain": "Having rizz means you can charm someone. Unspoken rizz is magnetism without trying. Rizzless means the opposite. It's playful slang, not a clinical diagnosis of your dating life.",
-      "origin": "Streamers / Gen Z slang (popularized by Kai Cenat); Oxford Word of the Year 2023."
+      "origin": "Streamers / Gen Z slang (popularized by Kai Cenat); Oxford Word of the Year 2023.",
+      "source": "curated",
+      "confidence": "high"
     },
     {
       "terms": [

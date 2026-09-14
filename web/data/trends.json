@@ -11,7 +11,28 @@
       "brainrot",
       "gen-alpha",
       "tiktok",
-      "slang"
+      "slang",
+      "67",
+      "six seven",
+      "6 7"
+    ]
+  },
+  {
+    "id": "tt-skibidi",
+    "title": "Skibidi Toilet",
+    "summary": "YouTube/TikTok horror-comedy by DaFuq!?Boom! — heads in toilets vs Cameramen; kids also chant “skibidi” as brainrot noise.",
+    "originStory": "Created by Georgian animator DaFuq!?Boom! (Alexey Gerasimov) in 2023. The series went from YouTube to schoolyard chants and TikTok sounds. “Skibiti” is a common misspelling. Meaning is the series plus the nonsense chant — not a secret dictionary code.",
+    "world": "TikTok",
+    "heatScore": 0.94,
+    "lifecycle": "peaking",
+    "tags": [
+      "brainrot",
+      "gen-alpha",
+      "tiktok",
+      "skibidi",
+      "skibiti",
+      "skibidi toilet",
+      "youtube"
     ]
   },
   {
@@ -111,6 +132,22 @@
     ]
   },
   {
+    "id": "tt-gyatt",
+    "title": "Gyatt",
+    "summary": "A loud reaction to someone’s body, especially hips/backside — exaggerated “goddamn.”",
+    "originStory": "Stream and TikTok slang that became a brainrot shout. Trendy explains the word; it isn’t a rating.",
+    "world": "TikTok",
+    "heatScore": 0.84,
+    "lifecycle": "peaking",
+    "tags": [
+      "gyatt",
+      "gyat",
+      "brainrot",
+      "slang",
+      "tiktok"
+    ]
+  },
+  {
     "id": "sc-midterm-arc",
     "title": "Midterm arc",
     "summary": "The chaotic character development week of exams.",
@@ -152,6 +189,22 @@
     ]
   },
   {
+    "id": "tt-fanum-tax",
+    "title": "Fanum tax",
+    "summary": "Playfully taking a bite of someone else’s food — a ‘tax’ named after streamer Fanum.",
+    "originStory": "AMP / Kai Cenat circle bit that jumped to TikTok. Friends joke the bite is owed; not a real fee.",
+    "world": "TikTok",
+    "heatScore": 0.82,
+    "lifecycle": "peaking",
+    "tags": [
+      "fanum",
+      "fanum tax",
+      "brainrot",
+      "streamer",
+      "tiktok"
+    ]
+  },
+  {
     "id": "dt-soft-launch",
     "title": "Soft launch",
     "summary": "Hinting at a partner online without a full face reveal.",
@@ -178,6 +231,20 @@
     ]
   },
   {
+    "id": "tt-crash-out",
+    "title": "Crash out",
+    "summary": "Losing it — spiraling or going off after holding it in.",
+    "originStory": "AAVE that TikTok mainstreamed. ‘Don’t crash out’ is a vibe-check; describes the moment, not a diagnosis.",
+    "world": "TikTok",
+    "heatScore": 0.81,
+    "lifecycle": "rising",
+    "tags": [
+      "crash out",
+      "slang",
+      "tiktok"
+    ]
+  },
+  {
     "id": "sp-w",
     "title": "W",
     "summary": "A win — literal or metaphorical.",
@@ -191,16 +258,17 @@
     ]
   },
   {
-    "id": "tt-skibidi",
-    "title": "Skibidi",
-    "summary": "Nonsense syllable that became a whole brainrot franchise.",
-    "originStory": "From the Skibidi Toilet YouTube series into schoolyard chants and TikTok sounds. Meaning is participation, not a dictionary entry.",
+    "id": "tt-mewing",
+    "title": "Mewing",
+    "summary": "Tongue-posture trend people claim will change a jawline.",
+    "originStory": "Looksmaxxing explainers on TikTok. Glow-up curiosity is allowed; it is not medical advice.",
     "world": "TikTok",
-    "heatScore": 0.79,
-    "lifecycle": "peaking",
+    "heatScore": 0.8,
+    "lifecycle": "rising",
     "tags": [
-      "brainrot",
-      "gen-alpha",
+      "mewing",
+      "looksmaxxing",
+      "beauty",
       "tiktok"
     ]
   },
@@ -257,6 +325,21 @@
     ]
   },
   {
+    "id": "tt-glazing",
+    "title": "Glazing",
+    "summary": "Over-the-top praise — riding for someone so hard it gets embarrassing.",
+    "originStory": "Rap/AAVE slang that TikTok live chats turned into ‘stop glazing.’ Tease or roast depending on tone.",
+    "world": "TikTok",
+    "heatScore": 0.78,
+    "lifecycle": "peaking",
+    "tags": [
+      "glazing",
+      "glaze",
+      "slang",
+      "tiktok"
+    ]
+  },
+  {
     "id": "tt-demure",
     "title": "Very demure, very mindful",
     "summary": "Soft-spoken irony for 'I'm being cute/careful on purpose.'",
@@ -293,6 +376,22 @@
     "tags": [
       "fandom",
       "narrative"
+    ]
+  },
+  {
+    "id": "tt-mogging",
+    "title": "Mogging",
+    "summary": "Winning a looks comparison so hard you ‘mog’ the other person.",
+    "originStory": "Looksmaxxing forums → TikTok/brainrot speech. Often a joke ranking; sometimes a mean dunk.",
+    "world": "TikTok",
+    "heatScore": 0.77,
+    "lifecycle": "rising",
+    "tags": [
+      "mogging",
+      "mog",
+      "looksmaxxing",
+      "brainrot",
+      "tiktok"
     ]
   },
   {
@@ -336,6 +435,21 @@
     ]
   },
   {
+    "id": "tt-yap",
+    "title": "Yapping",
+    "summary": "Talking a lot — rambling, oversharing, or excitedly going on.",
+    "originStory": "Revived as TikTok/stream chat vocabulary. A yapper will not stop talking; often affectionate.",
+    "world": "TikTok",
+    "heatScore": 0.76,
+    "lifecycle": "peaking",
+    "tags": [
+      "yap",
+      "yapping",
+      "slang",
+      "tiktok"
+    ]
+  },
+  {
     "id": "ic-ate-that",
     "title": "It's giving…",
     "summary": "Naming the vibe something is emitting.",
@@ -359,6 +473,21 @@
     "tags": [
       "fandom",
       "release"
+    ]
+  },
+  {
+    "id": "tt-let-him-cook",
+    "title": "Let him cook",
+    "summary": "Don’t interrupt — they’re onto something.",
+    "originStory": "Sports/internet hype phrase. TikTok uses it as a green light to keep going (rant, play, bit).",
+    "world": "TikTok",
+    "heatScore": 0.75,
+    "lifecycle": "peaking",
+    "tags": [
+      "let him cook",
+      "hype",
+      "slang",
+      "tiktok"
     ]
   },
   {
@@ -412,6 +541,21 @@
     "tags": [
       "work",
       "tech"
+    ]
+  },
+  {
+    "id": "tt-edging",
+    "title": "Edging",
+    "summary": "Hovering at the edge of a payoff without finishing — a joke about delay.",
+    "originStory": "Older slang recycled as a TikTok/stream bit about stretching tension. Casual use is usually the joke, not a how-to.",
+    "world": "TikTok",
+    "heatScore": 0.74,
+    "lifecycle": "rising",
+    "tags": [
+      "edging",
+      "brainrot",
+      "slang",
+      "tiktok"
     ]
   },
   {
@@ -678,6 +822,20 @@
     ]
   },
   {
+    "id": "tt-vibe-check",
+    "title": "Vibe check",
+    "summary": "A snap read of whether the energy is good, off, or a little dangerous.",
+    "originStory": "2010s internet phrase that never left. TikTok uses it as both a joke stamp and a real ‘is this room OK?’ scan.",
+    "world": "TikTok",
+    "heatScore": 0.7,
+    "lifecycle": "peaking",
+    "tags": [
+      "vibe check",
+      "slang",
+      "tiktok"
+    ]
+  },
+  {
     "id": "tt-beige-flag",
     "title": "Beige flag",
     "summary": "A quirky trait that's neither red nor green — just oddly specific.",
@@ -810,6 +968,21 @@
       "work",
       "tech",
       "abbrev"
+    ]
+  },
+  {
+    "id": "tt-bussin",
+    "title": "Bussin",
+    "summary": "Really good — especially food, but also fits, music, or a moment.",
+    "originStory": "AAVE praise that TikTok food and fit checks kept alive. Casual ‘this slaps,’ not a technical review.",
+    "world": "TikTok",
+    "heatScore": 0.68,
+    "lifecycle": "cooling",
+    "tags": [
+      "bussin",
+      "slang",
+      "food",
+      "tiktok"
     ]
   },
   {

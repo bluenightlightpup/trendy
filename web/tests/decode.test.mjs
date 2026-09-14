@@ -66,3 +66,44 @@ test("never-blank for nonsense term", async () => {
     globalThis.fetch = originalFetch;
   }
 });
+
+const slang = JSON.parse(readFileSync(join(__dirname, "../data/slang.json"), "utf8"));
+const abbreve = JSON.parse(readFileSync(join(__dirname, "../data/abbreve.json"), "utf8"));
+const trends = JSON.parse(readFileSync(join(__dirname, "../data/trends.json"), "utf8"));
+
+function bodies(ans) {
+  return ans.parts.map((p) => p.body).join(" ");
+}
+
+test("skibidi / skibiti toilet are DaFuq series, not Inspired By", async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => {
+    throw new Error("offline stub");
+  };
+  try {
+    for (const q of ["skibidi", "skibiti toilet", "what does skibidi toilet mean?"]) {
+      const ans = await AI.decodeQuery(q, { slang, abbreve, trends, newHere: false });
+      const text = bodies(ans);
+      assert.equal(ans.source, "lexicon");
+      assert.match(text, /DaFuq|toilet|Cameramen|brainrot/i);
+      assert.doesNotMatch(text, /Inspired By/i);
+    }
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("ib still means Inspired By when queried exactly", async () => {
+  const ans = await AI.decodeQuery("ib", {
+    slang,
+    abbreve,
+    trends: [],
+    newHere: false,
+  });
+  assert.match(bodies(ans), /Inspired By/i);
+});
+
+test("fuzzy aliases map skibiti → skibidi", () => {
+  assert.equal(AI.applyAlias("skibiti"), "skibidi");
+  assert.equal(AI.applyAlias("skibiti toilet"), "skibidi toilet");
+});
