@@ -86,8 +86,12 @@
     return String(s || "")
       .toLowerCase()
       .trim()
-      .replace(/[“”"']/g, "")
-      .replace(/\s+/g, " ");
+      .replace(/[\u2018\u2019\u201A\u201B']/g, "'") // curly/straight apostrophe unify
+      .replace(/[\u201C\u201D\u201E\u201F"]/g, "") // drop quotes
+      .replace(/'/g, "") // I'd / I’d / id → id
+      .replace(/[^a-z0-9\s+]/gi, " ") // commas, emdashes, etc. → space
+      .replace(/\s+/g, " ")
+      .trim();
   }
 
   function stripHtml(s) {
@@ -153,6 +157,34 @@
     "only in ohio": "ohio",
     "sigma male": "sigma",
     "sigma grindset": "sigma",
+    "nah id win": "nah id win",
+    "nah i would win": "nah id win",
+    "gojo nah id win": "nah id win",
+    "gojo id win": "nah id win",
+    "id win": "id win",
+    "we re so back": "we are so back",
+    "were so back": "we are so back",
+    "we so back": "we are so back",
+    "its so over": "its so over",
+    "it is so over": "its so over",
+    "living rent free": "living rent free",
+    "lives rent free": "living rent free",
+    "l ratio": "l + ratio",
+    "l+ratio": "l + ratio",
+    "ratio l": "l + ratio",
+    "and i oop": "and i oop",
+    "sksksk and i oop": "and i oop",
+    "no thoughts head empty": "no thoughts head empty",
+    "head empty no thoughts": "no thoughts head empty",
+    "understood the assignement": "understood the assignment",
+    "mother is mothering": "mother is mothering",
+    "its giving": "its giving",
+    "it is giving": "its giving",
+    "this is fine dog": "this is fine",
+    "this is fine meme": "this is fine",
+    "they dont know": "they dont know",
+    "let that boy cook": "let him cook",
+    "who let him cook": "let him cook",
   };
 
   function tokenize(s) {
@@ -201,37 +233,74 @@
     if (!t) return { score: 0, kind: null, termLen: 0 };
     const tLen = t.length;
     const tTokens = tokenize(t);
+    const qMulti = tokens.length >= 2;
+    const tMulti = tTokens.length >= 2;
+    // Coverage bonus: longer lexicon phrases that explain a multi-word query win
+    const coverBonus = tMulti ? tTokens.length * 20000 + tLen * 25 : tLen * 5;
 
     if (t === fullQuery) {
-      return { score: 100000 + tLen * 10, kind: "exact", termLen: tLen };
+      return { score: 100000 + coverBonus, kind: "exact", termLen: tLen };
     }
-    if (tokens.includes(t)) {
-      return { score: 80000 + tLen * 10, kind: "exact-token", termLen: tLen };
+
+    // Contiguous phrase inside query (prefer longest)
+    if (tMulti && tLen >= 5 && wordBoundaryIncludes(fullQuery, t)) {
+      return { score: 95000 + coverBonus, kind: "phrase-in-query", termLen: tLen };
     }
+
     if (tTokens.length && tTokens.every((tok) => tokens.includes(tok))) {
-      return { score: 75000 + tLen * 10, kind: "token-set", termLen: tLen };
+      // Full token coverage — multi-word lexicon phrases beat stray single tokens
+      const base = tMulti ? 90000 : qMulti ? 35000 : 75000;
+      return { score: base + coverBonus, kind: "token-set", termLen: tLen };
+    }
+
+    if (tokens.includes(t)) {
+      // Single-token hit inside a longer query is weak vs a real phrase match
+      const base = qMulti && !tMulti ? 25000 : 80000;
+      return { score: base + coverBonus, kind: "exact-token", termLen: tLen };
     }
 
     // Whole-word term inside the query (never for 1–2 letter abbrevs into longer words)
     if (tLen >= 3 && wordBoundaryIncludes(fullQuery, t)) {
-      return { score: 50000 + tLen * 10, kind: "word-in-query", termLen: tLen };
+      const base = tMulti ? 70000 : qMulti ? 30000 : 50000;
+      return { score: base + coverBonus, kind: "word-in-query", termLen: tLen };
     }
 
     // Query is a distinctive whole word inside a longer term (skibidi ⊂ skibidi toilet)
+    // Do NOT let short ambiguous tokens ("nah", "id", "win", "the") unlock long meme phrases.
     if (tLen >= 3 && fullQuery.length >= 3 && wordBoundaryIncludes(t, fullQuery)) {
       const longestTok = tTokens.reduce((a, b) => (a.length >= b.length ? a : b), "");
-      if (fullQuery === tTokens[0] || fullQuery === longestTok || tokens[0] === tTokens[0]) {
-        return { score: 40000 + tLen * 10, kind: "query-in-term", termLen: tLen };
+      const ambiguous = new Set([
+        "nah", "id", "win", "the", "way", "and", "for", "you", "are", "so", "its", "it",
+        "a", "an", "me", "my", "we", "he", "she", "they", "him", "her", "them", "let", "cook",
+      ]);
+      if (tMulti && (fullQuery.length < 5 || ambiguous.has(fullQuery))) {
+        // skip — require a more specific query for multi-word lexicon rows
+      } else if (fullQuery === tTokens[0] || fullQuery === longestTok || tokens[0] === tTokens[0]) {
+        return { score: 40000 + coverBonus, kind: "query-in-term", termLen: tLen };
+      }
+    }
+
+    // Light fuzzy: allow one missing short function token (a/the) already stripped;
+    // also accept 1-char edit on a single distinctive token >= 5 chars when query is short.
+    if (tMulti && tokens.length >= 2) {
+      const matched = tTokens.filter((tok) => tokens.includes(tok));
+      if (matched.length >= Math.max(2, tTokens.length - 1) && matched.join(" ").length >= 5) {
+        return { score: 60000 + matched.length * 15000 + tLen, kind: "fuzzy-phrase", termLen: tLen };
       }
     }
 
     // Substring fallback: NEVER for terms shorter than 3 chars into longer words
+    // and NEVER let a short single-token query hitch a ride inside a multi-word meme phrase.
     if (tLen >= 3 && fullQuery.length >= 3) {
-      if (wordBoundaryIncludes(fullQuery, t) || wordBoundaryIncludes(t, fullQuery)) {
-        return { score: 12000 + tLen * 10, kind: "partial", termLen: tLen };
+      if (tMulti && tokens.length === 1 && fullQuery.length < 5) {
+        return { score: 0, kind: null, termLen: 0 };
       }
-      // last-resort contiguous substring only if the short side is still >= 3
-      if (fullQuery.includes(t) || t.includes(fullQuery)) {
+      if (wordBoundaryIncludes(fullQuery, t) || wordBoundaryIncludes(t, fullQuery)) {
+        return { score: 12000 + coverBonus, kind: "partial", termLen: tLen };
+      }
+      // last-resort: term appears contiguously inside query (not the reverse —
+      // reverse caused "win" ⊂ "mewing" false positives)
+      if (tLen >= 4 && fullQuery.includes(t)) {
         return { score: 1000 + tLen * 10, kind: "substring", termLen: tLen };
       }
     }
@@ -488,8 +557,8 @@
       source = "lexicon";
       const e = slangHit.entry;
       parts.push({ title: "Slang meaning (TikTok / internet)", body: e.short });
-      if (e.explain) parts.push({ title: "In plain words", body: e.explain });
       if (e.origin) parts.push({ title: "Where it comes from", body: e.origin });
+      if (e.explain) parts.push({ title: "In plain words", body: e.explain });
       if (dict && dict.defs && dict.defs.length) {
         parts.push({
           title: "Other senses (not the TikTok one)",

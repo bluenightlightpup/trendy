@@ -2201,5 +2201,39 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/shorts/KwqeKTM9M_8",
     "radarSignalId": "youtube:KwqeKTM9M_8"
+  },
+  {
+    "id": "trend-nah-id-win",
+    "title": "Nah, I'd win",
+    "summary": "Gojo Satoru defiant-confidence catchphrase from Jujutsu Kaisen — meme swagger (often ironic).",
+    "originStory": "JJK manga line (Ch. 221 / Ch. 3 callback) that exploded as an exploitable panel and TikTok/anime-Twitter meme in late 2023. Still referenced; peak heat has cooled.",
+    "world": "Anime",
+    "heatScore": 0.42,
+    "lifecycle": "cooling",
+    "tags": [
+      "anime",
+      "jjk",
+      "gojo",
+      "meme",
+      "catchphrase",
+      "tiktok"
+    ],
+    "updated_at": "2026-09-14T21:47:42Z"
+  },
+  {
+    "id": "trend-we-are-so-back",
+    "title": "We are so back",
+    "summary": "Sudden optimism swing — twin of “it’s so over.”",
+    "originStory": "Internet doom/hope oscillation memes; still used constantly in sports and fandom chats.",
+    "world": "Internet culture",
+    "heatScore": 0.55,
+    "lifecycle": "stable",
+    "tags": [
+      "meme",
+      "catchphrase",
+      "twitter",
+      "sports"
+    ],
+    "updated_at": "2026-09-14T21:47:42Z"
   }
 ]

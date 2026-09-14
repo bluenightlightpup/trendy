@@ -37,7 +37,27 @@ def _load_json(path: Path, default: Any) -> Any:
 
 
 def _norm(s: str) -> str:
-    return " ".join(s.strip().lower().split())
+    """Normalize for lexicon match: case, apostrophes, punctuation, spaces."""
+    import re
+    import unicodedata
+
+    t = unicodedata.normalize("NFKC", str(s or "")).lower().strip()
+    # curly apostrophes/quotes → strip like the PWA decoder
+    for a, b in {
+        "‘": "'",
+        "’": "'",
+        "‚": "'",
+        "‛": "'",
+        "“": "",
+        "”": "",
+        "„": "",
+        "‟": "",
+        '"': "",
+        "'": "",
+    }.items():
+        t = t.replace(a, b)
+    t = re.sub(r"[^a-z0-9+]+", " ", t)
+    return " ".join(t.split())
 
 
 def _entry_terms(entry: dict[str, Any]) -> list[str]:
@@ -48,28 +68,56 @@ def _entry_terms(entry: dict[str, Any]) -> list[str]:
 
 
 def lookup_lexicon(term: str) -> tuple[dict[str, Any] | None, str | None]:
-    """Return (entry, source_label) from slang.json then abbreve.json."""
+    """Return (entry, source_label) from slang.json then abbreve.json.
+
+    Prefers longest multi-word phrase matches over single-token hits.
+    """
     needle = _norm(term)
     if not needle:
         return None, None
+    needle_toks = [x for x in needle.split() if x]
+
+    def score_against(entry_term: str) -> int:
+        t = _norm(entry_term)
+        if not t:
+            return 0
+        t_toks = t.split()
+        if t == needle:
+            return 100000 + len(t_toks) * 1000 + len(t)
+        if len(t_toks) >= 2 and t in needle:
+            # contiguous phrase inside query
+            return 90000 + len(t_toks) * 1000 + len(t)
+        if t_toks and all(tok in needle_toks for tok in t_toks):
+            base = 80000 if len(t_toks) >= 2 else (20000 if len(needle_toks) >= 2 else 70000)
+            return base + len(t_toks) * 1000 + len(t)
+        if len(t_toks) == 1 and t in needle_toks:
+            return (15000 if len(needle_toks) >= 2 else 60000) + len(t)
+        return 0
+
+    best: tuple[int, dict[str, Any] | None, str | None] = (0, None, None)
 
     slang = _load_json(SLANG_PATH, {"entries": []})
     for entry in slang.get("entries") or []:
         if not isinstance(entry, dict):
             continue
         for t in _entry_terms(entry):
-            if _norm(t) == needle:
-                return entry, "slang"
+            sc = score_against(t)
+            if sc > best[0]:
+                best = (sc, entry, "slang")
 
     abbreve = _load_json(ABBREVE_PATH, {"entries": []})
     for entry in abbreve.get("entries") or []:
         if not isinstance(entry, dict):
             continue
         for t in _entry_terms(entry):
-            if _norm(t) == needle:
-                return entry, "abbreve"
+            sc = score_against(t)
+            # slang wins ties
+            if sc > best[0]:
+                best = (sc, entry, "abbreve")
 
-    return None, None
+    if best[1] is None:
+        return None, None
+    return best[1], best[2]
 
 
 def cmd_decode(args: argparse.Namespace) -> int:
