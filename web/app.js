@@ -604,10 +604,11 @@
   }
 
   async function loadData() {
+    const bust = "v=11";
     const [trendsRes, slangRes, abbreveRes] = await Promise.all([
-      fetch("data/trends.json"),
-      fetch("data/slang.json"),
-      fetch("data/abbreve.json"),
+      fetch("data/trends.json?" + bust),
+      fetch("data/slang.json?" + bust),
+      fetch("data/abbreve.json?" + bust),
     ]);
     if (!trendsRes.ok || !slangRes.ok) {
       throw new Error("Failed to load data files");

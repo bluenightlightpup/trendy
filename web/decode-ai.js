@@ -238,6 +238,18 @@
     // Coverage bonus: longer lexicon phrases that explain a multi-word query win
     const coverBonus = tMulti ? tTokens.length * 20000 + tLen * 25 : tLen * 5;
 
+    // Ultra-short abbrevs (na, w, l, ib…) only on exact query / exact token —
+    // never as a prefix inside "nah", "win", etc.
+    if (tLen <= 2) {
+      if (t === fullQuery) {
+        return { score: 100000 + coverBonus, kind: "exact", termLen: tLen };
+      }
+      if (!qMulti && tokens.length === 1 && tokens[0] === t) {
+        return { score: 80000 + coverBonus, kind: "exact-token", termLen: tLen };
+      }
+      return { score: 0, kind: null, termLen: 0 };
+    }
+
     if (t === fullQuery) {
       return { score: 100000 + coverBonus, kind: "exact", termLen: tLen };
     }
@@ -379,29 +391,41 @@
     const tokens = queryTokens(q);
     const exact = trends.find((t) => normalize(t.title) === q);
     if (exact) return exact;
+    // Only exact tag match for the full query — never "slang" tag hitchhiking
     const tagHit = trends.find((t) => (t.tags || []).map(normalize).includes(q));
-    if (tagHit) return tagHit;
+    if (tagHit && normalize(tagHit.title).length >= 2) return tagHit;
 
     let best = null;
     let bestScore = 0;
     for (const trend of trends) {
       const title = normalize(trend.title);
       if (!title) continue;
+      // Single-letter trends (W / L) only when the whole query is that letter
+      if (title.length <= 1 && title !== q) continue;
+      // Short titles (2 chars) need exact token equality, not prefix of "win"
+      if (title.length <= 2 && title !== q && !tokens.includes(title)) continue;
+
       let score = 0;
       if (title === q) score = 100000 + title.length;
-      else if (tokens.includes(title) || queryTokens(title).every((tok) => tokens.includes(tok) && tok.length >= 3)) {
+      else if (tokens.includes(title) && title.length >= 2) {
+        // token equality only (tokens are whole words) — "w" never equals "win"
+        score = (tokens.length === 1 ? 80000 : 20000) + title.length;
+      } else if (
+        title.length >= 3 &&
+        queryTokens(title).length >= 2 &&
+        queryTokens(title).every((tok) => tokens.includes(tok) && tok.length >= 3)
+      ) {
         score = 80000 + title.length;
       } else if (title.length >= 3 && wordBoundaryIncludes(q, title)) {
         score = 50000 + title.length;
-      } else if (q.length >= 3 && wordBoundaryIncludes(title, q)) {
+      } else if (q.length >= 3 && title.length >= 3 && wordBoundaryIncludes(title, q)) {
         const tToks = queryTokens(title);
         const longestTok = tToks.reduce((a, b) => (a.length >= b.length ? a : b), "");
         if (q === tToks[0] || q === longestTok) score = 40000 + title.length;
-      } else if (title.length >= 3 && q.length >= 3 && (wordBoundaryIncludes(q, title) || wordBoundaryIncludes(title, q))) {
-        score = 10000 + title.length;
       }
-      const tags = (trend.tags || []).map(normalize);
-      if (tags.some((tag) => tag === q || tokens.includes(tag))) {
+      // Do not boost on generic tags like "slang" / "sports" just because they appear in tokens
+      const tags = (trend.tags || []).map(normalize).filter((tag) => tag.length >= 3 && tag !== "slang" && tag !== "sports");
+      if (tags.some((tag) => tag === q || (tokens.length === 1 && tokens[0] === tag))) {
         score = Math.max(score, 70000 + q.length);
       }
       if (score > bestScore) {

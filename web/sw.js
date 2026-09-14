@@ -1,5 +1,5 @@
-/* Trendy PWA — basic offline shell + data cache */
-const CACHE = "trendy-v10";
+/* Trendy PWA — network-first for app/data so Decode lexicon updates stick */
+const CACHE = "trendy-v11";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -30,15 +30,45 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+function isAppAsset(url) {
+  const p = url.pathname;
+  return (
+    p.endsWith(".js") ||
+    p.endsWith(".json") ||
+    p.endsWith(".css") ||
+    p.endsWith(".html") ||
+    p.endsWith("/") ||
+    p.endsWith("manifest.webmanifest")
+  );
+}
+
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  // Network-first for app + data so slang/meme packs ship without stuck caches
+  if (isAppAsset(url)) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response && response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(request).then((cached) => {
       const network = fetch(request)
         .then((response) => {
-          if (response && response.ok && new URL(request.url).origin === self.location.origin) {
+          if (response && response.ok) {
             const clone = response.clone();
             caches.open(CACHE).then((cache) => cache.put(request, clone));
           }
