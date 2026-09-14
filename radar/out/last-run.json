@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-09-14T16:01:46Z",
-  "signals": 12,
+  "timestamp": "2026-09-14T21:07:42Z",
+  "signals": 27,
   "adapters": [
     {
       "source": "mock_seed",
       "mode": "live",
       "ok": true,
       "skipped": false,
-      "signal_count": 5,
+      "signal_count": 20,
       "error": null,
       "notes": null
     },
@@ -17,7 +17,7 @@
       "ok": false,
       "skipped": false,
       "signal_count": 0,
-      "error": "r/OutOfTheLoop@https://api.reddit.com: HTTP 403; r/explainlikeimfive@https://api.reddit.com: HTTP 403; r/NoStupidQuestions@https://api.reddit.com: HTTP 403; r/tiktokcringe@https://api.reddit.com: HTTP 403; r/internet_culture@https://api.reddit.com: HTTP 403",
+      "error": "r/OutOfTheLoop@https://api.reddit.com: HTTP 403; r/explainlikeimfive@https://api.reddit.com: HTTP 403; r/NoStupidQuestions@https://api.reddit.com: HTTP 403; r/tiktokcringe@https://api.reddit.com: HTTP 403; r/internet_culture@https://api.reddit.com: HTTP 403; r/gaming@https://api.reddit.com: HTTP 403; r/college@https://api.reddit.com: HTTP 403; r/sports@https://api.reddit.com: HTTP 403",
       "notes": null
     },
     {
@@ -58,14 +58,14 @@
     }
   ],
   "trends": {
-    "added": 0,
+    "added": 7,
     "updated": 0,
-    "total": 20
+    "total": 155
   },
   "slang": {
     "added": 0,
     "updated": 0,
-    "total": 200
+    "total": 222
   },
   "paths": {
     "trends": "web/data/trends.json",
