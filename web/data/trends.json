@@ -1,5 +1,20 @@
 [
   {
+    "id": "trend-alpha-tiktok",
+    "title": "alpha",
+    "summary": "TikTok/internet slang for top-dog / “best” / dominant energy — not mainly the Greek letter.",
+    "originStory": "Borrowed from pop “alpha male” hierarchy talk, then memed hard on TikTok as a flex or joke about who’s elite. If someone says “she’s alpha,” they mean status/confidence vibe.",
+    "world": "TikTok",
+    "heatScore": 0.84,
+    "lifecycle": "peaking",
+    "tags": [
+      "tiktok",
+      "slang",
+      "status",
+      "sigma"
+    ]
+  },
+  {
     "id": "trend-67-six-seven",
     "title": "67 (six seven)",
     "summary": "Gen Alpha / TikTok brainrot catchphrase — yelled for the bit, not a literal code.",

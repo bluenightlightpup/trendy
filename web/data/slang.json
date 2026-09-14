@@ -2,6 +2,39 @@
   "entries": [
     {
       "terms": [
+        "beta"
+      ],
+      "short": "In meme slang: opposite of “alpha” — portrayed as passive or less dominant (often rude/joke).",
+      "explain": "Internet “beta” is usually an insult or ironic label in alpha/sigma meme talk — not the software “beta test” meaning, and not a clinical term. Judgment-free tip: people throw it around loosely; it’s more meme than science.",
+      "origin": "Same pop hierarchy memes as alpha; gaming/internet culture.",
+      "confidence": "high",
+      "source": "curated",
+      "worlds": [
+        "TikTok",
+        "Internet culture",
+        "Gaming"
+      ],
+      "updated_at": "2026-09-14T19:55:50Z"
+    },
+    {
+      "terms": [
+        "alpha",
+        "alpha male",
+        "alpha energy"
+      ],
+      "short": "In TikTok/internet slang: top-dog / “best” / dominant vibe — not the Greek letter.",
+      "explain": "Online, calling someone (or yourself) “alpha” usually means confident, high-status, in charge, or “that girl/guy is the best.” It’s meme language from manosphere/self-help crossover into general TikTok. Tone ranges from serious flex to ironic joke. Separately, alpha is also the first Greek letter and a software “early version” word — but if you saw it on TikTok, they almost certainly mean the slang status vibe.",
+      "origin": "Pop-psych “alpha/beta” animal hierarchy metaphors → internet debate culture → TikTok shorthand for elite/dominant energy.",
+      "confidence": "high",
+      "source": "curated",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "updated_at": "2026-09-14T19:55:50Z"
+    },
+    {
+      "terms": [
         "skibidi",
         "skibidi toilet",
         "skibidi toilets",
@@ -80,11 +113,16 @@
         "sigma grindset",
         "sigma rizz"
       ],
-      "short": "Lone-wolf ‘unbothered’ archetype — often a joke, sometimes played straight.",
-      "explain": "Sigma is a meme personality: independent, quiet-confident, not chasing the group. TikTok uses it for edits, grindset parody, and irony. Not a psychology diagnosis.",
-      "origin": "Internet archetype memes remixed on TikTok.",
+      "short": "Internet slang for a lone-wolf “cool outsider” archetype (cousin of “alpha” memes).",
+      "explain": "On TikTok, “sigma” is a personality meme: independent, quiet-confident, not needing the crowd. Often half-joke. Related to alpha/beta meme vocabulary.",
+      "origin": "Online personality-type memes adjacent to alpha discourse; exploded on TikTok/Reels.",
       "source": "curated",
-      "confidence": "high"
+      "confidence": "high",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "updated_at": "2026-09-14T19:55:50Z"
     },
     {
       "terms": [

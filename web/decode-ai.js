@@ -54,6 +54,10 @@
     bruh: { terms: ["bruh"], short: "Like “bro,” often for surprise, disbelief, or secondhand embarrassment.", explain: "As much a reaction (“bruh…”) as an address.", origin: "Phonetic casual bro; meme reaction." },
     dude: { terms: ["dude"], short: "Casual address for a person; also a “wow” reaction.", explain: "Daily informal English for a person; greeting, emphasis, or disbelief.", origin: "Older American slang still in heavy use." },
     fam: { terms: ["fam"], short: "Close friends / chosen family.", explain: "Your people — not only blood relatives.", origin: "AAVE/youth slang → broad use." },
+    alpha: { terms: ["alpha", "alpha male", "alpha energy"], short: "In TikTok/internet slang: top-dog / “best” / dominant vibe — not mainly the Greek letter.", explain: "Online “alpha” usually means confident, high-status, in-charge energy (sometimes ironic). The Greek-letter / software meanings exist, but TikTok almost always means the slang status vibe.", origin: "Pop-psych hierarchy metaphors → TikTok shorthand." },
+    sigma: { terms: ["sigma", "sigma male"], short: "Meme “lone wolf” cool-outsider archetype (cousin of alpha memes).", explain: "TikTok personality meme: independent, quiet-confident. Often half-joke.", origin: "Online personality memes; TikTok/Reels." },
+    beta: { terms: ["beta"], short: "Meme opposite of “alpha” — portrayed as less dominant (often rude/joke), not “beta software.”", explain: "In slang fights/memes, “beta” dunks on someone as passive. Separate from app beta testing.", origin: "Same meme family as alpha." },
+
     skibidi: {
       terms: [
         "skibidi",
@@ -483,9 +487,18 @@
     if (slangHit) {
       source = "lexicon";
       const e = slangHit.entry;
-      parts.push({ title: "Meaning", body: e.short });
+      parts.push({ title: "Slang meaning (TikTok / internet)", body: e.short });
       if (e.explain) parts.push({ title: "In plain words", body: e.explain });
       if (e.origin) parts.push({ title: "Where it comes from", body: e.origin });
+      if (dict && dict.defs && dict.defs.length) {
+        parts.push({
+          title: "Other senses (not the TikTok one)",
+          body: dict.defs
+            .slice(0, 2)
+            .map((d) => `(${d.part || "def"}) ${d.text}`)
+            .join(" "),
+        });
+      }
     }
 
     if (trend) {
@@ -519,11 +532,8 @@
     const trend = findTrend(trends, searchTerm);
     const heuristics = heuristicInternetSpeak(searchTerm);
 
-    let dict = null;
-    if (!slangHit) {
-      // Prefer Wiktionary (more reliable); fall back to dictionaryapi
-      dict = (await fetchWiktionary(term)) || (await fetchFreeDictionary(term));
-    }
+    // Always try dictionary in background for dual-meaning words (alpha = Greek AND slang)
+    const dict = (await fetchWiktionary(term)) || (await fetchFreeDictionary(term));
 
     return buildAnswer({ term, slangHit, trend, dict, heuristics, newHere: !!newHere });
   }
