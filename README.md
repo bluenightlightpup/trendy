@@ -34,24 +34,34 @@ Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan
 | **P2** | Decode + You + APIs | PWA Decode/You live; iOS Claude API next |
 | **P3** | Save/follow, polish, TestFlight | Partially done (PWA save/follow + polish; TestFlight pending Mac) |
 | **Radar** | 24/7 multi-platform ingest | Live (TikTok/IG stubs) |
-| **P4** | **Consider CLI + MCP** for integrated AI tools | Decision gate — see below |
+| **P4** | CLI + MCP for integrated AI tools | **CLI GO** (spike); **MCP deferred** |
 | **P5** | Landscape (Urban Dictionary & peers) + novelty uses | Open — research |
 
 Details: [`docs/phased-implementation.md`](docs/phased-implementation.md) · tickets in [`docs/backlog.md`](docs/backlog.md).
 
-## Phase 4 — CLI & MCP for integrated AI tools *(consider)*
+## Phase 4 — CLI & MCP for integrated AI tools
 
-**CLI** = terminal commands for humans/scripts (`trendy decode 67`).  
-**MCP** = a plug so AI tools (Cursor, Claude, workbench agents) can call Trendy as tools automatically.
+**Decision (2026-09-14):** **CLI GO** (Option B → path to C later); **MCP deferred** until the CLI proves useful. Private/local-only — no hosted remote MCP.
 
-Should we expose them so agents/scripts decode slang and pull hot trends without the phone UI?
+- Design brief: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md)
+- ADR: [`docs/adr/0001-cli-mcp.md`](docs/adr/0001-cli-mcp.md)
+- Tickets: **T0019** ✓ · **T0020** CLI spike ✓ · **T0021** MCP deferred
 
-This is a **go / no-go phase**, not automatic build work. Design brief: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md).
+### Trendy CLI (spike)
 
-**If GO:** thin CLI + local stdio MCP (read-mostly: `decode`, `trends`, `radar status`).  
-**If NO-GO / defer:** keep polishing Phase 3 phone experience first.
+Stdlib Python; reads `web/data` and can invoke Radar. From repo root:
 
-Owner decision tracked as backlog **T0019**.
+```bash
+python cli/trendy.py decode 67
+python cli/trendy.py trends --min-heat 0.7 --limit 20
+python cli/trendy.py trends --world TikTok --limit 10
+python cli/trendy.py radar status
+python cli/trendy.py radar run
+# optional pass-through: python cli/trendy.py radar run -- --config radar/config.yaml
+# also: python -m cli decode 67
+```
+
+Commands: `decode` (slang + abbreve lexicon), `trends`, `radar status`, `radar run` → `radar/run_ingest.py`.
 
 ## Phase 5 — Landscape & novelty *(research)*
 
@@ -68,8 +78,9 @@ Review slang translators (Urban Dictionary, Slangora, Wordyex, Musely, GenZ apps
 App/                 SwiftUI source (create Xcode project via docs/xcode-setup.md)
 web/                 Progressive Web App (static; try on phone without Xcode)
 radar/               Trend Radar — continuous multi-platform ingest → web/data
+cli/                 Trendy CLI spike (decode / trends / radar) — Phase 4
 Tests/TrendyTests/   Unit test stubs
-docs/                PRD, phases, backlog, architecture, design tokens, ideas
+docs/                PRD, phases, backlog, architecture, design tokens, ideas, ADRs
 .github/             Issue/PR templates + validate + radar-ingest cron
 ```
 
@@ -99,6 +110,8 @@ Minimum iOS: **17.0** (documented in architecture).
 | `docs/xcode-setup.md` | Create Xcode project from this tree |
 | `docs/ideas/` | Owner idea extracts (plain text) |
 | `docs/radar.md` | Trend Radar continuous ingest (24/7 slang/trends) |
+| `docs/cli-mcp-integration.md` | Phase 4 CLI/MCP decision (CLI GO / MCP deferred) |
+| `docs/adr/0001-cli-mcp.md` | ADR: CLI first, MCP later |
 | `docs/testflight.md` | TestFlight / App Store Connect checklist (Mac) |
 
 ## Sync note

@@ -223,27 +223,29 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** Review `docs/cli-mcp-integration.md`; record go/no-go/defer in ADR; update phase checklist.
 - **Out of scope:** Full MCP implementation (that's T0020+ if GO).
 - **Acceptance:**
-  - [ ] Owner decision recorded (go / no-go / defer-until-P3)
-  - [ ] ADR or decision table in `docs/cli-mcp-integration.md` updated
-  - [ ] README phase map matches decision
+  - [x] Owner decision recorded (go / no-go / defer-until-P3) — **2026-09-14: CLI GO (Option B→C later); MCP DEFER**
+  - [x] ADR or decision table in `docs/cli-mcp-integration.md` updated (`docs/adr/0001-cli-mcp.md`)
+  - [x] README phase map matches decision
 - **Agents/skills:** `product-strategist`, `architecture-decision`
 - **Depends on:** Radar phase docs
 - **Effort:** S
+- **Status:** Done
 
 ### T0020 — Spike CLI (if Phase 4 GO)
 - **Value:** Scriptable decode + radar ops for humans and CI.
 - **Scope:** Thin CLI over lexicon + trends + `radar/run_ingest.py`.
 - **Out of scope:** Remote API server.
 - **Acceptance:**
-  - [ ] `trendy decode <term>` prints judgment-free explain from slang.json
-  - [ ] `trendy trends` lists hot items
-  - [ ] `trendy radar run` invokes ingest
-  - [ ] Documented in README
+  - [x] `trendy decode <term>` prints judgment-free explain from slang.json
+  - [x] `trendy trends` lists hot items
+  - [x] `trendy radar run` invokes ingest
+  - [x] Documented in README
 - **Agents/skills:** `implementer`, `software-dev-loop`
 - **Depends on:** T0019 = GO
 - **Effort:** M
+- **Status:** Done (spike in `cli/`)
 
-### T0021 — Spike MCP server (if Phase 4 GO)
+### T0021 — Spike MCP server (if Phase 4 GO) — **DEFERRED**
 - **Value:** Cursor / workbench agents can call Trendy tools natively.
 - **Scope:** Local stdio MCP: `search_slang`, `get_trends`, `decode_term`, `radar_status`.
 - **Out of scope:** Hosted remote MCP; write tools without auth story.
@@ -255,6 +257,7 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Agents/skills:** `implementer`, `architecture-decision`
 - **Depends on:** T0019 = GO, T0020 preferred first
 - **Effort:** L
+- **Status:** **Deferred** (2026-09-14) — wait until CLI spike proves useful; do not implement in Phase 4 CLI milestone.
 
 ---
 
@@ -298,4 +301,4 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 
 ## Suggested order
 
-T0001 → … → T0018 → T0019 → (if GO) T0020 → T0021 → **T0022 → T0023 → T0024**
+T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 (deferred) → **T0022 → T0023 → T0024**

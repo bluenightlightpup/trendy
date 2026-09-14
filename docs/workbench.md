@@ -39,3 +39,19 @@ See `AGENTS.md`.
 ## What stays out of Trendy
 
 - `.claude/agents`, `.claude/skills`, graph nodes, workbench `tracking/` registry — keep those in my-workbench unless a future decision says otherwise.
+
+## Trendy CLI (until MCP lands)
+
+Phase 4 ships a **local CLI** so agents can shell out instead of parsing raw JSON by hand. MCP (T0021) is deferred.
+
+From the Trendy repo root:
+
+```bash
+python cli/trendy.py decode <term>
+python cli/trendy.py trends --min-heat 0.7 --limit 20
+python cli/trendy.py radar status
+python cli/trendy.py radar run
+```
+
+Prefer this over ad-hoc `jq` on `web/data/*.json` when explaining slang or checking Radar health. Details: `docs/cli-mcp-integration.md`, `docs/adr/0001-cli-mcp.md`.
+

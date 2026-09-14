@@ -78,42 +78,43 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 | **P2** | Decode Claude chat, You personalization, real APIs |
 | **P3** | Save/follow, polish, tests, TestFlight |
 | **Radar** | Continuous ingest → web/data (LIVE Reddit/seed; STUB TikTok/IG) |
-| **P4** | **Decision gate:** CLI + MCP for integrated AI tools (see `docs/cli-mcp-integration.md`) |
+| **P4** | CLI GO (spike); MCP deferred (see `docs/cli-mcp-integration.md`, ADR 0001) |
 | **P5** | Product landscape (Urban Dictionary & peers) + novelty use cases |
 
 
 ## Phase 4 — CLI & MCP integration (decision gate)
 
-**Outcome:** A deliberate go / no-go on shipping **CLI** and **MCP** surfaces so integrated AI tools (Cursor, Claude Desktop, custom agents, scripts) can query Trendy’s radar, slang lexicon, and decode pipeline — without blocking phone UX work.
+**Outcome:** Deliberate go / no-go on **CLI** and **MCP** so integrated AI tools can query Trendy’s radar, slang lexicon, and decode pipeline — without blocking phone UX work.
 
-This phase is a **consideration + design** phase first. Implementation only proceeds after an explicit approve.
+**Owner decision (2026-09-14):** **CLI GO** (Option B → path to C later); **MCP DEFERRED** until CLI proves useful. Private/local-only; no hosted remote MCP. See `docs/adr/0001-cli-mcp.md` · `docs/cli-mcp-integration.md`.
 
 ### Why consider it
 - Agents already live in [my-workbench](https://github.com/bluenightlightpup/my-workbench); a Trendy MCP server would let them pull live slang/trends instead of pasting JSON.
-- A `trendy` CLI would let Radar ops, Decode experiments, and CI scripts share one interface (`trendy decode 67`, `trendy radar run`, `trendy trends --hot`).
+- A `trendy` CLI lets Radar ops, Decode experiments, CI, and agents share one interface (`decode`, `trends`, `radar status` / `radar run`).
 - Aligns with owner intent: continuous training + AI-native tooling.
 
-### Decision criteria (must answer before building)
-1. **Audience:** Just us (private ops) vs other AI tools / contributors?
-2. **Trust boundary:** Read-only lexicon/trends vs write (ingest, lexicon edits)?
-3. **Auth:** Local-only stdio MCP vs remote HTTP + tokens?
-4. **Scope v1:** Decode + trends read enough, or full Radar control?
-5. **Cost/complexity:** Does this delay Phase 3 polish / TestFlight?
+### Decision criteria (answered 2026-09-14)
+1. **Audience:** Private ops / local agents for now.
+2. **Trust boundary:** CLI read lexicon/trends; `radar run` is the write path (local ingest).
+3. **Auth:** Local-only; no remote MCP.
+4. **Scope v1 CLI:** decode + trends + radar status/run.
+5. **Cost/complexity:** CLI spike in parallel with Phase 3; MCP deferred so it does not block phone polish.
 
-### Proposed deliverables (if GO)
-- [ ] ADR: `docs/adr/0001-cli-mcp-integration.md` (decision recorded)
-- [ ] `docs/cli-mcp-integration.md` — product/eng design (drafted this phase)
-- [ ] Optional spike: `packages/trendy-cli` or `radar/cli.py` + MCP server stub exposing:
-  - `get_trends` / `search_slang` / `decode_term` / `radar_status`
-- [ ] Wire README “AI tooling” section with install snippets
-- [ ] Security review: no secrets in MCP tool results; rate limits
+### Deliverables
+- [x] ADR: `docs/adr/0001-cli-mcp.md` (CLI GO / MCP deferred)
+- [x] `docs/cli-mcp-integration.md` — APPROVED for CLI; MCP deferred
+- [x] CLI spike: `cli/trendy.py` (`decode`, `trends`, `radar status`, `radar run`) — T0020
+- [ ] MCP server stub (T0021) — **deferred**
+- [x] README + workbench docs for CLI usage
+- [ ] Security review when MCP un-deferred (no secrets in tool results; rate limits)
 
 ### Non-goals (this phase)
 - Replacing the PWA or iOS app
 - Scraping TikTok/IG via MCP (still official APIs only)
 - Shipping a public hosted MCP without auth decision
+- Implementing MCP before CLI feedback (explicitly deferred)
 
-**Exit criteria:** Written go/no-go in ADR (or explicit defer); if go, spike merged behind clear README docs; if no-go, backlog tickets cancelled with rationale.
+**Exit criteria:** Written go/no-go in ADR — **met** (CLI go, MCP defer); CLI spike merged + documented — **met**; MCP remains backlog-deferred.
 
 
 ## Phase 5 — Product landscape & novelty
