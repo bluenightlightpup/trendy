@@ -42,10 +42,20 @@ def merge_trends(
             # Preserve curated originStory unless it looks auto-ingested
             new_heat = float(cand.get("heatScore") or 0)
             old_heat = float(cur.get("heatScore") or 0)
+            old_life = str(cur.get("lifecycle") or "").lower()
+            # Don't let noisy ingest immediately resurrect fading/dormant
+            # museum pieces — require a clear jump past cooling territory.
+            if old_life in ("fading", "dormant") and new_heat < 0.7:
+                new_heat = min(new_heat, old_heat)
+            elif old_life == "cooling" and new_heat < 0.65:
+                new_heat = min(new_heat, max(old_heat, new_heat * 0.85 + old_heat * 0.15))
             if new_heat > old_heat:
                 cur["heatScore"] = new_heat
                 cur["lifecycle"] = cand.get("lifecycle") or cur.get("lifecycle")
                 updated += 1
+            for stamp in ("peakedAt", "lastSeenAt"):
+                if cand.get(stamp) and not cur.get(stamp):
+                    cur[stamp] = cand[stamp]
             # Merge tags
             tags = list(cur.get("tags") or [])
             for t in cand.get("tags") or []:

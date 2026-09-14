@@ -85,6 +85,64 @@
     return Math.round(s * 100);
   }
 
+  /** Lifecycle multipliers for Home freshness (rising/peaking beat museum heat). */
+  const HOME_LIFECYCLE_WEIGHT = {
+    rising: 1.2,
+    peaking: 1.0,
+    cooling: 0.55,
+    fading: 0.32,
+    dormant: 0.18,
+  };
+
+  function daysSinceIso(iso) {
+    if (!iso || typeof iso !== "string") return null;
+    const t = Date.parse(iso);
+    if (Number.isNaN(t)) return null;
+    return Math.max(0, (Date.now() - t) / 86400000);
+  }
+
+  /**
+   * Recency decay from peakedAt / lastSeenAt (optional ISO dates).
+   * Rising/peaking stay fresh; older peaks on cooling+ get demoted.
+   */
+  function homeRecencyFactor(trend) {
+    const life = String(trend.lifecycle || "").toLowerCase();
+    const peakedDays = daysSinceIso(trend.peakedAt);
+    const seenDays = daysSinceIso(trend.lastSeenAt);
+    let factor = 1;
+    if (seenDays != null && seenDays > 21) {
+      // Soft half-life ~180d after a 3-week grace
+      factor *= Math.pow(0.5, (seenDays - 21) / 180);
+    }
+    if (peakedDays != null && !["rising", "peaking"].includes(life)) {
+      // Museum / cooled peaks: half-life ~100d
+      factor *= Math.pow(0.5, peakedDays / 100);
+    } else if (peakedDays != null && peakedDays > 150) {
+      // Even "peaking" labels get a mild haircut after ~5 months
+      factor *= Math.pow(0.5, (peakedDays - 150) / 120);
+    }
+    return Math.max(0.12, Math.min(1, factor));
+  }
+
+  /** Home relevance: current conversational signal, not historic virality. */
+  function homeRelevanceScore(trend) {
+    const heat = Math.min(1, Math.max(0, Number(trend.heatScore) || 0));
+    const life = HOME_LIFECYCLE_WEIGHT[String(trend.lifecycle || "").toLowerCase()] ?? 0.7;
+    return heat * life * homeRecencyFactor(trend);
+  }
+
+  function sortByHomeRelevance(list) {
+    return list.slice().sort((a, b) => {
+      const d = homeRelevanceScore(b) - homeRelevanceScore(a);
+      if (d !== 0) return d;
+      return (Number(b.heatScore) || 0) - (Number(a.heatScore) || 0);
+    });
+  }
+
+  function sortByHeat(list) {
+    return list.slice().sort((a, b) => (Number(b.heatScore) || 0) - (Number(a.heatScore) || 0));
+  }
+
   function escapeHtml(str) {
     return String(str)
       .replace(/&/g, "&amp;")
@@ -155,7 +213,7 @@
       const set = new Set(state.savedIds);
       list = list.filter((t) => set.has(t.id));
     }
-    return list.slice().sort((a, b) => b.heatScore - a.heatScore);
+    return sortByHomeRelevance(list);
   }
 
   function filteredExploreTrends() {
@@ -172,7 +230,7 @@
         return hay.includes(q);
       });
     }
-    return list.slice().sort((a, b) => b.heatScore - a.heatScore);
+    return sortByHeat(list);
   }
 
   function savedTrendsList() {

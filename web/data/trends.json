@@ -5,14 +5,15 @@
     "summary": "TikTok/internet slang for top-dog / “best” / dominant energy — not mainly the Greek letter.",
     "originStory": "Borrowed from pop “alpha male” hierarchy talk, then memed hard on TikTok as a flex or joke about who’s elite. If someone says “she’s alpha,” they mean status/confidence vibe.",
     "world": "TikTok",
-    "heatScore": 0.84,
+    "heatScore": 0.87,
     "lifecycle": "peaking",
     "tags": [
       "tiktok",
       "slang",
       "status",
       "sigma"
-    ]
+    ],
+    "lastSeenAt": "2026-09-10"
   },
   {
     "id": "trend-67-six-seven",
@@ -20,7 +21,7 @@
     "summary": "Gen Alpha / TikTok brainrot catchphrase — yelled for the bit, not a literal code.",
     "originStory": "Exploded via TikTok sounds (notably Skrilla’s “Doot Doot (6 7)”) and hallway/copycat energy. Meaning is intentionally fuzzy: the meme is participating in the noise. Heat stays high while schools and FYP keep recycling the gesture + chant.",
     "world": "TikTok",
-    "heatScore": 0.96,
+    "heatScore": 0.97,
     "lifecycle": "peaking",
     "tags": [
       "brainrot",
@@ -30,7 +31,8 @@
       "67",
       "six seven",
       "6 7"
-    ]
+    ],
+    "lastSeenAt": "2026-09-12"
   },
   {
     "id": "tt-skibidi",
@@ -38,8 +40,8 @@
     "summary": "YouTube/TikTok horror-comedy by DaFuq!?Boom! — heads in toilets vs Cameramen; kids also chant “skibidi” as brainrot noise.",
     "originStory": "Created by Georgian animator DaFuq!?Boom! (Alexey Gerasimov) in 2023. The series went from YouTube to schoolyard chants and TikTok sounds. “Skibiti” is a common misspelling. Meaning is the series plus the nonsense chant — not a secret dictionary code.",
     "world": "TikTok",
-    "heatScore": 0.94,
-    "lifecycle": "peaking",
+    "heatScore": 0.36,
+    "lifecycle": "fading",
     "tags": [
       "brainrot",
       "gen-alpha",
@@ -48,7 +50,9 @@
       "skibiti",
       "skibidi toilet",
       "youtube"
-    ]
+    ],
+    "peakedAt": "2024-02-15",
+    "lastSeenAt": "2025-06-01"
   },
   {
     "id": "tt-brainrot",
@@ -56,13 +60,14 @@
     "summary": "Content so absurd it feels like it rewires your brain.",
     "originStory": "Internet-culture label for hyper-online meme loops; often self-aware rather than an insult. TikTok FYP is the main greenhouse.",
     "world": "TikTok",
-    "heatScore": 0.91,
+    "heatScore": 0.88,
     "lifecycle": "peaking",
     "tags": [
       "meme",
       "gen-z",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-12"
   },
   {
     "id": "t07",
@@ -70,13 +75,14 @@
     "summary": "Charisma as a verb and a noun — especially flirtation game.",
     "originStory": "Short for charisma, popularized by streamer Kai Cenat and Gen Z slang. Oxford named it Word of the Year in 2023.",
     "world": "Internet culture",
-    "heatScore": 0.91,
+    "heatScore": 0.84,
     "lifecycle": "peaking",
     "tags": [
       "slang",
       "dating",
       "gen-z"
-    ]
+    ],
+    "lastSeenAt": "2026-09-08"
   },
   {
     "id": "tt-aura-farming",
@@ -84,13 +90,14 @@
     "summary": "Doing something cool on purpose to collect social points.",
     "originStory": "Gaming/stream slang for stacking intangible 'aura' — now used on TikTok whenever someone flexes quietly for the clip.",
     "world": "TikTok",
-    "heatScore": 0.88,
+    "heatScore": 0.93,
     "lifecycle": "rising",
     "tags": [
       "slang",
       "flex",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-13"
   },
   {
     "id": "t05",
@@ -98,13 +105,14 @@
     "summary": "Gaming roast: the problem isn't the game — it's you.",
     "originStory": "Born in competitive gaming chats as a deadpan dismissal of complaints. Migrated to general internet as playful (or petty) roast.",
     "world": "Gaming",
-    "heatScore": 0.88,
+    "heatScore": 0.87,
     "lifecycle": "peaking",
     "tags": [
       "gaming",
       "roast",
       "slang"
-    ]
+    ],
+    "lastSeenAt": "2026-09-10"
   },
   {
     "id": "dt-situationship",
@@ -112,12 +120,13 @@
     "summary": "More than friends, less than a defined relationship.",
     "originStory": "Label for ambiguous romantic bonds. Useful when 'what are we?' has no clean answer yet.",
     "world": "Dating",
-    "heatScore": 0.86,
+    "heatScore": 0.88,
     "lifecycle": "peaking",
     "tags": [
       "dating",
       "relationship"
-    ]
+    ],
+    "lastSeenAt": "2026-09-08"
   },
   {
     "id": "t11",
@@ -125,13 +134,14 @@
     "summary": "Delusional — but make it aspirational (or chaotic).",
     "originStory": "K-pop and stan Twitter shortened 'delusional' into 'delulu,' often about shipping. Spilled into mainstream as 'delulu is the solulu.'",
     "world": "Internet culture",
-    "heatScore": 0.85,
+    "heatScore": 0.89,
     "lifecycle": "rising",
     "tags": [
       "slang",
       "stan",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-10"
   },
   {
     "id": "mu-stan",
@@ -139,12 +149,13 @@
     "summary": "An extremely dedicated fan (noun/verb).",
     "originStory": "From Eminem's song to universal fandom language. Can be loving or intense — context matters.",
     "world": "Music / fandom",
-    "heatScore": 0.84,
+    "heatScore": 0.82,
     "lifecycle": "peaking",
     "tags": [
       "fandom",
       "slang"
-    ]
+    ],
+    "lastSeenAt": "2026-09-01"
   },
   {
     "id": "tt-gyatt",
@@ -152,15 +163,17 @@
     "summary": "A loud reaction to someone’s body, especially hips/backside — exaggerated “goddamn.”",
     "originStory": "Stream and TikTok slang that became a brainrot shout. Trendy explains the word; it isn’t a rating.",
     "world": "TikTok",
-    "heatScore": 0.84,
-    "lifecycle": "peaking",
+    "heatScore": 0.44,
+    "lifecycle": "cooling",
     "tags": [
       "gyatt",
       "gyat",
       "brainrot",
       "slang",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2024-03-10",
+    "lastSeenAt": "2025-09-01"
   },
   {
     "id": "sc-midterm-arc",
@@ -182,13 +195,15 @@
     "summary": "A snack plate that somehow counts as a meal — vibes over macros.",
     "originStory": "Started as a tongue-in-cheek TikTok confession: assembling cheese, crackers, leftover fries, and whatever's in the fridge into a 'meal' with zero plating guilt. It snowballed into a celebration of low-effort eating and a gentle pushback on performative wellness.",
     "world": "TikTok",
-    "heatScore": 0.82,
-    "lifecycle": "peaking",
+    "heatScore": 0.38,
+    "lifecycle": "cooling",
     "tags": [
       "food",
       "relatable",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2023-08-01",
+    "lastSeenAt": "2025-05-01"
   },
   {
     "id": "mu-bias",
@@ -209,15 +224,17 @@
     "summary": "Playfully taking a bite of someone else’s food — a ‘tax’ named after streamer Fanum.",
     "originStory": "AMP / Kai Cenat circle bit that jumped to TikTok. Friends joke the bite is owed; not a real fee.",
     "world": "TikTok",
-    "heatScore": 0.82,
-    "lifecycle": "peaking",
+    "heatScore": 0.4,
+    "lifecycle": "cooling",
     "tags": [
       "fanum",
       "fanum tax",
       "brainrot",
       "streamer",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2024-01-20",
+    "lastSeenAt": "2025-08-01"
   },
   {
     "id": "dt-soft-launch",
@@ -225,12 +242,13 @@
     "summary": "Hinting at a partner online without a full face reveal.",
     "originStory": "Social-media dating tactic: blurry photo, hand pic, or 'we' caption before the hard launch.",
     "world": "Dating",
-    "heatScore": 0.81,
+    "heatScore": 0.84,
     "lifecycle": "rising",
     "tags": [
       "dating",
       "social"
-    ]
+    ],
+    "lastSeenAt": "2026-09-07"
   },
   {
     "id": "mn-bag",
@@ -251,13 +269,14 @@
     "summary": "Losing it — spiraling or going off after holding it in.",
     "originStory": "AAVE that TikTok mainstreamed. ‘Don’t crash out’ is a vibe-check; describes the moment, not a diagnosis.",
     "world": "TikTok",
-    "heatScore": 0.81,
+    "heatScore": 0.91,
     "lifecycle": "rising",
     "tags": [
       "crash out",
       "slang",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-12"
   },
   {
     "id": "sp-w",
@@ -278,14 +297,15 @@
     "summary": "Tongue-posture trend people claim will change a jawline.",
     "originStory": "Looksmaxxing explainers on TikTok. Glow-up curiosity is allowed; it is not medical advice.",
     "world": "TikTok",
-    "heatScore": 0.8,
+    "heatScore": 0.86,
     "lifecycle": "rising",
     "tags": [
       "mewing",
       "looksmaxxing",
       "beauty",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-05"
   },
   {
     "id": "dt-green-flag",
@@ -345,14 +365,15 @@
     "summary": "Over-the-top praise — riding for someone so hard it gets embarrassing.",
     "originStory": "Rap/AAVE slang that TikTok live chats turned into ‘stop glazing.’ Tease or roast depending on tone.",
     "world": "TikTok",
-    "heatScore": 0.78,
-    "lifecycle": "peaking",
+    "heatScore": 0.9,
+    "lifecycle": "rising",
     "tags": [
       "glazing",
       "glaze",
       "slang",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-11"
   },
   {
     "id": "tt-demure",
@@ -360,12 +381,14 @@
     "summary": "Soft-spoken irony for 'I'm being cute/careful on purpose.'",
     "originStory": "TikTok creator bit that turned 'demure' into a catchphrase for performative composure — often jokingly.",
     "world": "TikTok",
-    "heatScore": 0.77,
-    "lifecycle": "peaking",
+    "heatScore": 0.46,
+    "lifecycle": "cooling",
     "tags": [
       "catchphrase",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2024-08-20",
+    "lastSeenAt": "2025-07-01"
   },
   {
     "id": "dt-talking-stage",
@@ -373,12 +396,13 @@
     "summary": "Pre-relationship texting limbo.",
     "originStory": "The phase of vibes and plans before exclusivity is named. Can last days or months.",
     "world": "Dating",
-    "heatScore": 0.77,
+    "heatScore": 0.81,
     "lifecycle": "peaking",
     "tags": [
       "dating",
       "relationship"
-    ]
+    ],
+    "lastSeenAt": "2026-09-05"
   },
   {
     "id": "mu-era",
@@ -399,7 +423,7 @@
     "summary": "Winning a looks comparison so hard you ‘mog’ the other person.",
     "originStory": "Looksmaxxing forums → TikTok/brainrot speech. Often a joke ranking; sometimes a mean dunk.",
     "world": "TikTok",
-    "heatScore": 0.77,
+    "heatScore": 0.85,
     "lifecycle": "rising",
     "tags": [
       "mogging",
@@ -407,7 +431,8 @@
       "looksmaxxing",
       "brainrot",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-01"
   },
   {
     "id": "ab-fr",
@@ -442,12 +467,13 @@
     "summary": "Fully focused — no distractions.",
     "originStory": "Athlete/serious-mode phrase that crossed into studying and gaming.",
     "world": "Sports",
-    "heatScore": 0.76,
+    "heatScore": 0.83,
     "lifecycle": "rising",
     "tags": [
       "sports",
       "focus"
-    ]
+    ],
+    "lastSeenAt": "2026-09-10"
   },
   {
     "id": "tt-yap",
@@ -455,14 +481,15 @@
     "summary": "Talking a lot — rambling, oversharing, or excitedly going on.",
     "originStory": "Revived as TikTok/stream chat vocabulary. A yapper will not stop talking; often affectionate.",
     "world": "TikTok",
-    "heatScore": 0.76,
+    "heatScore": 0.83,
     "lifecycle": "peaking",
     "tags": [
       "yap",
       "yapping",
       "slang",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-09"
   },
   {
     "id": "ic-ate-that",
@@ -470,12 +497,13 @@
     "summary": "Naming the vibe something is emitting.",
     "originStory": "Fashion/stan shorthand: 'it's giving main character' = the energy matches that reference. Flexible and playful.",
     "world": "Internet culture",
-    "heatScore": 0.75,
+    "heatScore": 0.8,
     "lifecycle": "rising",
     "tags": [
       "slang",
       "vibe"
-    ]
+    ],
+    "lastSeenAt": "2026-09-06"
   },
   {
     "id": "mu-comeback",
@@ -496,14 +524,16 @@
     "summary": "Don’t interrupt — they’re onto something.",
     "originStory": "Sports/internet hype phrase. TikTok uses it as a green light to keep going (rant, play, bit).",
     "world": "TikTok",
-    "heatScore": 0.75,
-    "lifecycle": "peaking",
+    "heatScore": 0.55,
+    "lifecycle": "cooling",
     "tags": [
       "let him cook",
       "hype",
       "slang",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2023-05-01",
+    "lastSeenAt": "2026-02-01"
   },
   {
     "id": "tt-unspoken-rizz",
@@ -511,13 +541,14 @@
     "summary": "Magnetism without trying — the quiet flex of charm.",
     "originStory": "Sibling of 'rizz' that TikTok popularized as the highest form: you don't announce it, people just feel it.",
     "world": "TikTok",
-    "heatScore": 0.74,
+    "heatScore": 0.8,
     "lifecycle": "rising",
     "tags": [
       "slang",
       "dating",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-08-20"
   },
   {
     "id": "dt-hard-launch",
@@ -564,14 +595,15 @@
     "summary": "Hovering at the edge of a payoff without finishing — a joke about delay.",
     "originStory": "Older slang recycled as a TikTok/stream bit about stretching tension. Casual use is usually the joke, not a how-to.",
     "world": "TikTok",
-    "heatScore": 0.74,
+    "heatScore": 0.79,
     "lifecycle": "rising",
     "tags": [
       "edging",
       "brainrot",
       "slang",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-08-15"
   },
   {
     "id": "ic-main-character",
@@ -579,12 +611,14 @@
     "summary": "Living like the plot revolves around you — cinematic confidence.",
     "originStory": "TikTok/IG affirmation meme encouraging people to romanticize their day. Can be empowering or gently roasted as self-centered.",
     "world": "Internet culture",
-    "heatScore": 0.73,
-    "lifecycle": "peaking",
+    "heatScore": 0.58,
+    "lifecycle": "cooling",
     "tags": [
       "identity",
       "meme"
-    ]
+    ],
+    "peakedAt": "2022-04-01",
+    "lastSeenAt": "2026-04-01"
   },
   {
     "id": "ab-ngl",
@@ -644,13 +678,14 @@
     "summary": "Optimizing appearance with routines, tips, and sometimes extremes.",
     "originStory": "Forum slang that hit TikTok explainers. Ranges from skincare to controversial 'maxxing' discourse — Trendy explains the term, not the ideology.",
     "world": "TikTok",
-    "heatScore": 0.72,
+    "heatScore": 0.82,
     "lifecycle": "rising",
     "tags": [
       "beauty",
       "discourse",
       "tiktok"
-    ]
+    ],
+    "lastSeenAt": "2026-09-01"
   },
   {
     "id": "gm-sweat",
@@ -697,13 +732,15 @@
     "summary": "Creators perform scripted loops like game NPCs for gifts.",
     "originStory": "Grew from live TikTok bits where creators repeat catchphrases — meme of algorithmic performance.",
     "world": "TikTok",
-    "heatScore": 0.71,
-    "lifecycle": "peaking",
+    "heatScore": 0.39,
+    "lifecycle": "cooling",
     "tags": [
       "live",
       "meme",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2023-11-01",
+    "lastSeenAt": "2025-04-01"
   },
   {
     "id": "ic-goofy-ahh",
@@ -711,12 +748,14 @@
     "summary": "Playful insult for something silly or unserious.",
     "originStory": "Meme-speak intensifier that rode YouTube/TikTok brainrot. Soft roast more than real shade.",
     "world": "Internet culture",
-    "heatScore": 0.71,
-    "lifecycle": "peaking",
+    "heatScore": 0.41,
+    "lifecycle": "cooling",
     "tags": [
       "meme",
       "brainrot"
-    ]
+    ],
+    "peakedAt": "2023-09-01",
+    "lastSeenAt": "2025-06-01"
   },
   {
     "id": "t04",
@@ -777,12 +816,14 @@
     "summary": "So deep in the internet that IRL references bounce off.",
     "originStory": "Descriptor for people whose humor, politics, and slang are shaped by feeds. Often self-applied with a shrug.",
     "world": "Internet culture",
-    "heatScore": 0.7,
-    "lifecycle": "peaking",
+    "heatScore": 0.55,
+    "lifecycle": "cooling",
     "tags": [
       "identity",
       "meme"
-    ]
+    ],
+    "peakedAt": "2022-01-01",
+    "lastSeenAt": "2026-03-01"
   },
   {
     "id": "gm-clutch",
@@ -842,13 +883,15 @@
     "summary": "A snap read of whether the energy is good, off, or a little dangerous.",
     "originStory": "2010s internet phrase that never left. TikTok uses it as both a joke stamp and a real ‘is this room OK?’ scan.",
     "world": "TikTok",
-    "heatScore": 0.7,
-    "lifecycle": "peaking",
+    "heatScore": 0.48,
+    "lifecycle": "cooling",
     "tags": [
       "vibe check",
       "slang",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2020-08-01",
+    "lastSeenAt": "2025-11-01"
   },
   {
     "id": "tt-beige-flag",
@@ -885,12 +928,13 @@
     "summary": "Out Of The Loop — asking for catch-up.",
     "originStory": "Reddit-famous plea that maps perfectly to Trendy's job: bring you up to speed.",
     "world": "Abbreviations",
-    "heatScore": 0.69,
+    "heatScore": 0.78,
     "lifecycle": "rising",
     "tags": [
       "abbrev",
       "catch-up"
-    ]
+    ],
+    "lastSeenAt": "2026-09-10"
   },
   {
     "id": "sc-group-project",
@@ -991,14 +1035,16 @@
     "summary": "Really good — especially food, but also fits, music, or a moment.",
     "originStory": "AAVE praise that TikTok food and fit checks kept alive. Casual ‘this slaps,’ not a technical review.",
     "world": "TikTok",
-    "heatScore": 0.68,
-    "lifecycle": "cooling",
+    "heatScore": 0.35,
+    "lifecycle": "fading",
     "tags": [
       "bussin",
       "slang",
       "food",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2022-11-01",
+    "lastSeenAt": "2025-04-01"
   },
   {
     "id": "ic-copium",
@@ -1150,13 +1196,15 @@
     "summary": "Edit compilations that feel like an existential moodboard with sad audio.",
     "originStory": "A TikTok / YouTube edit style stacking unrelated clips — consumerism, loneliness, late-capitalism vibes — into an emotional gut punch. Named as a parody of endless '-core' aesthetics.",
     "world": "TikTok",
-    "heatScore": 0.64,
-    "lifecycle": "rising",
+    "heatScore": 0.42,
+    "lifecycle": "cooling",
     "tags": [
       "edits",
       "aesthetic",
       "mood"
-    ]
+    ],
+    "peakedAt": "2023-06-01",
+    "lastSeenAt": "2025-03-01"
   },
   {
     "id": "gm-nerf",
@@ -1203,12 +1251,14 @@
     "summary": "Agreeably unfiltered — approval slang with messy baggage.",
     "originStory": "From early internet / Lil B into broader 'I respect that take' energy. Context matters; Trendy keeps it descriptive.",
     "world": "Internet culture",
-    "heatScore": 0.63,
-    "lifecycle": "peaking",
+    "heatScore": 0.52,
+    "lifecycle": "cooling",
     "tags": [
       "slang",
       "approval"
-    ]
+    ],
+    "peakedAt": "2022-06-01",
+    "lastSeenAt": "2026-01-01"
   },
   {
     "id": "dt-breadcrumbing",
@@ -1282,13 +1332,15 @@
     "summary": "Catch-all punchline for anything chaotic or cursed.",
     "originStory": "Gen Alpha meme treating Ohio as the capital of weird internet energy. Rarely about the actual state.",
     "world": "TikTok",
-    "heatScore": 0.61,
-    "lifecycle": "cooling",
+    "heatScore": 0.32,
+    "lifecycle": "fading",
     "tags": [
       "brainrot",
       "meme",
       "gen-alpha"
-    ]
+    ],
+    "peakedAt": "2023-10-01",
+    "lastSeenAt": "2025-05-01"
   },
   {
     "id": "gm-buff",
@@ -1440,13 +1492,15 @@
     "summary": "Lone-wolf archetype meme — sometimes serious, often ironic.",
     "originStory": "Manosphere-adjacent label that TikTok remixed into jokes, edits, and 'sigma grindset' parody. Tone depends entirely on the poster.",
     "world": "TikTok",
-    "heatScore": 0.58,
+    "heatScore": 0.5,
     "lifecycle": "cooling",
     "tags": [
       "meme",
       "archetype",
       "tiktok"
-    ]
+    ],
+    "peakedAt": "2023-08-01",
+    "lastSeenAt": "2026-06-01"
   },
   {
     "id": "ab-ily",
@@ -1705,12 +1759,14 @@
     "summary": "When replies/likes dunk on the original post.",
     "originStory": "Twitter/X culture: getting ratioed means the crowd disagreed harder than they agreed. Still used beyond that app.",
     "world": "Internet culture",
-    "heatScore": 0.52,
+    "heatScore": 0.45,
     "lifecycle": "cooling",
     "tags": [
       "social",
       "dunk"
-    ]
+    ],
+    "peakedAt": "2021-09-01",
+    "lastSeenAt": "2025-12-01"
   },
   {
     "id": "t12",

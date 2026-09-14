@@ -29,7 +29,9 @@ def lifecycle_from_heat(heat: float, metrics: dict[str, Any] | None = None) -> s
         return "peaking"
     if heat >= 0.4:
         return "cooling"
-    return "cooling"
+    if heat >= 0.25:
+        return "fading"
+    return "dormant"
 
 
 def apply_heat(signal: dict[str, Any]) -> tuple[float, str]:
