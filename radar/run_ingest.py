@@ -124,8 +124,15 @@ def main(argv: list[str] | None = None) -> int:
     if not isinstance(existing_slang, dict):
         existing_slang = {"entries": [], "fallback": {}}
 
-    merged_trends, trend_stats = merge_trends(existing_trends, trends_in)
-    merged_slang, slang_stats = merge_slang(existing_slang, slang_in)
+    merge_cfg = cfg.get("merge") or {}
+    max_trends = int(merge_cfg.get("max_trends", 250))
+    max_slang = int(merge_cfg.get("max_slang_entries", 500))
+    merged_trends, trend_stats = merge_trends(
+        existing_trends, trends_in, max_items=max_trends
+    )
+    merged_slang, slang_stats = merge_slang(
+        existing_slang, slang_in, max_entries=max_slang
+    )
 
     summary = {
         "timestamp": utc_now_iso(),

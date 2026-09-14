@@ -1,6 +1,6 @@
 # Trend Radar — product & eng overview
 
-Trendy’s owner intent: the app should **train on slang 24/7** across platforms (TikTok, Instagram, Reddit, YouTube, …) so Decode and the Home heat feed stay current without doomscrolling.
+Trendy’s owner intent: the app should **train on slang 24/7** across platforms (TikTok, Instagram, Reddit, YouTube, …) so Decode, Explore niches, and the Home heat feed stay current without doomscrolling. Explore niche map: [`explore-niches.md`](explore-niches.md).
 
 ## Honest constraints
 

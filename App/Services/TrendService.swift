@@ -21,7 +21,7 @@ struct MockTrendService: TrendServing {
         store.filter { $0.world == world }.sorted { $0.heatScore > $1.heatScore }
     }
 
-    /// Offline-first Phase 1 catalog — ~12 trends across all worlds and lifecycles.
+    /// Offline-first catalog — samples across all Explore worlds and lifecycles.
     static let samples: [Trend] = [
         Trend(
             id: UUID(uuidString: "11111111-1111-1111-1111-111111111101")!,
@@ -142,6 +142,86 @@ struct MockTrendService: TrendServing {
             heatScore: 0.33,
             lifecycle: .rising,
             tags: ["gaming", "abbrev"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-11111111110d")!,
+            title: "situationship",
+            summary: "More than friends, less than a defined relationship.",
+            originStory: "Dating label for ambiguous romantic bonds — useful when 'what are we?' has no clean answer yet.",
+            world: .dating,
+            heatScore: 0.86,
+            lifecycle: .peaking,
+            tags: ["dating", "relationship"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-11111111110e")!,
+            title: "soft launch",
+            summary: "Hinting at a partner online without a full face reveal.",
+            originStory: "Social-media dating tactic: blurry photo or 'we' caption before the hard launch.",
+            world: .dating,
+            heatScore: 0.81,
+            lifecycle: .rising,
+            tags: ["dating", "social"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-11111111110f")!,
+            title: "midterm arc",
+            summary: "The chaotic character-development week of exams.",
+            originStory: "Campus joke framing midterms as an anime arc — sleep debt, library lore, temporary personality changes.",
+            world: .schoolCampus,
+            heatScore: 0.83,
+            lifecycle: .peaking,
+            tags: ["campus", "exams"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-111111111110")!,
+            title: "W",
+            summary: "A win — literal or metaphorical.",
+            originStory: "Sports scoreboard letter that became universal internet 'that's a W.' Opposite: L.",
+            world: .sports,
+            heatScore: 0.80,
+            lifecycle: .peaking,
+            tags: ["sports", "slang"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-111111111111")!,
+            title: "stan",
+            summary: "An extremely dedicated fan (noun/verb).",
+            originStory: "From Eminem's song to universal fandom language. Can be loving or intense — context matters.",
+            world: .musicFandom,
+            heatScore: 0.84,
+            lifecycle: .peaking,
+            tags: ["fandom", "slang"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-111111111112")!,
+            title: "circle back",
+            summary: "Corporate speak for 'later' — sometimes never.",
+            originStory: "Meeting classic. Often gently mocked as delay language in work chats.",
+            world: .workTech,
+            heatScore: 0.72,
+            lifecycle: .peaking,
+            tags: ["work", "corp-speak"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-111111111113")!,
+            title: "bag",
+            summary: "Money / winning financially ('secure the bag').",
+            originStory: "Accessible hustle slang. Not always literal cash — sometimes any win. Not financial advice.",
+            world: .money,
+            heatScore: 0.81,
+            lifecycle: .peaking,
+            tags: ["money", "slang"]
+        ),
+        Trend(
+            id: UUID(uuidString: "11111111-1111-1111-1111-111111111114")!,
+            title: "rug pull",
+            summary: "Scam where creators abandon a project and take funds.",
+            originStory: "Crypto meme that became general betrayal language. Stay skeptical of hype — judgment-free vocab only.",
+            world: .money,
+            heatScore: 0.69,
+            lifecycle: .rising,
+            tags: ["money", "crypto", "caution"]
         )
     ]
 }

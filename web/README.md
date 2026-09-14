@@ -1,6 +1,6 @@
 # Trendy — Progressive Web App
 
-Phone-usable static PWA mirroring the product tabs: **Home**, **Decode**, **Explore**, **You**.
+Phone-usable static PWA mirroring the product tabs: **Home**, **Decode**, **Explore**, **You**. Explore spans many niches (not just TikTok) — catch up without the scroll; see `docs/explore-niches.md`.
 
 Vanilla HTML/CSS/JS — no build step. Needs a tiny static server so `fetch()` can load JSON (and so the service worker can register).
 

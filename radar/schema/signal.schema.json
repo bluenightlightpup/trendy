@@ -29,7 +29,7 @@
     },
     "world_hint": {
       "type": ["string", "null"],
-      "description": "Suggested PWA world: TikTok | Internet culture | Abbreviations | Gaming"
+      "description": "Suggested PWA world: TikTok | Internet culture | Abbreviations | Gaming | Dating | School / campus | Sports | Music / fandom | Work / tech | Money"
     },
     "tags": {
       "type": "array",

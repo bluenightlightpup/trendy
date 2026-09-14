@@ -12,7 +12,7 @@
 |-----|------|
 | **Home** | Trend feed sorted by momentum; **heat meter** (cool → volt → hot) on every card; tap for origin story |
 | **Decode** | AI chat (Claude) explaining slang / memes / abbreviations — judgment-free |
-| **Explore** | Browse by world: TikTok, internet culture, abbreviations, gaming |
+| **Explore** | Vast niche browse (TikTok → Money) — catch up without the scroll; Radar keeps slang fresh |
 | **You** | Interest toggles, digest frequency, **New here mode** |
 
 Save / follow trends: **live in the PWA** (localStorage); iOS stub + TestFlight pending Mac.
@@ -120,7 +120,7 @@ Open the URL on your phone (same Wi‑Fi), then Add to Home Screen. Details: [`w
 
 ## Trend Radar (continuous training)
 
-Radar ingests public signals on a schedule, normalizes them, and merges into `web/data/trends.json` + `web/data/slang.json` so the PWA stays fresh.
+Radar ingests public signals on a schedule, normalizes them across **all Explore niches**, and merges into `web/data/trends.json` + `web/data/slang.json` so Explore stays vast and fresh. See `docs/explore-niches.md`.
 
 ```bash
 pip install -r radar/requirements.txt

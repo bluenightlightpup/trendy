@@ -15,58 +15,120 @@
     ]
   },
   {
+    "id": "tt-brainrot",
+    "title": "Brainrot",
+    "summary": "Content so absurd it feels like it rewires your brain.",
+    "originStory": "Internet-culture label for hyper-online meme loops; often self-aware rather than an insult. TikTok FYP is the main greenhouse.",
+    "world": "TikTok",
+    "heatScore": 0.91,
+    "lifecycle": "peaking",
+    "tags": [
+      "meme",
+      "gen-z",
+      "tiktok"
+    ]
+  },
+  {
     "id": "t07",
     "title": "Rizz",
     "summary": "Charisma as a verb and a noun — especially flirtation game.",
-    "originStory": "Short for charisma, popularized by streamer Kai Cenat and Gen Z slang. 'Having rizz' means you can charm; 'unspoken rizz' is magnetism without trying; 'rizzless' is the opposite. Oxford named it Word of the Year in 2023, which only accelerated both adoption and eye-rolls.",
+    "originStory": "Short for charisma, popularized by streamer Kai Cenat and Gen Z slang. Oxford named it Word of the Year in 2023.",
     "world": "Internet culture",
     "heatScore": 0.91,
     "lifecycle": "peaking",
     "tags": [
       "slang",
       "dating",
-      "gen-z",
-      "seed",
-      "radar"
+      "gen-z"
+    ]
+  },
+  {
+    "id": "tt-aura-farming",
+    "title": "Aura farming",
+    "summary": "Doing something cool on purpose to collect social points.",
+    "originStory": "Gaming/stream slang for stacking intangible 'aura' — now used on TikTok whenever someone flexes quietly for the clip.",
+    "world": "TikTok",
+    "heatScore": 0.88,
+    "lifecycle": "rising",
+    "tags": [
+      "slang",
+      "flex",
+      "tiktok"
     ]
   },
   {
     "id": "t05",
     "title": "Skill issue",
     "summary": "Gaming roast: the problem isn't the game — it's you.",
-    "originStory": "Born in competitive gaming chats as a deadpan dismissal of complaints about balance, lag, or 'unfair' mechanics. Migrated to general internet use as a playful (or petty) way to say someone's struggling because of their own ability. Tone ranges from affectionate ribbing to full roast.",
+    "originStory": "Born in competitive gaming chats as a deadpan dismissal of complaints. Migrated to general internet as playful (or petty) roast.",
     "world": "Gaming",
     "heatScore": 0.88,
     "lifecycle": "peaking",
     "tags": [
       "gaming",
       "roast",
-      "slang",
-      "seed",
-      "radar"
+      "slang"
+    ]
+  },
+  {
+    "id": "dt-situationship",
+    "title": "Situationship",
+    "summary": "More than friends, less than a defined relationship.",
+    "originStory": "Label for ambiguous romantic bonds. Useful when 'what are we?' has no clean answer yet.",
+    "world": "Dating",
+    "heatScore": 0.86,
+    "lifecycle": "peaking",
+    "tags": [
+      "dating",
+      "relationship"
     ]
   },
   {
     "id": "t11",
     "title": "Delulu",
     "summary": "Delusional — but make it aspirational (or chaotic).",
-    "originStory": "K-pop and stan Twitter shortened 'delusional' into 'delulu,' often about shipping idols or inventing lore. It spilled into mainstream TikTok as 'delulu is the solulu' — joking that believing your own fantasy is a coping strategy. Softened the sting of 'delusional' into something almost cute.",
+    "originStory": "K-pop and stan Twitter shortened 'delusional' into 'delulu,' often about shipping. Spilled into mainstream as 'delulu is the solulu.'",
     "world": "Internet culture",
     "heatScore": 0.85,
     "lifecycle": "rising",
     "tags": [
       "slang",
       "stan",
-      "tiktok",
-      "seed",
-      "radar"
+      "tiktok"
+    ]
+  },
+  {
+    "id": "mu-stan",
+    "title": "Stan",
+    "summary": "An extremely dedicated fan (noun/verb).",
+    "originStory": "From Eminem's song to universal fandom language. Can be loving or intense — context matters.",
+    "world": "Music / fandom",
+    "heatScore": 0.84,
+    "lifecycle": "peaking",
+    "tags": [
+      "fandom",
+      "slang"
+    ]
+  },
+  {
+    "id": "sc-midterm-arc",
+    "title": "Midterm arc",
+    "summary": "The chaotic character development week of exams.",
+    "originStory": "Campus joke framing midterms as an anime arc — sleep debt, library lore, and temporary personality changes.",
+    "world": "School / campus",
+    "heatScore": 0.83,
+    "lifecycle": "peaking",
+    "tags": [
+      "campus",
+      "exams",
+      "slang"
     ]
   },
   {
     "id": "t01",
     "title": "Girl dinner",
     "summary": "A snack plate that somehow counts as a meal — vibes over macros.",
-    "originStory": "Started as a tongue-in-cheek TikTok confession: assembling cheese, crackers, leftover fries, and whatever's in the fridge into a 'meal' with zero plating guilt. It snowballed into a celebration of low-effort eating and a gentle pushback on performative wellness. Brands and restaurants briefly tried to monetize it; the internet kept the joke.",
+    "originStory": "Started as a tongue-in-cheek TikTok confession: assembling cheese, crackers, leftover fries, and whatever's in the fridge into a 'meal' with zero plating guilt. It snowballed into a celebration of low-effort eating and a gentle pushback on performative wellness.",
     "world": "TikTok",
     "heatScore": 0.82,
     "lifecycle": "peaking",
@@ -77,10 +139,180 @@
     ]
   },
   {
+    "id": "mu-bias",
+    "title": "Bias",
+    "summary": "Your favorite member in a group.",
+    "originStory": "K-pop term that spread to other fandoms: who you vibe with most.",
+    "world": "Music / fandom",
+    "heatScore": 0.82,
+    "lifecycle": "peaking",
+    "tags": [
+      "fandom",
+      "kpop"
+    ]
+  },
+  {
+    "id": "dt-soft-launch",
+    "title": "Soft launch",
+    "summary": "Hinting at a partner online without a full face reveal.",
+    "originStory": "Social-media dating tactic: blurry photo, hand pic, or 'we' caption before the hard launch.",
+    "world": "Dating",
+    "heatScore": 0.81,
+    "lifecycle": "rising",
+    "tags": [
+      "dating",
+      "social"
+    ]
+  },
+  {
+    "id": "mn-bag",
+    "title": "Bag",
+    "summary": "Money / winning financially ('secure the bag').",
+    "originStory": "Accessible hustle slang. Not always literal cash — sometimes any win.",
+    "world": "Money",
+    "heatScore": 0.81,
+    "lifecycle": "peaking",
+    "tags": [
+      "money",
+      "slang"
+    ]
+  },
+  {
+    "id": "sp-w",
+    "title": "W",
+    "summary": "A win — literal or metaphorical.",
+    "originStory": "Sports scoreboard letter that became universal internet 'that's a W.' Opposite: L.",
+    "world": "Sports",
+    "heatScore": 0.8,
+    "lifecycle": "peaking",
+    "tags": [
+      "sports",
+      "slang"
+    ]
+  },
+  {
+    "id": "tt-skibidi",
+    "title": "Skibidi",
+    "summary": "Nonsense syllable that became a whole brainrot franchise.",
+    "originStory": "From the Skibidi Toilet YouTube series into schoolyard chants and TikTok sounds. Meaning is participation, not a dictionary entry.",
+    "world": "TikTok",
+    "heatScore": 0.79,
+    "lifecycle": "peaking",
+    "tags": [
+      "brainrot",
+      "gen-alpha",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "dt-green-flag",
+    "title": "Green flag",
+    "summary": "A wholesome sign someone is emotionally safe.",
+    "originStory": "Positive cousin of red flags — healthy communication, respect, consistency.",
+    "world": "Dating",
+    "heatScore": 0.79,
+    "lifecycle": "peaking",
+    "tags": [
+      "dating",
+      "flags"
+    ]
+  },
+  {
+    "id": "ic-no-cap",
+    "title": "No cap",
+    "summary": "No lie / for real.",
+    "originStory": "AAVE-rooted slang that became universal online for emphasizing honesty. Pair with 'cap' for the opposite.",
+    "world": "Internet culture",
+    "heatScore": 0.78,
+    "lifecycle": "peaking",
+    "tags": [
+      "slang",
+      "emphasis"
+    ]
+  },
+  {
+    "id": "sp-l",
+    "title": "L",
+    "summary": "A loss — take the L.",
+    "originStory": "Accept the defeat (or roast someone for theirs). Pair with W culture.",
+    "world": "Sports",
+    "heatScore": 0.78,
+    "lifecycle": "peaking",
+    "tags": [
+      "sports",
+      "slang"
+    ]
+  },
+  {
+    "id": "wk-bandwidth",
+    "title": "Bandwidth",
+    "summary": "Capacity to take on more work (or not).",
+    "originStory": "Borrowed from tech; now human energy management slang at jobs.",
+    "world": "Work / tech",
+    "heatScore": 0.78,
+    "lifecycle": "peaking",
+    "tags": [
+      "work",
+      "tech"
+    ]
+  },
+  {
+    "id": "tt-demure",
+    "title": "Very demure, very mindful",
+    "summary": "Soft-spoken irony for 'I'm being cute/careful on purpose.'",
+    "originStory": "TikTok creator bit that turned 'demure' into a catchphrase for performative composure — often jokingly.",
+    "world": "TikTok",
+    "heatScore": 0.77,
+    "lifecycle": "peaking",
+    "tags": [
+      "catchphrase",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "dt-talking-stage",
+    "title": "Talking stage",
+    "summary": "Pre-relationship texting limbo.",
+    "originStory": "The phase of vibes and plans before exclusivity is named. Can last days or months.",
+    "world": "Dating",
+    "heatScore": 0.77,
+    "lifecycle": "peaking",
+    "tags": [
+      "dating",
+      "relationship"
+    ]
+  },
+  {
+    "id": "mu-era",
+    "title": "Artist era",
+    "summary": "A stylistic chapter defined by looks + sound.",
+    "originStory": "Fans date their lives by which album era they were in.",
+    "world": "Music / fandom",
+    "heatScore": 0.77,
+    "lifecycle": "rising",
+    "tags": [
+      "fandom",
+      "narrative"
+    ]
+  },
+  {
+    "id": "ab-fr",
+    "title": "FR / FRFR",
+    "summary": "For real — emphasis that you're not joking.",
+    "originStory": "Stacked 'frfr' intensifies sincerity in chats and comments.",
+    "world": "Abbreviations",
+    "heatScore": 0.76,
+    "lifecycle": "peaking",
+    "tags": [
+      "abbrev",
+      "emphasis"
+    ]
+  },
+  {
     "id": "t06",
     "title": "NPC energy",
     "summary": "Acting like a background character — scripted, predictable, unbothered.",
-    "originStory": "From gaming's non-player characters: entities that repeat lines and follow fixed paths. Online, calling someone an 'NPC' implies they lack originality or agency. The 'NPC meme' wave amplified it into a whole aesthetic of blank stares and canned phrases — sometimes self-deprecating, sometimes cruel.",
+    "originStory": "From gaming's non-player characters. Online, calling someone an 'NPC' implies they lack originality — sometimes self-deprecating.",
     "world": "Gaming",
     "heatScore": 0.76,
     "lifecycle": "rising",
@@ -91,26 +323,379 @@
     ]
   },
   {
+    "id": "sp-locked-in",
+    "title": "Locked in",
+    "summary": "Fully focused — no distractions.",
+    "originStory": "Athlete/serious-mode phrase that crossed into studying and gaming.",
+    "world": "Sports",
+    "heatScore": 0.76,
+    "lifecycle": "rising",
+    "tags": [
+      "sports",
+      "focus"
+    ]
+  },
+  {
+    "id": "ic-ate-that",
+    "title": "It's giving…",
+    "summary": "Naming the vibe something is emitting.",
+    "originStory": "Fashion/stan shorthand: 'it's giving main character' = the energy matches that reference. Flexible and playful.",
+    "world": "Internet culture",
+    "heatScore": 0.75,
+    "lifecycle": "rising",
+    "tags": [
+      "slang",
+      "vibe"
+    ]
+  },
+  {
+    "id": "mu-comeback",
+    "title": "Comeback",
+    "summary": "A new release era for an artist/group.",
+    "originStory": "Not a sports return — a scheduled drop with concepts, stages, and timelines.",
+    "world": "Music / fandom",
+    "heatScore": 0.75,
+    "lifecycle": "peaking",
+    "tags": [
+      "fandom",
+      "release"
+    ]
+  },
+  {
+    "id": "tt-unspoken-rizz",
+    "title": "Unspoken rizz",
+    "summary": "Magnetism without trying — the quiet flex of charm.",
+    "originStory": "Sibling of 'rizz' that TikTok popularized as the highest form: you don't announce it, people just feel it.",
+    "world": "TikTok",
+    "heatScore": 0.74,
+    "lifecycle": "rising",
+    "tags": [
+      "slang",
+      "dating",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "dt-hard-launch",
+    "title": "Hard launch",
+    "summary": "Officially posting your partner for the timeline.",
+    "originStory": "The full reveal after a soft launch — clear photos, tags, no more mystery.",
+    "world": "Dating",
+    "heatScore": 0.74,
+    "lifecycle": "peaking",
+    "tags": [
+      "dating",
+      "social"
+    ]
+  },
+  {
+    "id": "sp-cooked",
+    "title": "Cooked",
+    "summary": "Done for — no coming back.",
+    "originStory": "When a team (or person) is finished. Sibling of 'it's so over.'",
+    "world": "Sports",
+    "heatScore": 0.74,
+    "lifecycle": "peaking",
+    "tags": [
+      "sports",
+      "meme"
+    ]
+  },
+  {
+    "id": "wk-async",
+    "title": "Async",
+    "summary": "Not real-time — reply when you can.",
+    "originStory": "Tech workplace ideal (and sometimes fiction) for timezone-friendly work.",
+    "world": "Work / tech",
+    "heatScore": 0.74,
+    "lifecycle": "peaking",
+    "tags": [
+      "work",
+      "tech"
+    ]
+  },
+  {
+    "id": "ic-main-character",
+    "title": "Main character energy",
+    "summary": "Living like the plot revolves around you — cinematic confidence.",
+    "originStory": "TikTok/IG affirmation meme encouraging people to romanticize their day. Can be empowering or gently roasted as self-centered.",
+    "world": "Internet culture",
+    "heatScore": 0.73,
+    "lifecycle": "peaking",
+    "tags": [
+      "identity",
+      "meme"
+    ]
+  },
+  {
+    "id": "ab-ngl",
+    "title": "NGL",
+    "summary": "Not Gonna Lie — confession preface.",
+    "originStory": "Softens whatever comes next; often paired with a spicy opinion or compliment.",
+    "world": "Abbreviations",
+    "heatScore": 0.73,
+    "lifecycle": "peaking",
+    "tags": [
+      "abbrev",
+      "confession"
+    ]
+  },
+  {
+    "id": "sc-roommate-lore",
+    "title": "Roommate lore",
+    "summary": "The ongoing sitcom of shared living.",
+    "originStory": "TikTok dorm stories turned everyday roommate quirks into serialized campus content.",
+    "world": "School / campus",
+    "heatScore": 0.73,
+    "lifecycle": "rising",
+    "tags": [
+      "campus",
+      "relatable"
+    ]
+  },
+  {
+    "id": "mu-delulu-ship",
+    "title": "Ship",
+    "summary": "Wanting two people together (fictional or real).",
+    "originStory": "Fandom verb/noun. Keep it respectful — Trendy explains the slang, not the parasocial spiral.",
+    "world": "Music / fandom",
+    "heatScore": 0.73,
+    "lifecycle": "peaking",
+    "tags": [
+      "fandom",
+      "shipping"
+    ]
+  },
+  {
+    "id": "mn-bullish",
+    "title": "Bullish",
+    "summary": "Optimistic on price / prospects.",
+    "originStory": "Market term that friends use about careers, albums, and situationships.",
+    "world": "Money",
+    "heatScore": 0.73,
+    "lifecycle": "peaking",
+    "tags": [
+      "money",
+      "slang"
+    ]
+  },
+  {
+    "id": "tt-looksmaxxing",
+    "title": "Looksmaxxing",
+    "summary": "Optimizing appearance with routines, tips, and sometimes extremes.",
+    "originStory": "Forum slang that hit TikTok explainers. Ranges from skincare to controversial 'maxxing' discourse — Trendy explains the term, not the ideology.",
+    "world": "TikTok",
+    "heatScore": 0.72,
+    "lifecycle": "rising",
+    "tags": [
+      "beauty",
+      "discourse",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "gm-sweat",
+    "title": "Sweaty",
+    "summary": "Trying extremely hard — sometimes too hard.",
+    "originStory": "Label for tryhard play. Can be respect or mild shade depending on tone.",
+    "world": "Gaming",
+    "heatScore": 0.72,
+    "lifecycle": "peaking",
+    "tags": [
+      "gaming",
+      "compete"
+    ]
+  },
+  {
+    "id": "dt-red-flag",
+    "title": "Red flag",
+    "summary": "A warning sign in dating behavior.",
+    "originStory": "Everyday metaphor that dating content turned into a checklist language.",
+    "world": "Dating",
+    "heatScore": 0.72,
+    "lifecycle": "peaking",
+    "tags": [
+      "dating",
+      "flags"
+    ]
+  },
+  {
+    "id": "wk-circle-back",
+    "title": "Circle back",
+    "summary": "Corporate speak for 'later' — sometimes never.",
+    "originStory": "Meeting classic. Often gently mocked as delay language.",
+    "world": "Work / tech",
+    "heatScore": 0.72,
+    "lifecycle": "peaking",
+    "tags": [
+      "work",
+      "corp-speak"
+    ]
+  },
+  {
+    "id": "tt-npc-live",
+    "title": "NPC live",
+    "summary": "Creators perform scripted loops like game NPCs for gifts.",
+    "originStory": "Grew from live TikTok bits where creators repeat catchphrases — meme of algorithmic performance.",
+    "world": "TikTok",
+    "heatScore": 0.71,
+    "lifecycle": "peaking",
+    "tags": [
+      "live",
+      "meme",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "ic-goofy-ahh",
+    "title": "Goofy ahh",
+    "summary": "Playful insult for something silly or unserious.",
+    "originStory": "Meme-speak intensifier that rode YouTube/TikTok brainrot. Soft roast more than real shade.",
+    "world": "Internet culture",
+    "heatScore": 0.71,
+    "lifecycle": "peaking",
+    "tags": [
+      "meme",
+      "brainrot"
+    ]
+  },
+  {
     "id": "t04",
     "title": "IYKYK",
     "summary": "If You Know, You Know — insider shorthand that gates the joke.",
-    "originStory": "An abbreviation that signals shared context without explaining it. Used in captions, group chats, and product drops to create belonging (or FOMO). Closely related to 'you had to be there' energy, but shorter and more smug.",
+    "originStory": "Signals shared context without explaining it. Used in captions, group chats, and product drops to create belonging (or FOMO).",
     "world": "Abbreviations",
     "heatScore": 0.71,
     "lifecycle": "peaking",
     "tags": [
       "abbrev",
       "insider",
-      "captions",
-      "seed",
-      "radar"
+      "captions"
+    ]
+  },
+  {
+    "id": "sc-pass-fail",
+    "title": "Pass/fail energy",
+    "summary": "Doing the minimum ethical amount to clear the bar.",
+    "originStory": "Campus cousin of quiet quitting — protect your GPA bandwidth.",
+    "world": "School / campus",
+    "heatScore": 0.71,
+    "lifecycle": "rising",
+    "tags": [
+      "campus",
+      "boundaries"
+    ]
+  },
+  {
+    "id": "mu-bias-wrecker",
+    "title": "Bias wrecker",
+    "summary": "The member who almost steals your #1 spot.",
+    "originStory": "Playful K-pop drama about divided loyalties.",
+    "world": "Music / fandom",
+    "heatScore": 0.71,
+    "lifecycle": "rising",
+    "tags": [
+      "fandom",
+      "kpop"
+    ]
+  },
+  {
+    "id": "wk-ship-it",
+    "title": "Ship it",
+    "summary": "Release the thing — perfection can wait.",
+    "originStory": "Product/eng mantra. Also a personality: bias to action.",
+    "world": "Work / tech",
+    "heatScore": 0.71,
+    "lifecycle": "rising",
+    "tags": [
+      "work",
+      "tech"
+    ]
+  },
+  {
+    "id": "ic-chronically",
+    "title": "Chronically online",
+    "summary": "So deep in the internet that IRL references bounce off.",
+    "originStory": "Descriptor for people whose humor, politics, and slang are shaped by feeds. Often self-applied with a shrug.",
+    "world": "Internet culture",
+    "heatScore": 0.7,
+    "lifecycle": "peaking",
+    "tags": [
+      "identity",
+      "meme"
+    ]
+  },
+  {
+    "id": "gm-clutch",
+    "title": "Clutch",
+    "summary": "Winning despite terrible odds.",
+    "originStory": "Esports highlight word that crossed into sports and everyday 'came through' praise.",
+    "world": "Gaming",
+    "heatScore": 0.7,
+    "lifecycle": "peaking",
+    "tags": [
+      "gaming",
+      "praise"
+    ]
+  },
+  {
+    "id": "dt-rizzless",
+    "title": "Rizzless",
+    "summary": "Having zero flirtation game (affectionate roast).",
+    "originStory": "Opposite of rizz. Often self-deprecating in group chats.",
+    "world": "Dating",
+    "heatScore": 0.7,
+    "lifecycle": "rising",
+    "tags": [
+      "dating",
+      "slang"
+    ]
+  },
+  {
+    "id": "sp-script",
+    "title": "The script",
+    "summary": "Conspiracy joke that the league wrote the ending.",
+    "originStory": "Fans say 'the script' when outcomes feel too cinematic. Playful paranoia.",
+    "world": "Sports",
+    "heatScore": 0.7,
+    "lifecycle": "rising",
+    "tags": [
+      "sports",
+      "meme"
+    ]
+  },
+  {
+    "id": "mn-side-hustle",
+    "title": "Side hustle",
+    "summary": "Extra income project beyond the main job.",
+    "originStory": "Mainstream money slang for gig/creative income. Neutral: survival or ambition.",
+    "world": "Money",
+    "heatScore": 0.7,
+    "lifecycle": "peaking",
+    "tags": [
+      "money",
+      "work"
+    ]
+  },
+  {
+    "id": "tt-beige-flag",
+    "title": "Beige flag",
+    "summary": "A quirky trait that's neither red nor green — just oddly specific.",
+    "originStory": "Dating-TikTok cousin of red/green flags: weird habits that make you go 'huh' without ending the vibe.",
+    "world": "TikTok",
+    "heatScore": 0.69,
+    "lifecycle": "rising",
+    "tags": [
+      "dating",
+      "tiktok",
+      "flags"
     ]
   },
   {
     "id": "t09",
     "title": "Touch grass",
     "summary": "Go outside. Log off. Reconnect with reality (gently or not).",
-    "originStory": "Internet shorthand telling someone they're too online. Can be caring advice or a dunk. Paired often with 'chronically online.' Originated in meme and gaming spaces, then became mainstream parental and coworker vocabulary — which made the phrase itself feel a little NPC.",
+    "originStory": "Internet shorthand telling someone they're too online. Can be caring advice or a dunk.",
     "world": "Internet culture",
     "heatScore": 0.69,
     "lifecycle": "peaking",
@@ -118,16 +703,264 @@
       "advice",
       "dunk",
       "offline",
+      "meme"
+    ]
+  },
+  {
+    "id": "ab-ootl",
+    "title": "OOTL",
+    "summary": "Out Of The Loop — asking for catch-up.",
+    "originStory": "Reddit-famous plea that maps perfectly to Trendy's job: bring you up to speed.",
+    "world": "Abbreviations",
+    "heatScore": 0.69,
+    "lifecycle": "rising",
+    "tags": [
+      "abbrev",
+      "catch-up"
+    ]
+  },
+  {
+    "id": "sc-group-project",
+    "title": "Group project lore",
+    "summary": "Someone always ghosts the shared doc.",
+    "originStory": "Eternal campus meme about unequal labor. Judgment-free tip: set roles early.",
+    "world": "School / campus",
+    "heatScore": 0.69,
+    "lifecycle": "peaking",
+    "tags": [
+      "campus",
+      "meme"
+    ]
+  },
+  {
+    "id": "mu-stream",
+    "title": "Stream (as activism)",
+    "summary": "Coordinated plays to boost charts.",
+    "originStory": "Fandom labor: playlists, multiple devices, and chart rules discourse.",
+    "world": "Music / fandom",
+    "heatScore": 0.69,
+    "lifecycle": "peaking",
+    "tags": [
+      "fandom",
+      "charts"
+    ]
+  },
+  {
+    "id": "mn-rug-pull",
+    "title": "Rug pull",
+    "summary": "Scam where creators abandon a project and take funds.",
+    "originStory": "Crypto meme that became general 'they betrayed the vibe' language. Stay skeptical of hype.",
+    "world": "Money",
+    "heatScore": 0.69,
+    "lifecycle": "rising",
+    "tags": [
+      "money",
+      "crypto",
+      "caution"
+    ]
+  },
+  {
+    "id": "ab-idk-energy",
+    "title": "IDC energy",
+    "summary": "The vibe of deliberately not caring.",
+    "originStory": "More than the literal abbrev — a whole posture of chill detachment in comments and captions.",
+    "world": "Abbreviations",
+    "heatScore": 0.68,
+    "lifecycle": "rising",
+    "tags": [
+      "abbrev",
+      "vibe"
+    ]
+  },
+  {
+    "id": "gm-meta",
+    "title": "The meta",
+    "summary": "What's currently strongest / most popular strategy.",
+    "originStory": "Short for metagame. Outside games: 'the meta' = the dominant trend people optimize for.",
+    "world": "Gaming",
+    "heatScore": 0.68,
+    "lifecycle": "rising",
+    "tags": [
+      "gaming",
+      "strategy"
+    ]
+  },
+  {
+    "id": "sp-era",
+    "title": "In your era",
+    "summary": "A hot streak / peak form stretch.",
+    "originStory": "Athletes and fans narrate seasons as 'eras.' Also lifestyle slang.",
+    "world": "Sports",
+    "heatScore": 0.68,
+    "lifecycle": "peaking",
+    "tags": [
+      "sports",
+      "narrative"
+    ]
+  },
+  {
+    "id": "wk-lgtm",
+    "title": "LGTM",
+    "summary": "Looks Good To Me — code review approval.",
+    "originStory": "Engineering shorthand that escaped into design docs and Slack thumbs-up culture.",
+    "world": "Work / tech",
+    "heatScore": 0.68,
+    "lifecycle": "peaking",
+    "tags": [
+      "work",
+      "tech",
+      "abbrev"
+    ]
+  },
+  {
+    "id": "ic-copium",
+    "title": "Copium",
+    "summary": "The imaginary drug of cope — denial as a meme.",
+    "originStory": "Imageboard/Twitch joke about huffing cope when your team loses or your take flops. Sibling of hopium.",
+    "world": "Internet culture",
+    "heatScore": 0.67,
+    "lifecycle": "rising",
+    "tags": [
       "meme",
-      "seed",
-      "radar"
+      "cope"
+    ]
+  },
+  {
+    "id": "dt-orbiting",
+    "title": "Orbiting",
+    "summary": "Watching stories / liking posts after going quiet.",
+    "originStory": "Post-ghost behavior: no texts, but still lurking. Confusing on purpose or by habit.",
+    "world": "Dating",
+    "heatScore": 0.67,
+    "lifecycle": "rising",
+    "tags": [
+      "dating",
+      "social"
+    ]
+  },
+  {
+    "id": "mu-unreleased",
+    "title": "Unreleased lore",
+    "summary": "Leaks, demos, vault tracks fans obsess over.",
+    "originStory": "Fandom archaeology: unfinished songs become mythology.",
+    "world": "Music / fandom",
+    "heatScore": 0.67,
+    "lifecycle": "rising",
+    "tags": [
+      "fandom",
+      "music"
+    ]
+  },
+  {
+    "id": "mn-dedollar",
+    "title": "Broke tax",
+    "summary": "The hidden extra costs of not having spare cash.",
+    "originStory": "Culture phrase for how poverty is expensive (fees, replacements). Empathy-first.",
+    "world": "Money",
+    "heatScore": 0.67,
+    "lifecycle": "peaking",
+    "tags": [
+      "money",
+      "discourse"
+    ]
+  },
+  {
+    "id": "tt-underconsumption",
+    "title": "Underconsumption core",
+    "summary": "Aesthetic of buying less / using what you have.",
+    "originStory": "Pushback wave against haul culture on TikTok — celebrating thrift, leftovers, and not needing the new drop.",
+    "world": "TikTok",
+    "heatScore": 0.66,
+    "lifecycle": "rising",
+    "tags": [
+      "aesthetic",
+      "consumer",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "gm-tilted",
+    "title": "Tilted",
+    "summary": "Emotionally off after losses — play gets worse.",
+    "originStory": "Poker → gaming: tilted players make bad decisions. Advice is usually take a break.",
+    "world": "Gaming",
+    "heatScore": 0.66,
+    "lifecycle": "peaking",
+    "tags": [
+      "gaming",
+      "emotion"
+    ]
+  },
+  {
+    "id": "sc-curve",
+    "title": "The curve",
+    "summary": "Grading relative to classmates — hope and despair.",
+    "originStory": "When the exam destroys everyone, the curve becomes the protagonist.",
+    "world": "School / campus",
+    "heatScore": 0.66,
+    "lifecycle": "peaking",
+    "tags": [
+      "campus",
+      "grades"
+    ]
+  },
+  {
+    "id": "sp-run-it-back",
+    "title": "Run it back",
+    "summary": "Rematch — or do that season again.",
+    "originStory": "From pickup games to franchise hopes and friend-group plans.",
+    "world": "Sports",
+    "heatScore": 0.66,
+    "lifecycle": "rising",
+    "tags": [
+      "sports",
+      "slang"
+    ]
+  },
+  {
+    "id": "wk-mvp",
+    "title": "MVP",
+    "summary": "Minimum Viable Product — ship the smallest useful version.",
+    "originStory": "Startup classic. Outside tech: 'good enough to learn from.'",
+    "world": "Work / tech",
+    "heatScore": 0.66,
+    "lifecycle": "peaking",
+    "tags": [
+      "work",
+      "tech"
+    ]
+  },
+  {
+    "id": "ab-rn",
+    "title": "RN",
+    "summary": "Right Now — urgency stamp.",
+    "originStory": "Pairs with plans, moods, and 'where are you rn?' logistics.",
+    "world": "Abbreviations",
+    "heatScore": 0.65,
+    "lifecycle": "peaking",
+    "tags": [
+      "abbrev",
+      "time"
+    ]
+  },
+  {
+    "id": "wk-offline",
+    "title": "I'll be offline",
+    "summary": "Calendar shield for focus / life.",
+    "originStory": "Remote-work boundary phrase that replaced 'stepping away.'",
+    "world": "Work / tech",
+    "heatScore": 0.65,
+    "lifecycle": "rising",
+    "tags": [
+      "work",
+      "boundaries"
     ]
   },
   {
     "id": "t08",
     "title": "Corecore",
     "summary": "Edit compilations that feel like an existential moodboard with sad audio.",
-    "originStory": "A TikTok / YouTube edit style stacking unrelated clips — consumerism, loneliness, late-capitalism vibes — into an emotional gut punch. Named as a parody of endless '-core' aesthetics (cottagecore, weirdcore). Less a fashion look, more a feeling delivered via montage.",
+    "originStory": "A TikTok / YouTube edit style stacking unrelated clips — consumerism, loneliness, late-capitalism vibes — into an emotional gut punch. Named as a parody of endless '-core' aesthetics.",
     "world": "TikTok",
     "heatScore": 0.64,
     "lifecycle": "rising",
@@ -138,10 +971,445 @@
     ]
   },
   {
+    "id": "gm-nerf",
+    "title": "Nerf",
+    "summary": "When something gets weakened by a patch.",
+    "originStory": "From Nerf foam toys → game balance speak → any time life makes a thing less strong.",
+    "world": "Gaming",
+    "heatScore": 0.64,
+    "lifecycle": "peaking",
+    "tags": [
+      "gaming",
+      "balance"
+    ]
+  },
+  {
+    "id": "sc-dead-week",
+    "title": "Dead week",
+    "summary": "Pre-finals week that is somehow busier than finals.",
+    "originStory": "Name varies by school; the sleep schedule does not.",
+    "world": "School / campus",
+    "heatScore": 0.64,
+    "lifecycle": "peaking",
+    "tags": [
+      "campus",
+      "exams"
+    ]
+  },
+  {
+    "id": "mn-paycheck-to-paycheck",
+    "title": "Paycheck to paycheck",
+    "summary": "No buffer — income barely covers bills.",
+    "originStory": "Relatable finance phrase in culture discourse; judgment-free.",
+    "world": "Money",
+    "heatScore": 0.64,
+    "lifecycle": "peaking",
+    "tags": [
+      "money",
+      "relatable"
+    ]
+  },
+  {
+    "id": "ic-based",
+    "title": "Based",
+    "summary": "Agreeably unfiltered — approval slang with messy baggage.",
+    "originStory": "From early internet / Lil B into broader 'I respect that take' energy. Context matters; Trendy keeps it descriptive.",
+    "world": "Internet culture",
+    "heatScore": 0.63,
+    "lifecycle": "peaking",
+    "tags": [
+      "slang",
+      "approval"
+    ]
+  },
+  {
+    "id": "dt-breadcrumbing",
+    "title": "Breadcrumbing",
+    "summary": "Leaving just enough attention to keep someone hopeful.",
+    "originStory": "Dating discourse term for inconsistent low-effort contact. Not a compliment.",
+    "world": "Dating",
+    "heatScore": 0.63,
+    "lifecycle": "rising",
+    "tags": [
+      "dating",
+      "discourse"
+    ]
+  },
+  {
+    "id": "mu-title-track",
+    "title": "Title track",
+    "summary": "The lead single that defines the era.",
+    "originStory": "Fandom shorthand for the promoted song on an album cycle.",
+    "world": "Music / fandom",
+    "heatScore": 0.63,
+    "lifecycle": "peaking",
+    "tags": [
+      "fandom",
+      "music"
+    ]
+  },
+  {
+    "id": "ab-istg",
+    "title": "ISTG",
+    "summary": "I Swear To God — dramatic emphasis.",
+    "originStory": "Heightens sincerity or frustration in one punchy package.",
+    "world": "Abbreviations",
+    "heatScore": 0.62,
+    "lifecycle": "rising",
+    "tags": [
+      "abbrev",
+      "emphasis"
+    ]
+  },
+  {
+    "id": "sc-syllabus-week",
+    "title": "Syllabus week",
+    "summary": "The fake-chill first week before workload hits.",
+    "originStory": "Students treat it as a grace period; professors may disagree. Seasonal campus slang.",
+    "world": "School / campus",
+    "heatScore": 0.62,
+    "lifecycle": "cooling",
+    "tags": [
+      "campus",
+      "semester"
+    ]
+  },
+  {
+    "id": "mn-ngmi",
+    "title": "NGMI",
+    "summary": "Not Gonna Make It — bearish roast.",
+    "originStory": "Crypto Twitter shorthand for doubting someone's strategy or mindset.",
+    "world": "Money",
+    "heatScore": 0.62,
+    "lifecycle": "rising",
+    "tags": [
+      "money",
+      "crypto",
+      "abbrev"
+    ]
+  },
+  {
+    "id": "tt-ohio",
+    "title": "Only in Ohio",
+    "summary": "Catch-all punchline for anything chaotic or cursed.",
+    "originStory": "Gen Alpha meme treating Ohio as the capital of weird internet energy. Rarely about the actual state.",
+    "world": "TikTok",
+    "heatScore": 0.61,
+    "lifecycle": "cooling",
+    "tags": [
+      "brainrot",
+      "meme",
+      "gen-alpha"
+    ]
+  },
+  {
+    "id": "gm-buff",
+    "title": "Buff",
+    "summary": "When something gets stronger.",
+    "originStory": "Opposite of nerf. Also jokingly used for coffee, sleep, or a new haircut.",
+    "world": "Gaming",
+    "heatScore": 0.61,
+    "lifecycle": "peaking",
+    "tags": [
+      "gaming",
+      "balance"
+    ]
+  },
+  {
+    "id": "dt-love-bombing",
+    "title": "Love bombing",
+    "summary": "Overwhelming affection early — sometimes manipulative.",
+    "originStory": "Psychology term that entered dating TikTok. Trendy explains the phrase; context is everything.",
+    "world": "Dating",
+    "heatScore": 0.61,
+    "lifecycle": "peaking",
+    "tags": [
+      "dating",
+      "discourse"
+    ]
+  },
+  {
+    "id": "sp-send-it",
+    "title": "Send it",
+    "summary": "Go full commitment — no half measures.",
+    "originStory": "Action-sports encouragement that became general hype language.",
+    "world": "Sports",
+    "heatScore": 0.61,
+    "lifecycle": "rising",
+    "tags": [
+      "sports",
+      "hype"
+    ]
+  },
+  {
+    "id": "mu-op-ed",
+    "title": "OP / ED",
+    "summary": "Opening / ending songs for anime & shows.",
+    "originStory": "Anime music fandom shorthand that spilled into general 'this slap' talk.",
+    "world": "Music / fandom",
+    "heatScore": 0.61,
+    "lifecycle": "peaking",
+    "tags": [
+      "fandom",
+      "anime"
+    ]
+  },
+  {
+    "id": "ic-cringe",
+    "title": "Cringe",
+    "summary": "Secondhand embarrassment — or a weaponized vibe check.",
+    "originStory": "Mainstreamed hard in the 2010s; still the default reaction emoji in text form. Often says more about the caller.",
+    "world": "Internet culture",
+    "heatScore": 0.6,
+    "lifecycle": "cooling",
+    "tags": [
+      "reaction",
+      "meme"
+    ]
+  },
+  {
+    "id": "sc-commuter",
+    "title": "Commuter core",
+    "summary": "Campus life without the dorm — bag heavy, train timed.",
+    "originStory": "Aesthetic/identity for students who live off campus and optimize every minute.",
+    "world": "School / campus",
+    "heatScore": 0.6,
+    "lifecycle": "peaking",
+    "tags": [
+      "campus",
+      "identity"
+    ]
+  },
+  {
+    "id": "mn-wagmi",
+    "title": "WAGMI",
+    "summary": "We're All Gonna Make It — hopeful group cope.",
+    "originStory": "Community pep talk abbrev. Sibling of NGMI.",
+    "world": "Money",
+    "heatScore": 0.6,
+    "lifecycle": "rising",
+    "tags": [
+      "money",
+      "crypto",
+      "abbrev"
+    ]
+  },
+  {
+    "id": "gm-diff",
+    "title": "Diff",
+    "summary": "Short for 'difference' — what decided the match.",
+    "originStory": "Competitive shorthand: 'mid diff' means the mid laner was the gap. Spilled into casual roast culture.",
+    "world": "Gaming",
+    "heatScore": 0.59,
+    "lifecycle": "rising",
+    "tags": [
+      "gaming",
+      "abbrev"
+    ]
+  },
+  {
+    "id": "sc-raptor",
+    "title": "R1 / research flex",
+    "summary": "Campus shorthand for research-heavy university vibes.",
+    "originStory": "Students joke about R1 grind culture — labs, grants, and coffee.",
+    "world": "School / campus",
+    "heatScore": 0.59,
+    "lifecycle": "rising",
+    "tags": [
+      "campus",
+      "academic"
+    ]
+  },
+  {
+    "id": "mu-fancam",
+    "title": "Fancam",
+    "summary": "Fan-edited video focusing on one performer.",
+    "originStory": "Concert/clip culture essential — sometimes used as reply-guy chaos on socials.",
+    "world": "Music / fandom",
+    "heatScore": 0.59,
+    "lifecycle": "cooling",
+    "tags": [
+      "fandom",
+      "video"
+    ]
+  },
+  {
+    "id": "wk-oncall",
+    "title": "On-call",
+    "summary": "Your turn to get paged if prod breaks.",
+    "originStory": "Tech ops reality that non-tech friends hear as 'scary phone job.'",
+    "world": "Work / tech",
+    "heatScore": 0.59,
+    "lifecycle": "peaking",
+    "tags": [
+      "work",
+      "tech"
+    ]
+  },
+  {
+    "id": "tt-sigma",
+    "title": "Sigma",
+    "summary": "Lone-wolf archetype meme — sometimes serious, often ironic.",
+    "originStory": "Manosphere-adjacent label that TikTok remixed into jokes, edits, and 'sigma grindset' parody. Tone depends entirely on the poster.",
+    "world": "TikTok",
+    "heatScore": 0.58,
+    "lifecycle": "cooling",
+    "tags": [
+      "meme",
+      "archetype",
+      "tiktok"
+    ]
+  },
+  {
+    "id": "ab-ily",
+    "title": "ILY / ILYSM",
+    "summary": "I Love You (So Much) — affection shorthand.",
+    "originStory": "Texting warmth that scales from friends to partners depending on context.",
+    "world": "Abbreviations",
+    "heatScore": 0.58,
+    "lifecycle": "peaking",
+    "tags": [
+      "abbrev",
+      "affection"
+    ]
+  },
+  {
+    "id": "dt-ghosting",
+    "title": "Ghosting",
+    "summary": "Disappearing without explanation.",
+    "originStory": "Mainstream dating vocab for sudden silence. Painful, common, still debated as etiquette fail.",
+    "world": "Dating",
+    "heatScore": 0.58,
+    "lifecycle": "cooling",
+    "tags": [
+      "dating",
+      "classic"
+    ]
+  },
+  {
+    "id": "sp-house-money",
+    "title": "House money",
+    "summary": "Playing free — already ahead, so swing big.",
+    "originStory": "Gambling/sports metaphor for low-risk aggression after a lead.",
+    "world": "Sports",
+    "heatScore": 0.58,
+    "lifecycle": "peaking",
+    "tags": [
+      "sports",
+      "metaphor"
+    ]
+  },
+  {
+    "id": "mn-diamond-hands",
+    "title": "Diamond hands",
+    "summary": "Holding an asset despite volatility.",
+    "originStory": "Retail-investing meme for conviction (or stubbornness). Opposite: paper hands.",
+    "world": "Money",
+    "heatScore": 0.58,
+    "lifecycle": "cooling",
+    "tags": [
+      "money",
+      "investing",
+      "meme"
+    ]
+  },
+  {
+    "id": "ic-understood-assignment",
+    "title": "Understood the assignment",
+    "summary": "Nailed the brief — fashion, joke, or moment.",
+    "originStory": "Praise phrase from Black Twitter/TikTok for executing a look or bit perfectly.",
+    "world": "Internet culture",
+    "heatScore": 0.57,
+    "lifecycle": "cooling",
+    "tags": [
+      "praise",
+      "slang"
+    ]
+  },
+  {
+    "id": "sc-office-hours",
+    "title": "Office hours lore",
+    "summary": "The mythic quest of actually going to office hours.",
+    "originStory": "Memes about fearing professors then discovering they're helpful. Campus survival tip dressed as a bit.",
+    "world": "School / campus",
+    "heatScore": 0.57,
+    "lifecycle": "rising",
+    "tags": [
+      "campus",
+      "advice"
+    ]
+  },
+  {
+    "id": "sp-buzzer",
+    "title": "Buzzer-beater energy",
+    "summary": "Last-second heroics.",
+    "originStory": "Basketball term used for any clutch finish in life.",
+    "world": "Sports",
+    "heatScore": 0.57,
+    "lifecycle": "peaking",
+    "tags": [
+      "sports",
+      "clutch"
+    ]
+  },
+  {
+    "id": "wk-bike-shed",
+    "title": "Bikeshedding",
+    "summary": "Debating trivia instead of hard problems.",
+    "originStory": "From Parkinson's law of triviality — beloved eng meme.",
+    "world": "Work / tech",
+    "heatScore": 0.57,
+    "lifecycle": "rising",
+    "tags": [
+      "work",
+      "tech",
+      "meme"
+    ]
+  },
+  {
+    "id": "dt-benching",
+    "title": "Benching",
+    "summary": "Keeping someone as a backup option.",
+    "originStory": "Sports metaphor for not starting someone but not cutting them either.",
+    "world": "Dating",
+    "heatScore": 0.56,
+    "lifecycle": "rising",
+    "tags": [
+      "dating",
+      "metaphor"
+    ]
+  },
+  {
+    "id": "mu-vocal-coach",
+    "title": "Vocal coach reaction",
+    "summary": "Pro musicians reacting to performances as content.",
+    "originStory": "YouTube genre that fandoms treat as validation (or debate fuel).",
+    "world": "Music / fandom",
+    "heatScore": 0.56,
+    "lifecycle": "rising",
+    "tags": [
+      "fandom",
+      "youtube"
+    ]
+  },
+  {
+    "id": "mn-soft-save",
+    "title": "Soft save / hard save",
+    "summary": "Casual vs serious money discipline vibes.",
+    "originStory": "Internet money-talk remix of soft/hard launch language for budgets.",
+    "world": "Money",
+    "heatScore": 0.56,
+    "lifecycle": "rising",
+    "tags": [
+      "money",
+      "slang"
+    ]
+  },
+  {
     "id": "t02",
     "title": "Roman Empire",
     "summary": "The viral bit that men think about Rome 'often' — turned into a culture gag.",
-    "originStory": "A 2023 TikTok trend asked women how often their partners think about the Roman Empire. Shockingly frequent answers became a meme about hyperfixation, history nerd energy, and gendered conversational weirdness. It spawned endless variants ('what's your Roman Empire?') for any oddly recurring thought.",
+    "originStory": "A 2023 TikTok trend asked women how often their partners think about the Roman Empire. Shockingly frequent answers became a meme about hyperfixation. It spawned endless variants ('what's your Roman Empire?').",
     "world": "TikTok",
     "heatScore": 0.55,
     "lifecycle": "cooling",
@@ -152,10 +1420,115 @@
     ]
   },
   {
+    "id": "gm-int",
+    "title": "Inting",
+    "summary": "Intentionally feeding / throwing (or just playing that badly).",
+    "originStory": "From 'intentional feeding.' Now used whenever someone sabotages a round — on purpose or by accident.",
+    "world": "Gaming",
+    "heatScore": 0.55,
+    "lifecycle": "rising",
+    "tags": [
+      "gaming",
+      "slang"
+    ]
+  },
+  {
+    "id": "sc-transfer-arc",
+    "title": "Transfer arc",
+    "summary": "Restarting social + academic plot at a new school.",
+    "originStory": "Students narrate transferring like a season reboot — scary and hopeful.",
+    "world": "School / campus",
+    "heatScore": 0.55,
+    "lifecycle": "rising",
+    "tags": [
+      "campus",
+      "identity"
+    ]
+  },
+  {
+    "id": "wk-rto",
+    "title": "RTO",
+    "summary": "Return To Office — mandate drama shorthand.",
+    "originStory": "Post-pandemic workplace abbrev for going back onsite.",
+    "world": "Work / tech",
+    "heatScore": 0.55,
+    "lifecycle": "rising",
+    "tags": [
+      "work",
+      "abbrev"
+    ]
+  },
+  {
+    "id": "dt-cuffing-season",
+    "title": "Cuffing season",
+    "summary": "Fall/winter urge to couple up.",
+    "originStory": "Seasonal dating meme: colder weather, warmer situationships.",
+    "world": "Dating",
+    "heatScore": 0.54,
+    "lifecycle": "cooling",
+    "tags": [
+      "dating",
+      "seasonal"
+    ]
+  },
+  {
+    "id": "mu-gatekeep",
+    "title": "Gatekeep (the discography)",
+    "summary": "Protecting deep cuts from casuals — sometimes playfully.",
+    "originStory": "Part of the gatekeep/gaslight/girlboss joke triad; in music it means snobbery or care.",
+    "world": "Music / fandom",
+    "heatScore": 0.54,
+    "lifecycle": "cooling",
+    "tags": [
+      "fandom",
+      "meme"
+    ]
+  },
+  {
+    "id": "mn-paper-hands",
+    "title": "Paper hands",
+    "summary": "Selling early under pressure.",
+    "originStory": "Playful roast in investing chats. Not financial advice — just vocabulary.",
+    "world": "Money",
+    "heatScore": 0.54,
+    "lifecycle": "cooling",
+    "tags": [
+      "money",
+      "investing",
+      "meme"
+    ]
+  },
+  {
+    "id": "gm-one-shot",
+    "title": "One-shot",
+    "summary": "Killed in a single hit — or a take that ends debate.",
+    "originStory": "Combat slang that became metaphor for anything decisive and sudden.",
+    "world": "Gaming",
+    "heatScore": 0.53,
+    "lifecycle": "cooling",
+    "tags": [
+      "gaming",
+      "slang"
+    ]
+  },
+  {
+    "id": "ic-ratio",
+    "title": "Ratio",
+    "summary": "When replies/likes dunk on the original post.",
+    "originStory": "Twitter/X culture: getting ratioed means the crowd disagreed harder than they agreed. Still used beyond that app.",
+    "world": "Internet culture",
+    "heatScore": 0.52,
+    "lifecycle": "cooling",
+    "tags": [
+      "social",
+      "dunk"
+    ]
+  },
+  {
     "id": "t12",
     "title": "FOMO → JOMO",
     "summary": "Fear of missing out vs joy of missing out — the pendulum swing.",
-    "originStory": "FOMO defined social media anxiety for a decade. JOMO flipped it: pleasure in staying home, muting the noise, missing the party on purpose. Both abbreviations still circulate; JOMO peaks whenever burnout discourse does. Trendy exists partly so you can catch the signal without the FOMO spiral.",
+    "originStory": "FOMO defined social media anxiety; JOMO flipped it into pleasure in staying home. Both still circulate.",
     "world": "Abbreviations",
     "heatScore": 0.52,
     "lifecycle": "rising",
@@ -166,10 +1539,88 @@
     ]
   },
   {
+    "id": "sp-superteam",
+    "title": "Superteam",
+    "summary": "Roster so stacked it feels unfair.",
+    "originStory": "NBA/football discourse staple; also joke about friend groups.",
+    "world": "Sports",
+    "heatScore": 0.52,
+    "lifecycle": "cooling",
+    "tags": [
+      "sports",
+      "discourse"
+    ]
+  },
+  {
+    "id": "mn-exit-liquidity",
+    "title": "Exit liquidity",
+    "summary": "Being the buyer someone else sells into.",
+    "originStory": "Finance jargon that memes use when retail gets dumped on. Educational caution vibes.",
+    "world": "Money",
+    "heatScore": 0.51,
+    "lifecycle": "rising",
+    "tags": [
+      "money",
+      "caution"
+    ]
+  },
+  {
+    "id": "ab-hmu",
+    "title": "HMU",
+    "summary": "Hit Me Up — invitation to message.",
+    "originStory": "Classic social abbrev for 'text me' / 'reach out.'",
+    "world": "Abbreviations",
+    "heatScore": 0.5,
+    "lifecycle": "peaking",
+    "tags": [
+      "abbrev",
+      "social"
+    ]
+  },
+  {
+    "id": "wk-stakeholder",
+    "title": "Stakeholder sync",
+    "summary": "Meeting about the meeting's audience.",
+    "originStory": "Corp calendar filler that became a gentle joke among ICs.",
+    "world": "Work / tech",
+    "heatScore": 0.5,
+    "lifecycle": "cooling",
+    "tags": [
+      "work",
+      "corp-speak"
+    ]
+  },
+  {
+    "id": "sp-tanking",
+    "title": "Tanking",
+    "summary": "Losing on purpose for future advantage.",
+    "originStory": "League strategy discourse that fans apply sarcastically to their own teams.",
+    "world": "Sports",
+    "heatScore": 0.49,
+    "lifecycle": "cooling",
+    "tags": [
+      "sports",
+      "strategy"
+    ]
+  },
+  {
+    "id": "tt-ate",
+    "title": "Ate (and left no crumbs)",
+    "summary": "Did something exceptionally well.",
+    "originStory": "Praise slang that crossed into broader TikTok compliments. Use it sincerely — it's celebration, not homework.",
+    "world": "TikTok",
+    "heatScore": 0.48,
+    "lifecycle": "cooling",
+    "tags": [
+      "slang",
+      "praise"
+    ]
+  },
+  {
     "id": "t10",
     "title": "GG / GG EZ",
     "summary": "Good game — or the toxic cousin that gloats after a win.",
-    "originStory": "'GG' is polite end-of-match etiquette from competitive gaming. 'GG EZ' (good game, easy) twists it into a taunt. Many communities auto-mute or shame EZ spam. Still, GG alone remains the universal handshake of 'match over, respect.'",
+    "originStory": "'GG' is polite end-of-match etiquette. 'GG EZ' twists it into a taunt. Many communities auto-mute EZ spam.",
     "world": "Gaming",
     "heatScore": 0.48,
     "lifecycle": "cooling",
@@ -180,11 +1631,129 @@
     ]
   },
   {
-    "id": "t03",
+    "id": "sc-all-nighter",
+    "title": "All-nighter",
+    "summary": "Pulling a sleepless study/work marathon.",
+    "originStory": "Classic student slang that never left — now also remote-work coded.",
+    "world": "School / campus",
+    "heatScore": 0.48,
+    "lifecycle": "cooling",
+    "tags": [
+      "campus",
+      "classic"
+    ]
+  },
+  {
+    "id": "ab-afaik",
+    "title": "AFAIK",
+    "summary": "As Far As I Know — epistemic humility.",
+    "originStory": "Useful hedge when sharing info that might be incomplete.",
+    "world": "Abbreviations",
+    "heatScore": 0.47,
+    "lifecycle": "rising",
+    "tags": [
+      "abbrev",
+      "hedge"
+    ]
+  },
+  {
+    "id": "mn-to-the-moon",
+    "title": "To the moon",
+    "summary": "Hype that a price will rocket.",
+    "originStory": "Meme optimism. Treat as vibes, not a plan.",
+    "world": "Money",
+    "heatScore": 0.47,
+    "lifecycle": "cooling",
+    "tags": [
+      "money",
+      "hype",
+      "meme"
+    ]
+  },
+  {
+    "id": "sp-dud",
+    "title": "Dud game",
+    "summary": "A star underperforms — off night.",
+    "originStory": "Broadcast slang that fans reuse in group chats.",
+    "world": "Sports",
+    "heatScore": 0.45,
+    "lifecycle": "cooling",
+    "tags": [
+      "sports",
+      "broadcast"
+    ]
+  },
+  {
+    "id": "ab-tbh",
+    "title": "TBH",
+    "summary": "To Be Honest — soft opener for a real take.",
+    "originStory": "Classic texting abbrev that never left. Often cushions a blunt opinion.",
+    "world": "Abbreviations",
+    "heatScore": 0.44,
+    "lifecycle": "cooling",
+    "tags": [
+      "abbrev",
+      "classic"
+    ]
+  },
+  {
+    "id": "gm-afk",
+    "title": "AFK",
+    "summary": "Away From Keyboard — temporarily gone.",
+    "originStory": "Classic MMO/chat status that still marks a pause in Discords and lobbies.",
+    "world": "Gaming",
+    "heatScore": 0.42,
+    "lifecycle": "cooling",
+    "tags": [
+      "gaming",
+      "abbrev"
+    ]
+  },
+  {
+    "id": "ab-atm",
+    "title": "ATM",
+    "summary": "At The Moment — time-stamp for your current state.",
+    "originStory": "Not the cash machine (usually). Quick status update in texts.",
+    "world": "Abbreviations",
+    "heatScore": 0.41,
+    "lifecycle": "cooling",
+    "tags": [
+      "abbrev",
+      "classic"
+    ]
+  },
+  {
+    "id": "wk-synergy",
+    "title": "Synergy",
+    "summary": "Buzzword for collaboration that sounds fancier than 'team up.'",
+    "originStory": "Corporate meme fuel. Still appears in decks with a straight face.",
+    "world": "Work / tech",
+    "heatScore": 0.4,
+    "lifecycle": "cooling",
+    "tags": [
+      "work",
+      "corp-speak"
+    ]
+  },
+  {
+    "id": "ab-imo",
+    "title": "IMO / IMHO",
+    "summary": "In My (Humble) Opinion — opinion disclaimer.",
+    "originStory": "Forum classic that still shows up when people want to soften a take.",
+    "world": "Abbreviations",
+    "heatScore": 0.39,
+    "lifecycle": "cooling",
+    "tags": [
+      "abbrev",
+      "classic"
+    ]
+  },
+  {
+    "id": "wk-quiet-quitting",
     "title": "Quiet quitting",
-    "summary": "Doing your job — not your boss's ambition — without the unpaid overtime.",
-    "originStory": "Coined in workplace discourse around 2022, 'quiet quitting' reframed boundary-setting as rebellion: meet the job description, skip hustle culture. Critics called it laziness; defenders called it sanity. It rode LinkedIn and TikTok, then cooled as 'quiet luxury' and 'loud quitting' variants took the mic.",
-    "world": "Internet culture",
+    "summary": "Doing your job — not unpaid ambition overtime.",
+    "originStory": "Workplace discourse around 2022 that reframed boundaries. Still referenced.",
+    "world": "Work / tech",
     "heatScore": 0.38,
     "lifecycle": "cooling",
     "tags": [
@@ -194,122 +1763,42 @@
     ]
   },
   {
-    "id": "r_178c8fcf2f",
-    "title": "Wikipedia: Portal:Current events",
-    "summary": "Wikimedia portal",
-    "originStory": "Observed via Radar source `wikipedia` Source link: https://en.wikipedia.org/wiki/Portal%3ACurrent_events This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.293,
+    "id": "ab-smh",
+    "title": "SMH",
+    "summary": "Shaking My Head — mild disbelief.",
+    "originStory": "Useful when tone needs a sigh, not a paragraph.",
+    "world": "Abbreviations",
+    "heatScore": 0.36,
     "lifecycle": "cooling",
     "tags": [
-      "wikipedia",
-      "current-events",
-      "radar"
-    ],
-    "radarSource": "wikipedia",
-    "radarUrl": "https://en.wikipedia.org/wiki/Portal%3ACurrent_events",
-    "radarSignalId": "wikipedia:current-events"
+      "abbrev",
+      "classic"
+    ]
   },
   {
-    "id": "r_3d159e77b9",
-    "title": "The Scariest Chart In Engineering",
-    "summary": "Why is the Smith Chart one of the scariest charts in electrical engineering?",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/O3a99HNskNk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
+    "id": "sc-freshman-15",
+    "title": "Freshman 15",
+    "summary": "The (overhyped) first-year weight change myth.",
+    "originStory": "Older campus phrase still referenced ironically; bodies change for lots of reasons.",
+    "world": "School / campus",
+    "heatScore": 0.35,
     "lifecycle": "cooling",
     "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/O3a99HNskNk",
-    "radarSignalId": "youtube:O3a99HNskNk"
+      "campus",
+      "classic"
+    ]
   },
   {
-    "id": "r_399597a4e7",
-    "title": "The Most Dangerous Escalator In Europe",
-    "summary": "In 2018 football fans were leaving a stadium in Rome. They boarded an escalator down to the metro. Suddenly the machine sprung a fault.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/oR94cicO7xM This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
+    "id": "ab-brb",
+    "title": "BRB",
+    "summary": "Be Right Back — pause signal.",
+    "originStory": "Ancient chat etiquette that still works in Discords and group chats.",
+    "world": "Abbreviations",
+    "heatScore": 0.33,
     "lifecycle": "cooling",
     "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/oR94cicO7xM",
-    "radarSignalId": "youtube:oR94cicO7xM"
-  },
-  {
-    "id": "r_f1c0f04219",
-    "title": "A Physics Professor Bet Me $10,000 I'm Wrong...",
-    "summary": "A UCLA Physics Professor bet me $10,000 that my video (https://youtu.be/jyQwgBAaBag) about going downwind faster than the wind was wrong.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/F5_G0AHfYhI This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "cooling",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/F5_G0AHfYhI",
-    "radarSignalId": "youtube:F5_G0AHfYhI"
-  },
-  {
-    "id": "r_60ece1bb12",
-    "title": "Why Do People Pass Out On Roller Coasters?",
-    "summary": "Why Do People Pass Out On Roller Coasters?",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/67LFeTgFv3Y This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "cooling",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/67LFeTgFv3Y",
-    "radarSignalId": "youtube:67LFeTgFv3Y"
-  },
-  {
-    "id": "r_f70f89ed45",
-    "title": "Why the Moon Never Changes",
-    "summary": "Why the Moon Never Changes",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/KLJxCWeYGoE This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "cooling",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/KLJxCWeYGoE",
-    "radarSignalId": "youtube:KLJxCWeYGoE"
-  },
-  {
-    "id": "r_67e4212a9d",
-    "title": "$100 Slime Challenge",
-    "summary": "Pick up your CrunchLabs Slime Prank Lab from Walmart, Target, or Amazon today.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/KwqeKTM9M_8 This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "cooling",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/KwqeKTM9M_8",
-    "radarSignalId": "youtube:KwqeKTM9M_8"
+      "abbrev",
+      "classic"
+    ]
   }
 ]

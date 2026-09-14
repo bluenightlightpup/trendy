@@ -27,6 +27,11 @@ sources:
       - NoStupidQuestions
       - tiktokcringe
       - internet_culture
+      - gaming
+      - college
+      - sports
+      - kpophelp
+      - personalfinance
     listing: hot
     limit: 25
   wikipedia_current:
@@ -50,4 +55,9 @@ sources:
 slang_heuristics:
   min_token_len: 2
   max_token_len: 24
-  max_new_per_run: 40
+  max_new_per_run: 80
+
+# Catalog size caps (Explore should feel vast; raise if Radar trims too hard)
+merge:
+  max_trends: 250
+  max_slang_entries: 500

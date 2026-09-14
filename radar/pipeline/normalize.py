@@ -8,7 +8,18 @@ from typing import Any
 
 from .heat import apply_heat
 
-_WORLDS = {"TikTok", "Internet culture", "Abbreviations", "Gaming"}
+_WORLDS = {
+    "TikTok",
+    "Internet culture",
+    "Abbreviations",
+    "Gaming",
+    "Dating",
+    "School / campus",
+    "Sports",
+    "Music / fandom",
+    "Work / tech",
+    "Money",
+}
 
 # Common short tokens / English filler that are not slang candidates
 _STOP = {

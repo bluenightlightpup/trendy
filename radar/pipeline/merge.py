@@ -18,7 +18,7 @@ def merge_trends(
     existing: list[dict[str, Any]],
     incoming: list[dict[str, Any]],
     *,
-    max_items: int = 80,
+    max_items: int = 250,
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
     """Dedupe by normalized title; bump heat on match; append new radar rows."""
     by_title: dict[str, dict[str, Any]] = {}
@@ -68,7 +68,7 @@ def merge_trends(
         # Prefer keeping non-radar-only curated (ids like t01) then top heat
         curated = [x for x in merged if str(x.get("id", "")).startswith("t")]
         rest = [x for x in merged if not str(x.get("id", "")).startswith("t")]
-        keep = curated[: max(12, max_items // 2)]
+        keep = curated[: max(40, max_items // 2)]
         room = max_items - len(keep)
         keep.extend(rest[:room])
         merged = keep
@@ -81,7 +81,7 @@ def merge_slang(
     existing_doc: dict[str, Any],
     incoming: list[dict[str, Any]],
     *,
-    max_entries: int = 200,
+    max_entries: int = 500,
 ) -> tuple[dict[str, Any], dict[str, int]]:
     """Merge slang candidates; dedupe by overlapping terms."""
     doc = dict(existing_doc) if existing_doc else {}

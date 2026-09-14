@@ -2,7 +2,18 @@
 (() => {
   "use strict";
 
-  const WORLDS = ["TikTok", "Internet culture", "Abbreviations", "Gaming"];
+  const WORLDS = [
+    "TikTok",
+    "Internet culture",
+    "Abbreviations",
+    "Gaming",
+    "Dating",
+    "School / campus",
+    "Sports",
+    "Music / fandom",
+    "Work / tech",
+    "Money",
+  ];
   const STORAGE_KEY = "trendy.you.prefs.v1";
   const DEFAULT_PREFS = {
     worlds: Object.fromEntries(WORLDS.map((w) => [w, true])),
@@ -20,6 +31,7 @@
     savedIds: [],
     tab: "home",
     exploreWorld: "All",
+    exploreQuery: "",
     homeFilter: "all",
     detailId: null,
     detailFrom: "home",
@@ -147,10 +159,19 @@
   }
 
   function filteredExploreTrends() {
-    const list =
+    let list =
       state.exploreWorld === "All"
         ? state.trends
         : state.trends.filter((t) => t.world === state.exploreWorld);
+    const q = (state.exploreQuery || "").trim().toLowerCase();
+    if (q) {
+      list = list.filter((t) => {
+        const hay = [t.title, t.summary, ...(t.tags || []), t.world]
+          .join(" ")
+          .toLowerCase();
+        return hay.includes(q);
+      });
+    }
     return list.slice().sort((a, b) => b.heatScore - a.heatScore);
   }
 
@@ -214,12 +235,25 @@
       )
       .join("");
 
+    const search = $("#explore-search");
+    if (search && search.value !== state.exploreQuery) {
+      search.value = state.exploreQuery;
+    }
+
     const feed = $("#explore-feed");
     const empty = $("#explore-empty");
     const items = filteredExploreTrends();
     if (!items.length) {
       feed.innerHTML = "";
       empty.hidden = false;
+      const q = (state.exploreQuery || "").trim();
+      empty.innerHTML =
+        `<p class="empty-title">${q ? "No matches" : "Nothing in this world"}</p>` +
+        `<p class="empty-body">${
+          q
+            ? "Try another word, clear search, or pick a different niche chip."
+            : "Try another niche — Dating, campus, sports, music, Money, and more. Radar keeps adding fresh slang."
+        }</p>`;
       return;
     }
     empty.hidden = true;
@@ -331,7 +365,7 @@
     const subs = {
       home: "Signal, not scroll.",
       decode: "AI search — any word.",
-      explore: "Worlds of culture.",
+      explore: "Catch up without the scroll",
       you: "Your filters & tone.",
       detail: "Origin story.",
     };
@@ -457,6 +491,14 @@
       state.exploreWorld = chip.dataset.world;
       renderExplore();
     });
+
+    const exploreSearch = $("#explore-search");
+    if (exploreSearch) {
+      exploreSearch.addEventListener("input", (e) => {
+        state.exploreQuery = e.target.value;
+        renderExplore();
+      });
+    }
 
     $("#you-saved-list").addEventListener("click", (e) => {
       const row = e.target.closest("[data-open-saved]");

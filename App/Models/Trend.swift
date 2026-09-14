@@ -6,6 +6,12 @@ enum TrendWorld: String, CaseIterable, Identifiable, Codable, Hashable {
     case internetCulture = "Internet culture"
     case abbreviations = "Abbreviations"
     case gaming = "Gaming"
+    case dating = "Dating"
+    case schoolCampus = "School / campus"
+    case sports = "Sports"
+    case musicFandom = "Music / fandom"
+    case workTech = "Work / tech"
+    case money = "Money"
 
     var id: String { rawValue }
 }

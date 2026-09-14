@@ -84,13 +84,24 @@
     <section id="view-explore" class="view" data-view="explore" hidden>
       <div class="view-toolbar">
         <h2 class="view-title">Explore</h2>
-        <p class="view-hint">Browse by world</p>
+        <p class="view-hint">Catch up without the scroll</p>
       </div>
-      <div id="explore-chips" class="chip-row" role="toolbar" aria-label="Filter by world"></div>
+      <div id="explore-chips" class="chip-row chip-row-scroll" role="toolbar" aria-label="Filter by world"></div>
+      <label class="explore-search-label" for="explore-search">
+        <span class="sr-only">Search Explore</span>
+        <input
+          id="explore-search"
+          class="explore-search"
+          type="search"
+          placeholder="Filter by title or tags…"
+          autocomplete="off"
+          enterkeyhint="search"
+        />
+      </label>
       <div id="explore-feed" class="feed" role="list"></div>
       <div id="explore-empty" class="empty-state" hidden>
         <p class="empty-title">Nothing in this world</p>
-        <p class="empty-body">Try another chip — slang moves fast.</p>
+        <p class="empty-body">Try another niche — Dating, campus, sports, music, Money, and more. Radar keeps adding fresh slang.</p>
       </div>
     </section>
 

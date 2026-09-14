@@ -1,6 +1,6 @@
 # Trend Radar
 
-Continuous multi-platform ingest for Trendy: train on slang and trend signals around the clock, then merge into the PWA catalogs under `web/data/`.
+Continuous multi-platform ingest for Trendy: train on slang and trend signals around the clock across **all Explore niches**, then merge into the PWA catalogs under `web/data/`. Niche list: `docs/explore-niches.md`.
 
 ## How it works
 

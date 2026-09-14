@@ -11,15 +11,34 @@ struct ExploreView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                Picker("World", selection: $world) {
-                    ForEach(TrendWorld.allCases) { w in
-                        Text(shortLabel(for: w)).tag(w)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(TrendWorld.allCases) { w in
+                            Button {
+                                world = w
+                            } label: {
+                                Text(shortLabel(for: w))
+                                    .font(TrendyTypography.mono(11))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 8)
+                                    .background(
+                                        Capsule()
+                                            .fill(world == w ? TrendyColors.heatCool : TrendyColors.inkElevated)
+                                    )
+                                    .foregroundStyle(world == w ? TrendyColors.inkBg : TrendyColors.textSecondary)
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(TrendyColors.inkBorder, lineWidth: world == w ? 0 : 1)
+                                    )
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel("Filter Explore by \(w.rawValue)")
+                            .accessibilityAddTraits(world == w ? .isSelected : [])
+                        }
                     }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
                 }
-                .pickerStyle(.segmented)
-                .padding(.horizontal, 16)
-                .padding(.top, 12)
-                .padding(.bottom, 8)
                 .accessibilityLabel("Trend world")
 
                 if trends.isEmpty {
@@ -69,7 +88,7 @@ struct ExploreView: View {
         ContentUnavailableView {
             Label("No trends in \(world.rawValue)", systemImage: "globe")
         } description: {
-            Text("Try another world — mock catalog is offline-first and still growing.")
+            Text("Try another niche — Dating, campus, sports, music, Money, and more. Mock catalog is offline-first and still growing.")
                 .font(TrendyTypography.body(14))
         }
         .foregroundStyle(TrendyColors.textSecondary)
@@ -82,6 +101,12 @@ struct ExploreView: View {
         case .internetCulture: return "Internet"
         case .abbreviations: return "Abbrevs"
         case .gaming: return "Gaming"
+        case .dating: return "Dating"
+        case .schoolCampus: return "Campus"
+        case .sports: return "Sports"
+        case .musicFandom: return "Music"
+        case .workTech: return "Work"
+        case .money: return "Money"
         }
     }
 }

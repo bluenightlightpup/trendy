@@ -120,6 +120,57 @@ class RedditAdapter(BaseAdapter):
         if any(k in blob for k in ("game", "gaming", "steam", "esport", "npc", "gg ")):
             return "Gaming"
         if any(
+            k in blob
+            for k in (
+                "dating",
+                "situationship",
+                "soft launch",
+                "relationship",
+                "rizz",
+            )
+        ):
+            return "Dating"
+        if any(
+            k in blob
+            for k in ("campus", "college", "midterm", "semester", "dorm", "professor")
+        ):
+            return "School / campus"
+        if any(
+            k in blob
+            for k in ("sports", "nba", "nfl", "soccer", "football", "scoreboard")
+        ):
+            return "Sports"
+        if any(
+            k in blob
+            for k in ("kpop", "stan", "fandom", "bias", "comeback", "album", "concert")
+        ):
+            return "Music / fandom"
+        if any(
+            k in blob
+            for k in (
+                "workplace",
+                "corporate",
+                "standup",
+                "pull request",
+                "on-call",
+                "linkedin",
+            )
+        ):
+            return "Work / tech"
+        if any(
+            k in blob
+            for k in (
+                "crypto",
+                "finance",
+                "invest",
+                "stock",
+                "rug pull",
+                "wallet",
+                "paycheck",
+            )
+        ):
+            return "Money"
+        if any(
             k in blob for k in ("abbrev", "acronym", "stand for", "what does", "mean")
         ):
             return "Abbreviations"
