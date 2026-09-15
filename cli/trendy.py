@@ -3,6 +3,8 @@
 
 Usage (from repo root):
   python cli/trendy.py decode 67
+  python cli/trendy.py decode "niche phrase" --live
+  python cli/trendy.py serve [--host 0.0.0.0] [--port 8787]
   python cli/trendy.py trends --min-heat 0.7 --limit 20
   python cli/trendy.py radar status
   python cli/trendy.py radar run [-- …flags passed to run_ingest.py]
@@ -122,12 +124,36 @@ def lookup_lexicon(term: str) -> tuple[dict[str, Any] | None, str | None]:
 
 def cmd_decode(args: argparse.Namespace) -> int:
     term = args.term
+    use_live = bool(getattr(args, "live", False))
+
+    if use_live:
+        from cli.live_decode import live_decode, resolve_provider
+
+        if resolve_provider() is None:
+            print(
+                "no API key for --live. Set OPENAI_API_KEY or ANTHROPIC_API_KEY "
+                "(or TRENDY_* variants).",
+                file=sys.stderr,
+            )
+            return 1
+        try:
+            result = live_decode(term, new_here=True)
+        except Exception as e:  # noqa: BLE001
+            print(f"live decode failed: {e}", file=sys.stderr)
+            return 1
+        print(f"{term}  [live:{result.get('provider')}]")
+        print(f"short:   {result.get('meaning', '')}")
+        print(f"explain: {result.get('explain', '')}")
+        print(f"origin:  {result.get('origin', '')}")
+        print(f"confidence: {result.get('confidence', '')}")
+        return 0
+
     entry, source = lookup_lexicon(term)
     if entry is None:
         print(f"no lexicon hit for: {term}")
         print(
-            "(CLI spike is lexicon-only; the PWA Decode tab has extra "
-            "built-in fallbacks and AI assist.)"
+            "(Lexicon miss. Retry with --live if an API key is set, "
+            "or use the PWA Decode tab / `python cli/trendy.py serve`.)"
         )
         return 0
 
@@ -145,6 +171,12 @@ def cmd_decode(args: argparse.Namespace) -> int:
     if origin:
         print(f"origin:  {origin}")
     return 0
+
+
+def cmd_serve(args: argparse.Namespace) -> int:
+    from cli.live_decode import run_serve
+
+    return run_serve(host=args.host, port=int(args.port))
 
 
 def cmd_trends(args: argparse.Namespace) -> int:
@@ -258,7 +290,21 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_decode = sub.add_parser("decode", help="Judgment-free lexicon explain")
     p_decode.add_argument("term", help="Term or phrase to look up")
+    p_decode.add_argument(
+        "--live",
+        action="store_true",
+        help="Call live model (OPENAI_API_KEY / ANTHROPIC_API_KEY) instead of lexicon",
+    )
     p_decode.set_defaults(func=cmd_decode)
+
+    p_serve = sub.add_parser(
+        "serve",
+        help="Local Decode proxy for PWA live model-on-miss (port 8787)",
+        aliases=["decode-proxy"],
+    )
+    p_serve.add_argument("--host", default="0.0.0.0", help="Bind address (default 0.0.0.0 for LAN)")
+    p_serve.add_argument("--port", type=int, default=8787, help="Port (default 8787)")
+    p_serve.set_defaults(func=cmd_serve)
 
     p_trends = sub.add_parser("trends", help="List hot trends from web/data")
     p_trends.add_argument(

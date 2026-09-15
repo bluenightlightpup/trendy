@@ -50,14 +50,16 @@ Publish the contents of `web/` (or `/docs` copy) as Pages. Keep relative paths (
 | `sw.js` | Offline cache |
 | `icons/` | SVG icons |
 
-Prefs (worlds, digest, New here) persist in `localStorage` under `trendy.you.prefs.v1`.
+Prefs (worlds, digest, New here, optional `liveDecodeUrl`) persist in `localStorage` under `trendy.you.prefs.v1`.
+
+**Live Decode (optional):** You tab → paste LAN proxy URL (`http://<pc-ip>:8787`). Keys stay on the PC via `python cli/trendy.py serve`. See `docs/live-decode.md`.
 
 Saved / followed trend IDs use `trendy.saved.v1` (see `saved.js`). Hearts on cards and detail toggle without leaving the feed; **You → Saved trends** lists them; Home has an optional **All | Saved** filter.
 
 ### Phase 3 (PWA)
 
 - Save/follow + a11y/reduced-motion polish
-- Offline cache bumped to `trendy-v7` (precache includes `decode-ai.js` + `saved.js`)
+- Offline cache bumped to `trendy-v12` (precache includes `decode-ai.js` + `saved.js`)
 - Node tests: `npm test` (or `node --test tests/*.mjs`) from this folder
 
 

@@ -19,6 +19,7 @@
     worlds: Object.fromEntries(WORLDS.map((w) => [w, true])),
     digest: "weekly",
     newHere: true,
+    liveDecodeUrl: "",
   };
 
   const Saved = () => globalThis.TrendySaved;
@@ -49,6 +50,8 @@
         worlds: { ...DEFAULT_PREFS.worlds, ...(parsed.worlds || {}) },
         digest: parsed.digest || DEFAULT_PREFS.digest,
         newHere: typeof parsed.newHere === "boolean" ? parsed.newHere : DEFAULT_PREFS.newHere,
+        liveDecodeUrl:
+          typeof parsed.liveDecodeUrl === "string" ? parsed.liveDecodeUrl.trim() : "",
       };
     } catch {
       return structuredClone(DEFAULT_PREFS);
@@ -388,15 +391,19 @@
 
     $("#digest-freq").value = state.prefs.digest;
     $("#new-here").checked = !!state.prefs.newHere;
+    const liveInput = $("#live-decode-url");
+    if (liveInput) liveInput.value = state.prefs.liveDecodeUrl || "";
     updateDecodeHint();
     renderYouSaved();
   }
 
   function updateDecodeHint() {
     const hint = $("#decode-mode-hint");
-    hint.textContent = state.prefs.newHere
+    const live = !!(state.prefs.liveDecodeUrl && state.prefs.liveDecodeUrl.trim());
+    const base = state.prefs.newHere
       ? "AI slang search · New here on"
       : "AI slang search · ask anything";
+    hint.textContent = live ? base + " · live on miss" : base;
   }
 
   function refreshVisibleFeeds() {
@@ -490,6 +497,7 @@
         trends: state.trends,
         abbreve: state.abbreve,
         newHere: state.prefs.newHere,
+        liveDecodeUrl: state.prefs.liveDecodeUrl || "",
       });
       const html = window.TrendyDecodeAI.formatAnswerHtml(answer, escapeHtml);
       typing.classList.remove("bubble-typing");
@@ -582,6 +590,33 @@
       renderYouSaved();
     });
 
+    const liveSave = $("#live-decode-save");
+    const liveClear = $("#live-decode-clear");
+    const liveInput = $("#live-decode-url");
+    if (liveSave && liveInput) {
+      liveSave.addEventListener("click", () => {
+        state.prefs.liveDecodeUrl = String(liveInput.value || "").trim();
+        savePrefs();
+        updateDecodeHint();
+        const status = $("#live-decode-status");
+        if (status) {
+          status.textContent = state.prefs.liveDecodeUrl
+            ? "Saved — Decode will call this proxy on misses only."
+            : "Cleared — Decode stays offline / synthesizer.";
+        }
+      });
+    }
+    if (liveClear && liveInput) {
+      liveClear.addEventListener("click", () => {
+        liveInput.value = "";
+        state.prefs.liveDecodeUrl = "";
+        savePrefs();
+        updateDecodeHint();
+        const status = $("#live-decode-status");
+        if (status) status.textContent = "Cleared — Decode stays offline / synthesizer.";
+      });
+    }
+
     $("#decode-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const input = $("#decode-input");
@@ -604,7 +639,7 @@
   }
 
   async function loadData() {
-    const bust = "v=11";
+    const bust = "v=12";
     const [trendsRes, slangRes, abbreveRes] = await Promise.all([
       fetch("data/trends.json?" + bust),
       fetch("data/slang.json?" + bust),

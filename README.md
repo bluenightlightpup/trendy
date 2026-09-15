@@ -63,6 +63,20 @@ python cli/trendy.py radar run
 
 Commands: `decode` (slang + abbreve lexicon), `trends`, `radar status`, `radar run` → `radar/run_ingest.py`.
 
+### Live Decode proxy (model-on-miss)
+
+Optional LAN proxy so the phone PWA can get live model meanings **only on lexicon misses** — API keys stay on the PC.
+
+```bash
+# Windows (PowerShell/cmd) or macOS/Linux — key in env, never in the browser
+export OPENAI_API_KEY=sk-...   # or ANTHROPIC_API_KEY / TRENDY_* variants
+python cli/trendy.py serve     # http://0.0.0.0:8787
+# Phone You tab → Live Decode URL → http://<pc-lan-ip>:8787
+python cli/trendy.py decode "niche phrase" --live
+```
+
+Docs: [`docs/live-decode.md`](docs/live-decode.md). Trusted LAN / personal use only.
+
 ## Phase 5 — Landscape & novelty *(research)*
 
 Review slang translators (Urban Dictionary, Slangora, Wordyex, Musely, GenZ apps, general LLMs) and explore novel Trendy uses (family Decode, anti-FOMO digest, heat time machine, creator “am I late?”, agent briefs, …).

@@ -339,7 +339,7 @@
       return (order[b.bucket] || 0) - (order[a.bucket] || 0);
     });
     const top = candidates[0];
-    return { entry: top.entry, match: top.kind || "partial" };
+    return { entry: top.entry, match: top.kind || "partial", bucket: top.bucket || null };
   }
 
   function findSlangEntry(slang, abbreve, term) {
@@ -532,6 +532,103 @@
     return tips;
   }
 
+  function isStrongSlangHit(slangHit) {
+    if (!slangHit || !slangHit.entry) return false;
+    const bucket = slangHit.bucket;
+    if (bucket === "core") return true;
+    if (bucket === "slang") {
+      const src = String(slangHit.entry.source || "").toLowerCase();
+      // abbreve-sourced rows in slang.json are still weak vs curated/core
+      if (src === "abbreve") return false;
+      return true; // curated / core / hand-written slang lexicon
+    }
+    return false; // abbreve-only → weak (eligible for live)
+  }
+
+  function looksMultiWordMeme(term) {
+    const toks = queryTokens(normalize(applyAlias(term)));
+    return toks.length >= 2;
+  }
+
+  /** Conservative miss gate: never call live when curated/core slangHit exists. */
+  function shouldCallLive(answer, slangHit, term, liveDecodeUrl) {
+    if (!liveDecodeUrl || !String(liveDecodeUrl).trim()) return false;
+    if (isStrongSlangHit(slangHit)) return false;
+    const src = String((answer && answer.source) || "");
+    if (src === "ai-fallback" || src === "heuristic" || src === "dictionary+ai" || src === "ai-search") {
+      return true;
+    }
+    // Trend heat alone is fine to keep, but meaning may still be thin
+    if (src === "trends") return true;
+    // Abbreve-only lexicon (especially multi-word meme-like queries)
+    if (slangHit && slangHit.bucket === "abbreve") {
+      return true;
+    }
+    // No strong slang: if somehow source is lexicon from weak path
+    if (!slangHit) return true;
+    return false;
+  }
+
+  function liveEndpointUrl(base) {
+    const b = String(base || "").trim().replace(/\/+$/, "");
+    if (!b) return "";
+    if (/\/v1\/decode$/i.test(b)) return b;
+    return b + "/v1/decode";
+  }
+
+  async function fetchLiveDecode(baseUrl, term, newHere) {
+    const url = liveEndpointUrl(baseUrl);
+    if (!url) return null;
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 8000);
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ term: String(term || ""), newHere: !!newHere }),
+        signal: ctrl.signal,
+      });
+      if (!res.ok) return null;
+      const data = await res.json();
+      if (!data || typeof data !== "object") return null;
+      const meaning = String(data.meaning || "").trim();
+      if (!meaning) return null;
+      return {
+        meaning,
+        explain: String(data.explain || "").trim(),
+        origin: String(data.origin || "").trim(),
+        confidence: String(data.confidence || "medium").trim(),
+        provider: String(data.provider || "live").trim(),
+      };
+    } catch {
+      return null;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  function mergeLiveAnswer(answer, live, trend) {
+    if (!live) return answer;
+    const parts = [];
+    parts.push({ title: "Slang meaning (live AI)", body: live.meaning });
+    if (live.origin) parts.push({ title: "Where it comes from", body: live.origin });
+    if (live.explain) parts.push({ title: "In plain words", body: live.explain });
+    parts.push({
+      title: "Confidence",
+      body: `${live.confidence || "medium"} (live ${live.provider || "model"}).`,
+    });
+    // Keep trend heat if any
+    if (trend) {
+      parts.push({
+        title: "On the heat radar",
+        body: `"${trend.title}" is ${trend.lifecycle || "active"} at heat ${Math.round(
+          (trend.heatScore || 0) * 100
+        )}. ${trend.originStory || ""}`.trim(),
+      });
+    }
+    return { term: answer.term, source: "live-ai", parts, live };
+  }
+
   function synthesizeAlways(term, dict, heuristics, newHere) {
     const parts = [];
     const t = term;
@@ -618,7 +715,7 @@
     return { term, source, parts };
   }
 
-  async function decodeQuery(raw, { slang, trends, abbreve, newHere }) {
+  async function decodeQuery(raw, { slang, trends, abbreve, newHere, liveDecodeUrl }) {
     const term = extractTerm(raw) || String(raw || "").trim();
     const searchTerm = applyAlias(term);
     const slangHit = findSlangEntry(slang, abbreve, searchTerm);
@@ -628,7 +725,17 @@
     // Always try dictionary in background for dual-meaning words (alpha = Greek AND slang)
     const dict = (await fetchWiktionary(term)) || (await fetchFreeDictionary(term));
 
-    return buildAnswer({ term, slangHit, trend, dict, heuristics, newHere: !!newHere });
+    let answer = buildAnswer({ term, slangHit, trend, dict, heuristics, newHere: !!newHere });
+
+    // Live model-on-miss (optional LAN proxy). Never blank on failure.
+    if (shouldCallLive(answer, slangHit, term, liveDecodeUrl)) {
+      const live = await fetchLiveDecode(liveDecodeUrl, term, !!newHere);
+      if (live) {
+        answer = mergeLiveAnswer(answer, live, trend);
+      }
+    }
+
+    return answer;
   }
 
   function formatAnswerHtml(answer, escapeHtml) {
@@ -639,6 +746,7 @@
       heuristic: "AI pattern read",
       "ai-fallback": "AI decode",
       "ai-search": "AI search",
+      "live-ai": "Live AI",
     };
     const meta = chips[answer.source] || "Trendy";
     let html = `<span class="bubble-meta">${escapeHtml(meta)} · ${escapeHtml(answer.term)}</span>`;
@@ -656,5 +764,8 @@
     formatAnswerHtml,
     normalize,
     applyAlias,
+    isStrongSlangHit,
+    shouldCallLive,
+    liveEndpointUrl,
   };
 })(typeof window !== "undefined" ? window : globalThis);

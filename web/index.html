@@ -151,7 +151,26 @@
         </label>
       </div>
 
-      <p class="prefs-foot">Decode may call a free public dictionary API for unknown English words. Slang hits stay on-device. Digests are local-only.</p>
+      <div class="prefs-card" id="live-decode-card">
+        <h3 class="prefs-heading">Live Decode (optional)</h3>
+        <p class="prefs-desc">On lexicon misses only, call a local Decode proxy on your PC. API keys stay in the PC environment — never in the browser.</p>
+        <label class="field-label" for="live-decode-url">Proxy endpoint</label>
+        <input
+          type="url"
+          id="live-decode-url"
+          class="select"
+          placeholder="http://192.168.x.x:8787"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <div class="live-decode-actions" style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+          <button type="button" id="live-decode-save" class="btn-send" style="position:static;width:auto;padding:10px 16px;">Save</button>
+          <button type="button" id="live-decode-clear" class="btn-send" style="position:static;width:auto;padding:10px 16px;opacity:0.85;">Clear</button>
+        </div>
+        <p class="prefs-desc" id="live-decode-status" style="margin-top:10px;">Run <code>python cli/trendy.py serve</code> on your PC with an API key in the environment, then paste <code>http://&lt;pc-lan-ip&gt;:8787</code> here.</p>
+      </div>
+
+      <p class="prefs-foot">Decode may call a free public dictionary API for unknown English words. Optional Live Decode uses your LAN proxy only on misses (no API key in the browser). Curated slang stays on-device first. Digests are local-only. Proxy is for trusted LAN / personal use only.</p>
     </section>
   </main>
 

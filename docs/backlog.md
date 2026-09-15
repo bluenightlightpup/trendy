@@ -299,6 +299,21 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Effort:** M
 
 
+
+### T0025 — Live Decode model-on-miss (LAN proxy)
+- **Value:** Fresh niche slang without endless pack downloads; keys stay off-device.
+- **Scope:** `python cli/trendy.py serve` proxy; PWA miss path + You prefs `liveDecodeUrl`; docs.
+- **Out of scope:** Hosted public proxy; putting API keys in the browser.
+- **Acceptance:**
+  - [x] Proxy `POST /v1/decode` + `GET /health` on :8787 (CORS for LAN)
+  - [x] PWA calls live only on weak/miss answers; curated/core hits skip live
+  - [x] Timeout fallback never blank; SW trendy-v12
+  - [x] Docs for Windows LAN setup (`docs/live-decode.md`)
+- **Agents/skills:** `implementer`
+- **Depends on:** T0020
+- **Effort:** M
+- **Status:** **Done** (2026-09-15 spike)
+
 ## Suggested order
 
-T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 (deferred) → **T0022 → T0023 → T0024**
+T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 (deferred) → T0025 ✓ → **T0022 → T0023 → T0024**

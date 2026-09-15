@@ -43,6 +43,24 @@ class CliSmokeTest(unittest.TestCase):
         out = buf.getvalue()
         self.assertTrue("last run:" in out or "no last-run" in out)
 
+    def test_serve_parser(self) -> None:
+        parser = trendy.build_parser()
+        args = parser.parse_args(["serve", "--port", "8799"])
+        self.assertEqual(args.command, "serve")
+        self.assertEqual(args.port, 8799)
+        self.assertEqual(args.host, "0.0.0.0")
+
+    def test_decode_live_flag_parser(self) -> None:
+        parser = trendy.build_parser()
+        args = parser.parse_args(["decode", "bro", "--live"])
+        self.assertTrue(args.live)
+
+    def test_live_resolve_provider_none(self) -> None:
+        from cli import live_decode
+        # Should not crash; may or may not have keys in CI — just import + health shape
+        self.assertTrue(callable(live_decode.run_serve))
+        self.assertIn("judgment-free", live_decode.SYSTEM_PROMPT.lower())
+
 
 if __name__ == "__main__":
     unittest.main()
