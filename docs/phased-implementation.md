@@ -105,6 +105,7 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 - [x] `docs/cli-mcp-integration.md` — APPROVED for CLI; MCP deferred
 - [x] CLI spike: `cli/trendy.py` (`decode`, `trends`, `radar status`, `radar run`) — T0020
 - [ ] MCP server stub (T0021) — **deferred**
+- [x] Community suggest → consensus lexicon (T0026) — PWA + LAN proxy
 - [x] README + workbench docs for CLI usage
 - [ ] Security review when MCP un-deferred (no secrets in tool results; rate limits)
 

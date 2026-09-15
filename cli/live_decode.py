@@ -3,6 +3,9 @@
 API keys stay on the PC (env vars). The PWA never sees them — it POSTs to
 this LAN proxy. Trusted LAN / personal use only; do not expose to the public
 internet without auth.
+
+Also hosts community suggest → consensus → lexicon:
+  POST /v1/suggest, GET /v1/suggestions/stats?term=
 """
 
 from __future__ import annotations
@@ -13,6 +16,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from urllib.parse import parse_qs, urlparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 
@@ -206,30 +210,58 @@ class DecodeProxyHandler(BaseHTTPRequestHandler):
         self._cors()
         self.end_headers()
 
+    def _read_json_body(self, max_len: int = 64_000) -> tuple[dict[str, Any] | None, str | None]:
+        length = int(self.headers.get("Content-Length") or 0)
+        if length > max_len:
+            return None, "payload_too_large"
+        raw = self.rfile.read(length) if length else b"{}"
+        try:
+            payload = json.loads(raw.decode("utf-8") or "{}")
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            return None, "invalid_json"
+        if not isinstance(payload, dict):
+            return None, "invalid_json"
+        return payload, None
+
     def do_GET(self) -> None:  # noqa: N802
-        path = self.path.split("?", 1)[0]
+        parsed = urlparse(self.path)
+        path = parsed.path
         if path in ("/health", "/v1/health"):
             self._send_json(200, {"ok": True, "service": "trendy-decode-proxy"})
+            return
+        if path == "/v1/suggestions/stats":
+            from cli.community_lexicon import suggest_stats
+
+            qs = parse_qs(parsed.query or "")
+            term = (qs.get("term") or [""])[0]
+            self._send_json(200, suggest_stats(term))
             return
         self._send_json(404, {"error": "not_found", "path": path})
 
     def do_POST(self) -> None:  # noqa: N802
         path = self.path.split("?", 1)[0]
+        if path == "/v1/suggest":
+            payload, err = self._read_json_body()
+            if err == "payload_too_large":
+                self._send_json(413, {"error": "payload_too_large"})
+                return
+            if err or payload is None:
+                self._send_json(400, {"error": err or "invalid_json"})
+                return
+            from cli.community_lexicon import handle_suggest
+
+            code, body = handle_suggest(payload)
+            self._send_json(code, body)
+            return
         if path != "/v1/decode":
             self._send_json(404, {"error": "not_found", "path": path})
             return
-        length = int(self.headers.get("Content-Length") or 0)
-        if length > 64_000:
+        payload, err = self._read_json_body()
+        if err == "payload_too_large":
             self._send_json(413, {"error": "payload_too_large"})
             return
-        raw = self.rfile.read(length) if length else b"{}"
-        try:
-            payload = json.loads(raw.decode("utf-8") or "{}")
-        except (json.JSONDecodeError, UnicodeDecodeError):
-            self._send_json(400, {"error": "invalid_json"})
-            return
-        if not isinstance(payload, dict):
-            self._send_json(400, {"error": "invalid_json"})
+        if err or payload is None:
+            self._send_json(400, {"error": err or "invalid_json"})
             return
         term = str(payload.get("term") or "").strip()
         new_here = bool(payload.get("newHere", True))
@@ -269,7 +301,9 @@ def run_serve(host: str = "0.0.0.0", port: int = 8787) -> int:
     print(
         f"Trendy Decode proxy on http://{host}:{port}\n"
         f"  GET  /health\n"
-        f"  POST /v1/decode  {{\"term\":\"...\",\"newHere\":true}}\n"
+        f"  POST /v1/decode     {{\"term\":\"...\",\"newHere\":true}}\n"
+        f"  POST /v1/suggest    {{\"term\",\"meaning\",\"origin?\",\"clientId\"}}\n"
+        f"  GET  /v1/suggestions/stats?term=...\n"
         f"  provider: {provider}\n"
         f"  LAN tip: set PWA Live Decode URL to http://<pc-lan-ip>:{port}\n"
         f"  Security: trusted LAN / personal use only — do not expose publicly without auth.",

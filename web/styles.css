@@ -934,3 +934,75 @@ a {
   outline: 2px solid var(--heat-cool);
   outline-offset: 2px;
 }
+
+
+/* Community suggest card (after weak Decode answers) */
+.suggest-card {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink-border);
+}
+.suggest-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(45, 226, 230, 0.35);
+  background: rgba(45, 226, 230, 0.08);
+  color: var(--ink-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.suggest-toggle:hover,
+.suggest-toggle:focus-visible {
+  background: rgba(45, 226, 230, 0.16);
+  outline: none;
+}
+.suggest-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+.suggest-form .field-label {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.suggest-form .optional {
+  color: var(--ink-muted);
+  font-weight: 400;
+  font-size: 0.78rem;
+}
+.suggest-meaning {
+  width: 100%;
+  min-height: 72px;
+  resize: vertical;
+  border-radius: 12px;
+  border: 1px solid var(--ink-border);
+  background: var(--ink);
+  color: var(--ink-text);
+  padding: 10px 12px;
+  font: inherit;
+  line-height: 1.4;
+}
+.suggest-meaning:focus {
+  outline: 2px solid rgba(45, 226, 230, 0.45);
+  outline-offset: 1px;
+}
+.suggest-submit {
+  align-self: flex-start;
+  position: static;
+  width: auto;
+  margin-top: 4px;
+}
+.suggest-note {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+.suggest-note-error {
+  color: #ff8fab;
+}

@@ -168,9 +168,15 @@
           <button type="button" id="live-decode-clear" class="btn-send" style="position:static;width:auto;padding:10px 16px;opacity:0.85;">Clear</button>
         </div>
         <p class="prefs-desc" id="live-decode-status" style="margin-top:10px;">Run <code>python cli/trendy.py serve</code> on your PC with an API key in the environment, then paste <code>http://&lt;pc-lan-ip&gt;:8787</code> here.</p>
+        <p class="prefs-desc" style="margin-top:12px;">
+          <strong>Community suggests:</strong> when Decode is unsure, you can suggest a definition.
+          With this proxy URL set, suggestions go to the PC and can graduate into a shared community lexicon.
+          Without it, this phone can still demo consensus on-device (same device only).
+          See <code>docs/community-lexicon.md</code>.
+        </p>
       </div>
 
-      <p class="prefs-foot">Decode may call a free public dictionary API for unknown English words. Optional Live Decode uses your LAN proxy only on misses (no API key in the browser). Curated slang stays on-device first. Digests are local-only. Proxy is for trusted LAN / personal use only.</p>
+      <p class="prefs-foot">Decode may call a free public dictionary API for unknown English words. Optional Live Decode uses your LAN proxy only on misses (no API key in the browser). Community suggests never put API keys in the browser. Curated slang stays on-device first. Digests are local-only. Proxy is for trusted LAN / personal use only.</p>
     </section>
   </main>
 
@@ -194,6 +200,7 @@
   </nav>
 
   <script src="decode-ai.js" defer></script>
+  <script src="suggest.js" defer></script>
   <script src="saved.js" defer></script>
   <script src="app.js" defer></script>
 </body>

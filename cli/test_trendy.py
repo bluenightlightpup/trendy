@@ -61,6 +61,11 @@ class CliSmokeTest(unittest.TestCase):
         self.assertTrue(callable(live_decode.run_serve))
         self.assertIn("judgment-free", live_decode.SYSTEM_PROMPT.lower())
 
+    def test_community_lexicon_import(self) -> None:
+        from cli import community_lexicon as cl
+        self.assertEqual(cl.CONSENSUS_THRESHOLD, 3)
+        self.assertTrue(cl.meanings_similar("cool vibe word for chill", "cool vibe word for chill vibes"))
+
 
 if __name__ == "__main__":
     unittest.main()

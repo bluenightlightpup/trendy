@@ -314,6 +314,22 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Effort:** M
 - **Status:** **Done** (2026-09-15 spike)
 
+### T0026 — Community suggest → consensus → lexicon
+- **Value:** Grow Decode coverage from real usage without endless curated packs; judgment-free.
+- **Scope:** Suggest UI on weak answers; localStorage queue; `POST /v1/suggest` + consensus → `web/data/community-slang.json`; PWA load + rank; on-device demo mode; docs.
+- **Out of scope:** Public hosted suggest API; moderation console; ML similarity.
+- **Acceptance:**
+  - [x] Suggest UI only on weak Decode (not curated/core hits)
+  - [x] Min length + HTML strip + light local rate limit
+  - [x] Consensus threshold 3; Jaccard ≥ 0.45 or containment
+  - [x] Promoted `source: "community"`; PWA rankBonus 2000
+  - [x] Proxy endpoints + local-only demo path
+  - [x] Docs `docs/community-lexicon.md`; SW trendy-v13
+- **Agents/skills:** `implementer`
+- **Depends on:** T0025
+- **Effort:** M
+- **Status:** **Done** (2026-09-15)
+
 ## Suggested order
 
-T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 (deferred) → T0025 ✓ → **T0022 → T0023 → T0024**
+T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 (deferred) → T0025 ✓ → T0026 ✓ → **T0022 → T0023 → T0024**

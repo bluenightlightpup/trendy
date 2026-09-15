@@ -77,6 +77,10 @@ python cli/trendy.py decode "niche phrase" --live
 
 Docs: [`docs/live-decode.md`](docs/live-decode.md). Trusted LAN / personal use only.
 
+### Community lexicon (suggest → consensus)
+
+Weak Decode answers show **Suggest a better definition**. With the same LAN proxy, `POST /v1/suggest` builds consensus into `web/data/community-slang.json`. See [`docs/community-lexicon.md`](docs/community-lexicon.md).
+
 ## Phase 5 — Landscape & novelty *(research)*
 
 Review slang translators (Urban Dictionary, Slangora, Wordyex, Musely, GenZ apps, general LLMs) and explore novel Trendy uses (family Decode, anti-FOMO digest, heat time machine, creator “am I late?”, agent briefs, …).

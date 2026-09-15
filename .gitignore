@@ -85,3 +85,8 @@ __pycache__/
 .venv/
 venv/
 web/data/raw/
+
+# Community suggest runtime log (promoted lexicon stays in web/data/)
+radar/out/suggestions.jsonl
+radar/out/suggestions.json
+web/data/community-slang.json.tmp

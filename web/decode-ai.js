@@ -224,6 +224,8 @@
     if (src === "core") return 4000;
     if (src === "curated" || conf === "high") return 3000;
     if (bucket === "slang" && !src) return 2500; // hand-written lexicon rows
+    // Community consensus: above abbreve, below curated/hand-written
+    if (src === "community" || bucket === "community") return 2000;
     if (src === "abbreve" || bucket === "abbreve") return 0;
     return 500;
   }
@@ -335,14 +337,14 @@
     candidates.sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
       if (b.termLen !== a.termLen) return b.termLen - a.termLen;
-      const order = { core: 3, slang: 2, abbreve: 1 };
+      const order = { core: 4, slang: 3, community: 2, abbreve: 1 };
       return (order[b.bucket] || 0) - (order[a.bucket] || 0);
     });
     const top = candidates[0];
     return { entry: top.entry, match: top.kind || "partial", bucket: top.bucket || null };
   }
 
-  function findSlangEntry(slang, abbreve, term) {
+  function findSlangEntry(slang, abbreve, term, community) {
     const aliased = applyAlias(term);
     const q = normalize(aliased);
     if (!q) return null;
@@ -365,6 +367,7 @@
 
     for (const [bucket, list] of [
       ["slang", slang && slang.entries],
+      ["community", community && community.entries],
       ["abbreve", abbreve && abbreve.entries],
     ]) {
       if (!list) continue;
@@ -536,13 +539,33 @@
     if (!slangHit || !slangHit.entry) return false;
     const bucket = slangHit.bucket;
     if (bucket === "core") return true;
+    if (bucket === "community") return true; // consensus lexicon
     if (bucket === "slang") {
       const src = String(slangHit.entry.source || "").toLowerCase();
       // abbreve-sourced rows in slang.json are still weak vs curated/core
       if (src === "abbreve") return false;
+      if (src === "community") return true;
       return true; // curated / core / hand-written slang lexicon
     }
     return false; // abbreve-only → weak (eligible for live)
+  }
+
+  /** Weak Decode answers invite a judgment-free community suggest. */
+  function shouldShowSuggest(answer, slangHit) {
+    if (isStrongSlangHit(slangHit)) return false;
+    const src = String((answer && answer.source) || "");
+    const weak = {
+      heuristic: 1,
+      "ai-fallback": 1,
+      "dictionary+ai": 1,
+      "ai-search": 1,
+      trends: 1,
+      "live-ai": 1,
+    };
+    if (weak[src]) return true;
+    if (slangHit && slangHit.bucket === "abbreve") return true;
+    if (src === "lexicon" && slangHit && slangHit.bucket === "abbreve") return true;
+    return !slangHit;
   }
 
   function looksMultiWordMeme(term) {
@@ -675,7 +698,7 @@
     let source = "ai-search";
 
     if (slangHit) {
-      source = "lexicon";
+      source = slangHit.bucket === "community" ? "community" : "lexicon";
       const e = slangHit.entry;
       parts.push({ title: "Slang meaning (TikTok / internet)", body: e.short });
       if (e.origin) parts.push({ title: "Where it comes from", body: e.origin });
@@ -715,10 +738,10 @@
     return { term, source, parts };
   }
 
-  async function decodeQuery(raw, { slang, trends, abbreve, newHere, liveDecodeUrl }) {
+  async function decodeQuery(raw, { slang, trends, abbreve, community, newHere, liveDecodeUrl }) {
     const term = extractTerm(raw) || String(raw || "").trim();
     const searchTerm = applyAlias(term);
-    const slangHit = findSlangEntry(slang, abbreve, searchTerm);
+    const slangHit = findSlangEntry(slang, abbreve, searchTerm, community);
     const trend = findTrend(trends, searchTerm);
     const heuristics = heuristicInternetSpeak(searchTerm);
 
@@ -735,12 +758,15 @@
       }
     }
 
+    answer.suggestEligible = shouldShowSuggest(answer, slangHit);
+    answer.slangBucket = slangHit ? slangHit.bucket : null;
     return answer;
   }
 
   function formatAnswerHtml(answer, escapeHtml) {
     const chips = {
       lexicon: "Trendy lexicon",
+      community: "Community lexicon",
       trends: "Heat radar",
       "dictionary+ai": "Dictionary + AI",
       heuristic: "AI pattern read",
@@ -765,7 +791,9 @@
     normalize,
     applyAlias,
     isStrongSlangHit,
+    shouldShowSuggest,
     shouldCallLive,
     liveEndpointUrl,
+    findSlangEntry,
   };
 })(typeof window !== "undefined" ? window : globalThis);

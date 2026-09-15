@@ -28,6 +28,7 @@
     trends: [],
     slang: null,
     abbreve: { entries: [] },
+    community: { entries: [] },
     prefs: loadPrefs(),
     savedIds: [],
     tab: "home",
@@ -482,6 +483,97 @@
     appendBubble("bot", `<span class="bubble-meta">Trendy</span>${escapeHtml(welcome)}`, true);
   }
 
+  function refreshCommunityLexicon() {
+    const Suggest = globalThis.TrendySuggest;
+    const server = state.communityServer || { entries: [] };
+    if (Suggest && typeof Suggest.mergeCommunity === "function") {
+      state.community = Suggest.mergeCommunity(server);
+    } else {
+      state.community = server;
+    }
+  }
+
+  let suggestIdSeq = 0;
+  function suggestCardHtml(term) {
+    const t = escapeHtml(term || "");
+    const sid = "suggest-term-" + (++suggestIdSeq);
+    return `
+      <div class="suggest-card" data-suggest-root>
+        <button type="button" class="suggest-toggle" data-suggest-toggle aria-expanded="false">
+          Suggest a better definition
+        </button>
+        <form class="suggest-form" data-suggest-form hidden>
+          <label class="field-label" for="${sid}">Term</label>
+          <input type="text" id="${sid}" class="suggest-term select" name="term" value="${t}" maxlength="80" required />
+          <label class="field-label">Meaning</label>
+          <textarea class="suggest-meaning" name="meaning" rows="3" maxlength="800" required placeholder="Plain meaning — no shame, just help the next person."></textarea>
+          <label class="field-label">Origin <span class="optional">(optional)</span></label>
+          <input type="text" class="suggest-origin select" name="origin" maxlength="240" placeholder="Where you heard it" />
+          <button type="submit" class="btn-send suggest-submit">Submit</button>
+          <p class="suggest-note" data-suggest-note hidden></p>
+        </form>
+      </div>`;
+  }
+
+  function bindSuggestCard(root, defaultTerm) {
+    if (!root) return;
+    const toggle = root.querySelector("[data-suggest-toggle]");
+    const form = root.querySelector("[data-suggest-form]");
+    const note = root.querySelector("[data-suggest-note]");
+    if (toggle && form) {
+      toggle.addEventListener("click", () => {
+        const open = form.hidden;
+        form.hidden = !open;
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) {
+          const meaning = form.querySelector(".suggest-meaning");
+          if (meaning) meaning.focus();
+        }
+      });
+    }
+    if (!form) return;
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const Suggest = globalThis.TrendySuggest;
+      if (!Suggest) return;
+      const termInput = form.querySelector(".suggest-term");
+      const meaningInput = form.querySelector(".suggest-meaning");
+      const originInput = form.querySelector(".suggest-origin");
+      const term = (termInput && termInput.value) || defaultTerm || "";
+      const meaning = (meaningInput && meaningInput.value) || "";
+      const origin = (originInput && originInput.value) || "";
+      const btn = form.querySelector(".suggest-submit");
+      if (btn) btn.disabled = true;
+      try {
+        const result = await Suggest.submitSuggestion({
+          term,
+          meaning,
+          origin,
+          liveDecodeUrl: state.prefs.liveDecodeUrl || "",
+        });
+        if (note) {
+          note.hidden = false;
+          note.textContent = result.message || (result.ok ? "Thanks!" : "Could not save.");
+          note.classList.toggle("suggest-note-error", !result.ok);
+        }
+        if (result.ok) {
+          refreshCommunityLexicon();
+          if (meaningInput) meaningInput.value = "";
+          if (originInput) originInput.value = "";
+        }
+      } catch (err) {
+        console.error(err);
+        if (note) {
+          note.hidden = false;
+          note.textContent = "Something glitched — try again.";
+          note.classList.add("suggest-note-error");
+        }
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  }
+
   async function handleDecode(query) {
     appendBubble("user", query, false);
     const typing = appendBubble(
@@ -492,16 +584,25 @@
     typing.classList.add("bubble-typing");
 
     try {
+      refreshCommunityLexicon();
       const answer = await window.TrendyDecodeAI.decodeQuery(query, {
         slang: state.slang,
         trends: state.trends,
         abbreve: state.abbreve,
+        community: state.community,
         newHere: state.prefs.newHere,
         liveDecodeUrl: state.prefs.liveDecodeUrl || "",
       });
       const html = window.TrendyDecodeAI.formatAnswerHtml(answer, escapeHtml);
       typing.classList.remove("bubble-typing");
       typing.innerHTML = html;
+      if (answer.suggestEligible) {
+        const wrap = document.createElement("div");
+        wrap.innerHTML = suggestCardHtml(answer.term || query);
+        const card = wrap.firstElementChild;
+        typing.appendChild(card);
+        bindSuggestCard(card, answer.term || query);
+      }
     } catch (err) {
       console.error(err);
       typing.classList.remove("bubble-typing");
@@ -639,11 +740,12 @@
   }
 
   async function loadData() {
-    const bust = "v=12";
-    const [trendsRes, slangRes, abbreveRes] = await Promise.all([
+    const bust = "v=13";
+    const [trendsRes, slangRes, abbreveRes, communityRes] = await Promise.all([
       fetch("data/trends.json?" + bust),
       fetch("data/slang.json?" + bust),
       fetch("data/abbreve.json?" + bust),
+      fetch("data/community-slang.json?" + bust),
     ]);
     if (!trendsRes.ok || !slangRes.ok) {
       throw new Error("Failed to load data files");
@@ -651,6 +753,10 @@
     state.trends = await trendsRes.json();
     state.slang = await slangRes.json();
     state.abbreve = abbreveRes.ok ? await abbreveRes.json() : { entries: [] };
+    state.communityServer = communityRes.ok
+      ? await communityRes.json()
+      : { entries: [] };
+    refreshCommunityLexicon();
   }
 
   function registerSW() {

@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "web" / "data"
 SLANG_PATH = DATA / "slang.json"
 ABBREVE_PATH = DATA / "abbreve.json"
+COMMUNITY_PATH = DATA / "community-slang.json"
 TRENDS_PATH = DATA / "trends.json"
 LAST_RUN_PATH = ROOT / "radar" / "out" / "last-run.json"
 INGEST_SCRIPT = ROOT / "radar" / "run_ingest.py"
@@ -107,13 +108,23 @@ def lookup_lexicon(term: str) -> tuple[dict[str, Any] | None, str | None]:
             if sc > best[0]:
                 best = (sc, entry, "slang")
 
+    community = _load_json(COMMUNITY_PATH, {"entries": []})
+    for entry in community.get("entries") or []:
+        if not isinstance(entry, dict):
+            continue
+        for t in _entry_terms(entry):
+            sc = score_against(t)
+            # curated slang wins ties; community beats abbreve
+            if sc > best[0] or (sc == best[0] and best[2] == "abbreve"):
+                best = (sc, entry, "community")
+
     abbreve = _load_json(ABBREVE_PATH, {"entries": []})
     for entry in abbreve.get("entries") or []:
         if not isinstance(entry, dict):
             continue
         for t in _entry_terms(entry):
             sc = score_against(t)
-            # slang wins ties
+            # slang/community win ties
             if sc > best[0]:
                 best = (sc, entry, "abbreve")
 

@@ -64,6 +64,8 @@ Endpoints:
 
 - `GET /health` → `{ "ok": true }`
 - `POST /v1/decode` body `{ "term": "...", "newHere": true }` → `{ "meaning", "explain", "origin", "confidence", "provider" }`
+- `POST /v1/suggest` body `{ "term", "meaning", "origin?", "clientId" }` → community consensus (see [`community-lexicon.md`](community-lexicon.md))
+- `GET /v1/suggestions/stats?term=` → counts / cluster size
 
 If no key is set, `/v1/decode` returns **503** with a clear JSON error. The PWA times out at ~8s and falls back to the synthesizer (never blank).
 

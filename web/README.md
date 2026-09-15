@@ -46,6 +46,8 @@ Publish the contents of `web/` (or `/docs` copy) as Pages. Keep relative paths (
 | `saved.js` | Saved-trend localStorage helpers |
 | `data/trends.json` | Mock trends |
 | `data/slang.json` | Decode dictionary |
+| `data/community-slang.json` | Community consensus lexicon |
+| `suggest.js` | Suggest queue + local demo consensus |
 | `manifest.webmanifest` | PWA manifest |
 | `sw.js` | Offline cache |
 | `icons/` | SVG icons |
@@ -54,12 +56,14 @@ Prefs (worlds, digest, New here, optional `liveDecodeUrl`) persist in `localStor
 
 **Live Decode (optional):** You tab → paste LAN proxy URL (`http://<pc-ip>:8787`). Keys stay on the PC via `python cli/trendy.py serve`. See `docs/live-decode.md`.
 
+**Community suggests:** on weak Decode answers, suggest a definition (local queue always; proxy for multi-user). See `docs/community-lexicon.md`.
+
 Saved / followed trend IDs use `trendy.saved.v1` (see `saved.js`). Hearts on cards and detail toggle without leaving the feed; **You → Saved trends** lists them; Home has an optional **All | Saved** filter.
 
 ### Phase 3 (PWA)
 
 - Save/follow + a11y/reduced-motion polish
-- Offline cache bumped to `trendy-v12` (precache includes `decode-ai.js` + `saved.js`)
+- Offline cache bumped to `trendy-v13` (precache includes `decode-ai.js` + `saved.js`)
 - Node tests: `npm test` (or `node --test tests/*.mjs`) from this folder
 
 

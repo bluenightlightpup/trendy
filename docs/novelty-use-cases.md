@@ -14,6 +14,10 @@ Companion to [`product-landscape.md`](product-landscape.md). Brainstorm → rank
 | 6 | **Classroom-safe packs** | Learner modes exist; school filter + Explore worlds is crisp | M | Ethics / trust |
 | 7 | **Watch-party overlay** | Fun, viral — secondary to FOMO core | L | Optional later |
 
+## Shipped adjacent (not a ranked bet, but related)
+
+- **Community suggest → consensus lexicon** — weak Decode answers invite a judgment-free definition suggest; threshold consensus graduates into `community-slang.json` (LAN proxy). See [`community-lexicon.md`](community-lexicon.md) / T0026.
+
 ## Explicit non-novelty (avoid distraction)
 
 - Becoming “Urban Dictionary with a dark theme”
