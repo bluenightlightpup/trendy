@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-18T17:20:54Z",
+  "timestamp": "2026-09-18T20:05:26Z",
   "signals": 27,
   "adapters": [
     {
@@ -58,7 +58,7 @@
     }
   ],
   "trends": {
-    "added": 2,
+    "added": 0,
     "updated": 0,
     "total": 159
   },
