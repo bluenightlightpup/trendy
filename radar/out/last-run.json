@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-09-18T06:49:17Z",
-  "signals": 21,
+  "timestamp": "2026-09-18T12:25:59Z",
+  "signals": 27,
   "adapters": [
     {
       "source": "mock_seed",
@@ -34,7 +34,7 @@
       "mode": "live",
       "ok": true,
       "skipped": false,
-      "signal_count": 0,
+      "signal_count": 6,
       "error": null,
       "notes": null
     },
