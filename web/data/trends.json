@@ -2235,5 +2235,39 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/shorts/KwqeKTM9M_8",
     "radarSignalId": "youtube:KwqeKTM9M_8"
+  },
+  {
+    "id": "r_33c06b09cb",
+    "title": "Heating A Ball Just By Squeezing It",
+    "summary": "How Jupiter heats its moon, just be stretching and squeezing it.",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/hPoJWjJ9Ao8 This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/hPoJWjJ9Ao8",
+    "radarSignalId": "youtube:hPoJWjJ9Ao8"
+  },
+  {
+    "id": "r_22be01d559",
+    "title": "Chivalry or Engineering?",
+    "summary": "Chivalry or Engineering?",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/NUVkpWAD548 This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/NUVkpWAD548",
+    "radarSignalId": "youtube:NUVkpWAD548"
   }
 ]
