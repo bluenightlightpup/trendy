@@ -2320,5 +2320,22 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
     "radarSignalId": "youtube:JsBZOcqZerk"
+  },
+  {
+    "id": "r_871956884e",
+    "title": "This Machine Made Wartime Germany (Almost) Impossible to Defeat",
+    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
+    "radarSignalId": "youtube:JsBZOcqZerk"
   }
 ]
