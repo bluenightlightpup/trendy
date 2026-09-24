@@ -2354,5 +2354,39 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
     "radarSignalId": "youtube:JsBZOcqZerk"
+  },
+  {
+    "id": "r_84bff95a8c",
+    "title": "What happens to these balloons when you open the valve?",
+    "summary": "Take a balloon and fill it with lots of air. Take another one and fill it with less air. Now connect the two via a valve.",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/VKlulHwMxgU This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/VKlulHwMxgU",
+    "radarSignalId": "youtube:VKlulHwMxgU"
+  },
+  {
+    "id": "r_84106e95e1",
+    "title": "The Insane Real Engineering of the Nazis' Enigma",
+    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
+    "radarSignalId": "youtube:JsBZOcqZerk"
   }
 ]
