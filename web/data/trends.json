@@ -2422,5 +2422,22 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
     "radarSignalId": "youtube:JsBZOcqZerk"
+  },
+  {
+    "id": "r_182b67a152",
+    "title": "World's Most Over-Engineered Heist",
+    "summary": "Shoutout to our friends at Onshape, whose CAD software makes it possible to do what we do every single day! Try them out for Free – Engineers Get Up to 6 Months Pro: http://onsh…",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=_L1Rim7-IPo This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/watch?v=_L1Rim7-IPo",
+    "radarSignalId": "youtube:_L1Rim7-IPo"
   }
 ]
