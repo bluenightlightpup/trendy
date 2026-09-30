@@ -2439,5 +2439,22 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/watch?v=_L1Rim7-IPo",
     "radarSignalId": "youtube:_L1Rim7-IPo"
+  },
+  {
+    "id": "r_1c5640a3e2",
+    "title": "You Have Spiders on Your Face RIGHT NOW!",
+    "summary": "My friends @frida just released a new line of hygiene products to keep you clean & make those spiders' jobs just a little bit easier! #ad",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/tbWTiZlwJ3M This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/tbWTiZlwJ3M",
+    "radarSignalId": "youtube:tbWTiZlwJ3M"
   }
 ]
