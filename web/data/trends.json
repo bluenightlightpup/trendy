@@ -2456,5 +2456,22 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/shorts/tbWTiZlwJ3M",
     "radarSignalId": "youtube:tbWTiZlwJ3M"
+  },
+  {
+    "id": "r_0f6d44b29e",
+    "title": "We're trying something new...",
+    "summary": "Veritasium's mission has always been to get to the truth - to understand how and why things work the way they do. We love the variety of topics we're able to cover - from the re…",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=ONAuUyml0yI This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/watch?v=ONAuUyml0yI",
+    "radarSignalId": "youtube:ONAuUyml0yI"
   }
 ]
