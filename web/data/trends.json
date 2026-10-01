@@ -2473,5 +2473,22 @@
     "radarSource": "youtube",
     "radarUrl": "https://www.youtube.com/watch?v=ONAuUyml0yI",
     "radarSignalId": "youtube:ONAuUyml0yI"
+  },
+  {
+    "id": "r_38dc8dad82",
+    "title": "How Dangerous Are Non-Stick Pans?",
+    "summary": "What happens to your body if you eat Teflon from a non-stick pan?",
+    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/IHkp5Kq72ro This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
+    "world": "Internet culture",
+    "heatScore": 0.208,
+    "lifecycle": "dormant",
+    "tags": [
+      "youtube",
+      "rss",
+      "radar"
+    ],
+    "radarSource": "youtube",
+    "radarUrl": "https://www.youtube.com/shorts/IHkp5Kq72ro",
+    "radarSignalId": "youtube:IHkp5Kq72ro"
   }
 ]
