@@ -1,11 +1,11 @@
 # ADR 0001 — CLI first, MCP deferred (Phase 4)
 
-> **Update 2026-10-03:** The deferral below is historical. The owner now wants MCP (T0021 is next). The server will be Python stdio next to the CLI, still local — not a hosted remote MCP. See `docs/cli-mcp-integration.md`.
+> **Update 2026-10-03:** The deferral below is historical. T0021 shipped a **local Python stdio** MCP beside the CLI (`python cli/trendy.py mcp`). Still not a hosted remote MCP. Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status` (read-only). See `docs/cli-mcp-integration.md`.
 
 
 - **Status:** Accepted
 - **Date:** 2026-09-14
-- **Tickets:** T0019 (decision), T0020 (CLI spike), T0021 (MCP — deferred)
+- **Tickets:** T0019 (decision), T0020 (CLI spike), T0021 (MCP stdio spike — done 2026-10-03; local only)
 
 ## Context
 

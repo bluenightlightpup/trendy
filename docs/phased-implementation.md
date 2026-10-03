@@ -78,7 +78,7 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 | **P2** | Decode Claude chat, You personalization, real APIs |
 | **P3** | Save/follow, polish, tests, TestFlight |
 | **Radar** | Continuous ingest → web/data (LIVE Reddit/seed; STUB TikTok/IG) |
-| **P4** | CLI GO (spike); MCP next — Python stdio, not hosted (`docs/cli-mcp-integration.md`) |
+| **P4** | CLI GO; MCP stdio spike shipped — not hosted (`docs/cli-mcp-integration.md`) |
 | **P5** | Product landscape (Urban Dictionary & peers) + novelty use cases |
 
 
@@ -88,7 +88,7 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Owner decision (2026-09-14):** **CLI GO** (Option B → path to C). Private/local-only; no hosted remote MCP.
 
-**Update (2026-10-03):** MCP is **no longer deferred**. Next step is a Python stdio server beside the CLI. The phone PWA is a client; `cli/` + `radar/` are what agents should call. See `docs/cli-mcp-integration.md`.
+**Update (2026-10-03):** MCP spike is in: a Python stdio server beside the CLI (T0021). The phone PWA is a client; `cli/` + `radar/` are what agents should call. Not hosted. See `docs/cli-mcp-integration.md`.
 
 ### Why consider it
 - Agents already live in [my-workbench](https://github.com/bluenightlightpup/my-workbench); a Trendy MCP server would let them pull live slang/trends instead of pasting JSON.
@@ -103,13 +103,13 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 5. **Cost/complexity:** CLI spike in parallel with Phase 3; MCP deferred so it does not block phone polish.
 
 ### Deliverables
-- [x] ADR: `docs/adr/0001-cli-mcp.md` (CLI GO / MCP deferred)
-- [x] `docs/cli-mcp-integration.md` — APPROVED for CLI; MCP deferred
+- [x] ADR: `docs/adr/0001-cli-mcp.md` (CLI GO; local MCP spike, not hosted)
+- [x] `docs/cli-mcp-integration.md` — CLI + stdio MCP run command and Cursor snippet
 - [x] CLI spike: `cli/trendy.py` (`decode`, `trends`, `radar status`, `radar run`) — T0020
-- [ ] MCP server stub (T0021) — **next** (Python stdio; not built yet)
+- [x] MCP server (T0021) — `python cli/trendy.py mcp` (read-only stdio)
 - [x] Community suggest → consensus lexicon (T0026) — PWA + LAN proxy
 - [x] README + workbench docs for CLI usage
-- [ ] Security review when MCP un-deferred (no secrets in tool results; rate limits)
+- [x] Spike security notes: read-only tools, no secrets in results, no remote surface (rate limits N/A for local stdio)
 
 ### Non-goals (this phase)
 - Replacing the PWA or iOS app

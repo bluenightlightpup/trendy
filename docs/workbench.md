@@ -40,9 +40,9 @@ See `AGENTS.md`.
 
 - `.claude/agents`, `.claude/skills`, graph nodes, workbench `tracking/` registry — keep those in my-workbench unless a future decision says otherwise.
 
-## Trendy CLI (until MCP lands)
+## Trendy CLI and local MCP
 
-Phase 4 ships a **local CLI** so agents can shell out instead of parsing raw JSON by hand. MCP (T0021) is deferred.
+Phase 4 ships a **local CLI** and a **local stdio MCP** (T0021) so agents can query slang and trends instead of parsing raw JSON by hand. MCP is not hosted.
 
 From the Trendy repo root:
 
@@ -51,7 +51,22 @@ python cli/trendy.py decode <term>
 python cli/trendy.py trends --min-heat 0.7 --limit 20
 python cli/trendy.py radar status
 python cli/trendy.py radar run
+python cli/trendy.py mcp
 ```
 
-Prefer this over ad-hoc `jq` on `web/data/*.json` when explaining slang or checking Radar health. Details: `docs/cli-mcp-integration.md`, `docs/adr/0001-cli-mcp.md`.
+Workbench / Cursor connector (stdio, cwd = this repo):
+
+```json
+{
+  "mcpServers": {
+    "trendy": {
+      "command": "python",
+      "args": ["cli/trendy.py", "mcp"],
+      "cwd": "/ABSOLUTE/PATH/TO/trendy"
+    }
+  }
+}
+```
+
+Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status`. Read-only; no secrets in results. Prefer these over ad-hoc `jq` on `web/data/*.json`. Details: `docs/cli-mcp-integration.md`, `docs/adr/0001-cli-mcp.md`.
 

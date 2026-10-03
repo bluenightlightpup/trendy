@@ -36,18 +36,18 @@ Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan
 | **P2** | Decode + You + APIs | PWA Decode/You live; iOS Claude API next |
 | **P3** | Save/follow, polish, TestFlight | Partially done (PWA save/follow + polish; TestFlight pending Mac) |
 | **Radar** | 24/7 multi-platform ingest | Live (TikTok/IG stubs) |
-| **P4** | CLI + MCP for integrated AI tools | **CLI GO** (spike); **MCP next** (Python stdio, not hosted) |
+| **P4** | CLI + MCP for integrated AI tools | **CLI GO**; **MCP spike** (local Python stdio, not hosted) |
 | **P5** | Landscape (Urban Dictionary & peers) + novelty uses | Open — research |
 
 Details: [`docs/phased-implementation.md`](docs/phased-implementation.md) · tickets in [`docs/backlog.md`](docs/backlog.md).
 
 ## Phase 4 — CLI & MCP for integrated AI tools
 
-**Decision (2026-09-14, updated 2026-10-03):** **CLI GO**. **MCP is next**, no longer deferred: a local Python stdio server beside the CLI (same functions agents already shell out to). No hosted remote MCP yet.
+**Decision (2026-09-14, updated 2026-10-03):** **CLI GO**. **MCP spike shipped**: a local Python stdio server beside the CLI (same read functions agents already shell out to). No hosted remote MCP.
 
 - Design brief: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md)
 - ADR: [`docs/adr/0001-cli-mcp.md`](docs/adr/0001-cli-mcp.md)
-- Tickets: **T0019** ✓ · **T0020** CLI spike ✓ · **T0021** MCP next (stdio; not built this pass)
+- Tickets: **T0019** ✓ · **T0020** CLI spike ✓ · **T0021** MCP stdio spike ✓
 
 ### Trendy CLI (spike)
 
@@ -64,6 +64,31 @@ python cli/trendy.py radar run
 ```
 
 Commands: `decode` (slang + abbreve lexicon), `trends`, `radar status`, `radar run` → `radar/run_ingest.py`.
+
+### Local MCP (stdio)
+
+Read-only tools for Cursor / Claude Desktop: `decode_term`, `search_slang`, `get_trends`, `radar_status`. No write tools, no hosted server, no API keys in results. From the repo root:
+
+```bash
+python cli/trendy.py mcp
+# or: python -m cli.mcp_server
+```
+
+Cursor `mcp.json` (set `cwd` to this repo):
+
+```json
+{
+  "mcpServers": {
+    "trendy": {
+      "command": "python",
+      "args": ["cli/trendy.py", "mcp"],
+      "cwd": "/ABSOLUTE/PATH/TO/trendy"
+    }
+  }
+}
+```
+
+Details and security notes: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md).
 
 ### Live Decode proxy (model-on-miss)
 
@@ -98,7 +123,7 @@ Review slang translators (Urban Dictionary, Slangora, Wordyex, Musely, GenZ apps
 App/                 SwiftUI source (create Xcode project via docs/xcode-setup.md)
 web/                 Progressive Web App (static; try on phone without Xcode)
 radar/               Trend Radar — continuous multi-platform ingest → web/data
-cli/                 Trendy CLI spike (decode / trends / radar) — Phase 4
+cli/                 Trendy CLI + local stdio MCP (decode / trends / radar) — Phase 4
 Tests/TrendyTests/   Unit test stubs
 docs/                PRD, phases, backlog, architecture, design tokens, ideas, ADRs
 .github/             Issue/PR templates + validate + radar-ingest cron
@@ -131,8 +156,8 @@ Minimum iOS: **17.0** (documented in architecture).
 | `docs/ideas/` | Owner idea extracts (plain text) |
 | `docs/radar.md` | Trend Radar continuous ingest (24/7 slang/trends) |
 | `docs/age-demographics.md` | Optional age band on slang, trends, and Decode |
-| `docs/cli-mcp-integration.md` | Phase 4 CLI/MCP (CLI GO; MCP next, Python stdio) |
-| `docs/adr/0001-cli-mcp.md` | ADR: CLI first, MCP later |
+| `docs/cli-mcp-integration.md` | Phase 4 CLI + local stdio MCP (how to run, Cursor snippet) |
+| `docs/adr/0001-cli-mcp.md` | ADR: CLI first; local MCP spike (not hosted) |
 | `docs/testflight.md` | TestFlight / App Store Connect checklist (Mac) |
 
 ## Sync note

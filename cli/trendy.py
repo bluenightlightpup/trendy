@@ -8,8 +8,10 @@ Usage (from repo root):
   python cli/trendy.py trends --min-heat 0.7 --limit 20
   python cli/trendy.py radar status
   python cli/trendy.py radar run [-- …flags passed to run_ingest.py]
+  python cli/trendy.py mcp
 
 Also: python -m cli <command> ...
+MCP (stdio, read-only): python -m cli.mcp_server
 """
 
 from __future__ import annotations
@@ -309,6 +311,16 @@ def cmd_radar_status(_args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_mcp(_args: argparse.Namespace) -> int:
+    """Local stdio MCP. Nothing is written to stdout except JSON-RPC."""
+    root = str(ROOT)
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    from cli.mcp_server import serve_stdio
+
+    return serve_stdio()
+
+
 def cmd_radar_run(args: argparse.Namespace) -> int:
     if not INGEST_SCRIPT.is_file():
         print(f"missing ingest script: {INGEST_SCRIPT}", file=sys.stderr)
@@ -370,6 +382,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Include summary lines",
     )
     p_trends.set_defaults(func=cmd_trends)
+
+    p_mcp = sub.add_parser(
+        "mcp",
+        help="Local stdio MCP server (read-only: decode_term, search_slang, get_trends, radar_status)",
+    )
+    p_mcp.set_defaults(func=cmd_mcp)
 
     p_radar = sub.add_parser("radar", help="Radar status / run ingest")
     radar_sub = p_radar.add_subparsers(dest="radar_cmd", required=True)

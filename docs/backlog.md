@@ -245,19 +245,19 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Effort:** M
 - **Status:** Done (spike in `cli/`)
 
-### T0021 — Spike MCP server (Python stdio) — **NEXT**
+### T0021 — Spike MCP server (Python stdio) — **DONE (spike)**
 - **Value:** Cursor / workbench agents can call Trendy tools natively.
 - **Scope:** Local stdio MCP: `search_slang`, `get_trends`, `decode_term`, `radar_status`.
 - **Out of scope:** Hosted remote MCP; write tools without auth story.
 - **Acceptance:**
-  - [ ] MCP server starts via documented command
-  - [ ] Tools return valid JSON against web/data
-  - [ ] Security notes in docs (no secrets leaked)
-  - [ ] Optional workbench connector instructions
+  - [x] MCP server starts via documented command (`python cli/trendy.py mcp` or `python -m cli.mcp_server`, cwd = repo root)
+  - [x] Tools return valid JSON against web/data
+  - [x] Security notes in docs (no secrets leaked; read-only; no live-model keys)
+  - [x] Optional workbench connector instructions (`docs/workbench.md`, Cursor snippet in `docs/cli-mcp-integration.md`)
 - **Agents/skills:** `implementer`, `architecture-decision`
 - **Depends on:** T0019 = GO, T0020 preferred first
 - **Effort:** L
-- **Status:** **Next** (updated 2026-10-03) — owner un-deferred MCP. Build a local Python stdio server next to the CLI (`search_slang`, `get_trends`, `decode_term`, `radar_status`). No hosted remote MCP. Not implemented in the age-demographics pass.
+- **Status:** **Done** (spike, 2026-10-03) — local Python stdio next to the CLI. Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status`. No hosted remote MCP. No write tools.
 
 ---
 
@@ -332,4 +332,4 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 
 ## Suggested order
 
-T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 (deferred) → T0025 ✓ → T0026 ✓ → **T0022 → T0023 → T0024**
+T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 ✓ → T0025 ✓ → T0026 ✓ → **T0022 → T0023 → T0024**
