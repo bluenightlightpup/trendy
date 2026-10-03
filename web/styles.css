@@ -275,6 +275,17 @@ a {
   padding: 3px 8px;
 }
 
+.age-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.01em;
+  color: var(--heat-cool);
+  background: rgba(45, 226, 230, 0.1);
+  border: 1px solid rgba(45, 226, 230, 0.35);
+  border-radius: var(--radius-pill);
+  padding: 3px 8px;
+}
+
 .world-pill {
   color: var(--heat-volt);
   border-color: rgba(200, 241, 53, 0.3);

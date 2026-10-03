@@ -29,6 +29,23 @@ MIN_MEANING_LEN = 12
 MAX_TERM_LEN = 80
 MAX_MEANING_LEN = 800
 MAX_ORIGIN_LEN = 240
+AGE_BANDS = ("Gen Alpha", "Gen Z", "Millennial", "Gen X+", "Mixed")
+
+
+def canonical_age(value: Any) -> str:
+    """Map optional suggest age to a band, or '' if missing/unknown.
+
+    Unknown values are ignored so a bad age never rejects an otherwise valid suggest.
+    """
+    raw = strip_html(str(value or "")).strip()
+    if not raw:
+        return ""
+    for band in AGE_BANDS:
+        if raw.lower() == band.lower():
+            return band
+    return ""
+
+
 
 
 def utc_now_iso() -> str:
@@ -137,6 +154,9 @@ def validate_suggest(payload: dict[str, Any]) -> tuple[dict[str, Any] | None, st
         "clientId": client_id or "anonymous",
         "ts": utc_now_iso(),
     }
+    age = canonical_age(payload.get("age"))
+    if age:
+        record["age"] = age
     return record, None
 
 
@@ -265,7 +285,7 @@ def consensus_for_term(
     # Prefer display term from most recent winner
     display = str(winners[-1].get("term") or term_norm).strip() or term_norm
     conf = "high" if len(top) >= threshold + 2 else "medium"
-    return {
+    entry: dict[str, Any] = {
         "terms": [display, term_norm] if display.lower() != term_norm else [display],
         "short": meaning,
         "explain": meaning,
@@ -279,6 +299,12 @@ def consensus_for_term(
         "updated_at": utc_now_iso(),
         "consensusCount": len(top),
     }
+    ages = [canonical_age(r.get("age")) for r in winners]
+    ages = [a for a in ages if a]
+    if ages:
+        # Majority band if people bothered to send one; else the first valid band.
+        entry["age"] = max(set(ages), key=ages.count)
+    return entry
 
 
 def upsert_community_entry(entry: dict[str, Any], path: Path | None = None) -> dict[str, Any]:

@@ -107,3 +107,33 @@ test("fuzzy aliases map skibiti → skibidi", () => {
   assert.equal(AI.applyAlias("skibiti"), "skibidi");
   assert.equal(AI.applyAlias("skibiti toilet"), "skibidi toilet");
 });
+
+test("who says this appears for 67, nah I'd win, bro, and alpha", async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => {
+    throw new Error("offline stub");
+  };
+  try {
+    const cases = [
+      ["67", /Gen Alpha/],
+      ["nah I'd win", /Gen Z/],
+      ["what does bro mean?", /Mixed/],
+      ["alpha", /Gen Z/],
+    ];
+    for (const [q, re] of cases) {
+      const ans = await AI.decodeQuery(q, { slang, abbreve, trends, newHere: false });
+      const titles = ans.parts.map((part) => part.title);
+      const who = ans.parts.find((part) => part.title === "Who says this");
+      assert.ok(who, `${q} should include Who says this`);
+      assert.match(who.body, re, q);
+      const meaningIdx = titles.findIndex((title) => /meaning/i.test(title));
+      const originIdx = titles.indexOf("Where it comes from");
+      const whoIdx = titles.indexOf("Who says this");
+      assert.ok(meaningIdx >= 0 && whoIdx > meaningIdx, `${q} age after meaning`);
+      if (originIdx >= 0) assert.ok(whoIdx > originIdx, `${q} age after origin`);
+      assert.ok(ans.parts.some((part) => /meaning/i.test(part.title)));
+    }
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});

@@ -190,6 +190,15 @@
       </button>`;
   }
 
+  const AGE_BANDS = ["Gen Alpha", "Gen Z", "Millennial", "Gen X+", "Mixed"];
+
+  function ageChipHtml(age) {
+    const raw = String(age || "").trim();
+    const band = AGE_BANDS.find((b) => b.toLowerCase() === raw.toLowerCase());
+    if (!band) return "";
+    return `<span class="age-chip">${escapeHtml(band)}</span>`;
+  }
+
   function trendCardHtml(trend) {
     return `
       <article class="trend-card" role="listitem" data-trend-id="${escapeHtml(trend.id)}">
@@ -201,6 +210,7 @@
           <p class="trend-summary">${escapeHtml(trend.summary)}</p>
           <div class="trend-meta">
             <span class="world-pill">${escapeHtml(trend.world)}</span>
+            ${ageChipHtml(trend.age)}
             ${tagsHtml(trend.tags)}
           </div>
           ${heatMeterHtml(trend.heatScore)}
@@ -340,6 +350,7 @@
       <p class="trend-summary">${escapeHtml(trend.summary)}</p>
       <div class="trend-meta">
         <span class="world-pill">${escapeHtml(trend.world)}</span>
+        ${ageChipHtml(trend.age)}
         ${tagsHtml(trend.tags)}
       </div>
       ${heatMeterHtml(trend.heatScore)}
@@ -740,7 +751,7 @@
   }
 
   async function loadData() {
-    const bust = "v=13";
+    const bust = "v=14";
     const [trendsRes, slangRes, abbreveRes, communityRes] = await Promise.all([
       fetch("data/trends.json?" + bust),
       fetch("data/slang.json?" + bust),

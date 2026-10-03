@@ -19,6 +19,22 @@ class CliSmokeTest(unittest.TestCase):
         self.assertIn("short:", out)
         self.assertIn("explain:", out)
 
+    def test_decode_age_lines(self) -> None:
+        for term, band in (
+            ("67", "Gen Alpha"),
+            ("nah I'd win", "Gen Z"),
+            ("bro", "Mixed"),
+            ("alpha", "Gen Z"),
+        ):
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                code = trendy.main(["decode", term])
+            self.assertEqual(code, 0, term)
+            out = buf.getvalue()
+            self.assertIn("short:", out, term)
+            self.assertIn("age:", out, term)
+            self.assertIn(band, out, term)
+
     def test_decode_miss(self) -> None:
         buf = io.StringIO()
         with redirect_stdout(buf):

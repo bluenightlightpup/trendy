@@ -1,6 +1,8 @@
 # Trendy
 
-**Trendy** is a phone-first iOS app: an AI assistant that helps you stay current on trends, memes, and slang **without** burning hours of screentime. Catch up on culture, decode abbreviations judgment-free, and keep signals organized in one place — built for people who don’t want FOMO and for older users who want slang context.
+**Trendy** is a Python CLI and MCP interface for AI tools. Agents decode slang and memes, list hot trends, and check Trend Radar (`decode`, `trends`, `radar`) against one lexicon. The phone PWA (and the iOS app) is a client on that same data — not the only product. Judgment-free on purpose: catch up without the scroll, including for people who don’t want FOMO and for older users who want slang context.
+
+Slang and meme entries can carry a rough **age band** (Gen Alpha, Gen Z, Millennial, Gen X+, Mixed) so Decode can say who mainly uses a term. See [`docs/age-demographics.md`](docs/age-demographics.md).
 
 > **License:** MIT · Copyright (c) 2026 bluenightlightpup  
 > **GitHub:** https://github.com/bluenightlightpup/trendy  
@@ -34,18 +36,18 @@ Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan
 | **P2** | Decode + You + APIs | PWA Decode/You live; iOS Claude API next |
 | **P3** | Save/follow, polish, TestFlight | Partially done (PWA save/follow + polish; TestFlight pending Mac) |
 | **Radar** | 24/7 multi-platform ingest | Live (TikTok/IG stubs) |
-| **P4** | CLI + MCP for integrated AI tools | **CLI GO** (spike); **MCP deferred** |
+| **P4** | CLI + MCP for integrated AI tools | **CLI GO** (spike); **MCP next** (Python stdio, not hosted) |
 | **P5** | Landscape (Urban Dictionary & peers) + novelty uses | Open — research |
 
 Details: [`docs/phased-implementation.md`](docs/phased-implementation.md) · tickets in [`docs/backlog.md`](docs/backlog.md).
 
 ## Phase 4 — CLI & MCP for integrated AI tools
 
-**Decision (2026-09-14):** **CLI GO** (Option B → path to C later); **MCP deferred** until the CLI proves useful. Private/local-only — no hosted remote MCP.
+**Decision (2026-09-14, updated 2026-10-03):** **CLI GO**. **MCP is next**, no longer deferred: a local Python stdio server beside the CLI (same functions agents already shell out to). No hosted remote MCP yet.
 
 - Design brief: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md)
 - ADR: [`docs/adr/0001-cli-mcp.md`](docs/adr/0001-cli-mcp.md)
-- Tickets: **T0019** ✓ · **T0020** CLI spike ✓ · **T0021** MCP deferred
+- Tickets: **T0019** ✓ · **T0020** CLI spike ✓ · **T0021** MCP next (stdio; not built this pass)
 
 ### Trendy CLI (spike)
 
@@ -128,7 +130,8 @@ Minimum iOS: **17.0** (documented in architecture).
 | `docs/xcode-setup.md` | Create Xcode project from this tree |
 | `docs/ideas/` | Owner idea extracts (plain text) |
 | `docs/radar.md` | Trend Radar continuous ingest (24/7 slang/trends) |
-| `docs/cli-mcp-integration.md` | Phase 4 CLI/MCP decision (CLI GO / MCP deferred) |
+| `docs/age-demographics.md` | Optional age band on slang, trends, and Decode |
+| `docs/cli-mcp-integration.md` | Phase 4 CLI/MCP (CLI GO; MCP next, Python stdio) |
 | `docs/adr/0001-cli-mcp.md` | ADR: CLI first, MCP later |
 | `docs/testflight.md` | TestFlight / App Store Connect checklist (Mac) |
 

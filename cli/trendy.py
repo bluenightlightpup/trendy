@@ -63,6 +63,31 @@ def _norm(s: str) -> str:
     return " ".join(t.split())
 
 
+
+AGE_BANDS = ("Gen Alpha", "Gen Z", "Millennial", "Gen X+", "Mixed")
+AGE_GLOSS = {
+    "Gen Alpha": "mostly kids/tweens right now",
+    "Gen Z": "mostly teens and early twenties",
+    "Millennial": "mostly late twenties through early forties",
+    "Gen X+": "mostly forties and older",
+    "Mixed": "used across generations",
+}
+
+
+def format_age(entry: dict[str, Any] | None) -> str:
+    """Return 'Band — gloss' when entry.age is a known band, else ''."""
+    if not isinstance(entry, dict):
+        return ""
+    raw = str(entry.get("age") or "").strip()
+    if not raw:
+        return ""
+    band = next((b for b in AGE_BANDS if b.lower() == raw.lower()), "")
+    if not band:
+        return ""
+    gloss = AGE_GLOSS.get(band, "")
+    return f"{band} — {gloss}" if gloss else band
+
+
 def _entry_terms(entry: dict[str, Any]) -> list[str]:
     terms = entry.get("terms") or []
     if isinstance(terms, str):
@@ -181,6 +206,9 @@ def cmd_decode(args: argparse.Namespace) -> int:
         print(f"explain: {explain}")
     if origin:
         print(f"origin:  {origin}")
+    age_line = format_age(entry)
+    if age_line:
+        print(f"age:     {age_line}")
     return 0
 
 

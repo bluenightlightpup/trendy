@@ -1,5 +1,8 @@
 # ADR 0001 — CLI first, MCP deferred (Phase 4)
 
+> **Update 2026-10-03:** The deferral below is historical. The owner now wants MCP (T0021 is next). The server will be Python stdio next to the CLI, still local — not a hosted remote MCP. See `docs/cli-mcp-integration.md`.
+
+
 - **Status:** Accepted
 - **Date:** 2026-09-14
 - **Tickets:** T0019 (decision), T0020 (CLI spike), T0021 (MCP — deferred)

@@ -49,6 +49,21 @@ class CommunityLexiconTest(unittest.TestCase):
         self.assertEqual(rec["term"], "glorp")
         self.assertNotIn("<", rec["meaning"])
 
+    def test_validate_optional_age(self) -> None:
+        meaning = "A silly nonsense word friends use in group chat"
+        rec, err = cl.validate_suggest({"term": "glorp", "meaning": meaning, "age": "gen alpha"})
+        self.assertIsNone(err)
+        assert rec is not None
+        self.assertEqual(rec["age"], "Gen Alpha")
+        rec2, err2 = cl.validate_suggest({"term": "glorp", "meaning": meaning, "age": "not a band"})
+        self.assertIsNone(err2)
+        assert rec2 is not None
+        self.assertNotIn("age", rec2)
+        rec3, err3 = cl.validate_suggest({"term": "glorp", "meaning": meaning})
+        self.assertIsNone(err3)
+        assert rec3 is not None
+        self.assertNotIn("age", rec3)
+
     def test_consensus_promotes_at_threshold(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)

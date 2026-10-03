@@ -15,48 +15,48 @@
   ];
 
   const CORE_ABBREVS = {
-    jk: { terms: ["jk", "j/k", "j.k.", "just kidding"], short: "Just kidding.", explain: "Used after a joke or to soften a serious-sounding line.", origin: "SMS/IM classic." },
-    idk: { terms: ["idk"], short: "I don’t know.", explain: "You don’t have the answer right now.", origin: "Texting shorthand." },
-    brb: { terms: ["brb"], short: "Be right back.", explain: "Stepping away briefly.", origin: "Chat classic." },
-    ttyl: { terms: ["ttyl"], short: "Talk to you later.", explain: "Friendly pause/sign-off.", origin: "Texting shorthand." },
-    lol: { terms: ["lol"], short: "Laughing out loud (often a soft chuckle).", explain: "Frequently acknowledgment, not literal loud laughing.", origin: "Early internet." },
-    omg: { terms: ["omg"], short: "Oh my god.", explain: "Surprise or emphasis.", origin: "Texting shorthand." },
-    smh: { terms: ["smh"], short: "Shaking my head.", explain: "Disappointment or disbelief.", origin: "Internet slang." },
-    tbh: { terms: ["tbh"], short: "To be honest.", explain: "Flags a frank opinion.", origin: "Texting shorthand." },
-    ngl: { terms: ["ngl"], short: "Not gonna lie.", explain: "Honesty marker before a take.", origin: "Internet slang." },
-    fr: { terms: ["fr", "fr fr"], short: "For real.", explain: "Agreement or emphasis.", origin: "AAVE → mainstream." },
-    nvm: { terms: ["nvm"], short: "Never mind.", explain: "Cancel what you just said.", origin: "Texting shorthand." },
-    wyd: { terms: ["wyd"], short: "What (are) you doing?", explain: "Casual check-in.", origin: "Texting shorthand." },
-    hmu: { terms: ["hmu"], short: "Hit me up.", explain: "Message me later.", origin: "Texting shorthand." },
-    gtg: { terms: ["gtg", "g2g"], short: "Got to go.", explain: "Leaving the chat.", origin: "IM classic." },
-    afk: { terms: ["afk"], short: "Away from keyboard.", explain: "Not at the device.", origin: "Gaming/chat." },
-    sus: { terms: ["sus"], short: "Suspicious.", explain: "Something feels shady.", origin: "Among Us boom." },
-    fyi: { terms: ["fyi"], short: "For your information.", explain: "Heads-up.", origin: "Common abbreviation." },
-    btw: { terms: ["btw"], short: "By the way.", explain: "Side note.", origin: "Texting shorthand." },
-    asap: { terms: ["asap"], short: "As soon as possible.", explain: "Urgency.", origin: "Common abbreviation." },
-    idc: { terms: ["idc"], short: "I don’t care.", explain: "Dismissive or boundary — tone varies.", origin: "Texting shorthand." },
-    rn: { terms: ["rn"], short: "Right now.", explain: "Currently.", origin: "Texting shorthand." },
-    ofc: { terms: ["ofc"], short: "Of course.", explain: "Agreement / obviously.", origin: "Texting shorthand." },
-    ikr: { terms: ["ikr"], short: "I know, right?", explain: "Strong agreement.", origin: "Texting shorthand." },
-    lmk: { terms: ["lmk"], short: "Let me know.", explain: "Ask for an update.", origin: "Texting shorthand." },
-    np: { terms: ["np"], short: "No problem.", explain: "It’s fine / you’re welcome.", origin: "Texting shorthand." },
-    ty: { terms: ["ty", "thx", "tysm"], short: "Thank you / thanks.", explain: "Gratitude shorthand.", origin: "Texting shorthand." },
-    yw: { terms: ["yw"], short: "You’re welcome.", explain: "Reply to thanks.", origin: "Texting shorthand." },
-    omw: { terms: ["omw"], short: "On my way.", explain: "En route.", origin: "Texting shorthand." },
-    irl: { terms: ["irl"], short: "In real life.", explain: "Offline / not online.", origin: "Internet slang." },
-    tldr: { terms: ["tldr", "tl;dr"], short: "Too long; didn’t read — summary follows.", explain: "Prefaces a short version.", origin: "Forum culture." },
-    imo: { terms: ["imo", "imho"], short: "In my (humble) opinion.", explain: "Personal take marker.", origin: "Forum/texting." },
-    ong: { terms: ["ong"], short: "On God — I swear / for real.", explain: "Emphasis of seriousness.", origin: "Internet slang." },
-    fs: { terms: ["fs"], short: "For sure.", explain: "Agreement.", origin: "Texting shorthand." },
-    dw: { terms: ["dw"], short: "Don’t worry.", explain: "Reassurance.", origin: "Texting shorthand." },
-    pls: { terms: ["pls", "plz"], short: "Please.", explain: "Softener.", origin: "Texting shorthand." },
-    bro: { terms: ["bro", "bros", "brother"], short: "Casual address for a guy/friend — like “dude.”", explain: "Usually means buddy/friend, not always a literal brother. Tone can be warm, ironic, or annoyed. Related: bruh, dude, man.", origin: "Short for brother; everyday casual English + internet." },
-    bruh: { terms: ["bruh"], short: "Like “bro,” often for surprise, disbelief, or secondhand embarrassment.", explain: "As much a reaction (“bruh…”) as an address.", origin: "Phonetic casual bro; meme reaction." },
-    dude: { terms: ["dude"], short: "Casual address for a person; also a “wow” reaction.", explain: "Daily informal English for a person; greeting, emphasis, or disbelief.", origin: "Older American slang still in heavy use." },
-    fam: { terms: ["fam"], short: "Close friends / chosen family.", explain: "Your people — not only blood relatives.", origin: "AAVE/youth slang → broad use." },
-    alpha: { terms: ["alpha", "alpha male", "alpha energy"], short: "In TikTok/internet slang: top-dog / “best” / dominant vibe — not mainly the Greek letter.", explain: "Online “alpha” usually means confident, high-status, in-charge energy (sometimes ironic). The Greek-letter / software meanings exist, but TikTok almost always means the slang status vibe.", origin: "Pop-psych hierarchy metaphors → TikTok shorthand." },
-    sigma: { terms: ["sigma", "sigma male"], short: "Meme “lone wolf” cool-outsider archetype (cousin of alpha memes).", explain: "TikTok personality meme: independent, quiet-confident. Often half-joke.", origin: "Online personality memes; TikTok/Reels." },
-    beta: { terms: ["beta"], short: "Meme opposite of “alpha” — portrayed as less dominant (often rude/joke), not “beta software.”", explain: "In slang fights/memes, “beta” dunks on someone as passive. Separate from app beta testing.", origin: "Same meme family as alpha." },
+    jk: { terms: ["jk", "j/k", "j.k.", "just kidding"], short: "Just kidding.", explain: "Used after a joke or to soften a serious-sounding line.", origin: "SMS/IM classic.", age: "Mixed" },
+    idk: { terms: ["idk"], short: "I don’t know.", explain: "You don’t have the answer right now.", origin: "Texting shorthand.", age: "Mixed" },
+    brb: { terms: ["brb"], short: "Be right back.", explain: "Stepping away briefly.", origin: "Chat classic.", age: "Mixed" },
+    ttyl: { terms: ["ttyl"], short: "Talk to you later.", explain: "Friendly pause/sign-off.", origin: "Texting shorthand.", age: "Mixed" },
+    lol: { terms: ["lol"], short: "Laughing out loud (often a soft chuckle).", explain: "Frequently acknowledgment, not literal loud laughing.", origin: "Early internet.", age: "Mixed" },
+    omg: { terms: ["omg"], short: "Oh my god.", explain: "Surprise or emphasis.", origin: "Texting shorthand.", age: "Mixed" },
+    smh: { terms: ["smh"], short: "Shaking my head.", explain: "Disappointment or disbelief.", origin: "Internet slang.", age: "Mixed" },
+    tbh: { terms: ["tbh"], short: "To be honest.", explain: "Flags a frank opinion.", origin: "Texting shorthand.", age: "Mixed" },
+    ngl: { terms: ["ngl"], short: "Not gonna lie.", explain: "Honesty marker before a take.", origin: "Internet slang.", age: "Gen Z" },
+    fr: { terms: ["fr", "fr fr"], short: "For real.", explain: "Agreement or emphasis.", origin: "AAVE → mainstream.", age: "Gen Z" },
+    nvm: { terms: ["nvm"], short: "Never mind.", explain: "Cancel what you just said.", origin: "Texting shorthand.", age: "Mixed" },
+    wyd: { terms: ["wyd"], short: "What (are) you doing?", explain: "Casual check-in.", origin: "Texting shorthand.", age: "Mixed" },
+    hmu: { terms: ["hmu"], short: "Hit me up.", explain: "Message me later.", origin: "Texting shorthand.", age: "Mixed" },
+    gtg: { terms: ["gtg", "g2g"], short: "Got to go.", explain: "Leaving the chat.", origin: "IM classic.", age: "Mixed" },
+    afk: { terms: ["afk"], short: "Away from keyboard.", explain: "Not at the device.", origin: "Gaming/chat.", age: "Mixed" },
+    sus: { terms: ["sus"], short: "Suspicious.", explain: "Something feels shady.", origin: "Among Us boom.", age: "Gen Z" },
+    fyi: { terms: ["fyi"], short: "For your information.", explain: "Heads-up.", origin: "Common abbreviation.", age: "Mixed" },
+    btw: { terms: ["btw"], short: "By the way.", explain: "Side note.", origin: "Texting shorthand.", age: "Mixed" },
+    asap: { terms: ["asap"], short: "As soon as possible.", explain: "Urgency.", origin: "Common abbreviation.", age: "Mixed" },
+    idc: { terms: ["idc"], short: "I don’t care.", explain: "Dismissive or boundary — tone varies.", origin: "Texting shorthand.", age: "Mixed" },
+    rn: { terms: ["rn"], short: "Right now.", explain: "Currently.", origin: "Texting shorthand.", age: "Mixed" },
+    ofc: { terms: ["ofc"], short: "Of course.", explain: "Agreement / obviously.", origin: "Texting shorthand.", age: "Mixed" },
+    ikr: { terms: ["ikr"], short: "I know, right?", explain: "Strong agreement.", origin: "Texting shorthand.", age: "Mixed" },
+    lmk: { terms: ["lmk"], short: "Let me know.", explain: "Ask for an update.", origin: "Texting shorthand.", age: "Mixed" },
+    np: { terms: ["np"], short: "No problem.", explain: "It’s fine / you’re welcome.", origin: "Texting shorthand.", age: "Mixed" },
+    ty: { terms: ["ty", "thx", "tysm"], short: "Thank you / thanks.", explain: "Gratitude shorthand.", origin: "Texting shorthand.", age: "Mixed" },
+    yw: { terms: ["yw"], short: "You’re welcome.", explain: "Reply to thanks.", origin: "Texting shorthand.", age: "Mixed" },
+    omw: { terms: ["omw"], short: "On my way.", explain: "En route.", origin: "Texting shorthand.", age: "Mixed" },
+    irl: { terms: ["irl"], short: "In real life.", explain: "Offline / not online.", origin: "Internet slang.", age: "Mixed" },
+    tldr: { terms: ["tldr", "tl;dr"], short: "Too long; didn’t read — summary follows.", explain: "Prefaces a short version.", origin: "Forum culture.", age: "Mixed" },
+    imo: { terms: ["imo", "imho"], short: "In my (humble) opinion.", explain: "Personal take marker.", origin: "Forum/texting.", age: "Mixed" },
+    ong: { terms: ["ong"], short: "On God — I swear / for real.", explain: "Emphasis of seriousness.", origin: "Internet slang.", age: "Gen Z" },
+    fs: { terms: ["fs"], short: "For sure.", explain: "Agreement.", origin: "Texting shorthand.", age: "Gen Z" },
+    dw: { terms: ["dw"], short: "Don’t worry.", explain: "Reassurance.", origin: "Texting shorthand.", age: "Mixed" },
+    pls: { terms: ["pls", "plz"], short: "Please.", explain: "Softener.", origin: "Texting shorthand.", age: "Mixed" },
+    bro: { terms: ["bro", "bros", "brother"], short: "Casual address for a guy/friend — like “dude.”", explain: "Usually means buddy/friend, not always a literal brother. Tone can be warm, ironic, or annoyed. Related: bruh, dude, man.", origin: "Short for brother; everyday casual English + internet.", age: "Mixed" },
+    bruh: { terms: ["bruh"], short: "Like “bro,” often for surprise, disbelief, or secondhand embarrassment.", explain: "As much a reaction (“bruh…”) as an address.", origin: "Phonetic casual bro; meme reaction.", age: "Gen Z" },
+    dude: { terms: ["dude"], short: "Casual address for a person; also a “wow” reaction.", explain: "Daily informal English for a person; greeting, emphasis, or disbelief.", origin: "Older American slang still in heavy use.", age: "Mixed" },
+    fam: { terms: ["fam"], short: "Close friends / chosen family.", explain: "Your people — not only blood relatives.", origin: "AAVE/youth slang → broad use.", age: "Gen Z" },
+    alpha: { terms: ["alpha", "alpha male", "alpha energy"], short: "In TikTok/internet slang: top-dog / “best” / dominant vibe — not mainly the Greek letter.", explain: "Online “alpha” usually means confident, high-status, in-charge energy (sometimes ironic). The Greek-letter / software meanings exist, but TikTok almost always means the slang status vibe.", origin: "Pop-psych hierarchy metaphors → TikTok shorthand.", age: "Gen Z" },
+    sigma: { terms: ["sigma", "sigma male"], short: "Meme “lone wolf” cool-outsider archetype (cousin of alpha memes).", explain: "TikTok personality meme: independent, quiet-confident. Often half-joke.", origin: "Online personality memes; TikTok/Reels.", age: "Gen Z" },
+    beta: { terms: ["beta"], short: "Meme opposite of “alpha” — portrayed as less dominant (often rude/joke), not “beta software.”", explain: "In slang fights/memes, “beta” dunks on someone as passive. Separate from app beta testing.", origin: "Same meme family as alpha.", age: "Gen Z" },
 
     skibidi: {
       terms: [
@@ -77,6 +77,7 @@
       short: "YouTube/TikTok horror-comedy series by DaFuq!?Boom! with heads in toilets; kids also chant “skibidi” as brainrot noise.",
       explain: "Skibidi Toilet is a surreal animated series by DaFuq!?Boom! (Alexey Gerasimov): singing human heads in toilets fight camera-headed people (Cameramen) and other hardware-headed factions. On playgrounds and the FYP, “skibidi” is often just a nonsense chant — participation, not a secret code. Asking what it means is normal; the joke is how little dictionary sense it has.",
       origin: "YouTube series by DaFuq!?Boom!, 2023–; exploded on TikTok and in Gen Alpha schoolyard/brainrot culture.",
+      age: "Gen Alpha",
       source: "core",
       confidence: "high",
     },
@@ -693,6 +694,35 @@
     return parts;
   }
 
+
+  const AGE_BANDS = ["Gen Alpha", "Gen Z", "Millennial", "Gen X+", "Mixed"];
+
+  /** One-line gloss so Decode can say who mainly uses a band. Rough, not a census. */
+  const AGE_GLOSS = {
+    "Gen Alpha": "mostly kids/tweens right now",
+    "Gen Z": "mostly teens and early twenties",
+    Millennial: "mostly late twenties through early forties",
+    "Gen X+": "mostly forties and older",
+    Mixed: "used across generations",
+  };
+
+  function canonicalAge(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    const hit = AGE_BANDS.find((b) => b.toLowerCase() === raw.toLowerCase());
+    return hit || "";
+  }
+
+  function whoSaysPart(age) {
+    const band = canonicalAge(age);
+    if (!band) return null;
+    const gloss = AGE_GLOSS[band];
+    return {
+      title: "Who says this",
+      body: gloss ? band + " — " + gloss : band,
+    };
+  }
+
   function buildAnswer({ term, slangHit, trend, dict, heuristics, newHere }) {
     const parts = [];
     let source = "ai-search";
@@ -702,6 +732,8 @@
       const e = slangHit.entry;
       parts.push({ title: "Slang meaning (TikTok / internet)", body: e.short });
       if (e.origin) parts.push({ title: "Where it comes from", body: e.origin });
+      const who = whoSaysPart(e.age);
+      if (who) parts.push(who);
       if (e.explain) parts.push({ title: "In plain words", body: e.explain });
       if (dict && dict.defs && dict.defs.length) {
         parts.push({
@@ -718,6 +750,11 @@
       if (!slangHit) {
         source = "trends";
         parts.push({ title: "Meaning", body: trend.summary });
+        const whoTrend = whoSaysPart(trend.age);
+        if (whoTrend) parts.push(whoTrend);
+      } else if (!whoSaysPart(slangHit.entry && slangHit.entry.age)) {
+        const whoTrend = whoSaysPart(trend.age);
+        if (whoTrend) parts.push(whoTrend);
       }
       parts.push({
         title: "On the heat radar",

@@ -245,7 +245,7 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Effort:** M
 - **Status:** Done (spike in `cli/`)
 
-### T0021 — Spike MCP server (if Phase 4 GO) — **DEFERRED**
+### T0021 — Spike MCP server (Python stdio) — **NEXT**
 - **Value:** Cursor / workbench agents can call Trendy tools natively.
 - **Scope:** Local stdio MCP: `search_slang`, `get_trends`, `decode_term`, `radar_status`.
 - **Out of scope:** Hosted remote MCP; write tools without auth story.
@@ -257,7 +257,7 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Agents/skills:** `implementer`, `architecture-decision`
 - **Depends on:** T0019 = GO, T0020 preferred first
 - **Effort:** L
-- **Status:** **Deferred** (2026-09-14) — wait until CLI spike proves useful; do not implement in Phase 4 CLI milestone.
+- **Status:** **Next** (updated 2026-10-03) — owner un-deferred MCP. Build a local Python stdio server next to the CLI (`search_slang`, `get_trends`, `decode_term`, `radar_status`). No hosted remote MCP. Not implemented in the age-demographics pass.
 
 ---
 

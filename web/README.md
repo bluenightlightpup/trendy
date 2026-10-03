@@ -63,7 +63,7 @@ Saved / followed trend IDs use `trendy.saved.v1` (see `saved.js`). Hearts on car
 ### Phase 3 (PWA)
 
 - Save/follow + a11y/reduced-motion polish
-- Offline cache bumped to `trendy-v13` (precache includes `decode-ai.js` + `saved.js`)
+- Offline cache bumped to `trendy-v14` (precache includes `decode-ai.js` + `saved.js`; slang age bands)
 - Node tests: `npm test` (or `node --test tests/*.mjs`) from this folder
 
 

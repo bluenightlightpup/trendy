@@ -155,6 +155,14 @@
     }
   }
 
+  const AGE_BANDS = ["Gen Alpha", "Gen Z", "Millennial", "Gen X+", "Mixed"];
+
+  function canonicalAge(value) {
+    const raw = stripHtml(String(value || "")).trim();
+    if (!raw) return "";
+    return AGE_BANDS.find((b) => b.toLowerCase() === raw.toLowerCase()) || "";
+  }
+
   function validate(term, meaning, origin) {
     const t = stripHtml(term).trim();
     const m = stripHtml(meaning).trim();
@@ -196,6 +204,8 @@
       updated_at: new Date().toISOString(),
       consensusCount: cluster.length,
     };
+    const promoAge = cluster.map((r) => canonicalAge(r.age)).find(Boolean);
+    if (promoAge) entry.age = promoAge;
     const data = loadLocalCommunity();
     const norms = new Set((entry.terms || []).map(normalizeTerm).filter(Boolean));
     let replaced = false;
@@ -249,6 +259,7 @@
           term: record.term,
           meaning: record.meaning,
           origin: record.origin || undefined,
+          age: record.age || undefined,
           clientId: record.clientId,
         }),
         signal: ctrl.signal,
@@ -274,7 +285,7 @@
    * Always saves locally. If liveDecodeUrl set, also POSTs to proxy.
    * Local demo promotion after 3 similar same-device suggests.
    */
-  async function submitSuggestion({ term, meaning, origin, liveDecodeUrl }) {
+  async function submitSuggestion({ term, meaning, origin, age, liveDecodeUrl }) {
     const v = validate(term, meaning, origin);
     if (!v.ok) return { ok: false, message: v.message };
 
@@ -289,6 +300,8 @@
       clientId: clientId(),
       ts: new Date().toISOString(),
     };
+    const band = canonicalAge(age);
+    if (band) record.age = band;
 
     const queue = loadQueue();
     queue.push(record);

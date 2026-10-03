@@ -7,6 +7,7 @@
     "world": "TikTok",
     "heatScore": 0.97,
     "lifecycle": "peaking",
+    "age": "Gen Alpha",
     "tags": [
       "brainrot",
       "gen-alpha",
@@ -28,6 +29,7 @@
     "world": "TikTok",
     "heatScore": 0.93,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "slang",
       "flex",
@@ -45,6 +47,7 @@
     "world": "TikTok",
     "heatScore": 0.91,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "crash out",
       "slang",
@@ -60,6 +63,7 @@
     "world": "TikTok",
     "heatScore": 0.9,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "glazing",
       "glaze",
@@ -76,6 +80,7 @@
     "world": "Internet culture",
     "heatScore": 0.89,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "slang",
       "stan",
@@ -93,6 +98,7 @@
     "world": "TikTok",
     "heatScore": 0.88,
     "lifecycle": "peaking",
+    "age": "Gen Alpha",
     "tags": [
       "meme",
       "gen-z",
@@ -108,6 +114,7 @@
     "world": "Dating",
     "heatScore": 0.88,
     "lifecycle": "peaking",
+    "age": "Mixed",
     "tags": [
       "dating",
       "relationship",
@@ -124,6 +131,7 @@
     "world": "TikTok",
     "heatScore": 0.87,
     "lifecycle": "peaking",
+    "age": "Gen Z",
     "tags": [
       "tiktok",
       "slang",
@@ -140,6 +148,7 @@
     "world": "Gaming",
     "heatScore": 0.87,
     "lifecycle": "peaking",
+    "age": "Gen Z",
     "tags": [
       "gaming",
       "roast",
@@ -157,6 +166,7 @@
     "world": "TikTok",
     "heatScore": 0.86,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "mewing",
       "looksmaxxing",
@@ -173,6 +183,7 @@
     "world": "TikTok",
     "heatScore": 0.85,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "mogging",
       "mog",
@@ -190,6 +201,7 @@
     "world": "Internet culture",
     "heatScore": 0.84,
     "lifecycle": "peaking",
+    "age": "Gen Z",
     "tags": [
       "slang",
       "dating",
@@ -255,6 +267,7 @@
     "world": "TikTok",
     "heatScore": 0.83,
     "lifecycle": "peaking",
+    "age": "Gen Z",
     "tags": [
       "yap",
       "yapping",
@@ -302,6 +315,7 @@
     "world": "TikTok",
     "heatScore": 0.82,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "beauty",
       "discourse",
@@ -373,6 +387,7 @@
     "world": "TikTok",
     "heatScore": 0.8,
     "lifecycle": "rising",
+    "age": "Gen Z",
     "tags": [
       "slang",
       "dating",
@@ -538,6 +553,7 @@
     "world": "Sports",
     "heatScore": 0.74,
     "lifecycle": "peaking",
+    "age": "Gen Z",
     "tags": [
       "sports",
       "meme"
@@ -1656,6 +1672,7 @@
     "world": "TikTok",
     "heatScore": 0.5,
     "lifecycle": "cooling",
+    "age": "Gen Z",
     "tags": [
       "meme",
       "archetype",
@@ -1837,6 +1854,7 @@
     "world": "TikTok",
     "heatScore": 0.44,
     "lifecycle": "cooling",
+    "age": "Gen Alpha",
     "tags": [
       "gyatt",
       "gyat",
@@ -2033,6 +2051,7 @@
     "world": "TikTok",
     "heatScore": 0.36,
     "lifecycle": "fading",
+    "age": "Gen Alpha",
     "tags": [
       "brainrot",
       "gen-alpha",
@@ -2109,6 +2128,7 @@
     "world": "TikTok",
     "heatScore": 0.32,
     "lifecycle": "fading",
+    "age": "Gen Z",
     "tags": [
       "brainrot",
       "meme",

@@ -78,7 +78,7 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 | **P2** | Decode Claude chat, You personalization, real APIs |
 | **P3** | Save/follow, polish, tests, TestFlight |
 | **Radar** | Continuous ingest → web/data (LIVE Reddit/seed; STUB TikTok/IG) |
-| **P4** | CLI GO (spike); MCP deferred (see `docs/cli-mcp-integration.md`, ADR 0001) |
+| **P4** | CLI GO (spike); MCP next — Python stdio, not hosted (`docs/cli-mcp-integration.md`) |
 | **P5** | Product landscape (Urban Dictionary & peers) + novelty use cases |
 
 
@@ -86,7 +86,9 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Outcome:** Deliberate go / no-go on **CLI** and **MCP** so integrated AI tools can query Trendy’s radar, slang lexicon, and decode pipeline — without blocking phone UX work.
 
-**Owner decision (2026-09-14):** **CLI GO** (Option B → path to C later); **MCP DEFERRED** until CLI proves useful. Private/local-only; no hosted remote MCP. See `docs/adr/0001-cli-mcp.md` · `docs/cli-mcp-integration.md`.
+**Owner decision (2026-09-14):** **CLI GO** (Option B → path to C). Private/local-only; no hosted remote MCP.
+
+**Update (2026-10-03):** MCP is **no longer deferred**. Next step is a Python stdio server beside the CLI. The phone PWA is a client; `cli/` + `radar/` are what agents should call. See `docs/cli-mcp-integration.md`.
 
 ### Why consider it
 - Agents already live in [my-workbench](https://github.com/bluenightlightpup/my-workbench); a Trendy MCP server would let them pull live slang/trends instead of pasting JSON.
@@ -104,7 +106,7 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 - [x] ADR: `docs/adr/0001-cli-mcp.md` (CLI GO / MCP deferred)
 - [x] `docs/cli-mcp-integration.md` — APPROVED for CLI; MCP deferred
 - [x] CLI spike: `cli/trendy.py` (`decode`, `trends`, `radar status`, `radar run`) — T0020
-- [ ] MCP server stub (T0021) — **deferred**
+- [ ] MCP server stub (T0021) — **next** (Python stdio; not built yet)
 - [x] Community suggest → consensus lexicon (T0026) — PWA + LAN proxy
 - [x] README + workbench docs for CLI usage
 - [ ] Security review when MCP un-deferred (no secrets in tool results; rate limits)
