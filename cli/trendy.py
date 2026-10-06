@@ -432,7 +432,9 @@ def cmd_radar_status(args: argparse.Namespace) -> int:
             f"slang_entries={slang.get('total', '?')}"
         )
     path_map = data.get("paths") or {}
-    if isinstance(path_map, dict) and path_map:
+    if not paths.is_checkout():
+        print(f"data:     {DATA}")
+    elif isinstance(path_map, dict) and path_map:
         print("paths:    " + ", ".join(f"{k}={v}" for k, v in path_map.items()))
     return 0
 

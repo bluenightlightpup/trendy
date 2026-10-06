@@ -1,0 +1,23 @@
+Trendy
+Copyright (c) 2026 bluenightlightpup
+Licensed under the MIT License (see LICENSE).
+
+-------------------------------------------------------------------------------
+Third-party data
+-------------------------------------------------------------------------------
+
+web/data/abbreve.json (and the copy bundled in the Python package as
+trendy_cli/data/abbreve.json) is derived from Abbreve:
+
+  Abbreve — an open-source dictionary for slang and abbreviations
+  https://github.com/Njong392/Abbreve
+  Copyright 2022 Njong Emy
+  Licensed under the Apache License, Version 2.0
+  (full text: web/data/ABBREVE-LICENSE, or
+  http://www.apache.org/licenses/LICENSE-2.0)
+
+Modifications made by Trendy: the original per-term files were converted to a
+single JSON list, normalised (lower-cased terms, URL-decoded names such as
+"s/o"), de-duplicated, and annotated with optional age-band ("age") fields.
+Definitions are otherwise unchanged. The Abbreve data remains under
+Apache-2.0; the MIT license of Trendy does not apply to it.

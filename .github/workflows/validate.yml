@@ -73,6 +73,16 @@ jobs:
         run: |
           for f in web/data/*.json; do python -m json.tool "$f" > /dev/null && echo "ok $f"; done
 
+      - name: Install the package and smoke-test it outside the checkout
+        run: |
+          python -m pip install .
+          cd "$RUNNER_TEMP"
+          trendy --version
+          trendy decode rizz
+          trendy trends --limit 3
+          printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}' | trendy mcp | grep -q '"serverInfo"'
+          python -c "import json; json.load(open('$GITHUB_WORKSPACE/server.json'))"
+
   node-web-tests:
     runs-on: ubuntu-latest
     steps:
