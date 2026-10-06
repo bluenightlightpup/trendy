@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-05T23:25:56Z",
-  "signals": 27,
+  "timestamp": "2026-10-06T01:01:15Z",
+  "signals": 20,
   "adapters": [
     {
       "source": "mock_seed",
-      "mode": "live",
+      "mode": "seed",
       "ok": true,
       "skipped": false,
       "signal_count": 20,
@@ -24,19 +24,19 @@
       "source": "wikipedia",
       "mode": "live",
       "ok": true,
-      "skipped": false,
-      "signal_count": 1,
+      "skipped": true,
+      "signal_count": 0,
       "error": null,
-      "notes": null
+      "notes": "disabled in config"
     },
     {
       "source": "youtube",
       "mode": "live",
       "ok": true,
-      "skipped": false,
-      "signal_count": 6,
+      "skipped": true,
+      "signal_count": 0,
       "error": null,
-      "notes": null
+      "notes": "disabled in config"
     },
     {
       "source": "tiktok",
@@ -60,12 +60,12 @@
   "trends": {
     "added": 0,
     "updated": 0,
-    "total": 174
+    "total": 150
   },
   "slang": {
     "added": 0,
     "updated": 0,
-    "total": 296
+    "total": 119
   },
   "paths": {
     "trends": "web/data/trends.json",
