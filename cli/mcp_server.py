@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Local stdio MCP server for Trendy (T0021).
+"""Local stdio MCP server for Trendy.
 
 Read-only tools over the same lexicon / trends / radar files as the CLI.
 No network, no live-model calls, no write tools, no secrets in results.
 
-Run from the repo root (cwd must be the repo root):
+Run it any of these ways (the working directory does not matter):
 
-  python cli/trendy.py mcp
-  python -m cli.mcp_server
+  trendy mcp                          # installed package
+  python3 /abs/path/to/trendy/cli/trendy.py mcp
+  python3 -m cli.mcp_server           # from the repo root
 
-Cursor / Claude Desktop: stdio, command above, cwd = repo root.
+Transport: newline-delimited JSON-RPC 2.0 on stdin/stdout (MCP stdio).
+Only JSON-RPC goes to stdout, always UTF-8. Logs go to stderr.
 See docs/cli-mcp-integration.md.
 """
 
@@ -21,9 +23,28 @@ import sys
 from pathlib import Path
 from typing import Any
 
-PROTOCOL_DEFAULT = "2024-11-05"
+if not __package__:
+    _PKG = Path(__file__).resolve().parent
+    if str(_PKG.parent) not in sys.path:
+        sys.path.insert(0, str(_PKG.parent))
+    __package__ = _PKG.name  # noqa: A001
+
+from . import __version__  # noqa: E402
+
+# Newest first. If the client asks for one of these we echo it; otherwise we
+# answer with the newest version we support (MCP lifecycle / version negotiation).
+SUPPORTED_PROTOCOL_VERSIONS = ("2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05")
+LATEST_PROTOCOL_VERSION = SUPPORTED_PROTOCOL_VERSIONS[0]
+PROTOCOL_DEFAULT = LATEST_PROTOCOL_VERSION
 SERVER_NAME = "trendy"
-SERVER_VERSION = "0.1.0"
+SERVER_VERSION = __version__
+
+# JSON-RPC error codes
+PARSE_ERROR = -32700
+INVALID_REQUEST = -32600
+METHOD_NOT_FOUND = -32601
+INVALID_PARAMS = -32602
+INTERNAL_ERROR = -32603
 
 # Keys or values that must never leave the process in a tool result.
 _SECRET_KEY = re.compile(
@@ -37,20 +58,23 @@ _SECRET_VAL = re.compile(
 
 TOOL_NAMES = ("decode_term", "search_slang", "get_trends", "radar_status")
 
+_session: dict[str, Any] = {"protocolVersion": None}
 
-def _ensure_root() -> Path:
-    root = Path(__file__).resolve().parents[1]
-    root_s = str(root)
-    if root_s not in sys.path:
-        sys.path.insert(0, root_s)
-    return root
+
+class ToolInputError(ValueError):
+    """Bad tool arguments — reported as a tool execution error (isError: true)."""
 
 
 def _trendy():
-    _ensure_root()
-    import cli.trendy as trendy
+    from . import trendy
 
     return trendy
+
+
+def negotiate_protocol(requested: Any) -> str:
+    if isinstance(requested, str) and requested in SUPPORTED_PROTOCOL_VERSIONS:
+        return requested
+    return LATEST_PROTOCOL_VERSION
 
 
 def scrub(obj: Any) -> Any:
@@ -72,84 +96,73 @@ def scrub(obj: Any) -> Any:
 
 def _public_entry(entry: dict[str, Any], lexicon: str | None) -> dict[str, Any]:
     trendy = _trendy()
-    age = trendy.format_age(entry) or None
     return {
         "terms": trendy._entry_terms(entry),
         "meaning": str(entry.get("short") or "").strip(),
         "explain": str(entry.get("explain") or "").strip(),
         "origin": str(entry.get("origin") or "").strip(),
-        "age": age,
+        "age": trendy.format_age(entry) or None,
+        "kind": trendy.entry_kind(entry, lexicon),
         "lexicon": lexicon,
     }
 
 
+# --------------------------------------------------------------------------- tools
+
+
 def decode_term(term: str) -> dict[str, Any]:
     """Lexicon decode only. Does not call the live model or read API keys."""
-    trendy = _trendy()
     text = str(term or "").strip()
     if not text:
-        raise ValueError("term is required")
-    entry, source = trendy.lookup_lexicon(text)
-    if entry is None:
-        return {
-            "term": text,
-            "found": False,
-            "meaning": None,
-            "explain": None,
-            "origin": None,
-            "age": None,
-            "lexicon": None,
-            "note": "No lexicon hit. Live model decode is not available on this MCP server.",
-        }
-    payload = _public_entry(entry, source)
-    payload["term"] = text
-    payload["found"] = True
+        raise ToolInputError("term is required")
+    payload = _trendy().decode_payload(text)
+    if not payload["found"]:
+        payload["note"] = "No lexicon hit. Live model decode is not available on this MCP server."
     return payload
 
 
 def search_slang(query: str, limit: int = 20) -> dict[str, Any]:
     trendy = _trendy()
     needle = trendy._norm(query)
-    if not needle:
-        raise ValueError("query is required")
+    if len(needle.replace(" ", "")) < 2:
+        raise ToolInputError("query must be at least 2 characters")
     cap = _clamp_limit(limit, default=20)
-    sources = (
-        (trendy.SLANG_PATH, "slang"),
-        (trendy.COMMUNITY_PATH, "community"),
-        (trendy.ABBREVE_PATH, "abbreve"),
-    )
-    ranked: list[tuple[int, dict[str, Any]]] = []
     needle_toks = needle.split()
-    for path, lexicon in sources:
-        data = trendy._load_json(path, {"entries": []})
-        for entry in data.get("entries") or []:
-            if not isinstance(entry, dict):
-                continue
+    padded_needle = f" {needle} "
+    ranked: list[tuple[int, int, dict[str, Any]]] = []
+    order = 0
+    for lexicon, entries in trendy._lexicons():
+        for entry in entries:
             terms = trendy._entry_terms(entry)
-            term_blob = trendy._norm(" ".join(terms))
-            text_blob = trendy._norm(
-                " ".join(
-                    terms
-                    + [
-                        str(entry.get("short") or ""),
-                        str(entry.get("explain") or ""),
-                        str(entry.get("origin") or ""),
-                    ]
-                )
+            norm_terms = [trendy._norm(t) for t in terms]
+            term_words = set(" ".join(norm_terms).split())
+            text_words = set(
+                trendy._norm(
+                    " ".join(
+                        [
+                            str(entry.get("short") or ""),
+                            str(entry.get("explain") or ""),
+                            str(entry.get("origin") or ""),
+                        ]
+                    )
+                ).split()
             )
             score = 0
-            if needle == term_blob or needle in {trendy._norm(t) for t in terms}:
+            if needle in norm_terms:
                 score = 100
-            elif needle in term_blob:
-                score = 80
-            elif needle in text_blob:
-                score = 50
-            elif needle_toks and all(tok in text_blob.split() for tok in needle_toks):
-                score = 40
+            elif any(padded_needle in f" {t} " for t in norm_terms):
+                score = 80  # whole-word phrase inside a listed term
+            elif all(tok in term_words for tok in needle_toks):
+                score = 70
+            elif all(tok in text_words for tok in needle_toks):
+                score = 40  # whole words in the meaning / explain / origin
             if score:
-                ranked.append((score, _public_entry(entry, lexicon)))
-    ranked.sort(key=lambda item: item[0], reverse=True)
-    hits = [item[1] for item in ranked[:cap]]
+                if trendy.is_abbreviation(entry, lexicon):
+                    score -= 5  # curated slang first on ties
+                order += 1
+                ranked.append((score, -order, _public_entry(entry, lexicon)))
+    ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    hits = [item[2] for item in ranked[:cap]]
     return {"query": str(query), "count": len(hits), "hits": hits}
 
 
@@ -159,40 +172,29 @@ def get_trends(
     world: str | None = None,
 ) -> dict[str, Any]:
     trendy = _trendy()
-    trends = trendy._load_json(trendy.TRENDS_PATH, [])
-    if not isinstance(trends, list):
-        raise ValueError("trends.json is not a list")
     try:
         floor = float(min_heat)
     except (TypeError, ValueError) as exc:
-        raise ValueError("min_heat must be a number") from exc
+        raise ToolInputError("min_heat must be a number") from exc
     cap = _clamp_limit(limit, default=20)
     world_s = str(world).strip() if world else ""
-    rows: list[dict[str, Any]] = []
-    for trend in trends:
-        if not isinstance(trend, dict):
-            continue
-        heat = float(trend.get("heatScore") or 0)
-        if heat < floor:
-            continue
-        trend_world = str(trend.get("world") or "")
-        if world_s and trend_world.lower() != world_s.lower():
-            continue
-        age_line = trendy.format_age(trend) or None
-        rows.append(
-            {
-                "id": trend.get("id"),
-                "title": trend.get("title"),
-                "summary": trend.get("summary"),
-                "origin": trend.get("originStory") or trend.get("origin"),
-                "world": trend_world or None,
-                "heat": heat,
-                "lifecycle": trend.get("lifecycle"),
-                "age": age_line,
-            }
-        )
-    rows.sort(key=lambda row: float(row.get("heat") or 0), reverse=True)
-    rows = rows[:cap]
+    try:
+        trends = trendy.trends_rows(floor, cap, world_s or None)
+    except ValueError as exc:
+        raise RuntimeError(str(exc)) from exc
+    rows = [
+        {
+            "id": trend.get("id"),
+            "title": trend.get("title"),
+            "summary": trend.get("summary"),
+            "origin": trend.get("originStory") or trend.get("origin"),
+            "world": trend.get("world") or None,
+            "heat": float(trend.get("heatScore") or 0),
+            "lifecycle": trend.get("lifecycle"),
+            "age": trendy.format_age(trend) or None,
+        }
+        for trend in trends
+    ]
     return {
         "min_heat": floor,
         "limit": cap,
@@ -209,7 +211,7 @@ def radar_status() -> dict[str, Any]:
         return {
             "available": False,
             "path": "radar/out/last-run.json",
-            "message": "No last-run summary yet. Run: python cli/trendy.py radar run",
+            "message": "No last-run summary yet. Run from a git checkout: trendy radar run",
         }
     data = trendy._load_json(trendy.LAST_RUN_PATH, {})
     if not isinstance(data, dict):
@@ -234,6 +236,7 @@ def radar_status() -> dict[str, Any]:
     paths = data.get("paths") if isinstance(data.get("paths"), dict) else {}
     payload = {
         "available": True,
+        "snapshot": not trendy.paths.is_checkout(),
         "timestamp": data.get("timestamp"),
         "signals": data.get("signals"),
         "adapters": adapters_out,
@@ -257,46 +260,57 @@ def _clamp_limit(limit: Any, default: int = 20) -> int:
         value = int(limit)
     except (TypeError, ValueError):
         value = default
-    if value < 1:
-        return 1
-    if value > 50:
-        return 50
-    return value
+    return max(1, min(50, value))
+
+
+# --------------------------------------------------------------- tool metadata
+
+_READ_ONLY = {
+    "readOnlyHint": True,
+    "destructiveHint": False,
+    "idempotentHint": True,
+    "openWorldHint": False,
+}
 
 
 def tool_definitions() -> list[dict[str, Any]]:
     return [
         {
             "name": "decode_term",
+            "title": "Decode slang term",
             "description": (
-                "Look up one slang term in the local Trendy lexicon. "
-                "Returns meaning, explain, origin, and age band when present. "
-                "Read-only; does not call a live model."
+                "Look up one slang term, meme, or texting abbreviation in the local Trendy "
+                "lexicon. Returns meaning, explain, origin, age band, and other senses when "
+                "present. found=false on a miss. Read-only; does not call a live model."
             ),
             "inputSchema": {
                 "type": "object",
                 "properties": {
                     "term": {
                         "type": "string",
-                        "description": "Slang term or phrase to decode",
+                        "minLength": 1,
+                        "description": "Slang term or phrase to decode, e.g. \"67\" or \"nah id win\"",
                     }
                 },
                 "required": ["term"],
                 "additionalProperties": False,
             },
+            "annotations": {"title": "Decode slang term", **_READ_ONLY},
         },
         {
             "name": "search_slang",
+            "title": "Search slang lexicon",
             "description": (
-                "Search the local slang, community, and abbreve lexicons. "
-                "Read-only. Returns meaning, explain, origin, and age when present."
+                "Search the local slang, community, and texting-abbreviation lexicons by whole "
+                "words. Read-only. Returns meaning, explain, origin, and age when present."
             ),
             "inputSchema": {
                 "type": "object",
                 "properties": {
                     "query": {
                         "type": "string",
-                        "description": "Term or phrase to search for",
+                        "minLength": 2,
+                        "description": "Word or phrase to search for (at least 2 characters)",
                     },
                     "limit": {
                         "type": "integer",
@@ -308,19 +322,23 @@ def tool_definitions() -> list[dict[str, Any]]:
                 "required": ["query"],
                 "additionalProperties": False,
             },
+            "annotations": {"title": "Search slang lexicon", **_READ_ONLY},
         },
         {
             "name": "get_trends",
+            "title": "List hot trends",
             "description": (
-                "List hot trends from the local catalog (web/data/trends.json). "
-                "Read-only. Filter by minimum heat and optional world."
+                "List hot trends from the local catalog, highest heat first. "
+                "Read-only. Filter by minimum heat (0–1) and optional world."
             ),
             "inputSchema": {
                 "type": "object",
                 "properties": {
                     "min_heat": {
                         "type": "number",
-                        "description": "Minimum heatScore from 0 to 1 (default 0)",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "description": "Minimum heat score from 0 to 1 (default 0)",
                     },
                     "limit": {
                         "type": "integer",
@@ -330,60 +348,116 @@ def tool_definitions() -> list[dict[str, Any]]:
                     },
                     "world": {
                         "type": "string",
-                        "description": "Optional world filter, for example TikTok",
+                        "description": "Optional world filter, for example TikTok, Gaming, Work / tech",
                     },
                 },
                 "additionalProperties": False,
             },
+            "annotations": {"title": "List hot trends", **_READ_ONLY},
         },
         {
             "name": "radar_status",
+            "title": "Trend Radar status",
             "description": (
-                "Show the last local Trend Radar ingest summary "
-                "(radar/out/last-run.json). Read-only. No secrets."
+                "Show the last Trend Radar ingest summary: which sources ran, failed, or were "
+                "skipped, and catalog totals. Read-only. No secrets."
             ),
             "inputSchema": {
                 "type": "object",
                 "properties": {},
                 "additionalProperties": False,
             },
+            "annotations": {"title": "Trend Radar status", **_READ_ONLY},
         },
     ]
 
 
+def _tool_schema(name: str) -> dict[str, Any] | None:
+    for tool in tool_definitions():
+        if tool["name"] == name:
+            return tool["inputSchema"]
+    return None
+
+
+_JSON_TYPES = {
+    "string": lambda v: isinstance(v, str),
+    "integer": lambda v: isinstance(v, int) and not isinstance(v, bool),
+    "number": lambda v: isinstance(v, (int, float)) and not isinstance(v, bool),
+    "object": lambda v: isinstance(v, dict),
+}
+
+
+def validate_arguments(name: str, arguments: dict[str, Any]) -> None:
+    """Small JSON-Schema subset check (types, required, ranges, unknown keys)."""
+    schema = _tool_schema(name) or {}
+    props: dict[str, Any] = schema.get("properties") or {}
+    unknown = sorted(k for k in arguments if k not in props)
+    if unknown and schema.get("additionalProperties") is False:
+        allowed = ", ".join(props) or "none"
+        raise ToolInputError(f"unknown argument(s): {', '.join(unknown)} (allowed: {allowed})")
+    for key in schema.get("required") or []:
+        if key not in arguments:
+            raise ToolInputError(f"{key} is required")
+    for key, value in arguments.items():
+        spec = props.get(key) or {}
+        expected = spec.get("type")
+        check = _JSON_TYPES.get(str(expected))
+        if check and not check(value):
+            raise ToolInputError(f"{key} must be a{'n' if expected == 'integer' else ''} {expected}")
+        if isinstance(value, str) and "minLength" in spec and len(value.strip()) < spec["minLength"]:
+            raise ToolInputError(f"{key} must be at least {spec['minLength']} character(s)")
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            if "minimum" in spec and value < spec["minimum"]:
+                raise ToolInputError(f"{key} must be >= {spec['minimum']}")
+            if "maximum" in spec and value > spec["maximum"]:
+                raise ToolInputError(f"{key} must be <= {spec['maximum']}")
+
+
+def _structured_ok() -> bool:
+    proto = _session.get("protocolVersion") or LATEST_PROTOCOL_VERSION
+    return proto >= "2025-06-18"
+
+
 def _tool_result(payload: Any, is_error: bool = False) -> dict[str, Any]:
-    text = payload if isinstance(payload, str) else json.dumps(scrub(payload), ensure_ascii=False)
-    return {
-        "content": [{"type": "text", "text": text}],
+    if isinstance(payload, str):
+        return {"content": [{"type": "text", "text": payload}], "isError": is_error}
+    clean = scrub(payload)
+    result: dict[str, Any] = {
+        "content": [{"type": "text", "text": json.dumps(clean, ensure_ascii=False)}],
         "isError": is_error,
     }
+    if _structured_ok() and isinstance(clean, dict):
+        result["structuredContent"] = clean
+    return result
 
 
 def call_tool(name: str, arguments: dict[str, Any] | None) -> dict[str, Any]:
+    """Run a known tool. Raises KeyError for unknown tools (caller maps to -32602)."""
+    if name not in TOOL_NAMES:
+        raise KeyError(name)
     args = arguments if isinstance(arguments, dict) else {}
     try:
+        validate_arguments(name, args)
         if name == "decode_term":
-            result = decode_term(str(args.get("term") or ""))
+            result = decode_term(args["term"])
         elif name == "search_slang":
-            result = search_slang(
-                str(args.get("query") or ""),
-                limit=args.get("limit", 20),
-            )
+            result = search_slang(args["query"], limit=args.get("limit", 20))
         elif name == "get_trends":
             result = get_trends(
                 min_heat=args.get("min_heat", 0),
                 limit=args.get("limit", 20),
                 world=args.get("world"),
             )
-        elif name == "radar_status":
-            result = radar_status()
         else:
-            return _tool_result(f"Unknown tool: {name}", is_error=True)
-    except ValueError as exc:
-        return _tool_result(str(exc), is_error=True)
+            result = radar_status()
+    except ToolInputError as exc:
+        return _tool_result(f"Invalid arguments for {name}: {exc}", is_error=True)
     except Exception as exc:  # noqa: BLE001 — surface a scrubbed message, keep serving
-        return _tool_result(scrub(f"{type(exc).__name__}: {exc}"), is_error=True)
+        return _tool_result(scrub(f"{name} failed: {type(exc).__name__}: {exc}"), is_error=True)
     return _tool_result(result, is_error=False)
+
+
+# ------------------------------------------------------------------- JSON-RPC
 
 
 def _error(req_id: Any, code: int, message: str) -> dict[str, Any]:
@@ -394,66 +468,90 @@ def _error(req_id: Any, code: int, message: str) -> dict[str, Any]:
     }
 
 
+def _ok(req_id: Any, result: dict[str, Any]) -> dict[str, Any]:
+    return {"jsonrpc": "2.0", "id": req_id, "result": result}
+
+
 def dispatch(message: Any) -> dict[str, Any] | None:
     """Handle one JSON-RPC message. Notifications return None (no response)."""
-    if not isinstance(message, dict):
-        return _error(None, -32600, "Invalid Request")
+    if not isinstance(message, dict) or message.get("jsonrpc") != "2.0":
+        req_id = message.get("id") if isinstance(message, dict) else None
+        return _error(req_id, INVALID_REQUEST, "Invalid Request")
     method = message.get("method")
-    req_id = message.get("id", None)
     is_notification = "id" not in message
-    params = message.get("params") if isinstance(message.get("params"), dict) else {}
+    req_id = message.get("id")
+    if not isinstance(method, str):
+        if is_notification:
+            return None  # a response from the client; nothing to do
+        return _error(req_id, INVALID_REQUEST, "Invalid Request: method must be a string")
+    raw_params = message.get("params")
+    if raw_params is not None and not isinstance(raw_params, dict):
+        if is_notification:
+            return None
+        return _error(req_id, INVALID_PARAMS, "params must be an object")
+    params = raw_params or {}
 
-    if method in ("notifications/initialized", "initialized"):
-        return None
-    if method == "notifications/cancelled":
+    if method.startswith("notifications/") or method == "initialized":
         return None
 
     if method == "initialize":
-        proto = str(params.get("protocolVersion") or PROTOCOL_DEFAULT)
-        return {
-            "jsonrpc": "2.0",
-            "id": req_id,
-            "result": {
+        proto = negotiate_protocol(params.get("protocolVersion"))
+        _session["protocolVersion"] = proto
+        return _ok(
+            req_id,
+            {
                 "protocolVersion": proto,
                 "capabilities": {"tools": {"listChanged": False}},
-                "serverInfo": {"name": SERVER_NAME, "version": SERVER_VERSION},
+                "serverInfo": {"name": SERVER_NAME, "title": "Trendy", "version": SERVER_VERSION},
                 "instructions": (
-                    "Trendy local read-only MCP. Tools: decode_term, search_slang, "
-                    "get_trends, radar_status. No write tools. No hosted endpoint. "
-                    "Results never include API keys."
+                    "Trendy: local, read-only slang / meme / trend decoder. Use decode_term for one "
+                    "term or phrase, search_slang to browse, get_trends for what is hot, "
+                    "radar_status for data freshness. No write tools; results never include API keys."
                 ),
             },
-        }
+        )
     if method == "ping":
-        if is_notification:
-            return None
-        return {"jsonrpc": "2.0", "id": req_id, "result": {}}
+        return None if is_notification else _ok(req_id, {})
     if method == "tools/list":
-        return {
-            "jsonrpc": "2.0",
-            "id": req_id,
-            "result": {"tools": tool_definitions()},
-        }
+        return _ok(req_id, {"tools": tool_definitions()})
     if method == "tools/call":
         name = params.get("name")
         arguments = params.get("arguments")
         if not isinstance(name, str) or not name:
-            return _error(req_id, -32602, "tools/call requires a tool name")
+            return _error(req_id, INVALID_PARAMS, "tools/call requires a tool name")
         if arguments is not None and not isinstance(arguments, dict):
-            return _error(req_id, -32602, "tools/call arguments must be an object")
-        return {
-            "jsonrpc": "2.0",
-            "id": req_id,
-            "result": call_tool(name, arguments if isinstance(arguments, dict) else {}),
-        }
+            return _error(req_id, INVALID_PARAMS, "tools/call arguments must be an object")
+        try:
+            result = call_tool(name, arguments or {})
+        except KeyError:
+            return _error(req_id, INVALID_PARAMS, f"Unknown tool: {name}")
+        return _ok(req_id, result)
     if is_notification:
         return None
-    return _error(req_id, -32601, f"Method not found: {method}")
+    return _error(req_id, METHOD_NOT_FOUND, f"Method not found: {method}")
 
 
 def _write(obj: dict[str, Any]) -> None:
-    sys.stdout.write(json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "\n")
-    sys.stdout.flush()
+    """Write one message as UTF-8 bytes, independent of the console code page."""
+    data = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8") + b"\n"
+    out = getattr(sys.stdout, "buffer", None)
+    if out is not None:
+        out.write(data)
+        out.flush()
+    else:  # e.g. a StringIO in tests
+        sys.stdout.write(data.decode("utf-8"))
+        sys.stdout.flush()
+
+
+class _ParseError(Exception):
+    pass
+
+
+def _decode(body: bytes) -> Any:
+    try:
+        return json.loads(body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise _ParseError(str(exc)) from exc
 
 
 def _read_message(stdin) -> Any | None:
@@ -467,8 +565,8 @@ def _read_message(stdin) -> Any | None:
         if line.lower().startswith(b"content-length:"):
             try:
                 length = int(line.split(b":", 1)[1].strip())
-            except ValueError:
-                return {"jsonrpc": "2.0", "id": None, "method": ""}
+            except ValueError as exc:
+                raise _ParseError("bad Content-Length") from exc
             while True:
                 header = stdin.readline()
                 if not header or header in (b"\n", b"\r\n"):
@@ -476,8 +574,8 @@ def _read_message(stdin) -> Any | None:
             body = stdin.read(length)
             if not body:
                 return None
-            return json.loads(body.decode("utf-8"))
-        return json.loads(line.decode("utf-8"))
+            return _decode(body)
+        return _decode(line)
 
 
 def serve_stdio() -> int:
@@ -486,25 +584,28 @@ def serve_stdio() -> int:
     while True:
         try:
             message = _read_message(stdin)
-        except json.JSONDecodeError:
-            _write(_error(None, -32700, "Parse error"))
+        except _ParseError:
+            _write(_error(None, PARSE_ERROR, "Parse error"))
             continue
         except Exception as exc:  # noqa: BLE001
             print(f"trendy mcp read error: {type(exc).__name__}", file=sys.stderr)
             return 1
         if message is None:
             return 0
+        if isinstance(message, list):
+            # JSON-RPC batches are not part of current MCP stdio.
+            _write(_error(None, INVALID_REQUEST, "Batch requests are not supported"))
+            continue
         try:
             response = dispatch(message)
         except Exception as exc:  # noqa: BLE001
             req_id = message.get("id") if isinstance(message, dict) else None
-            response = _error(req_id, -32603, scrub(f"{type(exc).__name__}"))
+            response = _error(req_id, INTERNAL_ERROR, scrub(f"Internal error: {type(exc).__name__}"))
         if response is not None:
             _write(response)
 
 
 def main() -> int:
-    _ensure_root()
     return serve_stdio()
 
 
