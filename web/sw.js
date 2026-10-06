@@ -1,5 +1,5 @@
 /* Trendy PWA — network-first for app/data so Decode lexicon updates stick */
-const CACHE = "trendy-v15";
+const CACHE = "trendy-v16";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -16,6 +16,10 @@ const PRECACHE = [
   "./icons/icon.svg",
   "./icons/icon-maskable.svg",
   "./icons/favicon.svg",
+  "./icons/apple-touch-icon.png",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/icon-maskable-512.png",
 ];
 
 self.addEventListener("install", (event) => {
