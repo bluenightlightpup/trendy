@@ -1,7 +1,7 @@
 # Trendy Trend Radar — ingest configuration
 # Official TikTok/Instagram APIs are limited / ToS-sensitive; stubs stay off until keys exist.
 
-schedule_hint: "every 2 hours (GitHub Actions cron)"
+schedule_hint: "daily (GitHub Actions cron, 06:00 UTC)"
 user_agent: "TrendyRadar/0.1 (+https://github.com/bluenightlightpup/trendy; polite research bot)"
 
 rate_limits:
@@ -17,10 +17,10 @@ paths:
 sources:
   mock_seed:
     enabled: true
-    mode: live
+    mode: seed  # built-in evergreen list; keeps the catalog warm when live sources fail
   reddit:
     enabled: true
-    mode: live
+    mode: live  # public JSON; currently HTTP 403 from GitHub Actions runners (see docs/radar.md)
     subreddits:
       - OutOfTheLoop
       - explainlikeimfive
@@ -35,11 +35,15 @@ sources:
     listing: hot
     limit: 25
   wikipedia_current:
-    enabled: true
+    # Portal:Current_events is news, not slang — it polluted trends.json. Off by default.
+    enabled: false
     mode: live
   youtube:
-    enabled: true
+    # Science/engineering channel uploads are not slang trends. Off by default; when
+    # enabled, only videos whose title mentions one of require_keywords are kept.
+    enabled: false
     mode: live  # public channel Atom feeds (no API key)
+    require_keywords: [slang, meme, memes, trend, trending, tiktok, brainrot, rizz, "gen z", "gen alpha", viral]
     feeds:
       - "https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA"
       - "https://www.youtube.com/feeds/videos.xml?channel_id=UCY1kMZp36IQSyNx_9h4mpCg"
@@ -61,3 +65,5 @@ slang_heuristics:
 merge:
   max_trends: 250
   max_slang_entries: 500
+  # Rows from these sources are purged from trends.json on every run.
+  drop_sources: [youtube, wikipedia]

@@ -173,7 +173,7 @@ _SEEDS = [
 
 class MockSeedAdapter(BaseAdapter):
     name = "mock_seed"
-    mode = "live"
+    mode = "seed"
 
     def fetch(self) -> list[dict[str, Any]]:
         out: list[dict[str, Any]] = []

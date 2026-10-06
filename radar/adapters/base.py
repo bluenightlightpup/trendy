@@ -15,7 +15,7 @@ def utc_now_iso() -> str:
 @dataclass
 class AdapterResult:
     source: str
-    mode: str  # live | stub
+    mode: str  # live | seed | stub
     ok: bool
     signals: list[dict[str, Any]] = field(default_factory=list)
     skipped: bool = False
@@ -38,7 +38,7 @@ class BaseAdapter(ABC):
     """Pluggable source adapter. Live adapters fetch; stubs document what's needed."""
 
     name: str = "base"
-    mode: str = "live"  # live | stub
+    mode: str = "live"  # live | seed (built-in list) | stub
 
     def __init__(self, config: dict[str, Any], global_config: dict[str, Any]):
         self.config = config or {}

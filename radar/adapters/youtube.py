@@ -1,8 +1,9 @@
-"""YouTube trending-ish signals via public channel Atom feeds (no API key).
+"""YouTube signals via public channel Atom feeds (no API key). Disabled by default.
 
-The chart=mostPopular query is not reliably available on the public feeds
-endpoint. We use a small set of public culture/news channel upload feeds
-instead. Empty results are OK — ingest continues with other sources.
+Channel upload feeds are mostly ordinary video titles, not slang. When enabled,
+only videos whose title mentions one of ``require_keywords`` are kept, and
+sponsor / link lines are stripped from descriptions. Empty results are OK —
+ingest continues with other sources.
 """
 
 from __future__ import annotations
@@ -21,6 +22,26 @@ _DEFAULT_FEEDS = [
     "https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA",  # Veritasium
     "https://www.youtube.com/feeds/videos.xml?channel_id=UCY1kMZp36IQSyNx_9h4mpCg",  # Mark Rober
 ]
+
+_DEFAULT_KEYWORDS = [
+    "slang", "meme", "memes", "trend", "trending", "tiktok", "brainrot", "rizz",
+    "gen z", "gen alpha", "viral",
+]
+
+_SPONSOR = re.compile(r"(https?://|www\.|sponsor|shout ?out to|use code|promo|patreon|merch)", re.I)
+
+
+def clean_description(text: str) -> str:
+    """Drop sponsor / link lines so ad copy never becomes a trend summary."""
+    lines = [ln.strip() for ln in (text or "").splitlines()]
+    kept = [ln for ln in lines if ln and not _SPONSOR.search(ln)]
+    return " ".join(kept)
+
+
+def title_matches(title: str, keywords: list[str]) -> bool:
+    low = f" {title.lower()} "
+    return any(re.search(rf"(?<![a-z0-9]){re.escape(k.lower())}(?![a-z0-9])", low) for k in keywords)
+
 
 _NS = {
     "atom": "http://www.w3.org/2005/Atom",
@@ -70,8 +91,11 @@ class YouTubeAdapter(BaseAdapter):
             summary_el = entry.find("media:group/media:description", _NS)
             if summary_el is None:
                 summary_el = entry.find("atom:summary", _NS)
-            text = (summary_el.text or "").strip() if summary_el is not None else ""
+            text = clean_description(summary_el.text or "") if summary_el is not None else ""
             if not title:
+                continue
+            keywords = list(self.config.get("require_keywords") or _DEFAULT_KEYWORDS)
+            if not title_matches(title, keywords):
                 continue
             local_id = video_id or re.sub(r"\W+", "-", title.lower())[:40]
             out.append(

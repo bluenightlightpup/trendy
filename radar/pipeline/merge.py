@@ -19,8 +19,20 @@ def merge_trends(
     incoming: list[dict[str, Any]],
     *,
     max_items: int = 250,
+    drop_sources: list[str] | tuple[str, ...] = (),
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
-    """Dedupe by normalized title; bump heat on match; append new radar rows."""
+    """Dedupe by normalized title; bump heat on match; append new radar rows.
+
+    Rows whose ``radarSource`` is in ``drop_sources`` are purged (existing and
+    incoming), so a noisy adapter can be switched off and cleaned up in one run.
+    """
+    drop = {str(s).lower() for s in drop_sources or ()}
+
+    def dropped(item: dict[str, Any]) -> bool:
+        return str(item.get("radarSource") or "").lower() in drop
+
+    existing = [item for item in existing if not dropped(item)]
+    incoming = [item for item in incoming if not dropped(item)]
     by_title: dict[str, dict[str, Any]] = {}
     order: list[str] = []
     for item in existing:

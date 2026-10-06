@@ -1,4 +1,7 @@
-"""Optional LIVE Wikipedia current-events signal (public API, no key)."""
+"""Optional Wikipedia current-events signal (public API, no key). Disabled by default.
+
+Portal pages are news digests, not slang, so they are never emitted as trends.
+"""
 
 from __future__ import annotations
 
@@ -25,6 +28,8 @@ class WikipediaCurrentAdapter(BaseAdapter):
             data = resp.json()
 
         title = data.get("title") or "Current events"
+        if str(title).lower().startswith("portal:") or data.get("namespace", {}).get("id") == 100:
+            return []
         extract = data.get("extract") or data.get("description") or ""
         page_url = (data.get("content_urls") or {}).get("desktop", {}).get("page")
         if not extract:

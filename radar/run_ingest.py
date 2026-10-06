@@ -79,7 +79,7 @@ def main(argv: list[str] | None = None) -> int:
     sources_cfg = cfg.get("sources") or {}
     # Ensure required sources exist in config
     if "mock_seed" not in sources_cfg:
-        sources_cfg["mock_seed"] = {"enabled": True, "mode": "live"}
+        sources_cfg["mock_seed"] = {"enabled": True, "mode": "seed"}
     if "reddit" not in sources_cfg:
         sources_cfg["reddit"] = {"enabled": True, "mode": "live"}
 
@@ -128,7 +128,10 @@ def main(argv: list[str] | None = None) -> int:
     max_trends = int(merge_cfg.get("max_trends", 250))
     max_slang = int(merge_cfg.get("max_slang_entries", 500))
     merged_trends, trend_stats = merge_trends(
-        existing_trends, trends_in, max_items=max_trends
+        existing_trends,
+        trends_in,
+        max_items=max_trends,
+        drop_sources=list(merge_cfg.get("drop_sources") or []),
     )
     merged_slang, slang_stats = merge_slang(
         existing_slang, slang_in, max_entries=max_slang
