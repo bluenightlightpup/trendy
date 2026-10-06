@@ -90,3 +90,6 @@ web/data/raw/
 radar/out/suggestions.jsonl
 radar/out/suggestions.json
 web/data/community-slang.json.tmp
+
+# Private owner notes (kept out of the public repo)
+docs/ideas/

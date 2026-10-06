@@ -153,7 +153,6 @@ Minimum iOS: **17.0** (documented in architecture).
 | `docs/design-tokens.md` | Colors, type, heat scale |
 | `docs/workbench.md` | How this repo uses my-workbench |
 | `docs/xcode-setup.md` | Create Xcode project from this tree |
-| `docs/ideas/` | Owner idea extracts (plain text) |
 | `docs/radar.md` | Trend Radar continuous ingest (24/7 slang/trends) |
 | `docs/age-demographics.md` | Optional age band on slang, trends, and Decode |
 | `docs/cli-mcp-integration.md` | Phase 4 CLI + local stdio MCP (how to run, Cursor snippet) |
@@ -162,7 +161,7 @@ Minimum iOS: **17.0** (documented in architecture).
 
 ## Sync note
 
-Local idea path may be Desktop “trendy docs”; **this app repo is separate from my-workbench**. Agents/skills stay in the workbench; product code and app docs live here.
+Product code and app docs live in this repo.
 
 
 ## Try on your phone

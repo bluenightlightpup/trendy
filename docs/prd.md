@@ -63,6 +63,5 @@ Trendy is an AI assistant that keeps you culturally current **without** massive 
 
 ## References
 
-- Owner idea extracts: `docs/ideas/`
 - Phases: `docs/phased-implementation.md`
 - Tickets: `docs/backlog.md`

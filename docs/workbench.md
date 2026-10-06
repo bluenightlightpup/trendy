@@ -6,7 +6,6 @@ Trendy is a **product/app repo**. Agents, skills, graph, and usage logging stay 
 
 ## Sync note
 
-- Owner idea docs may live on Desktop (“trendy docs”).
 - App source of truth for implementation is **this repo**.
 - Process source of truth for agents/skills is **my-workbench**.
 - `init-prompt.txt` from idea folders (if empty) can be ignored.

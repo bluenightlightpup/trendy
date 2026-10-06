@@ -25,7 +25,7 @@ Instead the **PC** runs a tiny stdlib proxy. The phone PWA stores only the proxy
 
 ## Windows — run the proxy
 
-From a PowerShell or cmd in the repo root (`C:\path\to\trendy\`):
+From a PowerShell or cmd in the repo root (for example `C:\path\to\trendy\`):
 
 ```bat
 set OPENAI_API_KEY=sk-...

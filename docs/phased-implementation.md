@@ -10,7 +10,6 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 - [x] Repo structure, MIT license, contributing/security, CODEOWNERS
 - [x] Backlog with acceptance criteria (`docs/backlog.md`)
 - [x] Architecture + design tokens + workbench usage docs
-- [x] Idea extracts under `docs/ideas/`
 - [x] Light CI validate workflow for required docs
 
 **Exit criteria:** PRD reviewed; tickets ordered; scaffold opens cleanly on GitHub as `bluenightlightpup/trendy`.
