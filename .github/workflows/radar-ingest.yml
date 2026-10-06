@@ -2,8 +2,8 @@ name: radar-ingest
 
 on:
   schedule:
-    # Every 2 hours UTC
-    - cron: "0 */2 * * *"
+    # Daily at 06:00 UTC (keeps commit noise low; run manually for an ad-hoc refresh)
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -25,6 +25,9 @@ jobs:
 
       - name: Run Trend Radar ingest
         run: python3 radar/run_ingest.py
+
+      - name: Sanity-check the catalog (lexicon + CLI tests)
+        run: python3 -m unittest discover -s cli -t .
 
       - name: Commit updated web/data if changed
         run: |
