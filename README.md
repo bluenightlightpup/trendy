@@ -6,6 +6,8 @@ Trendy is a small, dependency-free Python CLI and a read-only **MCP server**. It
 
 <!-- mcp-name: io.github.bluenightlightpup/trendy -->
 
+**Website:** [bluenightlightpup.github.io/trendy](https://bluenightlightpup.github.io/trendy/) · web app at [/app/](https://bluenightlightpup.github.io/trendy/app/) (source in [`site/`](site/), published by [`pages.yml`](.github/workflows/pages.yml))
+
 ```console
 $ trendy decode rizz
 rizz  [slang]
@@ -157,6 +159,7 @@ Repo layout:
 ```
 cli/        CLI, stdio MCP server, Live Decode proxy (installs as trendy_cli)
 web/        PWA + the shared data in web/data/
+site/       project website (GitHub Pages; the PWA is published at /app/)
 radar/      Trend Radar ingest
 App/        native iOS app (SwiftUI; see docs/xcode-setup.md)
 Config/     iOS Info.plist

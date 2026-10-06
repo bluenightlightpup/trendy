@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Trendy — Support</title>
+  <meta name="description" content="Help with Trendy: Decode answers, installing the web app, resetting, the CLI and connecting the MCP server to Cursor or Claude Desktop.">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://bluenightlightpup.github.io/trendy/support.html">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Trendy">
+  <meta property="og:title" content="Trendy — Support">
+  <meta property="og:description" content="Help with Trendy: Decode answers, installing the web app, resetting, the CLI and connecting the MCP server to Cursor or Claude Desktop.">
+  <meta property="og:url" content="https://bluenightlightpup.github.io/trendy/support.html">
+  <meta property="og:image" content="https://bluenightlightpup.github.io/trendy/og-image.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="heat-bar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Trendy home">
+        <img src="images/trendy-icon.png" alt="" width="34" height="34">
+        <span>Trendy</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li class="nav-optional"><a href="./#decode">Decode</a></li>
+          <li class="nav-optional"><a href="./#agents">AI agents</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html" aria-current="page">Support</a></li>
+          <li><a class="nav-cta" href="app/">Open app</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="doc">
+    <h1>Support</h1>
+    <p class="meta">Help for the Trendy web app, iOS app, CLI and MCP server</p>
+    <p>Trendy decodes slang, texting abbreviations and meme trends, judgment-free. It works offline and needs no account.</p>
+
+    <div class="faq">
+      <h2 id="decode">Decode</h2>
+      <details>
+        <summary>Decode gave a weak or wrong answer</summary>
+        <p>Answers marked <em>Lower confidence</em> (Pattern guess, Best guess, Dictionary) mean the term is not in the lexicon yet. Try a different spelling or just the key word. Report missing or wrong terms using the contact link below.</p>
+      </details>
+      <details>
+        <summary>How fresh is the trend list?</summary>
+        <p>Trend Radar refreshes the catalog once a day. The web app is republished with each refresh and picks up the newest copy whenever it’s online. The iOS app ships the catalog inside the app and is refreshed with app updates. The CLI uses the copy bundled when you installed it; reinstall to update.</p>
+      </details>
+
+      <h2 id="privacy">Privacy</h2>
+      <details>
+        <summary>Does Trendy collect data?</summary>
+        <p>No. See the <a href="privacy.html">privacy policy</a>. The only optional network request is a single-word dictionary lookup. In the iOS app you can switch it off under <em>You → Decode</em>.</p>
+      </details>
+
+      <h2 id="apps">Apps</h2>
+      <details>
+        <summary>Install the web app on your phone</summary>
+        <p>Open <a href="app/">the web app</a>. On iPhone, tap <em>Share → Add to Home Screen</em> in Safari. On Android, open Chrome’s menu and choose <em>Install app</em> or <em>Add to Home screen</em>. After the first visit it works offline.</p>
+      </details>
+      <details>
+        <summary>Reset the app</summary>
+        <p><strong>iOS:</strong> <em>You → Saved trends → Clear saved trends</em>. Deleting the app removes all of its data.</p>
+        <p><strong>Web app:</strong> unheart trends under <em>You → Saved trends</em>, or clear this site’s data in your browser settings to reset everything.</p>
+      </details>
+      <details>
+        <summary>When is the iPhone app coming out?</summary>
+        <p>Soon. It’s being prepared for the App Store. Until then, the <a href="app/">web app</a> has the same features and works on any phone.</p>
+      </details>
+
+      <h2 id="cli">CLI and MCP</h2>
+      <details>
+        <summary>Install the command line tool</summary>
+        <p>With Python 3.10+, run <code>pipx install git+https://github.com/bluenightlightpup/trendy</code> (or use <code>python3 -m pip install</code> with the same URL). Then try <code>trendy decode 67</code>.</p>
+      </details>
+      <details>
+        <summary>Connect Trendy to Cursor or Claude Desktop</summary>
+        <p>Add <code>{"mcpServers": {"trendy": {"command": "trendy-mcp"}}}</code> to <code>~/.cursor/mcp.json</code> or to Claude Desktop’s <code>claude_desktop_config.json</code>, then restart the app. If the client can’t find <code>trendy-mcp</code>, use the full path printed by <code>which trendy-mcp</code> (macOS/Linux) or <code>where trendy-mcp</code> (Windows). More options are in the <a href="https://github.com/bluenightlightpup/trendy#mcp-quickstart-cursor-claude-desktop-any-mcp-client">README</a>.</p>
+      </details>
+    </div>
+
+    <h2 id="contact">Contact</h2>
+    <p>Open an issue at <a href="https://github.com/bluenightlightpup/trendy/issues">github.com/bluenightlightpup/trendy/issues</a>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <a class="brand" href="./" aria-label="Trendy home">
+          <img src="images/trendy-icon.png" alt="" width="28" height="28">
+          <span>Trendy</span>
+        </a>
+        <nav aria-label="Footer">
+          <ul class="footer-links">
+            <li><a href="app/">Web app</a></li>
+            <li><a href="https://github.com/bluenightlightpup/trendy">GitHub</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="https://github.com/bluenightlightpup/trendy/blob/main/LICENSE">MIT License</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p>Created by Rosie Lee. Texting abbreviations are derived from <a href="https://github.com/Njong392/Abbreve">Abbreve</a> by Njong Emy and contributors, licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a>. Optional dictionary senses come from Wiktionary and the Free Dictionary API (CC BY-SA).</p>
+    </div>
+  </footer>
+</body>
+</html>

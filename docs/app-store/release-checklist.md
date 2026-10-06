@@ -53,7 +53,7 @@ open Trendy.xcodeproj
 
 ## 5. Public URLs (required before you submit)
 
-- [ ] Enable GitHub Pages: repo → Settings → Pages → Deploy from branch → `main` / `/docs`. This needs a public repo or a paid plan for a private one.
+- [ ] Enable GitHub Pages: make the repo public (or use a paid plan), then repo → Settings → Pages → Source: **GitHub Actions**, and run the `pages` workflow (`gh workflow run pages.yml`). It publishes `site/` with the web app at `/app/`.
 - [ ] Check that these load in a private browser window:
   - https://bluenightlightpup.github.io/trendy/privacy.html
   - https://bluenightlightpup.github.io/trendy/support.html

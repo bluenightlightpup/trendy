@@ -1,0 +1,66 @@
+name: pages
+
+# Publishes the website (site/) with the PWA (web/) at /app/ to GitHub Pages.
+# One-time setup by the repo owner: Settings → Pages → Source: "GitHub Actions".
+# Free GitHub plans only serve Pages from public repos, so the deploy job is
+# skipped while the repo is private (the build job still checks the assembly).
+
+on:
+  push:
+    branches: [main]
+  # Radar bot commits are pushed with GITHUB_TOKEN, which doesn't trigger
+  # `push` workflows, so redeploy after each successful ingest run instead.
+  workflow_run:
+    workflows: [radar-ingest]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Assemble site + PWA
+        run: scripts/build-site.sh _site
+
+      - name: Sanity-check the output
+        run: |
+          set -euo pipefail
+          for f in index.html privacy.html support.html 404.html robots.txt sitemap.xml \
+                   app/index.html app/sw.js app/manifest.webmanifest app/data/slang.json; do
+            test -s "_site/$f" || { echo "missing _site/$f"; exit 1; }
+          done
+          if grep -RInE '(src|href)="/[^/]' _site --include='*.html'; then
+            echo "Root-absolute paths break under /trendy/; use relative paths."; exit 1
+          fi
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

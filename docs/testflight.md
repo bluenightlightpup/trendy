@@ -60,5 +60,5 @@ The native app is feature-complete and at parity with the PWA, with no live prox
 
 - `docs/app-store/release-checklist.md`: full release steps
 - `docs/app-store/app-store-listing.md`: listing text, age rating, review notes
-- `docs/app-store/privacy-policy.md` / `docs/privacy.html`: privacy policy
+- `docs/app-store/privacy-policy.md` / `site/privacy.html`: privacy policy (published at `/privacy.html` on the project website)
 - `docs/xcode-setup.md`: project layout and XcodeGen

@@ -22,9 +22,9 @@ Copy these values into App Store Connect. The character limits are Apple's, and 
 
 ### Hosting the privacy and support pages
 
-The App Store needs **public** privacy-policy and support URLs. The pages are already in the repo as `docs/privacy.html` and `docs/support.html`. To serve them, go to GitHub → Settings → Pages → *Deploy from a branch* → `main` / `/docs`. GitHub Pages on a **private** repo needs a paid plan (Pro/Team). On the free plan, make the repo public (it is MIT-licensed) or host the two HTML files anywhere public. If the URLs change, update `AppLinks` in `App/Services/AppModel.swift` too, because the app links to both pages from You → About.
+The App Store needs **public** privacy-policy and support URLs. Both pages are part of the project website in `site/` (`site/privacy.html`, `site/support.html`), which `.github/workflows/pages.yml` publishes to GitHub Pages together with the web app at `/app/`. To turn it on: make the repo public (it is MIT-licensed; GitHub Pages on a **private** repo needs a paid plan) and set GitHub → Settings → Pages → *Source* to **GitHub Actions**, then re-run the `pages` workflow. If the URLs change (for example a custom domain), update `AppLinks` in `App/Services/AppModel.swift` too, because the app links to both pages from You → About.
 
-Today both URLs return 404 because Pages is not enabled yet. **Enable Pages before you submit.** App Review opens these links.
+Until Pages is turned on both URLs return 404. **Enable Pages before you submit.** App Review opens these links.
 
 ## Version 1.0 page
 

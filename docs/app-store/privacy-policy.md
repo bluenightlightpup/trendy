@@ -2,6 +2,8 @@
 
 **Effective:** October 5, 2026 · **App:** Trendy (iOS) · **Developer:** bluenightlightpup
 
+> The published policy at [bluenightlightpup.github.io/trendy/privacy.html](https://bluenightlightpup.github.io/trendy/privacy.html) (source: `site/privacy.html`) covers the iOS app plus the website, web app, CLI and MCP server. Keep the iOS sections of both in sync.
+
 Trendy explains slang, texting abbreviations and meme trends. It is built to work on your device without an account.
 
 ## The short version

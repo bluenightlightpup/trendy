@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Trendy: decode slang, memes &amp; trends</title>
+  <meta name="description" content="What does “67” mean? Trendy decodes slang, texting abbreviations and meme trends in plain, judgment-free words. Free web app, CLI and MCP server for AI agents. No account, no tracking.">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://bluenightlightpup.github.io/trendy/">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Trendy">
+  <meta property="og:title" content="Trendy: decode slang, memes & trends">
+  <meta property="og:description" content="What does “67” mean? Plain, judgment-free answers for slang, texting abbreviations and meme trends. Web app, CLI + MCP for AI agents, iOS coming soon.">
+  <meta property="og:url" content="https://bluenightlightpup.github.io/trendy/">
+  <meta property="og:image" content="https://bluenightlightpup.github.io/trendy/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Trendy app icon with the tagline: Decode slang, memes and trends.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="heat-bar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Trendy home">
+        <img src="images/trendy-icon.png" alt="" width="34" height="34">
+        <span>Trendy</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li class="nav-optional"><a href="#decode">Decode</a></li>
+          <li class="nav-optional"><a href="#web-app">Web app</a></li>
+          <li><a href="#agents">AI agents</a></li>
+          <li class="nav-optional"><a href="#ios">iPhone</a></li>
+          <li><a class="nav-cta" href="app/">Open app</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div>
+          <img class="hero-icon" src="images/trendy-icon.png" alt="Trendy app icon: a white T inside a heat ring that fades from cyan to lime to pink" width="88" height="88">
+          <p class="eyebrow">Slang · memes · trends</p>
+          <h1 id="hero-title">Slang, <span class="gradient-text">decoded.</span></h1>
+          <p class="lead">What does <strong>“67”</strong> mean? Is <strong>“nah, I’d win”</strong> a threat? Trendy explains slang, texting abbreviations and meme trends in plain, judgment-free words, so you can keep up without the scroll.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="app/">Open the web app</a>
+            <a class="btn btn-secondary" href="#agents">Use it from your AI agent</a>
+          </div>
+          <ul class="pill-list" aria-label="Highlights">
+            <li>Free</li>
+            <li>No account</li>
+            <li>No ads or tracking</li>
+            <li>Works offline</li>
+            <li>Open source</li>
+          </ul>
+        </div>
+        <div class="hero-shot">
+          <div class="phone">
+            <img src="images/trendy-home.png" width="780" height="1688" alt="Trendy web app Home tab: a trend feed sorted by what's hot now, with cards for Aura farming (heat 93), Crash out (91) and Glazing (90), each marked Rising with TikTok and Gen Z chips and a heat meter.">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="decode" aria-labelledby="decode-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Try it</p>
+          <h2 id="decode-title">What does 67 mean?</h2>
+          <p>Every answer tells you what a term means, where it comes from and who actually says it. Tap a term below; these cards come straight from Trendy’s lexicon.</p>
+        </div>
+
+        <div class="demo">
+          <div class="card demo-controls">
+            <form class="demo-form" id="demo-form" role="search" aria-label="Decode a term" hidden>
+              <label class="sr-only" for="demo-input">Type a slang term</label>
+              <input id="demo-input" type="search" name="q" placeholder="Try “rizz” or “what does W mean?”" autocomplete="off" enterkeyhint="search" maxlength="80">
+              <button class="btn btn-primary" type="submit">Ask</button>
+            </form>
+            <p class="demo-label" id="demo-chips-label">Popular right now</p>
+            <ul class="chip-row" id="demo-chips" aria-labelledby="demo-chips-label">
+              <li><button class="chip" type="button" data-term="67" aria-pressed="true">67</button></li>
+              <li><button class="chip" type="button" data-term="rizz" aria-pressed="false">rizz</button></li>
+              <li><button class="chip" type="button" data-term="nah I'd win" aria-pressed="false">nah, I’d win</button></li>
+              <li><button class="chip" type="button" data-term="aura" aria-pressed="false">aura</button></li>
+              <li><button class="chip" type="button" data-term="it's giving" aria-pressed="false">it’s giving</button></li>
+              <li><button class="chip" type="button" data-term="skill issue" aria-pressed="false">skill issue</button></li>
+              <li><button class="chip" type="button" data-term="delulu" aria-pressed="false">delulu</button></li>
+              <li><button class="chip" type="button" data-term="w" aria-pressed="false">W</button></li>
+            </ul>
+            <p class="demo-note">This is a tiny sample. The <a href="app/">full app</a> knows over a hundred slang terms and about 370 texting abbreviations, and works offline once loaded.</p>
+          </div>
+
+          <article class="card answer" id="demo-answer" aria-live="polite" aria-atomic="true">
+            <p class="answer-head"><span>Trendy lexicon</span><span>Slang meaning</span></p>
+            <h3 class="answer-term" id="demo-term">67</h3>
+            <dl>
+              <dt>Meaning</dt>
+              <dd id="demo-short">Gen Alpha / TikTok brainrot catchphrase — yelled for the bit, not a literal code.</dd>
+              <dt>In plain words</dt>
+              <dd id="demo-explain">Kids shout ‘six seven’ with a hand gesture because the sound/meme is the joke. There isn’t a hidden dictionary meaning; participating in the noise is the point. You’re not late for asking.</dd>
+              <dt>Where it comes from</dt>
+              <dd id="demo-origin">TikTok sounds (notably Skrilla’s “Doot Doot (6 7)”) and hallway copycat energy.</dd>
+              <dt>Who says this</dt>
+              <dd id="demo-age">Gen Alpha — mostly kids/tweens right now</dd>
+            </dl>
+            <ul class="tag-row" id="demo-tags" aria-label="Where you'll see it">
+              <li class="tag tag-volt">TikTok</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="web-app" aria-labelledby="app-title">
+      <div class="wrap feature-layout">
+        <div>
+          <div class="section-head">
+            <p class="eyebrow">Web app · works on any phone</p>
+            <h2 id="app-title">Catch culture without the FOMO spiral</h2>
+            <p>Open it in your browser, then use <em>Add to Home Screen</em> to keep it like an app. Saves and settings stay on your device.</p>
+          </div>
+          <ul class="features">
+            <li class="card feature">
+              <span class="feature-icon" aria-hidden="true">⌂</span>
+              <h3>Home trend feed</h3>
+              <p>What’s moving now, ranked by heat and lifecycle. Every card has a heat meter, a rising / peaking / cooling chip and who it’s popular with.</p>
+              <div class="mini-meter" aria-hidden="true"><span class="track"><span class="fill fill-93"></span></span><span>93</span></div>
+            </li>
+            <li class="card feature">
+              <span class="feature-icon" aria-hidden="true">✦</span>
+              <h3>Decode anything</h3>
+              <p>Ask “what does 67 mean?” or just type a term. You get the meaning, the origin story and who says it, labeled with how sure Trendy is.</p>
+            </li>
+            <li class="card feature">
+              <span class="feature-icon" aria-hidden="true">◎</span>
+              <h3>Explore by world</h3>
+              <p>Gaming, Dating, Sports, Money, Music &amp; fandom, School, Work &amp; tech, Internet culture and more, or search by name or tag.</p>
+            </li>
+            <li class="card feature">
+              <span class="feature-icon" aria-hidden="true">♡</span>
+              <h3>You &amp; saved trends</h3>
+              <p>Heart a trend to keep it. Pick your worlds, set a digest cadence, or switch on <em>New here</em> mode for gentler, extra context.</p>
+            </li>
+          </ul>
+          <div class="btn-row-center">
+            <a class="btn btn-primary" href="app/">Open the web app</a>
+          </div>
+        </div>
+        <div class="shots">
+          <div class="phone">
+            <img src="images/trendy-decode.png" width="780" height="1688" loading="lazy" alt="Trendy Decode tab answering “what does rizz mean?”: Slang meaning, charisma or flirting game; Where it comes from, popularized by Kai Cenat and stream culture, Oxford Word of the Year 2023; Who says this, Gen Z.">
+          </div>
+          <div class="phone">
+            <img src="images/trendy-home.png" width="780" height="1688" loading="lazy" alt="Trendy Home tab with trend cards, lifecycle chips and heat meters.">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agents" aria-labelledby="agents-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">CLI · MCP server · AI agents</p>
+          <h2 id="agents-title">Let your AI agent decode slang too</h2>
+          <p>Trendy ships as a tiny, dependency-free Python command line tool and a local, read-only MCP server. Cursor, Claude Desktop and any MCP client can look up slang from the same lexicon. No API keys, no network calls.</p>
+        </div>
+
+        <div class="agent-grid">
+          <article class="card code-card">
+            <h3>1. Install</h3>
+            <p>Needs Python 3.10+. Gives you the <code>trendy</code> and <code>trendy-mcp</code> commands.</p>
+            <div class="code-wrap">
+              <div class="code-bar"><span>Terminal</span><button class="copy-btn" type="button" data-copy="code-install" data-copy-text="pipx install git+https://github.com/bluenightlightpup/trendy" hidden>Copy</button></div>
+              <pre class="code" id="code-install" tabindex="0" role="region" aria-label="Install command"><code>pipx install git+https://github.com/bluenightlightpup/trendy
+<span class="c"># no pipx? use: python3 -m pip install …</span></code></pre>
+            </div>
+            <p class="fineprint">The package is called <code>trendy-cli</code>. A PyPI release is planned; until then, install straight from GitHub.</p>
+          </article>
+
+          <article class="card code-card">
+            <h3>2. Decode from your terminal</h3>
+            <p>Exit code 0 when found, 1 when there’s no match. Add <code>--json</code> for scripts.</p>
+            <div class="code-wrap">
+              <div class="code-bar"><span>Terminal</span><button class="copy-btn" type="button" data-copy="code-cli" data-copy-text="trendy decode 67" hidden>Copy</button></div>
+              <pre class="code" id="code-cli" tabindex="0" role="region" aria-label="Example terminal session"><code><span class="p">$ </span>trendy decode 67
+<span class="k">67</span>  [slang]
+short:   Gen Alpha / TikTok brainrot…
+origin:  TikTok sounds (notably Skrilla…
+age:     Gen Alpha — mostly kids/tweens…
+
+<span class="p">$ </span>trendy trends --min-heat 0.7
+<span class="p">$ </span>trendy radar status</code></pre>
+            </div>
+          </article>
+
+          <article class="card code-card">
+            <h3>3. Add it to Cursor</h3>
+            <p>Put this in <code>~/.cursor/mcp.json</code> (or <code>.cursor/mcp.json</code> in a project). Claude Desktop uses the same block in <code>claude_desktop_config.json</code>.</p>
+            <div class="code-wrap">
+              <div class="code-bar"><span>~/.cursor/mcp.json</span><button class="copy-btn" type="button" data-copy="code-mcp" hidden>Copy</button></div>
+              <pre class="code" id="code-mcp" tabindex="0" role="region" aria-label="Cursor MCP configuration"><code>{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"trendy"</span>: { <span class="s">"command"</span>: <span class="s">"trendy-mcp"</span> }
+  }
+}</code></pre>
+            </div>
+            <p class="fineprint">Then ask your agent things like “what does <em>aura farming</em> mean?” or “what’s trending on TikTok right now?”</p>
+          </article>
+
+          <article class="card code-card">
+            <h3>Four read-only tools</h3>
+            <p>Local stdio only. No write tools, no network access, nothing to configure.</p>
+            <ul class="tool-list">
+              <li><code>decode_term</code><span>Meaning, origin and who says it for one term or phrase.</span></li>
+              <li><code>search_slang</code><span>Find lexicon entries that match a word or topic.</span></li>
+              <li><code>get_trends</code><span>The trend catalog with heat, lifecycle, world and age band.</span></li>
+              <li><code>radar_status</code><span>When Trend Radar last refreshed the catalog, and from which sources.</span></li>
+            </ul>
+          </article>
+        </div>
+        <p class="fineprint">More setup options (uv, Windows, running from a checkout) are in the <a href="https://github.com/bluenightlightpup/trendy#mcp-quickstart-cursor-claude-desktop-any-mcp-client">README on GitHub</a>.</p>
+      </div>
+    </section>
+
+    <section class="section" id="ios" aria-labelledby="ios-title">
+      <div class="wrap">
+        <div class="ios">
+          <img src="images/trendy-icon.png" alt="" width="140" height="140" loading="lazy">
+          <div>
+            <p class="eyebrow">iPhone</p>
+            <h2 id="ios-title">A native iPhone app is on the way</h2>
+            <p>The same Home, Decode, Explore and You tabs, built in SwiftUI. Everything is bundled, so it works offline, with no account and no data collected.</p>
+            <span class="soon">Coming soon to the App Store</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="private" aria-labelledby="private-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Private by design</p>
+          <h2 id="private-title">Ask anything. Nobody’s watching.</h2>
+        </div>
+        <ul class="trio">
+          <li class="card">
+            <h3>No account, no tracking</h3>
+            <p>No sign-in, ads, analytics or cookies. Trendy doesn’t collect data, on this site or in its apps.</p>
+          </li>
+          <li class="card">
+            <h3>Stays on your device</h3>
+            <p>Saved trends and settings live on your phone or in your browser, never on a server.</p>
+          </li>
+          <li class="card">
+            <h3>Judgment-free answers</h3>
+            <p>Plain words for parents, teachers, writers and anyone who just saw “it’s giving” and needs answers.</p>
+          </li>
+        </ul>
+        <p class="fineprint">The one exception: decoding a single word can look it up in a public dictionary, and only that word is sent. Details are in the <a href="privacy.html">privacy policy</a>.</p>
+      </div>
+    </section>
+
+    <section class="credit" aria-label="Credits">
+      <div class="wrap">
+        <p>Created by Rosie Lee</p>
+        <p class="sub">Free and open source under the MIT License.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <a class="brand" href="./" aria-label="Trendy home">
+          <img src="images/trendy-icon.png" alt="" width="28" height="28">
+          <span>Trendy</span>
+        </a>
+        <nav aria-label="Footer">
+          <ul class="footer-links">
+            <li><a href="app/">Web app</a></li>
+            <li><a href="https://github.com/bluenightlightpup/trendy">GitHub</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="https://github.com/bluenightlightpup/trendy/blob/main/LICENSE">MIT License</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p>Created by Rosie Lee. Texting abbreviations are derived from <a href="https://github.com/Njong392/Abbreve">Abbreve</a> by Njong Emy and contributors, licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a>. Optional dictionary senses come from Wiktionary and the Free Dictionary API (CC BY-SA).</p>
+    </div>
+  </footer>
+</body>
+</html>

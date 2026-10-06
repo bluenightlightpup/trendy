@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Trendy — Privacy Policy</title>
+  <meta name="description" content="Trendy collects no data. No accounts, ads, analytics or tracking. Saves stay on your device; single-word dictionary lookups are the only optional network request.">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://bluenightlightpup.github.io/trendy/privacy.html">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Trendy">
+  <meta property="og:title" content="Trendy — Privacy Policy">
+  <meta property="og:description" content="Trendy collects no data. No accounts, ads, analytics or tracking. Saves stay on your device; single-word dictionary lookups are the only optional network request.">
+  <meta property="og:url" content="https://bluenightlightpup.github.io/trendy/privacy.html">
+  <meta property="og:image" content="https://bluenightlightpup.github.io/trendy/og-image.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="heat-bar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Trendy home">
+        <img src="images/trendy-icon.png" alt="" width="34" height="34">
+        <span>Trendy</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li class="nav-optional"><a href="./#decode">Decode</a></li>
+          <li class="nav-optional"><a href="./#agents">AI agents</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a class="nav-cta" href="app/">Open app</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="doc">
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective October 6, 2026 · Covers the Trendy website, web app, iOS app, CLI and MCP server · Developer: bluenightlightpup</p>
+
+    <div class="card">
+      <p><strong>The short version</strong></p>
+      <ul>
+        <li><strong>We collect no data.</strong> No accounts, sign-in, ads, analytics, tracking, cookies or third-party SDKs, anywhere.</li>
+        <li><strong>Everything stays on your device.</strong> Saved trends and preferences are stored only on your phone or in your browser.</li>
+        <li><strong>One optional kind of network request:</strong> decoding a <strong>single word</strong> can ask a public dictionary for extra meanings. Only that word is sent.</li>
+      </ul>
+    </div>
+
+    <ul class="toc" aria-label="On this page">
+      <li><a href="#website">Website</a></li>
+      <li><a href="#web-app">Web app</a></li>
+      <li><a href="#ios">iOS app</a></li>
+      <li><a href="#dictionary">Dictionary lookup</a></li>
+      <li><a href="#cli">CLI &amp; MCP server</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <h2 id="website">This website</h2>
+    <p>These pages are plain static files. They set no cookies, use no analytics or trackers, and load no fonts, scripts or images from other sites. The small “What does 67 mean?” demo on the home page runs entirely in your browser.</p>
+    <p>The site is hosted on GitHub Pages. Like any web host, GitHub receives standard technical information such as your IP address when your browser requests a page, and handles it under the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>. We don’t get access to visitor logs.</p>
+
+    <h2 id="web-app">Web app (<a href="app/">/app/</a>)</h2>
+    <p>The web app keeps your saved trends, the worlds you switch on or off, your digest setting and <em>New here</em> mode in your browser’s local storage on your device. It is never sent to us. Clearing your browser’s site data for Trendy removes it.</p>
+    <p>Once loaded, the trend catalog and slang lexicon work offline. For single-word queries the web app also looks the word up in a public dictionary; see <a href="#dictionary">Dictionary lookup</a> below.</p>
+    <p><strong>Live Decode (optional, off by default).</strong> Under <em>You → Live Decode</em> you can enter the address of a Trendy proxy that <em>you</em> run on your own computer. Only then, terms the lexicon can’t answer and any community suggestions you choose to submit (with a random ID created on your device) are sent to that proxy. We don’t operate any proxy and never receive this traffic. The proxy address and token are stored in your browser only.</p>
+
+    <h2 id="ios">iOS app</h2>
+    <p>Trendy for iOS keeps the trends you save, the worlds you switch on or off, your digest setting, <em>New here</em> mode and the <em>Dictionary lookups</em> setting in iOS’s standard app storage (UserDefaults) on your device. This data is never sent to us or anyone else and is removed when you delete the app. Like other app data it may be included in your own iCloud or computer backups, which we cannot access.</p>
+    <p>Decode conversations are kept in memory only and are cleared when the app closes. Privacy, support and credits links open in Safari; websites you visit there have their own policies.</p>
+
+    <h2 id="dictionary">Optional dictionary lookup</h2>
+    <p>For single-word queries (for example “rizz”, not “nah I’d win”), Trendy can fetch extra dictionary definitions:</p>
+    <ul>
+      <li><strong>What is sent:</strong> only the word you searched, over HTTPS. No account, device or advertising identifier, location or cookies. As with any internet request, the service can see your IP address.</li>
+      <li><strong>Where it goes:</strong> the iOS app asks the <a href="https://dictionaryapi.dev/">Free Dictionary API</a> (<code>api.dictionaryapi.dev</code>). The web app first asks <a href="https://en.wiktionary.org/">Wiktionary</a> (<code>en.wiktionary.org</code>, run by the Wikimedia Foundation) and may fall back to the Free Dictionary API. Both are independent public services. We don’t operate them, receive their logs or share anything else with them.</li>
+      <li><strong>Turning it off:</strong> in the iOS app, go to <em>You → Decode → Dictionary lookups</em>, and Decode then works fully offline. The web app has no switch for this yet; if you’d rather not send single words, use the iOS app with lookups off, or the CLI.</li>
+    </ul>
+    <p>Multi-word phrases are never sent. If a lookup fails or you’re offline, Trendy quietly shows its offline answer.</p>
+
+    <h2 id="cli">CLI and MCP server</h2>
+    <p>The <code>trendy</code> command and the <code>trendy-mcp</code> server run on your own computer. They have no telemetry. Decoding, trend lookups and all four MCP tools read the bundled data and make no network requests. Two opt-in developer commands do use the network, and only when you run them: <code>trendy radar run</code> fetches public trend sources to refresh the catalog, and <code>trendy serve</code> (the Live Decode proxy) sends terms to the AI model provider whose API key you configure on that computer.</p>
+
+    <h2 id="children">Children</h2>
+    <p>Trendy does not collect personal information from anyone, including children. It explains some adult slang in plain, non-graphic language so parents and caregivers can understand it; swear words are masked.</p>
+
+    <h2 id="changes">Changes</h2>
+    <p>If this policy changes we will update this page and its effective date, and note material changes in the App Store release notes.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Questions: open an issue at <a href="https://github.com/bluenightlightpup/trendy/issues">github.com/bluenightlightpup/trendy/issues</a> or see the <a href="support.html">support page</a>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <a class="brand" href="./" aria-label="Trendy home">
+          <img src="images/trendy-icon.png" alt="" width="28" height="28">
+          <span>Trendy</span>
+        </a>
+        <nav aria-label="Footer">
+          <ul class="footer-links">
+            <li><a href="app/">Web app</a></li>
+            <li><a href="https://github.com/bluenightlightpup/trendy">GitHub</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="https://github.com/bluenightlightpup/trendy/blob/main/LICENSE">MIT License</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p>Created by Rosie Lee. Texting abbreviations are derived from <a href="https://github.com/Njong392/Abbreve">Abbreve</a> by Njong Emy and contributors, licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0</a>. Optional dictionary senses come from Wiktionary and the Free Dictionary API (CC BY-SA).</p>
+    </div>
+  </footer>
+</body>
+</html>
