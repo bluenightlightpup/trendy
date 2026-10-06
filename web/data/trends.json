@@ -125,7 +125,7 @@
   },
   {
     "id": "trend-alpha-tiktok",
-    "title": "alpha",
+    "title": "Alpha",
     "summary": "TikTok/internet slang for top-dog / “best” / dominant energy — not mainly the Greek letter.",
     "originStory": "Borrowed from pop “alpha male” hierarchy talk, then memed hard on TikTok as a flex or joke about who’s elite. If someone says “she’s alpha,” they mean status/confidence vibe.",
     "world": "TikTok",
@@ -225,7 +225,8 @@
       "seed",
       "radar"
     ],
-    "lastSeenAt": "2026-09-07"
+    "lastSeenAt": "2026-09-07",
+    "age": "Gen Z"
   },
   {
     "id": "sc-midterm-arc",
@@ -241,7 +242,8 @@
       "slang",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sp-locked-in",
@@ -257,7 +259,8 @@
       "seed",
       "radar"
     ],
-    "lastSeenAt": "2026-09-10"
+    "lastSeenAt": "2026-09-10",
+    "age": "Gen Z"
   },
   {
     "id": "tt-yap",
@@ -290,7 +293,8 @@
       "seed",
       "radar"
     ],
-    "lastSeenAt": "2026-09-01"
+    "lastSeenAt": "2026-09-01",
+    "age": "Mixed"
   },
   {
     "id": "mu-bias",
@@ -305,7 +309,8 @@
       "kpop",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "tt-looksmaxxing",
@@ -336,7 +341,8 @@
       "slang",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "dt-talking-stage",
@@ -350,7 +356,8 @@
       "dating",
       "relationship"
     ],
-    "lastSeenAt": "2026-09-05"
+    "lastSeenAt": "2026-09-05",
+    "age": "Gen Z"
   },
   {
     "id": "sp-w",
@@ -363,7 +370,8 @@
     "tags": [
       "sports",
       "slang"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "ic-ate-that",
@@ -377,7 +385,8 @@
       "slang",
       "vibe"
     ],
-    "lastSeenAt": "2026-09-06"
+    "lastSeenAt": "2026-09-06",
+    "age": "Gen Z"
   },
   {
     "id": "tt-unspoken-rizz",
@@ -406,12 +415,13 @@
     "tags": [
       "dating",
       "flags"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "tt-edging",
     "title": "Edging",
-    "summary": "Hovering at the edge of a payoff without finishing — a joke about delay.",
+    "summary": "Joke about holding off right before a payoff — the word comes from a sexual meaning, so it reads as innuendo.",
     "originStory": "Older slang recycled as a TikTok/stream bit about stretching tension. Casual use is usually the joke, not a how-to.",
     "world": "TikTok",
     "heatScore": 0.79,
@@ -422,7 +432,8 @@
       "slang",
       "tiktok"
     ],
-    "lastSeenAt": "2026-08-15"
+    "lastSeenAt": "2026-08-15",
+    "age": "Gen Z"
   },
   {
     "id": "ic-no-cap",
@@ -435,7 +446,8 @@
     "tags": [
       "slang",
       "emphasis"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sp-l",
@@ -448,7 +460,8 @@
     "tags": [
       "sports",
       "slang"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "wk-bandwidth",
@@ -461,7 +474,8 @@
     "tags": [
       "work",
       "tech"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "ab-ootl",
@@ -477,7 +491,8 @@
       "seed",
       "radar"
     ],
-    "lastSeenAt": "2026-09-10"
+    "lastSeenAt": "2026-09-10",
+    "age": "Millennial"
   },
   {
     "id": "mu-era",
@@ -490,7 +505,8 @@
     "tags": [
       "fandom",
       "narrative"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "ab-fr",
@@ -503,7 +519,8 @@
     "tags": [
       "abbrev",
       "emphasis"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "t06",
@@ -517,7 +534,8 @@
       "gaming",
       "meme",
       "identity"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mu-comeback",
@@ -530,7 +548,8 @@
     "tags": [
       "fandom",
       "release"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "dt-hard-launch",
@@ -543,7 +562,8 @@
     "tags": [
       "dating",
       "social"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sp-cooked",
@@ -570,7 +590,8 @@
     "tags": [
       "work",
       "tech"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "ab-ngl",
@@ -583,7 +604,8 @@
     "tags": [
       "abbrev",
       "confession"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sc-roommate-lore",
@@ -596,7 +618,8 @@
     "tags": [
       "campus",
       "relatable"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mu-delulu-ship",
@@ -609,7 +632,8 @@
     "tags": [
       "fandom",
       "shipping"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "mn-bullish",
@@ -622,7 +646,8 @@
     "tags": [
       "money",
       "slang"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "gm-sweat",
@@ -635,7 +660,8 @@
     "tags": [
       "gaming",
       "compete"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "dt-red-flag",
@@ -648,7 +674,8 @@
     "tags": [
       "dating",
       "flags"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "wk-circle-back",
@@ -663,7 +690,8 @@
       "corp-speak",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "t04",
@@ -679,7 +707,8 @@
       "captions",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sc-pass-fail",
@@ -692,7 +721,8 @@
     "tags": [
       "campus",
       "boundaries"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mu-bias-wrecker",
@@ -705,7 +735,8 @@
     "tags": [
       "fandom",
       "kpop"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "wk-ship-it",
@@ -718,7 +749,8 @@
     "tags": [
       "work",
       "tech"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "gm-clutch",
@@ -733,7 +765,8 @@
       "praise",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "dt-rizzless",
@@ -746,7 +779,8 @@
     "tags": [
       "dating",
       "slang"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sp-script",
@@ -759,7 +793,8 @@
     "tags": [
       "sports",
       "meme"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "mn-side-hustle",
@@ -772,7 +807,8 @@
     "tags": [
       "money",
       "work"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "tt-beige-flag",
@@ -786,7 +822,8 @@
       "dating",
       "tiktok",
       "flags"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "t09",
@@ -803,7 +840,8 @@
       "meme",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sc-group-project",
@@ -816,7 +854,8 @@
     "tags": [
       "campus",
       "meme"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mu-stream",
@@ -829,7 +868,8 @@
     "tags": [
       "fandom",
       "charts"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mn-rug-pull",
@@ -845,7 +885,8 @@
       "caution",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "ab-idk-energy",
@@ -858,7 +899,8 @@
     "tags": [
       "abbrev",
       "vibe"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "gm-meta",
@@ -871,7 +913,8 @@
     "tags": [
       "gaming",
       "strategy"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "sp-era",
@@ -884,7 +927,8 @@
     "tags": [
       "sports",
       "narrative"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "wk-lgtm",
@@ -900,7 +944,8 @@
       "abbrev",
       "seed",
       "radar"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "ic-copium",
@@ -913,7 +958,8 @@
     "tags": [
       "meme",
       "cope"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "dt-orbiting",
@@ -926,7 +972,8 @@
     "tags": [
       "dating",
       "social"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "mu-unreleased",
@@ -939,7 +986,8 @@
     "tags": [
       "fandom",
       "music"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mn-dedollar",
@@ -952,7 +1000,8 @@
     "tags": [
       "money",
       "discourse"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "tt-underconsumption",
@@ -966,7 +1015,8 @@
       "aesthetic",
       "consumer",
       "tiktok"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "gm-tilted",
@@ -979,7 +1029,8 @@
     "tags": [
       "gaming",
       "emotion"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "sc-curve",
@@ -992,7 +1043,8 @@
     "tags": [
       "campus",
       "grades"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "sp-run-it-back",
@@ -1005,7 +1057,8 @@
     "tags": [
       "sports",
       "slang"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "wk-mvp",
@@ -1018,7 +1071,8 @@
     "tags": [
       "work",
       "tech"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "ab-rn",
@@ -1031,7 +1085,8 @@
     "tags": [
       "abbrev",
       "time"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "wk-offline",
@@ -1044,7 +1099,8 @@
     "tags": [
       "work",
       "boundaries"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "gm-nerf",
@@ -1057,7 +1113,8 @@
     "tags": [
       "gaming",
       "balance"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "sc-dead-week",
@@ -1070,7 +1127,8 @@
     "tags": [
       "campus",
       "exams"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mn-paycheck-to-paycheck",
@@ -1083,7 +1141,8 @@
     "tags": [
       "money",
       "relatable"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "dt-breadcrumbing",
@@ -1096,7 +1155,8 @@
     "tags": [
       "dating",
       "discourse"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "mu-title-track",
@@ -1109,7 +1169,8 @@
     "tags": [
       "fandom",
       "music"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "ab-istg",
@@ -1122,7 +1183,8 @@
     "tags": [
       "abbrev",
       "emphasis"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sc-syllabus-week",
@@ -1135,7 +1197,8 @@
     "tags": [
       "campus",
       "semester"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mn-ngmi",
@@ -1149,7 +1212,8 @@
       "money",
       "crypto",
       "abbrev"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "gm-buff",
@@ -1162,7 +1226,8 @@
     "tags": [
       "gaming",
       "balance"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "dt-love-bombing",
@@ -1175,7 +1240,8 @@
     "tags": [
       "dating",
       "discourse"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "sp-send-it",
@@ -1188,7 +1254,8 @@
     "tags": [
       "sports",
       "hype"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "mu-op-ed",
@@ -1201,7 +1268,8 @@
     "tags": [
       "fandom",
       "anime"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "ic-cringe",
@@ -1214,7 +1282,8 @@
     "tags": [
       "reaction",
       "meme"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "sc-commuter",
@@ -1227,7 +1296,8 @@
     "tags": [
       "campus",
       "identity"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mn-wagmi",
@@ -1241,7 +1311,8 @@
       "money",
       "crypto",
       "abbrev"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "gm-diff",
@@ -1254,7 +1325,8 @@
     "tags": [
       "gaming",
       "abbrev"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sc-raptor",
@@ -1267,7 +1339,8 @@
     "tags": [
       "campus",
       "academic"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mu-fancam",
@@ -1280,7 +1353,8 @@
     "tags": [
       "fandom",
       "video"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "wk-oncall",
@@ -1293,7 +1367,8 @@
     "tags": [
       "work",
       "tech"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "ic-main-character",
@@ -1308,7 +1383,8 @@
       "meme"
     ],
     "peakedAt": "2022-04-01",
-    "lastSeenAt": "2026-04-01"
+    "lastSeenAt": "2026-04-01",
+    "age": "Gen Z"
   },
   {
     "id": "ab-ily",
@@ -1321,7 +1397,8 @@
     "tags": [
       "abbrev",
       "affection"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "dt-ghosting",
@@ -1334,7 +1411,8 @@
     "tags": [
       "dating",
       "classic"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "sp-house-money",
@@ -1347,7 +1425,8 @@
     "tags": [
       "sports",
       "metaphor"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "mn-diamond-hands",
@@ -1361,7 +1440,8 @@
       "money",
       "investing",
       "meme"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "ic-understood-assignment",
@@ -1374,7 +1454,8 @@
     "tags": [
       "praise",
       "slang"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sc-office-hours",
@@ -1387,7 +1468,8 @@
     "tags": [
       "campus",
       "advice"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sp-buzzer",
@@ -1400,7 +1482,8 @@
     "tags": [
       "sports",
       "clutch"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "wk-bike-shed",
@@ -1414,7 +1497,8 @@
       "work",
       "tech",
       "meme"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "dt-benching",
@@ -1427,7 +1511,8 @@
     "tags": [
       "dating",
       "metaphor"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "mu-vocal-coach",
@@ -1440,7 +1525,8 @@
     "tags": [
       "fandom",
       "youtube"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "mn-soft-save",
@@ -1453,7 +1539,8 @@
     "tags": [
       "money",
       "slang"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "tt-let-him-cook",
@@ -1470,7 +1557,8 @@
       "tiktok"
     ],
     "peakedAt": "2023-05-01",
-    "lastSeenAt": "2026-02-01"
+    "lastSeenAt": "2026-02-01",
+    "age": "Gen Z"
   },
   {
     "id": "ic-chronically",
@@ -1485,7 +1573,8 @@
       "meme"
     ],
     "peakedAt": "2022-01-01",
-    "lastSeenAt": "2026-03-01"
+    "lastSeenAt": "2026-03-01",
+    "age": "Gen Z"
   },
   {
     "id": "t02",
@@ -1499,7 +1588,8 @@
       "meme",
       "history",
       "gender"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "gm-int",
@@ -1512,7 +1602,8 @@
     "tags": [
       "gaming",
       "slang"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "sc-transfer-arc",
@@ -1525,7 +1616,8 @@
     "tags": [
       "campus",
       "identity"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "wk-rto",
@@ -1538,7 +1630,8 @@
     "tags": [
       "work",
       "abbrev"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "trend-we-are-so-back",
@@ -1554,7 +1647,8 @@
       "twitter",
       "sports"
     ],
-    "updated_at": "2026-09-14T21:47:42Z"
+    "updated_at": "2026-09-14T21:47:42Z",
+    "age": "Gen Z"
   },
   {
     "id": "dt-cuffing-season",
@@ -1567,7 +1661,8 @@
     "tags": [
       "dating",
       "seasonal"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "mu-gatekeep",
@@ -1580,7 +1675,8 @@
     "tags": [
       "fandom",
       "meme"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "mn-paper-hands",
@@ -1594,7 +1690,8 @@
       "money",
       "investing",
       "meme"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "gm-one-shot",
@@ -1607,7 +1704,8 @@
     "tags": [
       "gaming",
       "slang"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "ic-based",
@@ -1622,7 +1720,8 @@
       "approval"
     ],
     "peakedAt": "2022-06-01",
-    "lastSeenAt": "2026-01-01"
+    "lastSeenAt": "2026-01-01",
+    "age": "Gen Z"
   },
   {
     "id": "t12",
@@ -1636,7 +1735,8 @@
       "abbrev",
       "wellness",
       "social"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "sp-superteam",
@@ -1649,7 +1749,8 @@
     "tags": [
       "sports",
       "discourse"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "mn-exit-liquidity",
@@ -1662,7 +1763,8 @@
     "tags": [
       "money",
       "caution"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "tt-sigma",
@@ -1692,7 +1794,8 @@
     "tags": [
       "abbrev",
       "social"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "wk-stakeholder",
@@ -1705,7 +1808,8 @@
     "tags": [
       "work",
       "corp-speak"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "sp-tanking",
@@ -1718,7 +1822,8 @@
     "tags": [
       "sports",
       "strategy"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "tt-vibe-check",
@@ -1734,7 +1839,8 @@
       "tiktok"
     ],
     "peakedAt": "2020-08-01",
-    "lastSeenAt": "2025-11-01"
+    "lastSeenAt": "2025-11-01",
+    "age": "Gen Z"
   },
   {
     "id": "tt-ate",
@@ -1747,7 +1853,8 @@
     "tags": [
       "slang",
       "praise"
-    ]
+    ],
+    "age": "Gen Z"
   },
   {
     "id": "t10",
@@ -1761,7 +1868,8 @@
       "gaming",
       "etiquette",
       "abbrev"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "sc-all-nighter",
@@ -1774,7 +1882,8 @@
     "tags": [
       "campus",
       "classic"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "ab-afaik",
@@ -1787,7 +1896,8 @@
     "tags": [
       "abbrev",
       "hedge"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "mn-to-the-moon",
@@ -1801,7 +1911,8 @@
       "money",
       "hype",
       "meme"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "tt-demure",
@@ -1816,7 +1927,8 @@
       "tiktok"
     ],
     "peakedAt": "2024-08-20",
-    "lastSeenAt": "2025-07-01"
+    "lastSeenAt": "2025-07-01",
+    "age": "Gen Z"
   },
   {
     "id": "ic-ratio",
@@ -1831,7 +1943,8 @@
       "dunk"
     ],
     "peakedAt": "2021-09-01",
-    "lastSeenAt": "2025-12-01"
+    "lastSeenAt": "2025-12-01",
+    "age": "Gen Z"
   },
   {
     "id": "sp-dud",
@@ -1844,7 +1957,8 @@
     "tags": [
       "sports",
       "broadcast"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "tt-gyatt",
@@ -1876,7 +1990,8 @@
     "tags": [
       "abbrev",
       "classic"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "t08",
@@ -1892,7 +2007,8 @@
       "mood"
     ],
     "peakedAt": "2023-06-01",
-    "lastSeenAt": "2025-03-01"
+    "lastSeenAt": "2025-03-01",
+    "age": "Gen Z"
   },
   {
     "id": "gm-afk",
@@ -1905,7 +2021,8 @@
     "tags": [
       "gaming",
       "abbrev"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "trend-nah-id-win",
@@ -1923,7 +2040,8 @@
       "catchphrase",
       "tiktok"
     ],
-    "updated_at": "2026-09-14T21:47:42Z"
+    "updated_at": "2026-09-14T21:47:42Z",
+    "age": "Gen Z"
   },
   {
     "id": "ic-goofy-ahh",
@@ -1938,7 +2056,8 @@
       "brainrot"
     ],
     "peakedAt": "2023-09-01",
-    "lastSeenAt": "2025-06-01"
+    "lastSeenAt": "2025-06-01",
+    "age": "Gen Alpha"
   },
   {
     "id": "ab-atm",
@@ -1951,7 +2070,8 @@
     "tags": [
       "abbrev",
       "classic"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "tt-fanum-tax",
@@ -1969,7 +2089,8 @@
       "tiktok"
     ],
     "peakedAt": "2024-01-20",
-    "lastSeenAt": "2025-08-01"
+    "lastSeenAt": "2025-08-01",
+    "age": "Gen Alpha"
   },
   {
     "id": "wk-synergy",
@@ -1982,7 +2103,8 @@
     "tags": [
       "work",
       "corp-speak"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "tt-npc-live",
@@ -1998,7 +2120,8 @@
       "tiktok"
     ],
     "peakedAt": "2023-11-01",
-    "lastSeenAt": "2025-04-01"
+    "lastSeenAt": "2025-04-01",
+    "age": "Gen Z"
   },
   {
     "id": "ab-imo",
@@ -2011,7 +2134,8 @@
     "tags": [
       "abbrev",
       "classic"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "t01",
@@ -2027,7 +2151,8 @@
       "tiktok"
     ],
     "peakedAt": "2023-08-01",
-    "lastSeenAt": "2025-05-01"
+    "lastSeenAt": "2025-05-01",
+    "age": "Gen Z"
   },
   {
     "id": "wk-quiet-quitting",
@@ -2041,7 +2166,8 @@
       "work",
       "boundaries",
       "discourse"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "tt-skibidi",
@@ -2075,7 +2201,8 @@
     "tags": [
       "abbrev",
       "classic"
-    ]
+    ],
+    "age": "Millennial"
   },
   {
     "id": "tt-bussin",
@@ -2092,7 +2219,8 @@
       "tiktok"
     ],
     "peakedAt": "2022-11-01",
-    "lastSeenAt": "2025-04-01"
+    "lastSeenAt": "2025-04-01",
+    "age": "Gen Z"
   },
   {
     "id": "sc-freshman-15",
@@ -2105,7 +2233,8 @@
     "tags": [
       "campus",
       "classic"
-    ]
+    ],
+    "age": "Mixed"
   },
   {
     "id": "ab-brb",
@@ -2118,7 +2247,8 @@
     "tags": [
       "abbrev",
       "classic"
-    ]
+    ],
+    "age": "Gen X+"
   },
   {
     "id": "tt-ohio",
@@ -2136,413 +2266,5 @@
     ],
     "peakedAt": "2023-10-01",
     "lastSeenAt": "2025-05-01"
-  },
-  {
-    "id": "r_178c8fcf2f",
-    "title": "Wikipedia: Portal:Current events",
-    "summary": "Wikimedia portal",
-    "originStory": "Observed via Radar source `wikipedia` Source link: https://en.wikipedia.org/wiki/Portal%3ACurrent_events This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.293,
-    "lifecycle": "fading",
-    "tags": [
-      "wikipedia",
-      "current-events",
-      "radar"
-    ],
-    "radarSource": "wikipedia",
-    "radarUrl": "https://en.wikipedia.org/wiki/Portal%3ACurrent_events",
-    "radarSignalId": "wikipedia:current-events"
-  },
-  {
-    "id": "r_3d159e77b9",
-    "title": "The Scariest Chart In Engineering",
-    "summary": "Why is the Smith Chart one of the scariest charts in electrical engineering?",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/O3a99HNskNk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/O3a99HNskNk",
-    "radarSignalId": "youtube:O3a99HNskNk"
-  },
-  {
-    "id": "r_399597a4e7",
-    "title": "The Most Dangerous Escalator In Europe",
-    "summary": "In 2018 football fans were leaving a stadium in Rome. They boarded an escalator down to the metro. Suddenly the machine sprung a fault.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/oR94cicO7xM This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/oR94cicO7xM",
-    "radarSignalId": "youtube:oR94cicO7xM"
-  },
-  {
-    "id": "r_f1c0f04219",
-    "title": "A Physics Professor Bet Me $10,000 I'm Wrong...",
-    "summary": "A UCLA Physics Professor bet me $10,000 that my video (https://youtu.be/jyQwgBAaBag) about going downwind faster than the wind was wrong.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/F5_G0AHfYhI This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/F5_G0AHfYhI",
-    "radarSignalId": "youtube:F5_G0AHfYhI"
-  },
-  {
-    "id": "r_60ece1bb12",
-    "title": "Why Do People Pass Out On Roller Coasters?",
-    "summary": "Why Do People Pass Out On Roller Coasters?",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/67LFeTgFv3Y This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/67LFeTgFv3Y",
-    "radarSignalId": "youtube:67LFeTgFv3Y"
-  },
-  {
-    "id": "r_f70f89ed45",
-    "title": "Why the Moon Never Changes",
-    "summary": "Why the Moon Never Changes",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/KLJxCWeYGoE This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/KLJxCWeYGoE",
-    "radarSignalId": "youtube:KLJxCWeYGoE"
-  },
-  {
-    "id": "r_67e4212a9d",
-    "title": "$100 Slime Challenge",
-    "summary": "Pick up your CrunchLabs Slime Prank Lab from Walmart, Target, or Amazon today.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/KwqeKTM9M_8 This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/KwqeKTM9M_8",
-    "radarSignalId": "youtube:KwqeKTM9M_8"
-  },
-  {
-    "id": "r_33c06b09cb",
-    "title": "Heating A Ball Just By Squeezing It",
-    "summary": "How Jupiter heats its moon, just be stretching and squeezing it.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/hPoJWjJ9Ao8 This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/hPoJWjJ9Ao8",
-    "radarSignalId": "youtube:hPoJWjJ9Ao8"
-  },
-  {
-    "id": "r_22be01d559",
-    "title": "Chivalry or Engineering?",
-    "summary": "Chivalry or Engineering?",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/NUVkpWAD548 This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/NUVkpWAD548",
-    "radarSignalId": "youtube:NUVkpWAD548"
-  },
-  {
-    "id": "r_05414d6d54",
-    "title": "Last Cheater Standing Wins $10,000!",
-    "summary": "Shoutout to our friends at Onshape, whose CAD software makes it possible to do what we do every single day! Try them out for Free – Engineers Get Up to 6 Months Pro: http://onsh…",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=_L1Rim7-IPo This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=_L1Rim7-IPo",
-    "radarSignalId": "youtube:_L1Rim7-IPo"
-  },
-  {
-    "id": "r_933783abc1",
-    "title": "The Machine that cracked the Nazis’ “Unbreakable” Code",
-    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
-    "radarSignalId": "youtube:JsBZOcqZerk"
-  },
-  {
-    "id": "r_5dbced19ac",
-    "title": "The Most Important Decryption Machine Ever Built",
-    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
-    "radarSignalId": "youtube:JsBZOcqZerk"
-  },
-  {
-    "id": "r_871956884e",
-    "title": "This Machine Made Wartime Germany (Almost) Impossible to Defeat",
-    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
-    "radarSignalId": "youtube:JsBZOcqZerk"
-  },
-  {
-    "id": "r_7fbffe7f9e",
-    "title": "How Do You Crack a Code With 100 Sextillion Combinations?",
-    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
-    "radarSignalId": "youtube:JsBZOcqZerk"
-  },
-  {
-    "id": "r_84bff95a8c",
-    "title": "What happens to these balloons when you open the valve?",
-    "summary": "Take a balloon and fill it with lots of air. Take another one and fill it with less air. Now connect the two via a valve.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/VKlulHwMxgU This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/VKlulHwMxgU",
-    "radarSignalId": "youtube:VKlulHwMxgU"
-  },
-  {
-    "id": "r_84106e95e1",
-    "title": "The Insane Real Engineering of the Nazis' Enigma",
-    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
-    "radarSignalId": "youtube:JsBZOcqZerk"
-  },
-  {
-    "id": "r_618f2527af",
-    "title": "What happens when you open the valve?",
-    "summary": "Take a balloon and fill it with lots of air. Take another one and fill it with less air. Now connect the two via a valve.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/VKlulHwMxgU This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/VKlulHwMxgU",
-    "radarSignalId": "youtube:VKlulHwMxgU"
-  },
-  {
-    "id": "r_dc87ab3885",
-    "title": "The Insane Real Engineering of the Nazi Enigma Machine",
-    "summary": "How was the \"unbreakable\" enigma cracked? Sponsored by Incogni - use code veritasium at https://incogni.com/veritasium to get an exclusive 60% off your annual subscription.",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=JsBZOcqZerk This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=JsBZOcqZerk",
-    "radarSignalId": "youtube:JsBZOcqZerk"
-  },
-  {
-    "id": "r_182b67a152",
-    "title": "World's Most Over-Engineered Heist",
-    "summary": "Shoutout to our friends at Onshape, whose CAD software makes it possible to do what we do every single day! Try them out for Free – Engineers Get Up to 6 Months Pro: http://onsh…",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=_L1Rim7-IPo This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=_L1Rim7-IPo",
-    "radarSignalId": "youtube:_L1Rim7-IPo"
-  },
-  {
-    "id": "r_1c5640a3e2",
-    "title": "You Have Spiders on Your Face RIGHT NOW!",
-    "summary": "My friends @frida just released a new line of hygiene products to keep you clean & make those spiders' jobs just a little bit easier! #ad",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/tbWTiZlwJ3M This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/tbWTiZlwJ3M",
-    "radarSignalId": "youtube:tbWTiZlwJ3M"
-  },
-  {
-    "id": "r_0f6d44b29e",
-    "title": "We're trying something new...",
-    "summary": "Veritasium's mission has always been to get to the truth - to understand how and why things work the way they do. We love the variety of topics we're able to cover - from the re…",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=ONAuUyml0yI This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=ONAuUyml0yI",
-    "radarSignalId": "youtube:ONAuUyml0yI"
-  },
-  {
-    "id": "r_38dc8dad82",
-    "title": "How Dangerous Are Non-Stick Pans?",
-    "summary": "What happens to your body if you eat Teflon from a non-stick pan?",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/shorts/IHkp5Kq72ro This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/shorts/IHkp5Kq72ro",
-    "radarSignalId": "youtube:IHkp5Kq72ro"
-  },
-  {
-    "id": "r_215bc829a8",
-    "title": "Most Genius Casino Heist Ever",
-    "summary": "Shoutout to our friends at Onshape, whose CAD software makes it possible to do what we do every single day! Try them out for Free – Engineers Get Up to 6 Months Pro: http://onsh…",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=_L1Rim7-IPo This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=_L1Rim7-IPo",
-    "radarSignalId": "youtube:_L1Rim7-IPo"
-  },
-  {
-    "id": "r_61fd743334",
-    "title": "Last Cheater Standing Wins $10,000",
-    "summary": "Shoutout to our friends at Onshape, whose CAD software makes it possible to do what we do every single day! Try them out for Free – Engineers Get Up to 6 Months Pro: http://onsh…",
-    "originStory": "Observed via Radar source `youtube` Source link: https://www.youtube.com/watch?v=_L1Rim7-IPo This is an automatically ingested signal — origin details may be incomplete; Decode stays judgment-free and may refine later.",
-    "world": "Internet culture",
-    "heatScore": 0.208,
-    "lifecycle": "dormant",
-    "tags": [
-      "youtube",
-      "rss",
-      "radar"
-    ],
-    "radarSource": "youtube",
-    "radarUrl": "https://www.youtube.com/watch?v=_L1Rim7-IPo",
-    "radarSignalId": "youtube:_L1Rim7-IPo"
   }
 ]
