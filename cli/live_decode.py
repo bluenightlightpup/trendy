@@ -1,8 +1,14 @@
 """Live model-on-miss decode client + local Decode proxy (stdlib only).
 
 API keys stay on the PC (env vars). The PWA never sees them — it POSTs to
-this LAN proxy. Trusted LAN / personal use only; do not expose to the public
-internet without auth.
+this proxy. Secure defaults:
+
+* binds to 127.0.0.1 unless you pass --host;
+* binding to a non-loopback address (LAN) requires a shared token
+  (``TRENDY_PROXY_TOKEN`` or ``--token``); clients send
+  ``Authorization: Bearer <token>``;
+* CORS only answers localhost / private-LAN origins (plus ``--allow-origin``),
+  so a random website cannot drive the proxy from your browser.
 
 Also hosts community suggest → consensus → lexicon:
   POST /v1/suggest, GET /v1/suggestions/stats?term=
@@ -10,6 +16,8 @@ Also hosts community suggest → consensus → lexicon:
 
 from __future__ import annotations
 
+import hmac
+import ipaddress
 import json
 import os
 import re
@@ -183,18 +191,58 @@ def live_decode(term: str, new_here: bool = True) -> dict[str, Any]:
     return call_anthropic(term, new_here, key)
 
 
+MAX_TERM_LEN = 120
+LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
+
+
+def _is_loopback_host(host: str) -> bool:
+    h = (host or "").strip().strip("[]").lower()
+    if h in LOOPBACK_HOSTS:
+        return True
+    try:
+        return ipaddress.ip_address(h).is_loopback
+    except ValueError:
+        return False
+
+
+def origin_allowed(origin: str, extra: tuple[str, ...] = ()) -> bool:
+    """Allow localhost, private-LAN IPs, *.local, and explicitly listed origins."""
+    if not origin:
+        return False
+    origin = origin.rstrip("/")
+    if origin in {o.rstrip("/") for o in extra}:
+        return True
+    parsed = urlparse(origin)
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        return False
+    host = parsed.hostname.lower()
+    if host in LOOPBACK_HOSTS or host.endswith(".local"):
+        return True
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:
+        return False
+    return ip.is_private or ip.is_loopback
+
+
 class DecodeProxyHandler(BaseHTTPRequestHandler):
-    server_version = "TrendyDecodeProxy/1.0"
+    server_version = "TrendyDecodeProxy/1.1"
+    # Set by make_server(); class-level defaults keep the handler testable.
+    token: str = ""
+    allow_origins: tuple[str, ...] = ()
 
     def log_message(self, fmt: str, *args: Any) -> None:
         # Avoid logging bodies / secrets; path + code only
         sys.stderr.write("%s - %s\n" % (self.address_string(), fmt % args))
 
     def _cors(self) -> None:
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
-        self.send_header("Access-Control-Max-Age", "86400")
+        origin = self.headers.get("Origin") or ""
+        if origin_allowed(origin, self.allow_origins):
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+            self.send_header("Access-Control-Max-Age", "600")
 
     def _send_json(self, code: int, obj: dict[str, Any]) -> None:
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
@@ -205,13 +253,43 @@ class DecodeProxyHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _authorized(self) -> bool:
+        """Token check (constant time). No token configured → loopback-only server."""
+        if not self.token:
+            return True
+        auth = self.headers.get("Authorization") or ""
+        supplied = auth[7:].strip() if auth.lower().startswith("bearer ") else ""
+        supplied = supplied or (self.headers.get("X-Trendy-Token") or "").strip()
+        return bool(supplied) and hmac.compare_digest(supplied.encode(), self.token.encode())
+
+    def _origin_ok(self) -> bool:
+        origin = self.headers.get("Origin")
+        return origin is None or origin_allowed(origin, self.allow_origins)
+
+    def _guard(self) -> bool:
+        """Reject disallowed browser origins and missing/bad tokens. True = proceed."""
+        if not self._origin_ok():
+            self._send_json(403, {"error": "origin_not_allowed"})
+            return False
+        if not self._authorized():
+            self._send_json(401, {"error": "unauthorized", "message": "Missing or wrong proxy token."})
+            return False
+        return True
+
     def do_OPTIONS(self) -> None:  # noqa: N802
+        if not self._origin_ok():
+            self.send_response(403)
+            self.end_headers()
+            return
         self.send_response(204)
         self._cors()
         self.end_headers()
 
-    def _read_json_body(self, max_len: int = 64_000) -> tuple[dict[str, Any] | None, str | None]:
-        length = int(self.headers.get("Content-Length") or 0)
+    def _read_json_body(self, max_len: int = 16_000) -> tuple[dict[str, Any] | None, str | None]:
+        try:
+            length = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return None, "invalid_json"
         if length > max_len:
             return None, "payload_too_large"
         raw = self.rfile.read(length) if length else b"{}"
@@ -227,10 +305,15 @@ class DecodeProxyHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         path = parsed.path
         if path in ("/health", "/v1/health"):
-            self._send_json(200, {"ok": True, "service": "trendy-decode-proxy"})
+            self._send_json(
+                200,
+                {"ok": True, "service": "trendy-decode-proxy", "auth": "token" if self.token else "none"},
+            )
+            return
+        if not self._guard():
             return
         if path == "/v1/suggestions/stats":
-            from cli.community_lexicon import suggest_stats
+            from .community_lexicon import suggest_stats
 
             qs = parse_qs(parsed.query or "")
             term = (qs.get("term") or [""])[0]
@@ -240,21 +323,10 @@ class DecodeProxyHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         path = self.path.split("?", 1)[0]
-        if path == "/v1/suggest":
-            payload, err = self._read_json_body()
-            if err == "payload_too_large":
-                self._send_json(413, {"error": "payload_too_large"})
-                return
-            if err or payload is None:
-                self._send_json(400, {"error": err or "invalid_json"})
-                return
-            from cli.community_lexicon import handle_suggest
-
-            code, body = handle_suggest(payload)
-            self._send_json(code, body)
-            return
-        if path != "/v1/decode":
+        if path not in ("/v1/suggest", "/v1/decode"):
             self._send_json(404, {"error": "not_found", "path": path})
+            return
+        if not self._guard():
             return
         payload, err = self._read_json_body()
         if err == "payload_too_large":
@@ -263,10 +335,19 @@ class DecodeProxyHandler(BaseHTTPRequestHandler):
         if err or payload is None:
             self._send_json(400, {"error": err or "invalid_json"})
             return
+        if path == "/v1/suggest":
+            from .community_lexicon import handle_suggest
+
+            code, body = handle_suggest(payload)
+            self._send_json(code, body)
+            return
         term = str(payload.get("term") or "").strip()
         new_here = bool(payload.get("newHere", True))
         if not term:
             self._send_json(400, {"error": "term_required"})
+            return
+        if len(term) > MAX_TERM_LEN:
+            self._send_json(400, {"error": "term_too_long", "max": MAX_TERM_LEN})
             return
         if not resolve_provider():
             self._send_json(
@@ -285,19 +366,54 @@ class DecodeProxyHandler(BaseHTTPRequestHandler):
             result = live_decode(term, new_here=new_here)
             self._send_json(200, result)
         except urllib.error.HTTPError as e:
-            detail = e.reason or str(e)
-            self._send_json(
-                502,
-                {"error": "upstream_http", "status": e.code, "message": str(detail)},
-            )
+            self._send_json(502, {"error": "upstream_http", "status": e.code})
         except Exception as e:  # noqa: BLE001 — surface clear JSON to client
-            self._send_json(502, {"error": "upstream_failed", "message": str(e)})
+            self._send_json(502, {"error": "upstream_failed", "message": type(e).__name__})
 
 
-def run_serve(host: str = "0.0.0.0", port: int = 8787) -> int:
+def make_server(
+    host: str = "127.0.0.1",
+    port: int = 8787,
+    token: str | None = None,
+    allow_origins: list[str] | tuple[str, ...] | None = None,
+) -> ThreadingHTTPServer:
+    """Build the proxy server. Raises ValueError for an unsafe config (LAN without token)."""
+    tok = (token if token is not None else os.environ.get("TRENDY_PROXY_TOKEN") or "").strip()
+    if not _is_loopback_host(host) and not tok:
+        raise ValueError(
+            f"Refusing to listen on {host} without a token. Set TRENDY_PROXY_TOKEN "
+            "(or pass --token) and enter the same token in the PWA (You → Live Decode)."
+        )
+    extra = tuple(allow_origins or ()) + tuple(
+        o.strip() for o in (os.environ.get("TRENDY_PROXY_ORIGINS") or "").split(",") if o.strip()
+    )
+    handler = type(
+        "ConfiguredDecodeProxyHandler",
+        (DecodeProxyHandler,),
+        {"token": tok, "allow_origins": extra},
+    )
+    return ThreadingHTTPServer((host, port), handler)
+
+
+def run_serve(
+    host: str = "127.0.0.1",
+    port: int = 8787,
+    token: str | None = None,
+    allow_origins: list[str] | None = None,
+) -> int:
+    try:
+        httpd = make_server(host, port, token, allow_origins)
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
     resolved = resolve_provider()
     provider = resolved[0] if resolved else "none (503 until key set)"
-    httpd = ThreadingHTTPServer((host, port), DecodeProxyHandler)
+    auth = "token required" if httpd.RequestHandlerClass.token else "none (loopback only)"
+    lan_tip = (
+        f"  LAN: set the PWA Live Decode URL to http://<this-computer-lan-ip>:{port} and paste the token\n"
+        if not _is_loopback_host(host)
+        else "  LAN access: restart with --host 0.0.0.0 and TRENDY_PROXY_TOKEN set\n"
+    )
     print(
         f"Trendy Decode proxy on http://{host}:{port}\n"
         f"  GET  /health\n"
@@ -305,8 +421,9 @@ def run_serve(host: str = "0.0.0.0", port: int = 8787) -> int:
         f"  POST /v1/suggest    {{\"term\",\"meaning\",\"origin?\",\"clientId\"}}\n"
         f"  GET  /v1/suggestions/stats?term=...\n"
         f"  provider: {provider}\n"
-        f"  LAN tip: set PWA Live Decode URL to http://<pc-lan-ip>:{port}\n"
-        f"  Security: trusted LAN / personal use only — do not expose publicly without auth.",
+        f"  auth: {auth}\n"
+        f"{lan_tip}"
+        f"  Personal use only — do not expose this port to the internet.",
         flush=True,
     )
     try:

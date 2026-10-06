@@ -14,13 +14,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-# Repo paths (cli/ → repo root)
-ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "web" / "data"
-OUT = ROOT / "radar" / "out"
+try:  # package import (checkout `cli` or installed `trendy_cli`)
+    from . import paths as _paths
+except ImportError:  # pragma: no cover — imported as a top-level module
+    import paths as _paths  # type: ignore[no-redef]
 
-SUGGESTIONS_JSONL = OUT / "suggestions.jsonl"
-COMMUNITY_SLANG_PATH = DATA / "community-slang.json"
+# Checkout: radar/out + web/data. Installed: ~/.trendy (TRENDY_HOME).
+SUGGESTIONS_JSONL = _paths.suggestions_path()
+COMMUNITY_SLANG_PATH = _paths.community_write_path()
 
 # Product defaults (configurable constants)
 CONSENSUS_THRESHOLD = 3
