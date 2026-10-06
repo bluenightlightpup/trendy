@@ -8,7 +8,7 @@ Trendy is actively maintained on the default branch. Report issues against the l
 
 Do **not** open a public GitHub issue for security-sensitive findings.
 
-Privately message the owner (**@bluenightlightpup**) with:
+Use GitHub's **private vulnerability reporting** (Security tab → *Report a vulnerability*) or privately message the owner (**@bluenightlightpup**) with:
 
 - Description of the issue
 - Steps to reproduce (if applicable)
@@ -21,3 +21,4 @@ Privately message the owner (**@bluenightlightpup**) with:
 - Claude / third-party API keys belong in local gitignored config or CI secrets — never in source.
 - `CLAUDE.local.md` and `.env*` are gitignored — never force-add them.
 - Treat Decode prompts carefully: do not instruct models to exfiltrate user credentials or bypass access controls.
+- The MCP server is local stdio and read-only. The optional HTTP proxy (`trendy serve`) binds `127.0.0.1` by default, refuses non-loopback binds without `TRENDY_PROXY_TOKEN`, and restricts CORS to local and private-LAN origins. Reports about bypassing these controls are in scope.

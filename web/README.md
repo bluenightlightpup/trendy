@@ -15,7 +15,7 @@ npx --yes serve -l 4173
 Or from the repo root:
 
 ```bash
-npx --yes serve web -l 4173
+python3 -m http.server 4173 --directory web    # or: npx --yes serve web -l 4173
 ```
 
 Then open **http://localhost:4173** on your machine, or on your phone (same Wi‑Fi) use your computer’s LAN IP, e.g. `http://192.168.x.x:4173`.
@@ -44,17 +44,20 @@ Publish the contents of `web/` (or `/docs` copy) as Pages. Keep relative paths (
 | `app.js` | Feed, decode, prefs, save/follow |
 | `decode-ai.js` | Never-blank Decode pipeline |
 | `saved.js` | Saved-trend localStorage helpers |
-| `data/trends.json` | Mock trends |
-| `data/slang.json` | Decode dictionary |
+| `data/trends.json` | Trend catalog (heat, lifecycle, age band) |
+| `data/slang.json` | Curated slang lexicon |
+| `data/abbreve.json` | Texting abbreviations (Apache-2.0, from Abbreve; see `../NOTICE`) |
 | `data/community-slang.json` | Community consensus lexicon |
 | `suggest.js` | Suggest queue + local demo consensus |
 | `manifest.webmanifest` | PWA manifest |
 | `sw.js` | Offline cache |
 | `icons/` | SVG icons |
 
-Prefs (worlds, digest, New here, optional `liveDecodeUrl`) persist in `localStorage` under `trendy.you.prefs.v1`.
+Prefs (worlds, digest, New here, optional `liveDecodeUrl` / `liveDecodeToken`) persist in `localStorage` under `trendy.you.prefs.v1`.
 
-**Live Decode (optional):** You tab → paste LAN proxy URL (`http://<pc-ip>:8787`). Keys stay on the PC via `python cli/trendy.py serve`. See `docs/live-decode.md`.
+**Live Decode (optional):** You tab → enter the proxy URL (`http://<computer-ip>:8787`) and its token. Model keys stay on that computer (`trendy serve --host 0.0.0.0` with `TRENDY_PROXY_TOKEN`). See `docs/live-decode.md`.
+
+**Decode sources:** the on-device lexicon comes first (curated slang → community → abbreviations, with abbreviations only on exact queries). Single words may also be looked up on Wiktionary (existence-checked first, so unknown words fail quietly) or dictionaryapi.dev. The bubble header names the real source.
 
 **Community suggests:** on weak Decode answers, suggest a definition (local queue always; proxy for multi-user). See `docs/community-lexicon.md`.
 
@@ -63,7 +66,7 @@ Saved / followed trend IDs use `trendy.saved.v1` (see `saved.js`). Hearts on car
 ### Phase 3 (PWA)
 
 - Save/follow + a11y/reduced-motion polish
-- Offline cache bumped to `trendy-v14` (precache includes `decode-ai.js` + `saved.js`; slang age bands)
+- Offline cache `trendy-v15` (data cache-bust `v=15`)
 - Node tests: `npm test` (or `node --test tests/*.mjs`) from this folder
 
 

@@ -59,11 +59,11 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Outcome:** 24/7 Trend Radar ingests slang/trend signals and refreshes `web/data` without ToS-violating scrapers.
 
-- [x] Pluggable adapters (`radar/adapters/`) — LIVE Reddit + mock_seed; STUB TikTok/Instagram; optional Wikipedia/YouTube
+- [x] Pluggable adapters (`radar/adapters/`): Reddit (currently HTTP 403 without OAuth) + seed list; STUB TikTok/Instagram; Wikipedia/YouTube disabled (noise)
 - [x] Normalize → heat → merge pipeline into PWA JSON schemas
 - [x] Slang heuristics (short tokens, ALLCAPS, quoted phrases) with `confidence: low` placeholders
 - [x] `radar/run_ingest.py` CLI + `radar/out/last-run.json` summary
-- [x] GitHub Actions cron every 2 hours UTC + `workflow_dispatch`
+- [x] GitHub Actions cron (daily 06:00 UTC since 2026-10-05; was every 2h) + `workflow_dispatch`
 - [x] Docs: `docs/radar.md`, `radar/README.md`; ethics / official-API notes
 
 **Exit criteria:** Local ingest run succeeds (partial OK if Reddit blocks); PWA JSON remains valid; stubs document key requirements for TikTok/IG.
@@ -76,8 +76,8 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 | **P1** | Skeleton, design tokens, Home heat feed, Explore worlds, mock data |
 | **P2** | Decode Claude chat, You personalization, real APIs |
 | **P3** | Save/follow, polish, tests, TestFlight |
-| **Radar** | Continuous ingest → web/data (LIVE Reddit/seed; STUB TikTok/IG) |
-| **P4** | CLI GO; MCP stdio spike shipped — not hosted (`docs/cli-mcp-integration.md`) |
+| **Radar** | Daily ingest → web/data (seed list; Reddit 403 for now; STUB TikTok/IG) |
+| **P4** | CLI + local stdio MCP shipped and packaged (`trendy-cli`); not hosted (`docs/cli-mcp-integration.md`) |
 | **P5** | Product landscape (Urban Dictionary & peers) + novelty use cases |
 
 
@@ -87,10 +87,12 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 
 **Owner decision (2026-09-14):** **CLI GO** (Option B → path to C). Private/local-only; no hosted remote MCP.
 
-**Update (2026-10-03):** MCP spike is in: a Python stdio server beside the CLI (T0021). The phone PWA is a client; `cli/` + `radar/` are what agents should call. Not hosted. See `docs/cli-mcp-integration.md`.
+**Update (2026-10-03):** The MCP server shipped: a Python stdio server beside the CLI (T0021). The phone PWA is a client; `cli/` and `radar/` are what agents should call. Not hosted.
+
+**Update (2026-10-05):** Productised. MCP spec compliance, packaging (`pyproject.toml`, `server.json`), proxy token auth. See `docs/cli-mcp-integration.md`.
 
 ### Why consider it
-- Agents already live in [my-workbench](https://github.com/bluenightlightpup/my-workbench); a Trendy MCP server would let them pull live slang/trends instead of pasting JSON.
+- Agents already run in the owner's agent workbench (kept outside this repo); a Trendy MCP server lets them pull live slang/trends instead of pasting JSON.
 - A `trendy` CLI lets Radar ops, Decode experiments, CI, and agents share one interface (`decode`, `trends`, `radar status` / `radar run`).
 - Aligns with owner intent: continuous training + AI-native tooling.
 
@@ -99,24 +101,23 @@ Aligned with workbench skills: `write-prd`, `product-spec-to-tickets`, `ios-xcod
 2. **Trust boundary:** CLI read lexicon/trends; `radar run` is the write path (local ingest).
 3. **Auth:** Local-only; no remote MCP.
 4. **Scope v1 CLI:** decode + trends + radar status/run.
-5. **Cost/complexity:** CLI spike in parallel with Phase 3; MCP deferred so it does not block phone polish.
+5. **Cost/complexity:** CLI in parallel with Phase 3; MCP initially deferred so it would not block phone polish (un-deferred 2026-10-03).
 
 ### Deliverables
-- [x] ADR: `docs/adr/0001-cli-mcp.md` (CLI GO; local MCP spike, not hosted)
+- [x] ADR: `docs/adr/0001-cli-mcp.md` (CLI GO; local stdio MCP, not hosted)
 - [x] `docs/cli-mcp-integration.md` — CLI + stdio MCP run command and Cursor snippet
-- [x] CLI spike: `cli/trendy.py` (`decode`, `trends`, `radar status`, `radar run`) — T0020
-- [x] MCP server (T0021) — `python cli/trendy.py mcp` (read-only stdio)
+- [x] CLI: `cli/trendy.py` (`decode`, `trends`, `radar status`, `radar run`) — T0020
+- [x] MCP server (T0021) — `trendy mcp` (read-only stdio)
+- [x] Packaging: `pyproject.toml` (`trendy-cli`, console script `trendy`), `server.json` for the MCP registry (not yet published)
 - [x] Community suggest → consensus lexicon (T0026) — PWA + LAN proxy
-- [x] README + workbench docs for CLI usage
-- [x] Spike security notes: read-only tools, no secrets in results, no remote surface (rate limits N/A for local stdio)
+- [x] README + agent docs for CLI usage
+- [x] Security notes: read-only tools, no secrets in results, no remote surface (rate limits N/A for local stdio)
 
 ### Non-goals (this phase)
 - Replacing the PWA or iOS app
 - Scraping TikTok/IG via MCP (still official APIs only)
 - Shipping a public hosted MCP without auth decision
-- Implementing MCP before CLI feedback (explicitly deferred)
-
-**Exit criteria:** Written go/no-go in ADR — **met** (CLI go, MCP defer); CLI spike merged + documented — **met**; MCP remains backlog-deferred.
+**Exit criteria:** Written go/no-go in ADR (**met**); CLI merged + documented (**met**); MCP stdio server shipped (**met**, 2026-10-03).
 
 
 ## Phase 5 — Product landscape & novelty

@@ -1,28 +1,25 @@
-# ADR 0001 — CLI first, MCP deferred (Phase 4)
+# ADR 0001 — CLI first, then a local stdio MCP (Phase 4)
 
-> **Update 2026-10-03:** The deferral below is historical. T0021 shipped a **local Python stdio** MCP beside the CLI (`python cli/trendy.py mcp`). Still not a hosted remote MCP. Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status` (read-only). See `docs/cli-mcp-integration.md`.
-
-
-- **Status:** Accepted
+- **Status:** Accepted (amended 2026-10-03 and 2026-10-05)
 - **Date:** 2026-09-14
-- **Tickets:** T0019 (decision), T0020 (CLI spike), T0021 (MCP stdio spike — done 2026-10-03; local only)
+- **Tickets:** T0019 (decision), T0020 (CLI), T0021 (MCP stdio server)
 
 ## Context
 
-Phase 4 asked whether Trendy should expose **CLI** and/or **MCP** so humans, scripts, and AI tools can query slang/trends and drive Radar without the phone UI. Options in `docs/cli-mcp-integration.md`: A defer, B CLI-only, C CLI + local stdio MCP, D hosted remote MCP.
+Phase 4 asked whether Trendy should expose a **CLI** and/or **MCP** so humans, scripts and AI tools can query slang and trends and drive Radar without the phone UI. The options in `docs/cli-mcp-integration.md` were: A defer, B CLI only, C CLI + local stdio MCP, D hosted remote MCP.
 
 ## Decision
 
-1. **CLI: GO now** — ship Option **B** first (thin Python CLI alongside Radar), path toward Option **C** later.
-2. **MCP: DEFER** — do not implement a MCP server until the CLI spike proves useful (T0021 stays deferred).
-3. **Private / local-only** for now — no hosted remote MCP (Option D rejected for v1).
-4. **Must-have CLI commands:** `decode`, `trends`, `radar status`, `radar run`.
+1. **CLI: GO** (2026-09-14). A thin stdlib Python CLI beside Radar with `decode`, `trends`, `radar status` and `radar run`.
+2. **MCP: local stdio server (Option C)** (2026-10-03). It was deferred at first, then un-deferred once the owner made "CLI + MCP for AI tools" the product's purpose. Tools are read-only: `decode_term`, `search_slang`, `get_trends`, `radar_status`.
+3. **No hosted remote MCP (Option D rejected)** for v1. Auth, hosting cost and abuse risk outweigh the benefit.
+4. **Packaging** (2026-10-05). Installable as `trendy-cli` with the data bundled. `server.json` is prepared for the MCP registry; publishing is a separate owner decision.
 
 ## Consequences
 
-- Agents and CI can shell out to `python cli/trendy.py …` (documented in README + `docs/workbench.md`) until MCP lands.
-- MCP packaging/schema work is explicitly out of scope for this milestone.
-- Revisit T0021 after CLI feedback; preferred next step remains local stdio MCP wrapping the same library (Option C).
+- Agents can shell out to `trendy …` or attach `trendy mcp`.
+- MCP stays read-only. Ingest, the live model and the HTTP proxy remain CLI-only.
+- The stdio server is hand-rolled on the stdlib (no SDK dependency), so protocol-version support has to be maintained in `cli/mcp_server.py`. `cli/test_mcp.py` covers it.
 
 ## References
 

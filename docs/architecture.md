@@ -1,8 +1,9 @@
 # Architecture — Trendy
 
-**Min iOS:** 17.0  
-**UI:** SwiftUI, phone-first  
-**Process skills:** `architecture-decision`, `ios-xcode-setup`, `api-client-design`, `ios-swiftui-feature`
+> **Current shape (2026-10):** The primary surface is the Python CLI + local stdio MCP in `cli/`, reading `web/data`. The PWA (`web/`) is the phone client. The SwiftUI app described below is experimental. See `docs/cli-mcp-integration.md`.
+
+**Min iOS:** 17.0 (experimental app)  
+**UI:** SwiftUI, phone-first
 
 ## High-level
 
@@ -60,17 +61,19 @@ Four tabs — Home, Decode, Explore, You. Home card → push/sheet origin story.
 
 - Unit: Models heat mapping, preference encoding, client request building.
 - UI: tab smoke + Home card presence (Phase 3 emphasis).
-- See workbench `ios-testing`.
+- Python: `python3 -m unittest discover -s cli -t .`; PWA: `node --test web/tests/*.mjs` (both in CI).
 
 
 ## Trend Radar (data plane)
 
 Continuous ingest lives under `radar/` (Python): pluggable adapters → normalize/heat/merge → `web/data/*.json`.
 
-- **LIVE:** Reddit public JSON, mock seed, optional Wikipedia + YouTube RSS (no secret keys).
-- **STUB:** TikTok / Instagram — document Research API / Meta Graph path; enable when owner supplies env keys.
+- **Seed:** a curated built-in list (`mock_seed`) currently supplies most signals.
+- **Reddit:** wired up, but unauthenticated requests currently get **HTTP 403** from CI runners and our test box (needs OAuth to revive).
+- **Disabled:** YouTube RSS and Wikipedia current events (off-topic noise; rows purged via `merge.drop_sources`).
+- **STUB:** TikTok / Instagram. The Research API / Meta Graph path is documented; enable when the owner supplies keys.
 - **Ethics:** no ToS-violating scrapers; prefer official APIs. See `docs/radar.md` and `radar/README.md`.
-- **Ops:** `python3 radar/run_ingest.py`; cron via `.github/workflows/radar-ingest.yml` (every 2h UTC).
+- **Ops:** `python3 radar/run_ingest.py`; daily cron via `.github/workflows/radar-ingest.yml` (06:00 UTC).
 
 The iOS app and PWA remain consumers of curated/merged catalogs; Radar does not embed platform SDKs in the client.
 

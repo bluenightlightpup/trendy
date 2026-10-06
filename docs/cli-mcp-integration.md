@@ -1,103 +1,95 @@
-# CLI & MCP integration — design brief (Phase 4)
+# CLI & MCP integration (Phase 4)
 
-Status: **CLI GO; MCP spike shipped** (updated 2026-10-03). Local Python stdio beside the CLI. Not a hosted server.
+Status: **shipped.** CLI v0.1.0 plus a local stdio MCP server. Packaged as `trendy-cli` (`pyproject.toml`); not yet published to PyPI. There is no hosted or remote MCP.
 
-## Intent
+## Surfaces
 
-Give integrated AI tools a first-class way to talk to Trendy:
+| Surface | Who uses it | Example |
+|---------|-------------|---------|
+| **CLI** | Humans, scripts, CI, agents that shell out | `trendy decode 67` · `trendy trends --min-heat 0.7 --json` · `trendy radar status` |
+| **MCP server** | Cursor, Claude Desktop, any MCP client | Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status` |
 
-| Surface | Who uses it | Example | Status |
-|---------|-------------|---------|--------|
-| **CLI** | Humans + scripts + CI + agents (shell-out) | `python cli/trendy.py decode 67` · `… radar run` · `… trends --min-heat 0.7` | **GO — spike shipped (T0020)** |
-| **MCP server** | Cursor / Claude Desktop / workbench agents | Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status` | **Spike shipped (T0021)** — local Python stdio; not hosted |
+The Python code in `cli/` (shipped as `trendy_cli`) is the source of truth that agents call. The PWA and the experimental iOS app are clients on the same `web/data`. Trend Radar (`radar/`) refreshes that data; the CLI reads it and can start an ingest from a checkout (`trendy radar run`).
 
-## Relationship to existing pieces
-
-- **Python (`cli/` + `radar/`)** is the source of truth agents call. The PWA / iOS app is a phone client on the same `web/data`, not the only product.
-- **Trend Radar** (`radar/`) remains the training brain; CLI calls the same `web/data` + `radar/run_ingest.py` — not a second source of truth.
-- **my-workbench** stays the agent/skills home. Agents can shell out to the CLI or attach the local stdio MCP connector below.
-
-## Options
-
-### A — Defer (ship phone polish first)
-Pros: focus on Phase 3. Cons: agents keep reading raw JSON.
-
-### B — CLI only (thin wrapper) ← **chosen for now**
-Pros: fast, testable, useful for Radar ops. Cons: weaker “integrated AI” story than MCP.
-
-### C — CLI + local stdio MCP ← **shipped as a spike (T0021)**
-Pros: Cursor/Claude can call tools; still local/private. Cons: packaging + schema maintenance.
-
-### D — Hosted remote MCP
-Pros: always-on. Cons: auth, hosting cost, abuse — **not recommended for v1** (rejected for now).
-
-## Current plan
-
-1. **CLI in Python** (alongside Radar) — `cli/trendy.py` / `python -m cli`.
-2. Must-have commands: `decode`, `trends`, `radar status`, `radar run`.
-3. **MCP spike is in** (owner, 2026-10-03). A **Python stdio** server sits beside the CLI (Option C) and wraps the same decode / trends / radar reads. Do not stand up a hosted remote MCP.
-4. Private/local-only; no hosted remote MCP. No write tools on MCP (`radar run` stays CLI-only).
-5. Documented in README and `docs/workbench.md`.
-
-
-## Run the MCP server
-
-Stdlib JSON-RPC over stdin/stdout (no extra packages). **cwd = repo root.** Nothing but JSON-RPC goes to stdout.
+## Install and run
 
 ```bash
-python cli/trendy.py mcp
-# or
-python -m cli.mcp_server
+python3 -m pip install .            # from a clone; installs trendy, trendy-mcp, trendy-cli
+trendy mcp                          # stdio MCP server (same as: trendy-mcp)
 ```
 
-Tools (read-only, same files as the CLI: `web/data/*.json`, `radar/out/last-run.json`):
+From a checkout without installing, any cwd works because data paths resolve relative to the code:
 
-| Tool | Arguments | Returns |
-|------|-----------|---------|
-| `decode_term` | `term` | `meaning`, `explain`, `origin`, `age` when the lexicon has them |
-| `search_slang` | `query`, optional `limit` (1–50, default 20) | matching lexicon hits |
-| `get_trends` | optional `min_heat`, `limit`, `world` | hot trends from `web/data/trends.json` |
-| `radar_status` | none | last local ingest summary |
+```bash
+python3 /ABSOLUTE/PATH/TO/trendy/cli/trendy.py mcp
+python3 -m cli.mcp_server           # from the repo root
+```
 
-MCP does **not** call the live Decode model and does **not** run ingest. Use the CLI for `decode --live`, `serve`, and `radar run`.
+Only JSON-RPC goes to stdout, always as UTF-8 bytes, even on Windows code pages such as cp1252. Diagnostics go to stderr.
 
-### Cursor / Claude Desktop
+Data resolution order: `TRENDY_DATA_DIR`, then `web/data` in a checkout, then the copy bundled in the installed package. When installed, writable state (community suggestions) goes to `TRENDY_HOME` (default `~/.trendy`).
 
-Snippet for Cursor (`~/.cursor/mcp.json`) or the same shape in Claude Desktop (`claude_desktop_config.json`). Replace the path with this checkout. `cwd` must be the repo root so `cli` imports and `web/data` resolve.
+## Client configuration
+
+Installed:
+
+```json
+{ "mcpServers": { "trendy": { "command": "trendy", "args": ["mcp"] } } }
+```
+
+From a checkout (absolute path, no `cwd` needed):
 
 ```json
 {
   "mcpServers": {
     "trendy": {
-      "command": "python",
-      "args": ["cli/trendy.py", "mcp"],
-      "cwd": "/ABSOLUTE/PATH/TO/trendy"
+      "command": "python3",
+      "args": ["/ABSOLUTE/PATH/TO/trendy/cli/trendy.py", "mcp"]
     }
   }
 }
 ```
 
-Equivalent command: `python -m cli.mcp_server` with the same `cwd`.
+On Windows, use `"command": "py"` (or the full path to `python.exe`) and an escaped path such as `"C:\\path\\to\\trendy\\cli\\trendy.py"`. With uv: `"command": "uvx", "args": ["--from", "/ABSOLUTE/PATH/TO/trendy", "trendy", "mcp"]`.
+
+## Tools
+
+All tools are annotated `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true` and `openWorldHint: false`. They read only `web/data/*.json` and `radar/out/last-run.json`, or the bundled copies when installed.
+
+| Tool | Arguments | Returns |
+|------|-----------|---------|
+| `decode_term` | `term` (string, required) | `found`, `meaning`, `explain`, `origin`, `age`, `kind` (slang / texting abbreviation / community) |
+| `search_slang` | `query` (≥ 2 chars, whole-word match), `limit` 1–50 | matching lexicon hits |
+| `get_trends` | `min_heat` 0–1, `limit` 1–50, `world` | hot trends, highest heat first |
+| `radar_status` | none | last ingest summary (adapters, errors, catalog size) |
+
+## Protocol behaviour
+
+- Negotiates `protocolVersion` with the client. Supported: `2025-11-25`, `2025-06-18`, `2025-03-26`, `2024-11-05`. If the client asks for an unsupported version, the server answers with its latest.
+- `structuredContent` is included when the negotiated version is `2025-06-18` or later.
+- Unknown tool → JSON-RPC error `-32602`.
+- Bad arguments (wrong types, missing required keys, out-of-range values, unknown keys) → a tool result with `isError: true` and a readable message.
+- Malformed JSON or invalid UTF-8 → `-32700`. JSON-RPC batches are rejected (`-32600`).
 
 ## Security
 
-- **Local stdio only.** There is no hosted remote MCP and no listening port on this server.
-- **Read-only tools.** No create/update/delete. Radar ingest stays on the CLI (`radar run`).
-- **No secrets in results.** Tool payloads are a whitelist of lexicon and catalog fields. Keys named like tokens/passwords are redacted, and token-shaped strings are replaced with `[redacted]`. The server never reads `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` and never puts the environment into a result.
-- **No live model on MCP.** A lexicon miss returns `found: false`. It does not fall through to a provider.
-- Trust boundary is the user running the process. Do not point the command at a shared host or pipe untrusted stdin from the public internet.
+- **Local stdio only.** No listening port and no hosted endpoint.
+- **Read-only tools.** Ingest (`radar run`), the live model (`decode --live`) and the proxy (`serve`) are CLI-only.
+- **No secrets in results.** Payloads are a whitelist of lexicon and catalog fields. Token-like keys and values are redacted. The server never reads model API keys.
+- **No live model on MCP.** A lexicon miss returns `found: false`.
+- The trust boundary is the user running the process.
 
-## Open questions (remaining)
+The optional HTTP proxy (`trendy serve`) is a separate surface. It binds `127.0.0.1` by default, requires `TRENDY_PROXY_TOKEN` for any non-loopback bind, and restricts CORS. See `docs/live-decode.md`.
 
-1. ~~Approve Phase 4 implementation now, or after Phase 3 TestFlight?~~ → **CLI approved now**; phone polish continues in parallel.
-2. Private-only forever, or eventual public MCP for contributors? → **Private/local for now**; revisit with T0021.
-3. Any must-have tools beyond decode + trends + radar status? → **Must-haves locked** for CLI v1. MCP tools stay `search_slang`, `get_trends`, `decode_term`, `radar_status` when the stdio server is built.
+## MCP registry
+
+`server.json` at the repo root describes the server for the official MCP registry (`io.github.bluenightlightpup/trendy`, PyPI package `trendy-cli`, stdio, argument `mcp`). The README carries the matching `mcp-name:` marker. Publishing order, when the owner decides: make the repo public → publish `trendy-cli` to PyPI → `mcp-publisher publish`.
 
 ## Decision log
 
 | Date | Decision | Notes |
 |------|----------|-------|
-| 2026-09-13 | Phase opened | Docs + README updated; awaiting go/no-go |
-| 2026-09-14 | **CLI GO (Option B → path to C); MCP DEFER** | Owner: continue Phase 4. CLI approved (Option B first). MCP deferred until CLI spike proves useful (T0021). Private/local-only; no hosted remote MCP. Must-have CLI: decode, trends, radar status/run. ADR: `docs/adr/0001-cli-mcp.md`. |
-| 2026-10-03 | **MCP un-deferred** | Owner: Trendy’s purpose is a CLI + MCP interface for AI tools. Server will be Python stdio next to `cli/trendy.py` (not hosted). T0021 is next, not deferred. PWA stays a client. |
-| 2026-10-03 | **T0021 spike done** | Local stdio MCP: `python cli/trendy.py mcp`. Tools `decode_term`, `search_slang`, `get_trends`, `radar_status`. Read-only. No hosted remote MCP. |
+| 2026-09-13 | Phase opened | Options: A defer, B CLI only, C CLI + local stdio MCP, D hosted MCP |
+| 2026-09-14 | CLI GO; MCP deferred | ADR `docs/adr/0001-cli-mcp.md` |
+| 2026-10-03 | MCP un-deferred and shipped (Option C) | Python stdio next to the CLI; read-only tools; not hosted |
+| 2026-10-05 | Productised | MCP spec compliance (version negotiation, -32602, argument validation, UTF-8 bytes), packaging (`trendy-cli`), `server.json`, proxy auth |

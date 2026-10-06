@@ -1,25 +1,35 @@
 # AGENTS.md — Trendy
 
-This app repo does **not** host agent definitions. Point agents and skills at the workbench:
+Guidance for AI coding agents (Cursor, Claude Code, Codex, …) working in this repo.
 
-**Workbench:** https://github.com/bluenightlightpup/my-workbench  
-**Local sync note:** Owner idea docs may live on Desktop separately; this repo is the app surface only (not a clone of my-workbench).
+## What Trendy is
 
-## Preferred agents for Trendy
+A Python CLI and read-only stdio MCP server for decoding slang, abbreviations and meme trends. Agents call it. The PWA in `web/` is a client on the same data. The SwiftUI app in `App/` is experimental.
 
-| Agent | When |
-|-------|------|
-| `ios-engineer` | SwiftUI features, Xcode/SPM, tests, debugging, TestFlight / App Store |
-| `product-strategist` | PRD, backlog prioritization, acceptance criteria, phased scope |
-| `orchestrator` | Multi-step plans spanning product + iOS + docs |
-| `implementer` | Straightforward file/code changes per ticket |
-| `reviewer` | PR / quality / risk review |
-| `researcher` | Trend sources, API options, competitive notes |
+## Ground rules
 
-## Skill pack (from workbench)
+- `cli/` is stdlib-only. Do not add runtime dependencies without an ADR.
+- Data lives in `web/data/`. `abbreve.json` is Apache-2.0 (see `NOTICE`); keep attribution intact.
+- No secrets in the repo: no `.env`, no API keys, no `CLAUDE.local.md`.
+- Keep Decode wording judgment-free and parent-safe. If a term has a sexual meaning, say so plainly and without graphic detail.
+- MCP tools stay read-only. Ingest (`trendy radar run`) is CLI-only.
+- The Radar bot commits `web/data/*.json` and `radar/out/last-run.json` daily. Rebase before you push.
 
-Use by name; procedures live under `my-workbench/.claude/skills/`:
+## Checks before a PR
 
-`ios-xcode-setup` · `ios-swiftui-feature` · `ios-testing` · `ios-debugging` · `ios-app-store-release` · `api-client-design` · `architecture-decision` · `software-dev-loop` · `product-spec-to-tickets` · `write-prd` · `git-branch-pr` · `log-usage`
+```bash
+python3 -m unittest discover -s cli -t .
+python3 -m unittest discover -s radar -t . -p "test_*.py"
+cd web && node --test tests/*.mjs
+```
 
-See also `docs/workbench.md`.
+## Useful roles
+
+| Role | When |
+|------|------|
+| implementer | Ticket-sized code or doc changes |
+| reviewer | PR quality and risk review |
+| product | PRD, backlog and acceptance criteria (`docs/prd.md`, `docs/backlog.md`) |
+| researcher | Trend sources, API options, landscape notes |
+
+See also `docs/workbench.md` (agent workflow) and `docs/cli-mcp-integration.md`.

@@ -42,22 +42,25 @@ Rank in Decode: **above abbreve, below curated/core** (`rankBonus` community = 2
 Same LAN proxy pattern as Live Decode:
 
 1. PWA **always** saves a local copy of the suggestion (`localStorage` queue) so solo testers see their queue.
-2. If `liveDecodeUrl` is set, also `POST {proxy}/v1/suggest` with `{ term, meaning, origin?, clientId }`.
-3. Proxy (`cli/trendy.py serve` / `cli/live_decode.py` + `cli/community_lexicon.py`):
-   - Appends to `radar/out/suggestions.jsonl`
-   - Runs consensus; on threshold, upserts `web/data/community-slang.json`
+2. If `liveDecodeUrl` is set, also `POST {proxy}/v1/suggest` with `{ term, meaning, origin?, clientId }`, sending `Authorization: Bearer <liveDecodeToken>` when a token is configured.
+3. Proxy (`trendy serve` / `cli/live_decode.py` + `cli/community_lexicon.py`):
+   - Appends to `radar/out/suggestions.jsonl` in a checkout (or `~/.trendy/suggestions.jsonl` when installed; override with `TRENDY_HOME`)
+   - Runs consensus; on threshold, upserts `web/data/community-slang.json` (installed: `~/.trendy/community-slang.json`)
    - Optional `GET /v1/suggestions/stats?term=`
 4. PWA `loadData` fetches `data/community-slang.json` (empty file is fine) and merges any on-device demo promotions.
 5. **Without proxy:** after 3 similar suggests on the **same device**, local demo promotion can still happen — labeled clearly as on-device demo. Real multi-user needs the proxy.
 
-## Demo on Windows LAN
+## Demo on a home LAN
 
-```bat
+```powershell
 cd C:\path\to\trendy
-python cli/trendy.py serve
+$env:TRENDY_PROXY_TOKEN = "pick-a-long-random-secret"
+py cli\trendy.py serve --host 0.0.0.0
 ```
 
-Serve the PWA (`npx serve web -l 4173`). On the phone (same Wi‑Fi): You → Live Decode → `http://<pc-lan-ip>:8787`.
+(macOS/Linux: `export TRENDY_PROXY_TOKEN=…` then `trendy serve --host 0.0.0.0`.)
+
+Serve the PWA (`python3 -m http.server 4173 --directory web`). On the phone (same Wi‑Fi): You → Live Decode → `http://<computer-lan-ip>:8787` plus the same token.
 
 Decode a nonsense niche term → **Suggest a better definition** → submit the same meaning from 3 phones (or thrice with different clientIds / clear rate limit for solo). Watch `web/data/community-slang.json` and Decode again — chip **Community lexicon**.
 

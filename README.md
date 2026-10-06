@@ -1,196 +1,159 @@
 # Trendy
 
-**Trendy** is a Python CLI and MCP interface for AI tools. Agents decode slang and memes, list hot trends, and check Trend Radar (`decode`, `trends`, `radar`) against one lexicon. The phone PWA (and the iOS app) is a client on that same data — not the only product. Judgment-free on purpose: catch up without the scroll, including for people who don’t want FOMO and for older users who want slang context.
+**Decode slang, texting abbreviations and meme trends, from your terminal or straight from your AI agent.**
 
-Slang and meme entries can carry a rough **age band** (Gen Alpha, Gen Z, Millennial, Gen X+, Mixed) so Decode can say who mainly uses a term. See [`docs/age-demographics.md`](docs/age-demographics.md).
+Trendy is a small, dependency-free Python CLI and a read-only **MCP server**. It works from one curated lexicon covering Gen Alpha, Gen Z and internet slang plus about 370 texting abbreviations, and a trend catalog with heat scores, lifecycle stages and age bands. It doesn't judge anyone for asking. A phone-friendly **PWA** reads the same data.
 
-> **License:** MIT · Copyright (c) 2026 bluenightlightpup  
-> **GitHub:** https://github.com/bluenightlightpup/trendy  
-> **Workbench (agents/skills):** [my-workbench](https://github.com/bluenightlightpup/my-workbench) — this app repo is separate; do not clone the workbench into here.
+<!-- mcp-name: io.github.bluenightlightpup/trendy -->
 
-## Product snapshot
-
-| Tab | Role |
-|-----|------|
-| **Home** | Trend feed sorted by momentum; **heat meter** (cool → volt → hot) on every card; tap for origin story |
-| **Decode** | AI chat (Claude) explaining slang / memes / abbreviations — judgment-free |
-| **Explore** | Vast niche browse (TikTok → Money) — catch up without the scroll; Radar keeps slang fresh |
-| **You** | Interest toggles, digest frequency, **New here mode** |
-
-Save / follow trends: **live in the PWA** (localStorage); iOS stub + TestFlight pending Mac.
-
-Design identity (“signal”): deep ink background; hot pink / acid-lime / cyan temperature scale; Space Grotesk + JetBrains Mono vibe (system fallbacks OK initially). See `docs/design-tokens.md`.
-
-## App preview
-
-![Trendy Home — heat feed with 67, rizz, and skill issue](docs/images/trendy-home.png)
-
-![Trendy Decode — judgment-free slang chat](docs/images/trendy-decode.png)
-
-## Roadmap phases
-
-| Phase | Focus | Status |
-|-------|--------|--------|
-| **P0** | PRD, repo, backlog | Done |
-| **P1** | SwiftUI shell, Home heat feed, Explore | Done (XcodeGen on Mac) |
-| **P2** | Decode + You + APIs | PWA Decode/You live; iOS Claude API next |
-| **P3** | Save/follow, polish, TestFlight | Partially done (PWA save/follow + polish; TestFlight pending Mac) |
-| **Radar** | 24/7 multi-platform ingest | Live (TikTok/IG stubs) |
-| **P4** | CLI + MCP for integrated AI tools | **CLI GO**; **MCP spike** (local Python stdio, not hosted) |
-| **P5** | Landscape (Urban Dictionary & peers) + novelty uses | Open — research |
-
-Details: [`docs/phased-implementation.md`](docs/phased-implementation.md) · tickets in [`docs/backlog.md`](docs/backlog.md).
-
-## Phase 4 — CLI & MCP for integrated AI tools
-
-**Decision (2026-09-14, updated 2026-10-03):** **CLI GO**. **MCP spike shipped**: a local Python stdio server beside the CLI (same read functions agents already shell out to). No hosted remote MCP.
-
-- Design brief: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md)
-- ADR: [`docs/adr/0001-cli-mcp.md`](docs/adr/0001-cli-mcp.md)
-- Tickets: **T0019** ✓ · **T0020** CLI spike ✓ · **T0021** MCP stdio spike ✓
-
-### Trendy CLI (spike)
-
-Stdlib Python; reads `web/data` and can invoke Radar. From repo root:
-
-```bash
-python cli/trendy.py decode 67
-python cli/trendy.py trends --min-heat 0.7 --limit 20
-python cli/trendy.py trends --world TikTok --limit 10
-python cli/trendy.py radar status
-python cli/trendy.py radar run
-# optional pass-through: python cli/trendy.py radar run -- --config radar/config.yaml
-# also: python -m cli decode 67
+```console
+$ trendy decode rizz
+rizz  [slang]
+short:   Charisma / flirting game — “W rizz” good, “L rizz” bad.
+explain: Can be serious compliment or joke. Oxford’s 2023 Word of the Year spotlight cemented it.
+origin:  Popularized by Kai Cenat and stream culture; exploded on TikTok; Oxford Word of the Year 2023.
+age:     Gen Z — mostly teens and early twenties
 ```
 
-Commands: `decode` (slang + abbreve lexicon), `trends`, `radar status`, `radar run` → `radar/run_ingest.py`.
+## Install
 
-### Local MCP (stdio)
-
-Read-only tools for Cursor / Claude Desktop: `decode_term`, `search_slang`, `get_trends`, `radar_status`. No write tools, no hosted server, no API keys in results. From the repo root:
+You need Python **3.10+** (3.9 also works but is not supported). There are no runtime dependencies.
 
 ```bash
-python cli/trendy.py mcp
-# or: python -m cli.mcp_server
+# From a clone (recommended while the repo is private)
+git clone https://github.com/bluenightlightpup/trendy.git
+cd trendy
+python3 -m pip install .          # or: pipx install .   /   pip install -e .  (development)
+
+# Without installing (uv)
+uvx --from /path/to/trendy trendy decode rizz
+uvx --from git+https://github.com/bluenightlightpup/trendy trendy decode rizz   # needs repo access
 ```
 
-Cursor `mcp.json` (set `cwd` to this repo):
+Installing gives you three commands: `trendy`, `trendy-mcp` (the MCP server) and `trendy-cli` (an alias of `trendy`). The lexicon and trend data ship inside the package, so they work from any directory. The package is **not on PyPI yet**; the distribution name will be `trendy-cli`.
+
+Not installing at all? Every command also runs from a checkout: `python3 cli/trendy.py …` or `python3 -m cli …`. On Windows, use `py` or `python` instead of `python3`.
+
+## CLI quickstart
+
+```bash
+trendy decode 67                      # slang card: meaning, origin, who says it
+trendy decode lgtm --json             # machine-readable; exit code 1 if no match
+trendy trends --min-heat 0.7 --limit 10
+trendy trends --world TikTok --json
+trendy radar status                   # last Trend Radar run (adapters, errors, catalog size)
+trendy --version
+```
+
+Exit codes: `0` found, `1` no lexicon match (`decode`), `2` usage or runtime error.
+
+## MCP quickstart (Cursor, Claude Desktop, any MCP client)
+
+The server is local stdio only and exposes four **read-only** tools: `decode_term`, `search_slang`, `get_trends`, `radar_status`. It has no write tools and no network access, and it never puts API keys in results. It negotiates MCP protocol versions `2024-11-05` through `2025-11-25`.
+
+**Installed** (`pip install .` / `pipx install .`):
+
+```json
+{
+  "mcpServers": {
+    "trendy": { "command": "trendy", "args": ["mcp"] }
+  }
+}
+```
+
+**From a checkout** (no install). Use an absolute path, so it works no matter which directory the client starts in:
 
 ```json
 {
   "mcpServers": {
     "trendy": {
-      "command": "python",
-      "args": ["cli/trendy.py", "mcp"],
-      "cwd": "/ABSOLUTE/PATH/TO/trendy"
+      "command": "python3",
+      "args": ["/ABSOLUTE/PATH/TO/trendy/cli/trendy.py", "mcp"]
     }
   }
 }
 ```
 
-Details and security notes: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md).
+- macOS/Linux: `python3`. Windows: use `"command": "py"` (or the full path to `python.exe`) and a path like `"C:\\path\\to\\trendy\\cli\\trendy.py"`.
+- Output is always UTF-8, including on Windows code pages such as cp1252. If you pipe CLI output in an old PowerShell console, run `[Console]::OutputEncoding = [Text.Encoding]::UTF8` first so emoji and curly quotes render.
+- With uv: `{"command": "uvx", "args": ["--from", "/ABSOLUTE/PATH/TO/trendy", "trendy", "mcp"]}`.
 
-### Live Decode proxy (model-on-miss)
+There's also a [`server.json`](server.json) for the MCP registry (`io.github.bluenightlightpup/trendy`), prepared but not published. More detail: [`docs/cli-mcp-integration.md`](docs/cli-mcp-integration.md).
 
-Optional LAN proxy so the phone PWA can get live model meanings **only on lexicon misses** — API keys stay on the PC.
+## Phone app (PWA)
 
-```bash
-# Windows (PowerShell/cmd) or macOS/Linux — key in env, never in the browser
-export OPENAI_API_KEY=sk-...   # or ANTHROPIC_API_KEY / TRENDY_* variants
-python cli/trendy.py serve     # http://0.0.0.0:8787
-# Phone You tab → Live Decode URL → http://<pc-lan-ip>:8787
-python cli/trendy.py decode "niche phrase" --live
-```
-
-Docs: [`docs/live-decode.md`](docs/live-decode.md). Trusted LAN / personal use only.
-
-### Community lexicon (suggest → consensus)
-
-Weak Decode answers show **Suggest a better definition**. With the same LAN proxy, `POST /v1/suggest` builds consensus into `web/data/community-slang.json`. See [`docs/community-lexicon.md`](docs/community-lexicon.md).
-
-## Phase 5 — Landscape & novelty *(research)*
-
-Review slang translators (Urban Dictionary, Slangora, Wordyex, Musely, GenZ apps, general LLMs) and explore novel Trendy uses (family Decode, anti-FOMO digest, heat time machine, creator “am I late?”, agent briefs, …).
-
-- Landscape: [`docs/product-landscape.md`](docs/product-landscape.md)
-- Novelty bets: [`docs/novelty-use-cases.md`](docs/novelty-use-cases.md)
-- Tickets: **T0022–T0024**
-
-
-## Repo layout
-
-```
-App/                 SwiftUI source (create Xcode project via docs/xcode-setup.md)
-web/                 Progressive Web App (static; try on phone without Xcode)
-radar/               Trend Radar — continuous multi-platform ingest → web/data
-cli/                 Trendy CLI + local stdio MCP (decode / trends / radar) — Phase 4
-Tests/TrendyTests/   Unit test stubs
-docs/                PRD, phases, backlog, architecture, design tokens, ideas, ADRs
-.github/             Issue/PR templates + validate + radar-ingest cron
-```
-
-## Getting started (Xcode)
-
-Source files live under `App/`. Generate the Xcode project on a Mac with [XcodeGen](https://github.com/yonaskolb/XcodeGen):
+A static Progressive Web App in [`web/`](web/) has four tabs: Home (what's hot now), Decode (chat-style lookups), Explore (browse by world) and You (filters, saved trends).
 
 ```bash
-brew install xcodegen
-xcodegen generate
-open Trendy.xcodeproj
+python3 -m http.server 4173 --directory web    # or: npx --yes serve web -l 4173
 ```
 
-See **`docs/xcode-setup.md`** (aligned with workbench skill `ios-xcode-setup`) for details and a manual fallback.
+Open it on your phone (same Wi‑Fi) and use Add to Home Screen. Decode checks the on-device lexicon first. For single words it can also look up Wiktionary or a free dictionary API. Details: [`web/README.md`](web/README.md).
 
-Minimum iOS: **17.0** (documented in architecture).
+<p>
+  <img src="docs/images/trendy-home.png" alt="Trendy Home: trend feed sorted by what's hot now" width="300" />
+  <img src="docs/images/trendy-decode.png" alt="Trendy Decode: lexicon answer for rizz with origin and age band" width="300" />
+</p>
 
-## Docs map
+### Optional: Live Decode proxy
 
-| Doc | Purpose |
-|-----|---------|
-| `docs/prd.md` | Product requirements |
-| `docs/backlog.md` | Numbered tickets (T0001+) |
-| `docs/architecture.md` | App structure & boundaries |
-| `docs/design-tokens.md` | Colors, type, heat scale |
-| `docs/workbench.md` | How this repo uses my-workbench |
-| `docs/xcode-setup.md` | Create Xcode project from this tree |
-| `docs/radar.md` | Trend Radar continuous ingest (24/7 slang/trends) |
-| `docs/age-demographics.md` | Optional age band on slang, trends, and Decode |
-| `docs/cli-mcp-integration.md` | Phase 4 CLI + local stdio MCP (how to run, Cursor snippet) |
-| `docs/adr/0001-cli-mcp.md` | ADR: CLI first; local MCP spike (not hosted) |
-| `docs/testflight.md` | TestFlight / App Store Connect checklist (Mac) |
-
-## Sync note
-
-Product code and app docs live in this repo.
-
-
-## Try on your phone
-
-A static **Progressive Web App** lives in [`web/`](web/) — same tabs (Home, Decode, Explore, You), mock trends, and slang decoder. No Xcode required.
+When the lexicon has no answer, the PWA can ask a proxy you run yourself. It uses a model API key that stays on that computer.
 
 ```bash
-npx --yes serve web -l 4173
-# or: python3 -m http.server 4173 --directory web
+export OPENAI_API_KEY=sk-...          # or ANTHROPIC_API_KEY
+trendy serve                          # http://127.0.0.1:8787 (this computer only)
+
+# Reach it from your phone on the LAN: a token is required
+export TRENDY_PROXY_TOKEN="$(python3 -c 'import secrets; print(secrets.token_urlsafe(24))')"
+trendy serve --host 0.0.0.0           # then enter URL + token in the PWA's You tab
 ```
 
-Open the URL on your phone (same Wi‑Fi), then Add to Home Screen. Details: [`web/README.md`](web/README.md).
+The proxy binds `127.0.0.1` by default. It refuses to listen on a non-loopback address without `TRENDY_PROXY_TOKEN`, checks `Authorization: Bearer <token>`, and only allows CORS from localhost and private-LAN origins (add more with `--allow-origin`). It's meant for personal or trusted-LAN use only. See [`docs/live-decode.md`](docs/live-decode.md) and [`docs/community-lexicon.md`](docs/community-lexicon.md) (suggest → consensus).
 
+## Trend Radar (data refresh)
 
-## Trend Radar (continuous training)
+`radar/run_ingest.py` merges public signals into `web/data/trends.json` and `slang.json`. A GitHub Actions job runs it **once a day**.
 
-Radar ingests public signals on a schedule, normalizes them across **all Explore niches**, and merges into `web/data/trends.json` + `web/data/slang.json` so Explore stays vast and fresh. See `docs/explore-niches.md`.
+Current status:
+
+- **Reddit:** wired up, but Reddit currently answers **HTTP 403** to unauthenticated requests from CI runners (and from our test box), so it adds nothing right now. `trendy radar status` shows the error.
+- **Seed list (`mock_seed`):** a curated built-in list keeps the catalog populated. Most current "signals" come from here, and `radar status` says so.
+- **YouTube / Wikipedia:** disabled. They produced off-topic rows, which were purged.
+- **TikTok / Instagram:** stubs. They need official API or partner access; there are no scrapers.
 
 ```bash
 pip install -r radar/requirements.txt
 python3 radar/run_ingest.py
 ```
 
-- **LIVE now:** Reddit (public JSON), mock seed, best-effort YouTube RSS / Wikipedia.
-- **STUB:** TikTok & Instagram (official APIs / partner feeds when you add keys — no ToS-violating scrapers).
-- **Cron:** GitHub Actions every 2 hours UTC (`.github/workflows/radar-ingest.yml`).
-
 Details: [`radar/README.md`](radar/README.md) · [`docs/radar.md`](docs/radar.md).
 
-## Contributing
+## Development
 
-See `CONTRIBUTING.md`. Use workbench skills (`git-branch-pr`, `software-dev-loop`, etc.). Security: `SECURITY.md`. Owner: `@bluenightlightpup` (`CODEOWNERS`).
+```bash
+python3 -m unittest discover -s cli -t .          # CLI, MCP, proxy
+python3 -m unittest discover -s radar -t . -p "test_*.py"
+cd web && node --test tests/*.mjs                 # PWA Decode logic
+```
+
+CI (`.github/workflows/validate.yml`) runs all three. It also installs the package and smoke-tests `trendy` and `trendy mcp` from outside the checkout.
+
+Repo layout:
+
+```
+cli/        CLI, stdio MCP server, Live Decode proxy (installs as trendy_cli)
+web/        PWA + the shared data in web/data/
+radar/      Trend Radar ingest
+App/        SwiftUI app (experimental; see docs/xcode-setup.md)
+docs/       PRD, architecture, ADRs, backlog
+```
+
+Planning docs: [`docs/prd.md`](docs/prd.md) · [`docs/architecture.md`](docs/architecture.md) · [`docs/phased-implementation.md`](docs/phased-implementation.md) · [`docs/backlog.md`](docs/backlog.md) · [`docs/adr/0001-cli-mcp.md`](docs/adr/0001-cli-mcp.md) · [`docs/age-demographics.md`](docs/age-demographics.md).
+
+Contributing: [`CONTRIBUTING.md`](CONTRIBUTING.md) · Security: [`SECURITY.md`](SECURITY.md).
+
+## License and credits
+
+Trendy is released under the **MIT** license. Copyright (c) 2026 bluenightlightpup. See [`LICENSE`](LICENSE).
+
+The abbreviation list (`web/data/abbreve.json`) is derived from **[Abbreve](https://github.com/Njong392/Abbreve)** by Njong Emy and contributors. It is licensed under **Apache-2.0**: see [`web/data/ABBREVE-LICENSE`](web/data/ABBREVE-LICENSE) and [`NOTICE`](NOTICE) for the changes Trendy made.

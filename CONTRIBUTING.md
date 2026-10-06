@@ -4,26 +4,31 @@ Thanks for helping build **Trendy**.
 
 ## Ground rules
 
-- Phone-first **iOS / SwiftUI**. Follow `docs/architecture.md` and `docs/design-tokens.md`.
+- The CLI and MCP server (`cli/`) come first. They are stdlib-only Python 3.10+. The PWA (`web/`) is a client on the same data. The SwiftUI app (`App/`) is experimental.
 - Tickets live in `docs/backlog.md`. Prefer vertical slices with clear acceptance criteria.
-- Use **my-workbench** skills by name (`ios-swiftui-feature`, `software-dev-loop`, `git-branch-pr`, …). See `docs/workbench.md` and `AGENTS.md`.
 - Do **not** commit secrets, `.env`, API keys, or `CLAUDE.local.md`.
-- Keep Decode UX judgment-free; “New here mode” audiences matter.
-- License is MIT — do not add restrictive licenses to seeded content.
+- Keep Decode UX judgment-free; "New here mode" audiences matter.
+- Trendy is MIT. Third-party data must carry a compatible license and attribution: Abbreve is Apache-2.0, see `NOTICE`.
 
 ## Workflow
 
 1. Pick a ticket from `docs/backlog.md` (or open a feature request).
-2. Branch via `git-branch-pr` conventions from the workbench.
-3. Implement with `ios-swiftui-feature` / `api-client-design` as appropriate.
-4. Add or update tests (`ios-testing`).
-5. Open a PR using `.github/PULL_REQUEST_TEMPLATE.md`.
-6. Keep `.github/workflows/validate.yml` green.
+2. Create a branch (`feat/…`, `fix/…`, `docs/…`).
+3. Implement and add or update tests:
+   ```bash
+   python3 -m unittest discover -s cli -t .
+   python3 -m unittest discover -s radar -t . -p "test_*.py"
+   cd web && node --test tests/*.mjs
+   ```
+4. Open a PR using `.github/PULL_REQUEST_TEMPLATE.md`.
+5. Keep `.github/workflows/validate.yml` green.
+
+The Radar workflow commits data daily, so run `git pull --rebase` before pushing.
 
 ## Xcode project
 
-If you need a fresh Xcode app target, follow `docs/xcode-setup.md` (`ios-xcode-setup`).
+If you need a fresh Xcode app target, follow `docs/xcode-setup.md`.
 
 ## Docs changes
 
-Product scope changes should update `docs/prd.md` and the backlog together (`write-prd`, `product-spec-to-tickets`). Prefer `product-strategist` + `ios-engineer` for larger shifts.
+Product scope changes should update `docs/prd.md` and the backlog together.

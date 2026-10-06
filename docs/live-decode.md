@@ -19,25 +19,38 @@ Putting `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` in the PWA would:
 - Leak the key to anyone who opens DevTools / shares the device
 - Hit CORS blocks from provider APIs
 
-Instead the **PC** runs a tiny stdlib proxy. The phone PWA stores only the proxy URL in `localStorage` (`liveDecodeUrl`).
+Instead **your own computer** runs a tiny stdlib proxy. The PWA stores only the proxy URL (`liveDecodeUrl`) and, if you set one, the proxy token (`liveDecodeToken`) in `localStorage`.
 
-**Security:** trusted LAN / personal use only. Do **not** expose the proxy to the public internet without auth. Never commit keys (`.env` is gitignored). The proxy logs provider + term length only — not full prompts with secrets.
+## Security model
 
-## Windows — run the proxy
+- **Loopback by default.** `trendy serve` binds `127.0.0.1:8787`, so only the same computer can reach it.
+- **LAN needs a token.** `--host 0.0.0.0` (or any non-loopback address) is refused unless `TRENDY_PROXY_TOKEN` (or `--token`) is set. Clients must send `Authorization: Bearer <token>` (or `X-Trendy-Token`). Tokens are compared in constant time.
+- **Restricted CORS.** Browser requests are allowed only from localhost, private-LAN IPs and `*.local` origins, plus anything you add with `--allow-origin` / `TRENDY_PROXY_ORIGINS` (comma-separated). Other origins get 403.
+- **Small inputs.** Terms are capped at 120 characters.
+- `GET /health` is open and reports whether auth is on. It never returns secrets.
+- For personal or trusted-LAN use only. Don't port-forward it to the internet. Never commit keys (`.env` is gitignored). The proxy logs provider and term length only.
 
-From a PowerShell or cmd in the repo root (for example `C:\path\to\trendy\`):
+## Run the proxy
 
-```bat
-set OPENAI_API_KEY=sk-...
-python cli/trendy.py serve
+macOS / Linux:
+
+```bash
+export OPENAI_API_KEY=sk-...                 # or ANTHROPIC_API_KEY=sk-ant-...
+trendy serve                                 # same computer only: http://127.0.0.1:8787
+
+export TRENDY_PROXY_TOKEN="$(python3 -c 'import secrets; print(secrets.token_urlsafe(24))')"
+trendy serve --host 0.0.0.0 --port 8787      # reachable from your phone on the LAN
 ```
 
-Or Anthropic:
+Windows (PowerShell, from a checkout such as `C:\path\to\trendy\`):
 
-```bat
-set ANTHROPIC_API_KEY=sk-ant-...
-python cli/trendy.py serve --port 8787
+```powershell
+$env:OPENAI_API_KEY = "sk-..."
+$env:TRENDY_PROXY_TOKEN = "pick-a-long-random-secret"
+py cli\trendy.py serve --host 0.0.0.0
 ```
+
+(Not installed? Replace `trendy` with `python3 cli/trendy.py`.)
 
 Optional aliases / overrides:
 
@@ -46,23 +59,21 @@ Optional aliases / overrides:
 - `TRENDY_OPENAI_MODEL` (default `gpt-4o-mini`)
 - `TRENDY_ANTHROPIC_MODEL` (default `claude-3-5-haiku-latest`)
 
-Bind is `0.0.0.0:8787` by default so the phone can reach `http://<pc-lan-ip>:8787`.
+One-off from the terminal (no proxy):
 
-Also:
-
-```bat
-python cli/trendy.py decode "some niche phrase" --live
+```bash
+trendy decode "some niche phrase" --live
 ```
 
 ## Phone PWA — set the endpoint
 
 1. Serve the PWA as usual (`npx serve web -l 4173` or `python -m http.server 4173 --directory web`).
 2. On the phone (same Wi‑Fi), open `http://192.168.x.x:4173`.
-3. **You** tab → **Live Decode (optional)** → paste `http://<pc-lan-ip>:8787` → **Save**.
+3. **You** tab → **Live Decode (optional)** → enter `http://<computer-lan-ip>:8787` and the access token → **Save**.
 
-Endpoints:
+Endpoints (POST endpoints require the token when one is configured):
 
-- `GET /health` → `{ "ok": true }`
+- `GET /health` → `{ "ok": true, … }` (open; reports the auth mode)
 - `POST /v1/decode` body `{ "term": "...", "newHere": true }` → `{ "meaning", "explain", "origin", "confidence", "provider" }`
 - `POST /v1/suggest` body `{ "term", "meaning", "origin?", "clientId" }` → community consensus (see [`community-lexicon.md`](community-lexicon.md))
 - `GET /v1/suggestions/stats?term=` → counts / cluster size

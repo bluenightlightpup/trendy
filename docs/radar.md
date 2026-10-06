@@ -1,12 +1,14 @@
 # Trend Radar — product & eng overview
 
-Trendy’s owner intent: the app should **train on slang 24/7** across platforms (TikTok, Instagram, Reddit, YouTube, …) so Decode, Explore niches, and the Home heat feed stay current without doomscrolling. Explore niche map: [`explore-niches.md`](explore-niches.md). Platform access honesty (LIVE vs STUB, no ToS scrapers): [`platform-access.md`](platform-access.md).
+Trendy’s owner intent: the app should **keep learning slang continuously** across platforms (TikTok, Instagram, Reddit, YouTube, …) so Decode, Explore niches, and the Home heat feed stay current without doomscrolling. Explore niche map: [`explore-niches.md`](explore-niches.md). Platform access honesty (LIVE vs STUB, no ToS scrapers): [`platform-access.md`](platform-access.md).
 
 ## Honest constraints
 
 - **TikTok / Instagram official APIs are limited and ToS-sensitive.** Shipping a secret scraper would be brittle and non-compliant.
 - Radar therefore uses a **pluggable adapter architecture**:
-  - **LIVE** adapters for sources workable without secret keys where possible (Reddit public JSON, mock seed, best-effort YouTube RSS, optional Wikipedia).
+  - **Seed** adapter (`mock_seed`): a curated list that currently supplies most signals.
+  - **Reddit** public JSON: implemented, but unauthenticated requests currently get **HTTP 403** from CI runners and our test box. Reviving it needs OAuth.
+  - **Disabled:** YouTube RSS and Wikipedia current events (off-topic rows; purged with `merge.drop_sources`).
   - **STUB** adapters for TikTok & Instagram that document the official Research / Graph / partner path for later.
 
 
@@ -37,7 +39,8 @@ New entries get judgment-free placeholder `short` / `explain` and a **low-confid
 
 ## Ops
 
-- Cron: GitHub Actions every 2 hours UTC (`.github/workflows/radar-ingest.yml`).
+- Cron: GitHub Actions daily at 06:00 UTC (`.github/workflows/radar-ingest.yml`), plus manual `workflow_dispatch`.
+- Status: `trendy radar status` (or `--json`) shows per-adapter results, errors and how many signals came from the seed list.
 - Manual: `python3 radar/run_ingest.py` from repo root.
 - Exit policy: partial success → 0; write failure → non-zero.
 

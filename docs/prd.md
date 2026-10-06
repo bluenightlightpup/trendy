@@ -1,9 +1,9 @@
 # PRD — Trendy
 
-**Status:** Phase 0 scaffold  
+**Status:** v0.1 (CLI + MCP shipped; PWA live; iOS experimental)  
 **Owner:** bluenightlightpup  
-**Platform:** iOS / SwiftUI (phone-first)  
-**License:** MIT
+**Platform:** Python CLI + local stdio MCP for AI tools first. The PWA is the phone client; the SwiftUI app is experimental.  
+**License:** MIT (Abbreve-derived data: Apache-2.0, see `NOTICE`)
 
 ## Problem
 
@@ -57,9 +57,10 @@ Trendy is an AI assistant that keeps you culturally current **without** massive 
 
 ## Constraints
 
-- Phone-first iOS 17+.
-- Secrets never in repo; Claude API via secure client (`api-client-design`).
-- Workbench skills/agents for process; this repo holds app + product docs only.
+- CLI/MCP: stdlib Python 3.10+, read-only MCP tools, no hosted service.
+- PWA: static, works offline on the bundled lexicon; iOS app (17+) is experimental.
+- Secrets never in repo. Live model calls go through the user's own proxy (`trendy serve`) so keys stay off the client.
+- Agent process docs live outside this repo; it holds app + product docs only.
 
 ## References
 

@@ -250,7 +250,7 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Scope:** Local stdio MCP: `search_slang`, `get_trends`, `decode_term`, `radar_status`.
 - **Out of scope:** Hosted remote MCP; write tools without auth story.
 - **Acceptance:**
-  - [x] MCP server starts via documented command (`python cli/trendy.py mcp` or `python -m cli.mcp_server`, cwd = repo root)
+  - [x] MCP server starts via documented command (`trendy mcp`, `python3 cli/trendy.py mcp` from any cwd, or `python3 -m cli.mcp_server`)
   - [x] Tools return valid JSON against web/data
   - [x] Security notes in docs (no secrets leaked; read-only; no live-model keys)
   - [x] Optional workbench connector instructions (`docs/workbench.md`, Cursor snippet in `docs/cli-mcp-integration.md`)
@@ -330,6 +330,17 @@ Generated in `product-spec-to-tickets` style. Foundations first. Effort: S / M /
 - **Effort:** M
 - **Status:** **Done** (2026-09-15)
 
+### T0027 — Publish-readiness (v0.1.0)
+- **Value:** Trendy can be installed and attached to agents safely, and the repo can go public once the owner chooses.
+- **Scope:** Personal-info removal from the current tree; MCP spec compliance (UTF-8 bytes, version negotiation, -32602, argument validation, read-only annotations); `pyproject.toml` (`trendy-cli`) with bundled data; `server.json`; Abbreve Apache-2.0 license + `NOTICE`; proxy loopback default + token + CORS; data cleanup (abbreviation hijacks, junk YouTube/Wikipedia trends, age bands); PWA UI fixes; honest docs; Python CI job; daily Radar cron.
+- **Out of scope:** Publishing to PyPI or the MCP registry; making the repo public; rewriting git history (needs separate owner confirmation).
+- **Acceptance:**
+  - [x] `pip install .` → `trendy decode`, `trendy mcp` work from any directory
+  - [x] Python (CLI/MCP/proxy/radar) and node tests green in CI
+  - [x] CLI + MCP output valid UTF-8 under `PYTHONIOENCODING=cp1252`
+  - [ ] Owner: history scrub, make public, publish `trendy-cli` + registry entry
+- **Status:** **Done** in-repo (2026-10-05); owner steps pending
+
 ## Suggested order
 
-T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 ✓ → T0025 ✓ → T0026 ✓ → **T0022 → T0023 → T0024**
+T0001 → … → T0018 → T0019 ✓ → T0020 ✓ → T0021 ✓ → T0025 ✓ → T0026 ✓ → T0027 ✓ → **T0022 → T0023 → T0024**
