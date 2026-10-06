@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#0B0D12" />
   <meta name="color-scheme" content="dark" />
   <meta name="description" content="Trendy — trends + slang decoder. Catch culture without the FOMO spiral." />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Trendy" />
@@ -31,7 +32,7 @@
     <section id="view-home" class="view" data-view="home" hidden>
       <div class="view-toolbar">
         <h2 class="view-title">Home</h2>
-        <p class="view-hint">Sorted by heat</p>
+        <p class="view-hint">Sorted by what’s hot now</p>
       </div>
       <div id="home-chips" class="chip-row" role="toolbar" aria-label="Filter Home feed">
         <button type="button" class="chip" data-home-filter="all" aria-pressed="true">All</button>
@@ -56,7 +57,7 @@
     <section id="view-decode" class="view view-decode" data-view="decode" hidden>
       <div class="view-toolbar">
         <h2 class="view-title">Decode</h2>
-        <p class="view-hint" id="decode-mode-hint">AI search for slang & trends</p>
+        <p class="view-hint" id="decode-mode-hint">Slang lexicon + dictionary</p>
       </div>
       <div class="decode-suggest" id="decode-suggest" role="group" aria-label="Try an example">
         <button type="button" data-q="what does 67 mean?">what does 67 mean?</button>
@@ -153,30 +154,45 @@
 
       <div class="prefs-card" id="live-decode-card">
         <h3 class="prefs-heading">Live Decode (optional)</h3>
-        <p class="prefs-desc">On lexicon misses only, call a local Decode proxy on your PC. API keys stay in the PC environment — never in the browser.</p>
-        <label class="field-label" for="live-decode-url">Proxy endpoint</label>
+        <p class="prefs-desc">When the lexicon has no answer, Decode can ask a Trendy proxy you run yourself. Model API keys stay on that computer — never in the browser.</p>
+        <form id="live-decode-form" autocomplete="off" novalidate>
+        <label class="field-label" for="live-decode-url">Proxy URL</label>
         <input
-          type="url"
+          type="text"
+          inputmode="url"
           id="live-decode-url"
-          class="select"
+          class="text-input"
           placeholder="http://192.168.x.x:8787"
           autocomplete="off"
+          autocapitalize="off"
           spellcheck="false"
         />
-        <div class="live-decode-actions" style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
-          <button type="button" id="live-decode-save" class="btn-send" style="position:static;width:auto;padding:10px 16px;">Save</button>
-          <button type="button" id="live-decode-clear" class="btn-send" style="position:static;width:auto;padding:10px 16px;opacity:0.85;">Clear</button>
+        <label class="field-label field-label-spaced" for="live-decode-token">Access token <span class="optional">(if the proxy requires one)</span></label>
+        <input
+          type="password"
+          id="live-decode-token"
+          class="text-input"
+          placeholder="Matches TRENDY_PROXY_TOKEN"
+          autocomplete="new-password"
+          spellcheck="false"
+        />
+        <div class="button-row">
+          <button type="submit" id="live-decode-save" class="btn btn-primary">Save</button>
+          <button type="button" id="live-decode-clear" class="btn btn-secondary">Clear</button>
         </div>
-        <p class="prefs-desc" id="live-decode-status" style="margin-top:10px;">Run <code>python cli/trendy.py serve</code> on your PC with an API key in the environment, then paste <code>http://&lt;pc-lan-ip&gt;:8787</code> here.</p>
-        <p class="prefs-desc" style="margin-top:12px;">
-          <strong>Community suggests:</strong> when Decode is unsure, you can suggest a definition.
-          With this proxy URL set, suggestions go to the PC and can graduate into a shared community lexicon.
-          Without it, this phone can still demo consensus on-device (same device only).
-          See <code>docs/community-lexicon.md</code>.
-        </p>
+        </form>
+        <p class="prefs-desc prefs-status" id="live-decode-status" role="status">Not connected — Decode uses the built-in lexicon and dictionary.</p>
+        <details class="advanced">
+          <summary>Advanced: running the proxy</summary>
+          <p class="prefs-desc">On the computer that holds your model API key:</p>
+          <pre class="code-block"><code>export TRENDY_PROXY_TOKEN=pick-a-long-secret
+trendy serve --host 0.0.0.0 --port 8787</code></pre>
+          <p class="prefs-desc">Then enter <code>http://&lt;that-computer’s-LAN-IP&gt;:8787</code> and the same token above. Without <code>--host</code> the proxy only listens on the same computer (<code>http://127.0.0.1:8787</code>).</p>
+          <p class="prefs-desc"><strong>Community suggestions:</strong> when Decode is unsure you can suggest a definition. With a proxy set, suggestions are shared and can graduate into the community lexicon; without one, consensus is a same-device demo only. See <code>docs/community-lexicon.md</code>.</p>
+        </details>
       </div>
 
-      <p class="prefs-foot">Decode may call a free public dictionary API for unknown English words. Optional Live Decode uses your LAN proxy only on misses (no API key in the browser). Community suggests never put API keys in the browser. Curated slang stays on-device first. Digests are local-only. Proxy is for trusted LAN / personal use only.</p>
+      <p class="prefs-foot">Decode checks the on-device slang lexicon first and may look up single words in Wiktionary or a free dictionary API. Live Decode (optional) only contacts your own proxy, only on misses. No API keys are stored in the browser. Digest settings stay on this device.</p>
     </section>
   </main>
 

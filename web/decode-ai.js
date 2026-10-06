@@ -15,41 +15,41 @@
   ];
 
   const CORE_ABBREVS = {
-    jk: { terms: ["jk", "j/k", "j.k.", "just kidding"], short: "Just kidding.", explain: "Used after a joke or to soften a serious-sounding line.", origin: "SMS/IM classic.", age: "Mixed" },
-    idk: { terms: ["idk"], short: "I don’t know.", explain: "You don’t have the answer right now.", origin: "Texting shorthand.", age: "Mixed" },
-    brb: { terms: ["brb"], short: "Be right back.", explain: "Stepping away briefly.", origin: "Chat classic.", age: "Mixed" },
-    ttyl: { terms: ["ttyl"], short: "Talk to you later.", explain: "Friendly pause/sign-off.", origin: "Texting shorthand.", age: "Mixed" },
-    lol: { terms: ["lol"], short: "Laughing out loud (often a soft chuckle).", explain: "Frequently acknowledgment, not literal loud laughing.", origin: "Early internet.", age: "Mixed" },
-    omg: { terms: ["omg"], short: "Oh my god.", explain: "Surprise or emphasis.", origin: "Texting shorthand.", age: "Mixed" },
-    smh: { terms: ["smh"], short: "Shaking my head.", explain: "Disappointment or disbelief.", origin: "Internet slang.", age: "Mixed" },
-    tbh: { terms: ["tbh"], short: "To be honest.", explain: "Flags a frank opinion.", origin: "Texting shorthand.", age: "Mixed" },
-    ngl: { terms: ["ngl"], short: "Not gonna lie.", explain: "Honesty marker before a take.", origin: "Internet slang.", age: "Gen Z" },
-    fr: { terms: ["fr", "fr fr"], short: "For real.", explain: "Agreement or emphasis.", origin: "AAVE → mainstream.", age: "Gen Z" },
-    nvm: { terms: ["nvm"], short: "Never mind.", explain: "Cancel what you just said.", origin: "Texting shorthand.", age: "Mixed" },
-    wyd: { terms: ["wyd"], short: "What (are) you doing?", explain: "Casual check-in.", origin: "Texting shorthand.", age: "Mixed" },
-    hmu: { terms: ["hmu"], short: "Hit me up.", explain: "Message me later.", origin: "Texting shorthand.", age: "Mixed" },
-    gtg: { terms: ["gtg", "g2g"], short: "Got to go.", explain: "Leaving the chat.", origin: "IM classic.", age: "Mixed" },
-    afk: { terms: ["afk"], short: "Away from keyboard.", explain: "Not at the device.", origin: "Gaming/chat.", age: "Mixed" },
-    sus: { terms: ["sus"], short: "Suspicious.", explain: "Something feels shady.", origin: "Among Us boom.", age: "Gen Z" },
-    fyi: { terms: ["fyi"], short: "For your information.", explain: "Heads-up.", origin: "Common abbreviation.", age: "Mixed" },
-    btw: { terms: ["btw"], short: "By the way.", explain: "Side note.", origin: "Texting shorthand.", age: "Mixed" },
-    asap: { terms: ["asap"], short: "As soon as possible.", explain: "Urgency.", origin: "Common abbreviation.", age: "Mixed" },
-    idc: { terms: ["idc"], short: "I don’t care.", explain: "Dismissive or boundary — tone varies.", origin: "Texting shorthand.", age: "Mixed" },
-    rn: { terms: ["rn"], short: "Right now.", explain: "Currently.", origin: "Texting shorthand.", age: "Mixed" },
-    ofc: { terms: ["ofc"], short: "Of course.", explain: "Agreement / obviously.", origin: "Texting shorthand.", age: "Mixed" },
-    ikr: { terms: ["ikr"], short: "I know, right?", explain: "Strong agreement.", origin: "Texting shorthand.", age: "Mixed" },
-    lmk: { terms: ["lmk"], short: "Let me know.", explain: "Ask for an update.", origin: "Texting shorthand.", age: "Mixed" },
-    np: { terms: ["np"], short: "No problem.", explain: "It’s fine / you’re welcome.", origin: "Texting shorthand.", age: "Mixed" },
-    ty: { terms: ["ty", "thx", "tysm"], short: "Thank you / thanks.", explain: "Gratitude shorthand.", origin: "Texting shorthand.", age: "Mixed" },
-    yw: { terms: ["yw"], short: "You’re welcome.", explain: "Reply to thanks.", origin: "Texting shorthand.", age: "Mixed" },
-    omw: { terms: ["omw"], short: "On my way.", explain: "En route.", origin: "Texting shorthand.", age: "Mixed" },
-    irl: { terms: ["irl"], short: "In real life.", explain: "Offline / not online.", origin: "Internet slang.", age: "Mixed" },
-    tldr: { terms: ["tldr", "tl;dr"], short: "Too long; didn’t read — summary follows.", explain: "Prefaces a short version.", origin: "Forum culture.", age: "Mixed" },
-    imo: { terms: ["imo", "imho"], short: "In my (humble) opinion.", explain: "Personal take marker.", origin: "Forum/texting.", age: "Mixed" },
-    ong: { terms: ["ong"], short: "On God — I swear / for real.", explain: "Emphasis of seriousness.", origin: "Internet slang.", age: "Gen Z" },
-    fs: { terms: ["fs"], short: "For sure.", explain: "Agreement.", origin: "Texting shorthand.", age: "Gen Z" },
-    dw: { terms: ["dw"], short: "Don’t worry.", explain: "Reassurance.", origin: "Texting shorthand.", age: "Mixed" },
-    pls: { terms: ["pls", "plz"], short: "Please.", explain: "Softener.", origin: "Texting shorthand.", age: "Mixed" },
+    jk: { terms: ["jk", "j/k", "j.k.", "just kidding"], short: "Just kidding.", explain: "Used after a joke or to soften a serious-sounding line.", origin: "Texting/IM shorthand from the 1990s chat-room era (AIM, MSN, SMS); also written j/k. Still the standard “I’m joking” tag.", age: "Mixed" },
+    idk: { terms: ["idk"], short: "I don’t know.", explain: "You don’t have the answer right now.", origin: "Texting shorthand that spread with SMS and instant messaging in the late 1990s–2000s; now everyday across ages.", age: "Mixed" },
+    brb: { terms: ["brb"], short: "Be right back.", explain: "Stepping away briefly.", origin: "Early chat-room and instant-messenger shorthand (IRC, AIM) for stepping away from the keyboard.", age: "Mixed" },
+    ttyl: { terms: ["ttyl"], short: "Talk to you later.", explain: "Friendly pause/sign-off.", origin: "Instant-messenger era sign-off (AIM/MSN, 2000s) that carried over to texting.", age: "Mixed" },
+    lol: { terms: ["lol"], short: "Laughing out loud (often a soft chuckle).", explain: "Frequently acknowledgment, not literal loud laughing.", origin: "One of the oldest internet acronyms (1980s–90s Usenet/BBS chat). Over time it softened into a tone marker rather than real laughter.", age: "Mixed" },
+    omg: { terms: ["omg"], short: "Oh my god.", explain: "Surprise or emphasis.", origin: "Spoken-English exclamation long before texting; the acronym boomed with SMS and chat. Added to the Oxford English Dictionary in 2011.", age: "Mixed" },
+    smh: { terms: ["smh"], short: "Shaking my head.", explain: "Disappointment or disbelief.", origin: "Forum and early social-media shorthand (2000s); popular on Twitter for reacting to news or bad takes.", age: "Mixed" },
+    tbh: { terms: ["tbh"], short: "To be honest.", explain: "Flags a frank opinion.", origin: "Texting/forum shorthand; got a second life around 2013 with the Instagram “tbh” compliment-post trend.", age: "Mixed" },
+    ngl: { terms: ["ngl"], short: "Not gonna lie.", explain: "Honesty marker before a take.", origin: "Gen Z texting and social-media shorthand; common in captions and replies since the late 2010s.", age: "Gen Z" },
+    fr: { terms: ["fr", "fr fr"], short: "For real.", explain: "Agreement or emphasis.", origin: "From AAVE “for real”; spread through social media and became a standard Gen Z agreement tag (“fr fr” = very for real).", age: "Gen Z" },
+    nvm: { terms: ["nvm"], short: "Never mind.", explain: "Cancel what you just said.", origin: "Instant-messenger and texting shorthand for “never mind”.", age: "Mixed" },
+    wyd: { terms: ["wyd"], short: "What (are) you doing?", explain: "Casual check-in.", origin: "Texting shorthand (“what you doing?”); common late-night check-in on SMS and Snapchat.", age: "Mixed" },
+    hmu: { terms: ["hmu"], short: "Hit me up.", explain: "Message me later.", origin: "Texting/social shorthand from the 2000s (MySpace and SMS era): “contact me”.", age: "Mixed" },
+    gtg: { terms: ["gtg", "g2g"], short: "Got to go.", explain: "Leaving the chat.", origin: "Instant-messenger and gaming-chat sign-off (“got to go”); g2g is the same thing.", age: "Mixed" },
+    afk: { terms: ["afk"], short: "Away from keyboard.", explain: "Not at the device.", origin: "Gaming and chat-room shorthand (MUDs, IRC, MMOs) for being away from the keyboard.", age: "Mixed" },
+    sus: { terms: ["sus"], short: "Suspicious.", explain: "Something feels shady.", origin: "Short for suspicious/suspect (older slang); exploded in 2020 with the game Among Us.", age: "Gen Z" },
+    fyi: { terms: ["fyi"], short: "For your information.", explain: "Heads-up.", origin: "Office/business abbreviation from memos, long before the internet; carried into email and texting.", age: "Mixed" },
+    btw: { terms: ["btw"], short: "By the way.", explain: "Side note.", origin: "Early internet and email shorthand (1990s) that became universal in texting.", age: "Mixed" },
+    asap: { terms: ["asap"], short: "As soon as possible.", explain: "Urgency.", origin: "Military/business abbreviation that predates the internet by decades; still used in speech (“A-sap”).", age: "Mixed" },
+    idc: { terms: ["idc"], short: "I don’t care.", explain: "Dismissive or boundary — tone varies.", origin: "Texting shorthand (“I don’t care”); tone ranges from relaxed to blunt depending on context.", age: "Mixed" },
+    rn: { terms: ["rn"], short: "Right now.", explain: "Currently.", origin: "Texting shorthand (“right now”); popular in captions and replies since the 2010s.", age: "Mixed" },
+    ofc: { terms: ["ofc"], short: "Of course.", explain: "Agreement / obviously.", origin: "Texting and gaming-chat shorthand (“of course”).", age: "Mixed" },
+    ikr: { terms: ["ikr"], short: "I know, right?", explain: "Strong agreement.", origin: "Instant-messenger and texting shorthand (“I know, right?”) from the 2000s.", age: "Mixed" },
+    lmk: { terms: ["lmk"], short: "Let me know.", explain: "Ask for an update.", origin: "Texting/email shorthand (“let me know”), common in both casual and work chats.", age: "Mixed" },
+    np: { terms: ["np"], short: "No problem.", explain: "It’s fine / you’re welcome.", origin: "Gaming and chat shorthand (“no problem”); the classic reply to “ty”.", age: "Mixed" },
+    ty: { terms: ["ty", "thx", "tysm"], short: "Thank you / thanks.", explain: "Gratitude shorthand.", origin: "Chat and gaming shorthand for “thank you”; thx and tysm (“thank you so much”) are variants.", age: "Mixed" },
+    yw: { terms: ["yw"], short: "You’re welcome.", explain: "Reply to thanks.", origin: "Chat shorthand reply to “ty” (“you’re welcome”).", age: "Mixed" },
+    omw: { terms: ["omw"], short: "On my way.", explain: "En route.", origin: "Texting shorthand (“on my way”); common enough that phones autocomplete it.", age: "Mixed" },
+    irl: { terms: ["irl"], short: "In real life.", explain: "Offline / not online.", origin: "Early internet shorthand (Usenet/chat) contrasting online life with “in real life”.", age: "Mixed" },
+    tldr: { terms: ["tldr", "tl;dr"], short: "Too long; didn’t read — summary follows.", explain: "Prefaces a short version.", origin: "Forum culture (Something Awful, then Reddit, 2000s): “too long; didn’t read” — now also used to introduce your own summary.", age: "Mixed" },
+    imo: { terms: ["imo", "imho"], short: "In my (humble) opinion.", explain: "Personal take marker.", origin: "Forum and email shorthand from the 1990s; imho adds “humble” (often ironically).", age: "Mixed" },
+    ong: { terms: ["ong"], short: "On God — I swear / for real.", explain: "Emphasis of seriousness.", origin: "AAVE-rooted “on God” (I swear); spread through Twitter, TikTok and rap lyrics in the late 2010s.", age: "Gen Z" },
+    fs: { terms: ["fs"], short: "For sure.", explain: "Agreement.", origin: "Texting shorthand (“for sure”), popular with Gen Z.", age: "Gen Z" },
+    dw: { terms: ["dw"], short: "Don’t worry.", explain: "Reassurance.", origin: "Texting shorthand (“don’t worry”), common in UK/Commonwealth and gaming chats.", age: "Mixed" },
+    pls: { terms: ["pls", "plz"], short: "Please.", explain: "Softener.", origin: "Texting shorthand for “please”; plz is the older chat-room spelling.", age: "Mixed" },
     bro: { terms: ["bro", "bros", "brother"], short: "Casual address for a guy/friend — like “dude.”", explain: "Usually means buddy/friend, not always a literal brother. Tone can be warm, ironic, or annoyed. Related: bruh, dude, man.", origin: "Short for brother; everyday casual English + internet.", age: "Mixed" },
     bruh: { terms: ["bruh"], short: "Like “bro,” often for surprise, disbelief, or secondhand embarrassment.", explain: "As much a reaction (“bruh…”) as an address.", origin: "Phonetic casual bro; meme reaction.", age: "Gen Z" },
     dude: { terms: ["dude"], short: "Casual address for a person; also a “wow” reaction.", explain: "Daily informal English for a person; greeting, emphasis, or disbelief.", origin: "Older American slang still in heavy use.", age: "Mixed" },
@@ -83,6 +83,12 @@
     },
   };
 
+  /** Core entries that are slang words, not texting abbreviations. */
+  const CORE_SLANG_KEYS = new Set(["bro", "bruh", "dude", "fam", "alpha", "sigma", "beta", "skibidi", "sus"]);
+  for (const [key, entry] of Object.entries(CORE_ABBREVS)) {
+    if (!entry.kind) entry.kind = CORE_SLANG_KEYS.has(key) ? "slang" : "abbreviation";
+  }
+
   function normalize(s) {
     return String(s || "")
       .toLowerCase()
@@ -95,15 +101,41 @@
       .trim();
   }
 
+  const NAMED_ENTITIES = { nbsp: " ", amp: "&", quot: '"', apos: "'", lt: "<", gt: ">", ndash: "–", mdash: "—", hellip: "…", lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”" };
+  // Bidi marks, zero-width chars, soft hyphen, BOM (Wiktionary sprinkles LRM into etymologies)
+  const INVISIBLE_RE = /[\u00AD\u200B-\u200F\u202A-\u202E\u2060-\u2064\uFEFF]/g;
+
+  function decodeEntities(s) {
+    return String(s || "").replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, code) => {
+      if (code[0] === "#") {
+        const n = code[1] === "x" || code[1] === "X" ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
+        return Number.isFinite(n) && n > 0 && n < 0x110000 ? String.fromCodePoint(n) : " ";
+      }
+      const named = NAMED_ENTITIES[code.toLowerCase()];
+      return named != null ? named : m;
+    });
+  }
+
+  /** Dictionary HTML → clean sentence: no <style>/<script>, no leaked CSS, no invisible chars. */
   function stripHtml(s) {
-    return String(s || "")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/&nbsp;/g, " ")
-      .replace(/&amp;/g, "&")
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
+    let out = String(s || "")
+      .replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ")
+      .replace(/<!--[\s\S]*?-->/g, " ")
+      .replace(/<[^>]+>/g, " ");
+    out = decodeEntities(out)
+      .replace(INVISIBLE_RE, "")
+      .replace(/\u00A0/g, " ")
+      // leaked stylesheet rules, e.g. ".mw-parser-output .defdate{font-size:smaller}"
+      .replace(/(?:^|\s)[.#@][\w\-.#:>\s,]*\{[^{}]*\}/g, " ")
       .replace(/\s+/g, " ")
+      // tidy spacing artifacts left by removed tags: "person 's", "charm .", "( word )"
+      .replace(/\s+(['’]s\b)/g, "$1")
+      .replace(/\s+([,.;:!?)\]])/g, "$1")
+      .replace(/([(\[])\s+/g, "$1")
+      .replace(/([.!?])(?:\s*\.)+/g, "$1")
+      .replace(/\s+\+\s+/g, " + ")
       .trim();
+    return out;
   }
 
   function extractTerm(raw) {
@@ -216,6 +248,19 @@
 
   function queryTokens(q) {
     return tokenize(q).filter((t) => t && !STOPWORDS.has(t));
+  }
+
+  function isAbbrevEntry(entry, bucket) {
+    if (bucket === "abbreve") return true;
+    const src = String((entry && entry.source) || "").toLowerCase();
+    return src === "abbreve" || (entry && entry.kind === "abbreviation");
+  }
+
+  /** Abbreve rows (exact full-query match only — never inside phrases). */
+  function findExactAbbrev(abbreve, term) {
+    const q = normalize(term);
+    if (!q || !abbreve || !Array.isArray(abbreve.entries)) return null;
+    return abbreve.entries.find((e) => (e.terms || []).some((t) => normalize(t) === q)) || null;
   }
 
   function rankBonus(entry, bucket) {
@@ -375,6 +420,10 @@
       for (const entry of list) {
         const got = scoreEntry(entry, q, tokens);
         if (got.score <= 0) continue;
+        // Community abbreviation rows (so, was, y, uk, kiss, ok…) only answer an exact
+        // query; they must never hijack ordinary words inside a phrase ("i was so tired").
+        const abbrevRow = bucket === "abbreve" || String(entry.source || "").toLowerCase() === "abbreve";
+        if (abbrevRow && got.kind !== "exact") continue;
         candidates.push({
           entry,
           score: got.score + rankBonus(entry, bucket),
@@ -452,6 +501,35 @@
     } finally {
       clearTimeout(timer);
     }
+  }
+
+  /** Single dictionary word for a query, or "" for phrases (no first-word lookups). */
+  function dictionaryWord(term) {
+    const toks = tokenize(term);
+    if (toks.length !== 1) return "";
+    const w = toks[0];
+    return w.length <= 40 ? w : "";
+  }
+
+  /**
+   * Quiet existence check: the MediaWiki action API answers 200 even for missing
+   * pages, so unknown words never produce a red 404 in the console.
+   */
+  async function wiktionaryHasPage(word) {
+    const data = await fetchJson(
+      `https://en.wiktionary.org/w/api.php?action=query&format=json&formatversion=2&origin=*&titles=${encodeURIComponent(word)}`,
+      4000
+    );
+    const pages = data && data.query && data.query.pages;
+    if (!Array.isArray(pages) || !pages.length) return false;
+    return !pages[0].missing && !pages[0].invalid;
+  }
+
+  async function fetchDictionary(term) {
+    const word = dictionaryWord(term);
+    if (!word) return null;
+    if (!(await wiktionaryHasPage(word))) return null;
+    return (await fetchWiktionary(word)) || (await fetchFreeDictionary(word));
   }
 
   async function fetchWiktionary(term) {
@@ -600,7 +678,14 @@
     return b + "/v1/decode";
   }
 
-  async function fetchLiveDecode(baseUrl, term, newHere) {
+  function proxyHeaders(token) {
+    const headers = { "Content-Type": "application/json" };
+    const t = String(token || "").trim();
+    if (t) headers.Authorization = "Bearer " + t;
+    return headers;
+  }
+
+  async function fetchLiveDecode(baseUrl, term, newHere, token) {
     const url = liveEndpointUrl(baseUrl);
     if (!url) return null;
     const ctrl = new AbortController();
@@ -608,7 +693,7 @@
     try {
       const res = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: proxyHeaders(token),
         body: JSON.stringify({ term: String(term || ""), newHere: !!newHere }),
         signal: ctrl.signal,
       });
@@ -674,7 +759,7 @@
     } else {
       parts.push({
         title: "Working meaning",
-        body: `I don’t have a curated slang card for “${t}” yet, so here’s the honest AI read: treat it as a word/phrase whose meaning depends on the room it showed up in (friends, TikTok, game chat, school).`,
+        body: `I don’t have a curated slang card for “${t}” yet, so here’s an honest best guess: treat it as a word/phrase whose meaning depends on the room it showed up in (friends, TikTok, game chat, school).`,
       });
       parts.push({
         title: "Practical decode",
@@ -723,22 +808,51 @@
     };
   }
 
-  function buildAnswer({ term, slangHit, trend, dict, heuristics, newHere }) {
+  /** Accurate heading for the lead meaning. */
+  function meaningTitle(slangHit) {
+    if (!slangHit) return "Meaning";
+    if (slangHit.bucket === "community") return "Community meaning";
+    if (isAbbrevEntry(slangHit.entry, slangHit.bucket)) return "Texting abbreviation";
+    return "Slang meaning";
+  }
+
+  function dictSummary(dict, skipText) {
+    const seen = new Set(skipText ? [normalize(skipText)] : []);
+    const defs = [];
+    for (const d of (dict && dict.defs) || []) {
+      const key = normalize(d.text);
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      defs.push(d);
+    }
+    return defs;
+  }
+
+  function buildAnswer({ term, slangHit, trend, dict, heuristics, newHere, alsoAbbrev }) {
     const parts = [];
     let source = "ai-search";
+    let dictShown = false;
 
     if (slangHit) {
       source = slangHit.bucket === "community" ? "community" : "lexicon";
       const e = slangHit.entry;
-      parts.push({ title: "Slang meaning (TikTok / internet)", body: e.short });
+      parts.push({ title: meaningTitle(slangHit), body: e.short });
       if (e.origin) parts.push({ title: "Where it comes from", body: e.origin });
       const who = whoSaysPart(e.age);
       if (who) parts.push(who);
       if (e.explain) parts.push({ title: "In plain words", body: e.explain });
-      if (dict && dict.defs && dict.defs.length) {
+      if (alsoAbbrev && alsoAbbrev !== e && alsoAbbrev.short && normalize(alsoAbbrev.short) !== normalize(e.short)) {
         parts.push({
-          title: "Other senses (not the TikTok one)",
-          body: dict.defs
+          title: "Also short for",
+          body: `${String(term).trim().toUpperCase()} = ${alsoAbbrev.short} (texting abbreviation).`,
+        });
+      }
+      const defs = dictSummary(dict, e.short);
+      if (defs.length) {
+        dictShown = true;
+        parts.push({
+          title: "Other senses",
+          body: defs
             .slice(0, 2)
             .map((d) => `(${d.part || "def"}) ${d.text}`)
             .join(" "),
@@ -768,28 +882,35 @@
       const synth = synthesizeAlways(term, dict, heuristics, newHere);
       source = dict ? "dictionary+ai" : heuristics[0] ? "heuristic" : "ai-fallback";
       parts.push(...synth);
-    } else if (dict && newHere) {
-      parts.push({ title: "Also in the dictionary", body: dict.defs[0].text });
+    } else if (dict && newHere && !dictShown) {
+      const defs = dictSummary(dict, trend && trend.summary);
+      if (defs.length) {
+        dictShown = true;
+        parts.push({ title: "Also in the dictionary", body: defs[0].text });
+      }
     }
 
-    return { term, source, parts };
+    return { term, source, parts, usedDictionary: dictShown || source === "dictionary+ai" };
   }
 
-  async function decodeQuery(raw, { slang, trends, abbreve, community, newHere, liveDecodeUrl }) {
+  async function decodeQuery(raw, { slang, trends, abbreve, community, newHere, liveDecodeUrl, liveDecodeToken }) {
     const term = extractTerm(raw) || String(raw || "").trim();
     const searchTerm = applyAlias(term);
     const slangHit = findSlangEntry(slang, abbreve, searchTerm, community);
     const trend = findTrend(trends, searchTerm);
     const heuristics = heuristicInternetSpeak(searchTerm);
 
-    // Always try dictionary in background for dual-meaning words (alpha = Greek AND slang)
-    const dict = (await fetchWiktionary(term)) || (await fetchFreeDictionary(term));
+    // Dictionary only for single words (alpha = Greek AND slang); phrases never
+    // borrow the first word's dictionary senses ("nah id win" ≠ "nah").
+    const dict = await fetchDictionary(searchTerm);
+    const alsoAbbrev =
+      slangHit && slangHit.bucket !== "abbreve" ? findExactAbbrev(abbreve, searchTerm) : null;
 
-    let answer = buildAnswer({ term, slangHit, trend, dict, heuristics, newHere: !!newHere });
+    let answer = buildAnswer({ term, slangHit, trend, dict, heuristics, newHere: !!newHere, alsoAbbrev });
 
     // Live model-on-miss (optional LAN proxy). Never blank on failure.
     if (shouldCallLive(answer, slangHit, term, liveDecodeUrl)) {
-      const live = await fetchLiveDecode(liveDecodeUrl, term, !!newHere);
+      const live = await fetchLiveDecode(liveDecodeUrl, term, !!newHere, liveDecodeToken);
       if (live) {
         answer = mergeLiveAnswer(answer, live, trend);
       }
@@ -800,18 +921,26 @@
     return answer;
   }
 
-  function formatAnswerHtml(answer, escapeHtml) {
+  /** Honest source label for the answer bubble header. */
+  function sourceLabel(answer) {
     const chips = {
       lexicon: "Trendy lexicon",
       community: "Community lexicon",
-      trends: "Heat radar",
-      "dictionary+ai": "Dictionary + AI",
-      heuristic: "AI pattern read",
-      "ai-fallback": "AI decode",
-      "ai-search": "AI search",
+      trends: "Trend radar",
+      "dictionary+ai": "Dictionary",
+      heuristic: "Pattern guess",
+      "ai-fallback": "Best guess",
+      "ai-search": "Trendy",
       "live-ai": "Live AI",
     };
-    const meta = chips[answer.source] || "Trendy";
+    let label = chips[answer.source] || "Trendy";
+    if (answer.source === "lexicon" && answer.slangBucket === "abbreve") label = "Abbreviation list";
+    if (answer.usedDictionary && answer.source !== "dictionary+ai") label += " + dictionary";
+    return label;
+  }
+
+  function formatAnswerHtml(answer, escapeHtml) {
+    const meta = sourceLabel(answer);
     let html = `<span class="bubble-meta">${escapeHtml(meta)} · ${escapeHtml(answer.term)}</span>`;
     for (const p of answer.parts) {
       html += `<div class="decode-block"><strong>${escapeHtml(p.title)}</strong><br>${escapeHtml(
@@ -831,6 +960,11 @@
     shouldShowSuggest,
     shouldCallLive,
     liveEndpointUrl,
+    fetchLiveDecode,
     findSlangEntry,
+    stripHtml,
+    dictionaryWord,
+    sourceLabel,
+    meaningTitle,
   };
 })(typeof window !== "undefined" ? window : globalThis);

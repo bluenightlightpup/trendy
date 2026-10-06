@@ -246,7 +246,15 @@
     return b + "/v1/suggest";
   }
 
-  async function postSuggest(baseUrl, record) {
+  /** JSON headers plus Bearer token when the proxy requires one (TRENDY_PROXY_TOKEN). */
+  function proxyHeaders(token) {
+    const headers = { "Content-Type": "application/json" };
+    const t = String(token || "").trim();
+    if (t) headers.Authorization = "Bearer " + t;
+    return headers;
+  }
+
+  async function postSuggest(baseUrl, record, token) {
     const url = suggestEndpointUrl(baseUrl);
     if (!url) return null;
     const ctrl = new AbortController();
@@ -254,7 +262,7 @@
     try {
       const res = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: proxyHeaders(token),
         body: JSON.stringify({
           term: record.term,
           meaning: record.meaning,
@@ -285,7 +293,7 @@
    * Always saves locally. If liveDecodeUrl set, also POSTs to proxy.
    * Local demo promotion after 3 similar same-device suggests.
    */
-  async function submitSuggestion({ term, meaning, origin, age, liveDecodeUrl }) {
+  async function submitSuggestion({ term, meaning, origin, age, liveDecodeUrl, liveDecodeToken }) {
     const v = validate(term, meaning, origin);
     if (!v.ok) return { ok: false, message: v.message };
 
@@ -310,7 +318,7 @@
 
     let remote = null;
     if (liveDecodeUrl && String(liveDecodeUrl).trim()) {
-      remote = await postSuggest(liveDecodeUrl, record);
+      remote = await postSuggest(liveDecodeUrl, record, liveDecodeToken);
     }
 
     const localPromo = promoteLocalIfReady(v.termNorm);
@@ -323,7 +331,7 @@
       message = "Thanks — enough people agreed. It’s joining the community lexicon.";
     } else if (demoOnly) {
       message =
-        "Thanks — on-device demo consensus (3 similar suggests on this phone). Real multi-user needs the LAN proxy.";
+        "Thanks — on-device demo consensus (3 similar suggestions on this device). Shared consensus needs the Trendy proxy.";
     } else if (remote && remote.ok) {
       message = remote.message || message;
     }
@@ -350,5 +358,7 @@
     mergeCommunity,
     submitSuggestion,
     suggestEndpointUrl,
+    proxyHeaders,
+    postSuggest,
   };
 })(typeof window !== "undefined" ? window : globalThis);

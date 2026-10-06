@@ -20,6 +20,7 @@
     digest: "weekly",
     newHere: true,
     liveDecodeUrl: "",
+    liveDecodeToken: "",
   };
 
   const Saved = () => globalThis.TrendySaved;
@@ -53,6 +54,8 @@
         newHere: typeof parsed.newHere === "boolean" ? parsed.newHere : DEFAULT_PREFS.newHere,
         liveDecodeUrl:
           typeof parsed.liveDecodeUrl === "string" ? parsed.liveDecodeUrl.trim() : "",
+        liveDecodeToken:
+          typeof parsed.liveDecodeToken === "string" ? parsed.liveDecodeToken.trim() : "",
       };
     } catch {
       return structuredClone(DEFAULT_PREFS);
@@ -166,10 +169,64 @@
       </div>`;
   }
 
-  function tagsHtml(tags) {
-    return (tags || [])
+  /** Pipeline / generic tags that mean nothing to readers. */
+  const HIDDEN_TAGS = new Set([
+    "seed", "radar", "rss", "youtube", "wikipedia", "reddit", "mock", "mock-seed",
+    "stub", "live", "slang", "abbrev", "meme", "trend",
+  ]);
+
+  function tagKey(s) {
+    return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+  }
+
+  /**
+   * Reader-facing chips: hide internal tags, dedupe case/spacing-insensitively
+   * (TikTok/tiktok, gen-alpha/Gen Alpha) and drop aliases of the title (67 / six seven / 6 7).
+   */
+  function displayTags(trend) {
+    const seen = new Set([tagKey(trend.world), tagKey(trend.age)]);
+    const titleKey = tagKey(trend.title);
+    const out = [];
+    for (const raw of trend.tags || []) {
+      const label = String(raw || "").trim();
+      const key = tagKey(label);
+      if (!key || seen.has(key) || HIDDEN_TAGS.has(label.toLowerCase())) continue;
+      if ((key.length >= 2 && titleKey.includes(key)) || (titleKey.length >= 3 && key.includes(titleKey))) continue;
+      seen.add(key);
+      out.push(label);
+      if (out.length >= 4) break;
+    }
+    return out;
+  }
+
+  function tagsHtml(trend) {
+    return displayTags(trend)
       .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
       .join("");
+  }
+
+  /** Capitalise the first letter of all-lowercase titles ("alpha" → "Alpha"); acronyms/mixed case untouched. */
+  function displayTitle(title) {
+    const t = String(title || "");
+    if (t !== t.toLowerCase()) return t;
+    return t.replace(/[a-z]/, (ch) => ch.toUpperCase());
+  }
+
+  const LIFECYCLES = {
+    rising: "Rising",
+    peaking: "Peaking",
+    stable: "Steady",
+    cooling: "Cooling",
+    fading: "Fading",
+    dormant: "Dormant",
+  };
+
+  /** Status pill always shows the lifecycle stage — never the title or tags. */
+  function lifecycleHtml(trend) {
+    const key = String(trend.lifecycle || "").toLowerCase();
+    const label = LIFECYCLES[key] || "Active";
+    const cls = LIFECYCLES[key] ? key : "active";
+    return `<span class="lifecycle lifecycle-${cls}" title="Lifecycle: ${label}">${label}</span>`;
   }
 
   function saveBtnHtml(trend, { prominent = false } = {}) {
@@ -204,14 +261,14 @@
       <article class="trend-card" role="listitem" data-trend-id="${escapeHtml(trend.id)}">
         <div class="trend-card-body" data-open-trend="${escapeHtml(trend.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(trend.title)} origin story">
           <div class="trend-card-top">
-            <h3 class="trend-title">${escapeHtml(trend.title)}</h3>
-            <span class="lifecycle lifecycle-${escapeHtml(trend.lifecycle)}">${escapeHtml(trend.lifecycle)}</span>
+            <h3 class="trend-title">${escapeHtml(displayTitle(trend.title))}</h3>
+            ${lifecycleHtml(trend)}
           </div>
           <p class="trend-summary">${escapeHtml(trend.summary)}</p>
           <div class="trend-meta">
             <span class="world-pill">${escapeHtml(trend.world)}</span>
             ${ageChipHtml(trend.age)}
-            ${tagsHtml(trend.tags)}
+            ${tagsHtml(trend)}
           </div>
           ${heatMeterHtml(trend.heatScore)}
         </div>
@@ -341,8 +398,8 @@
     }
     article.innerHTML = `
       <div class="trend-card-top">
-        <h2>${escapeHtml(trend.title)}</h2>
-        <span class="lifecycle lifecycle-${escapeHtml(trend.lifecycle)}">${escapeHtml(trend.lifecycle)}</span>
+        <h2>${escapeHtml(displayTitle(trend.title))}</h2>
+        ${lifecycleHtml(trend)}
       </div>
       <div class="detail-actions">
         ${saveBtnHtml(trend, { prominent: true })}
@@ -351,7 +408,7 @@
       <div class="trend-meta">
         <span class="world-pill">${escapeHtml(trend.world)}</span>
         ${ageChipHtml(trend.age)}
-        ${tagsHtml(trend.tags)}
+        ${tagsHtml(trend)}
       </div>
       ${heatMeterHtml(trend.heatScore)}
       <p class="origin"><strong>Origin story</strong>${escapeHtml(trend.originStory)}</p>
@@ -378,7 +435,7 @@
       .map(
         (t) => `
       <button type="button" class="saved-row" role="listitem" data-open-saved="${escapeHtml(t.id)}" aria-label="Open saved trend ${escapeHtml(t.title)}">
-        <span class="saved-row-title">${escapeHtml(t.title)}</span>
+        <span class="saved-row-title">${escapeHtml(displayTitle(t.title))}</span>
         <span class="world-pill">${escapeHtml(t.world)}</span>
       </button>`
       )
@@ -405,6 +462,9 @@
     $("#new-here").checked = !!state.prefs.newHere;
     const liveInput = $("#live-decode-url");
     if (liveInput) liveInput.value = state.prefs.liveDecodeUrl || "";
+    const tokenInput = $("#live-decode-token");
+    if (tokenInput) tokenInput.value = state.prefs.liveDecodeToken || "";
+    updateLiveStatus();
     updateDecodeHint();
     renderYouSaved();
   }
@@ -412,10 +472,23 @@
   function updateDecodeHint() {
     const hint = $("#decode-mode-hint");
     const live = !!(state.prefs.liveDecodeUrl && state.prefs.liveDecodeUrl.trim());
-    const base = state.prefs.newHere
-      ? "AI slang search · New here on"
-      : "AI slang search · ask anything";
-    hint.textContent = live ? base + " · live on miss" : base;
+    let text = "Slang lexicon + dictionary";
+    if (live) text += " · live AI on miss";
+    if (state.prefs.newHere) text += " · New here on";
+    hint.textContent = text;
+  }
+
+  function updateLiveStatus(message) {
+    const status = $("#live-decode-status");
+    if (!status) return;
+    if (message) {
+      status.textContent = message;
+      return;
+    }
+    const url = state.prefs.liveDecodeUrl;
+    status.textContent = url
+      ? `Using ${url}${state.prefs.liveDecodeToken ? " with a token" : ""} — only when the lexicon has no answer.`
+      : "Not connected — Decode uses the built-in lexicon and dictionary.";
   }
 
   function refreshVisibleFeeds() {
@@ -441,8 +514,8 @@
 
     const subs = {
       home: "Signal, not scroll.",
-      decode: "AI search — any word.",
-      explore: "Catch up without the scroll",
+      decode: "Slang, decoded.",
+      explore: "Every world, one place.",
       you: "Your filters & tone.",
       detail: "Origin story.",
     };
@@ -481,16 +554,25 @@
     if (isHtml) div.innerHTML = htmlOrText;
     else div.innerHTML = `<span class="bubble-meta">You</span>${escapeHtml(htmlOrText)}`;
     log.appendChild(div);
-    log.scrollTop = log.scrollHeight;
+    scrollChatToEnd();
     return div;
+  }
+
+  /** The chat grows with the page (no inner scroller), so keep the newest bubble in view. */
+  function scrollChatToEnd() {
+    if (state.tab !== "decode") return;
+    const compose = $("#decode-form");
+    if (!compose || typeof compose.scrollIntoView !== "function") return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    compose.scrollIntoView({ block: "end", behavior: reduceMotion ? "auto" : "smooth" });
   }
 
   function seedChat() {
     const log = $("#chat-log");
     if (log.childElementCount) return;
     const welcome = state.prefs.newHere
-      ? "I'm your slang & trends AI search. Ask what any word means — e.g. “what does 67 mean?” or just type a term. Judgment-free."
-      : "AI search for slang and trends. Ask what any word means.";
+      ? "Ask what any word means — e.g. “what does 67 mean?” or just type a term. I check Trendy’s slang lexicon first, then a dictionary. Judgment-free."
+      : "Ask what any slang word, abbreviation or trend means.";
     appendBubble("bot", `<span class="bubble-meta">Trendy</span>${escapeHtml(welcome)}`, true);
   }
 
@@ -515,13 +597,16 @@
         </button>
         <form class="suggest-form" data-suggest-form hidden>
           <label class="field-label" for="${sid}">Term</label>
-          <input type="text" id="${sid}" class="suggest-term select" name="term" value="${t}" maxlength="80" required />
-          <label class="field-label">Meaning</label>
-          <textarea class="suggest-meaning" name="meaning" rows="3" maxlength="800" required placeholder="Plain meaning — no shame, just help the next person."></textarea>
-          <label class="field-label">Origin <span class="optional">(optional)</span></label>
-          <input type="text" class="suggest-origin select" name="origin" maxlength="240" placeholder="Where you heard it" />
-          <button type="submit" class="btn-send suggest-submit">Submit</button>
-          <p class="suggest-note" data-suggest-note hidden></p>
+          <input type="text" id="${sid}" class="suggest-term text-input" name="term" value="${t}" maxlength="80" required />
+          <label class="field-label" for="${sid}-meaning">Meaning</label>
+          <textarea id="${sid}-meaning" class="suggest-meaning" name="meaning" rows="3" maxlength="800" required placeholder="Plain meaning — no shame, just help the next person."></textarea>
+          <label class="field-label" for="${sid}-origin">Origin <span class="optional">(optional)</span></label>
+          <input type="text" id="${sid}-origin" class="suggest-origin text-input" name="origin" maxlength="240" placeholder="Where you heard it" />
+          <div class="button-row">
+            <button type="submit" class="btn btn-primary suggest-submit">Submit</button>
+            <button type="button" class="btn btn-secondary" data-suggest-cancel>Cancel</button>
+          </div>
+          <p class="suggest-note" data-suggest-note role="status" hidden></p>
         </form>
       </div>`;
   }
@@ -531,15 +616,24 @@
     const toggle = root.querySelector("[data-suggest-toggle]");
     const form = root.querySelector("[data-suggest-form]");
     const note = root.querySelector("[data-suggest-note]");
+    const setOpen = (open) => {
+      if (!form || !toggle) return;
+      form.hidden = !open;
+      toggle.hidden = open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        const meaning = form.querySelector(".suggest-meaning");
+        if (meaning) meaning.focus();
+      } else {
+        toggle.focus();
+      }
+    };
     if (toggle && form) {
-      toggle.addEventListener("click", () => {
-        const open = form.hidden;
-        form.hidden = !open;
-        toggle.setAttribute("aria-expanded", open ? "true" : "false");
-        if (open) {
-          const meaning = form.querySelector(".suggest-meaning");
-          if (meaning) meaning.focus();
-        }
+      toggle.addEventListener("click", () => setOpen(form.hidden));
+      const cancel = form.querySelector("[data-suggest-cancel]");
+      if (cancel) cancel.addEventListener("click", () => setOpen(false));
+      form.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setOpen(false);
       });
     }
     if (!form) return;
@@ -561,6 +655,7 @@
           meaning,
           origin,
           liveDecodeUrl: state.prefs.liveDecodeUrl || "",
+          liveDecodeToken: state.prefs.liveDecodeToken || "",
         });
         if (note) {
           note.hidden = false;
@@ -603,6 +698,7 @@
         community: state.community,
         newHere: state.prefs.newHere,
         liveDecodeUrl: state.prefs.liveDecodeUrl || "",
+        liveDecodeToken: state.prefs.liveDecodeToken || "",
       });
       const html = window.TrendyDecodeAI.formatAnswerHtml(answer, escapeHtml);
       typing.classList.remove("bubble-typing");
@@ -621,8 +717,7 @@
         `<span class="bubble-meta">Trendy</span>Something glitched while searching. Try again with just the word.`;
     }
 
-    const log = $("#chat-log");
-    log.scrollTop = log.scrollHeight;
+    scrollChatToEnd();
   }
 
   function bindFeedOpen(root, fromTab) {
@@ -705,27 +800,32 @@
     const liveSave = $("#live-decode-save");
     const liveClear = $("#live-decode-clear");
     const liveInput = $("#live-decode-url");
+    const tokenInput = $("#live-decode-token");
+    const liveForm = $("#live-decode-form");
+    if (liveForm) liveForm.addEventListener("submit", (e) => e.preventDefault());
     if (liveSave && liveInput) {
       liveSave.addEventListener("click", () => {
-        state.prefs.liveDecodeUrl = String(liveInput.value || "").trim();
+        const url = String(liveInput.value || "").trim();
+        if (url && !/^https?:\/\/[^\s/]+/i.test(url)) {
+          updateLiveStatus("That doesn’t look like a URL — try http://192.168.1.20:8787");
+          return;
+        }
+        state.prefs.liveDecodeUrl = url;
+        state.prefs.liveDecodeToken = tokenInput ? String(tokenInput.value || "").trim() : "";
         savePrefs();
         updateDecodeHint();
-        const status = $("#live-decode-status");
-        if (status) {
-          status.textContent = state.prefs.liveDecodeUrl
-            ? "Saved — Decode will call this proxy on misses only."
-            : "Cleared — Decode stays offline / synthesizer.";
-        }
+        updateLiveStatus(url ? "Saved — Decode asks this proxy only when the lexicon has no answer." : undefined);
       });
     }
     if (liveClear && liveInput) {
       liveClear.addEventListener("click", () => {
         liveInput.value = "";
+        if (tokenInput) tokenInput.value = "";
         state.prefs.liveDecodeUrl = "";
+        state.prefs.liveDecodeToken = "";
         savePrefs();
         updateDecodeHint();
-        const status = $("#live-decode-status");
-        if (status) status.textContent = "Cleared — Decode stays offline / synthesizer.";
+        updateLiveStatus("Cleared — Decode uses the built-in lexicon and dictionary.");
       });
     }
 
@@ -751,7 +851,7 @@
   }
 
   async function loadData() {
-    const bust = "v=14";
+    const bust = "v=15";
     const [trendsRes, slangRes, abbreveRes, communityRes] = await Promise.all([
       fetch("data/trends.json?" + bust),
       fetch("data/slang.json?" + bust),
