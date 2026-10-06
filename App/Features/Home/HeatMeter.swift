@@ -1,46 +1,45 @@
 import SwiftUI
 
-/// Signature cool → volt → hot track with a marker for trend velocity.
+/// Cool → volt → hot track with a marker dot and the 0–100 score (PWA `heatMeterHtml`).
 struct HeatMeter: View {
-    /// Normalized momentum `0...1`.
+    /// Normalized heat `0...1`.
     var score: Double
-    var accessibilityLabel: String?
 
-    private var clamped: Double { min(max(score, 0), 1) }
+    private var clamped: Double { min(max(score.isFinite ? score : 0, 0), 1) }
+    private var percent: Int { Int((clamped * 100).rounded()) }
 
     var body: some View {
-        GeometryReader { geo in
-            let width = geo.size.width
-            let height = geo.size.height
-            ZStack(alignment: .leading) {
-                Capsule()
-                    .fill(TrendyColors.heatTrack)
-
-                Capsule()
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                TrendyColors.heatCool,
-                                TrendyColors.heatVolt,
-                                TrendyColors.heatHot
-                            ],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
-                    .opacity(0.85)
-
-                Circle()
-                    .fill(TrendyColors.textPrimary)
-                    .frame(width: height * 0.9, height: height * 0.9)
-                    .shadow(color: .black.opacity(0.4), radius: 2, y: 1)
-                    .offset(x: max(0, (width - height) * clamped))
+        HStack(spacing: 10) {
+            GeometryReader { geo in
+                let dot: CGFloat = 14
+                let travel = max(0, geo.size.width - dot)
+                ZStack(alignment: .leading) {
+                    Capsule()
+                        .fill(TrendyColors.heatTrack)
+                        .frame(height: 8)
+                    Capsule()
+                        .fill(TrendyColors.heatGradient)
+                        .opacity(0.85)
+                        .frame(height: 8)
+                    Circle()
+                        .fill(TrendyColors.textPrimary)
+                        .frame(width: dot, height: dot)
+                        .overlay(Circle().stroke(TrendyColors.inkBg, lineWidth: 2))
+                        .shadow(color: TrendyColors.textPrimary.opacity(0.35), radius: 2)
+                        .offset(x: travel * CGFloat(clamped))
+                }
+                .frame(height: geo.size.height)
             }
+            .frame(height: 16)
+
+            Text("\(percent)")
+                .font(TrendyTypography.mono(.caption))
+                .foregroundStyle(TrendyColors.textPrimary)
+                .frame(minWidth: 28, alignment: .trailing)
         }
-        .frame(height: 10)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(accessibilityLabel ?? "Heat \(HeatLevel.from(score: clamped).rawValue)")
-        .accessibilityValue(String(format: "%.0f percent", clamped * 100))
+        .accessibilityLabel("Heat score")
+        .accessibilityValue("\(percent) out of 100")
     }
 }
 
@@ -48,7 +47,7 @@ struct HeatMeter: View {
     VStack(spacing: 16) {
         HeatMeter(score: 0.15)
         HeatMeter(score: 0.5)
-        HeatMeter(score: 0.95)
+        HeatMeter(score: 0.97)
     }
     .padding()
     .background(TrendyColors.inkBg)

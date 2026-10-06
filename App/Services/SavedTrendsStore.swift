@@ -1,9 +1,8 @@
 import Foundation
 import Combine
 
-/// Local save/follow store for trend IDs.
-/// Phase 3: stub aligned with PWA `trendy.saved.v1` semantics.
-/// Full SwiftUI save UI (card hearts, You list) can wire this on a Mac build.
+/// Local save/follow store for trend IDs (same `trendy.saved.v1` semantics as the PWA).
+/// Shared across Home, Explore, detail and You via the environment.
 @MainActor
 final class SavedTrendsStore: ObservableObject {
     static let storageKey = "trendy.saved.v1"
@@ -37,6 +36,12 @@ final class SavedTrendsStore: ObservableObject {
         return true
     }
 
+    func remove(_ id: String) {
+        guard let idx = savedIds.firstIndex(of: id) else { return }
+        savedIds.remove(at: idx)
+        persist()
+    }
+
     func replaceAll(_ ids: [String]) {
         var seen = Set<String>()
         savedIds = ids.compactMap { raw in
@@ -48,11 +53,22 @@ final class SavedTrendsStore: ObservableObject {
         persist()
     }
 
+    /// Saved trends in the order they were saved, skipping ids no longer in the catalog.
+    func savedTrends(in trends: [Trend]) -> [Trend] {
+        let byId = Dictionary(trends.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        return savedIds.compactMap { byId[$0] }
+    }
+
     private func persist() {
         defaults.set(savedIds, forKey: Self.storageKey)
     }
 
     private static func load(from defaults: UserDefaults) -> [String] {
-        (defaults.stringArray(forKey: storageKey) ?? []).filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        var seen = Set<String>()
+        return (defaults.stringArray(forKey: storageKey) ?? []).compactMap { raw in
+            let id = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !id.isEmpty, seen.insert(id).inserted else { return nil }
+            return id
+        }
     }
 }

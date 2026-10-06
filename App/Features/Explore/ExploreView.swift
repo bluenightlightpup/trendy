@@ -1,116 +1,76 @@
 import SwiftUI
 
+/// Explore: world chips + search over title/summary/tags, sorted by heat.
 struct ExploreView: View {
-    @State private var world: TrendWorld = .tiktok
-    private let service: any TrendServing = MockTrendService()
+    @EnvironmentObject private var model: AppModel
 
-    private var trends: [Trend] {
-        service.trends(in: world)
-    }
+    /// nil = All worlds.
+    @State private var world: TrendWorld?
+    @State private var query = ""
 
     var body: some View {
+        let items = TrendRanking.explore(model.data.trends, world: world, query: query)
         NavigationStack {
-            VStack(spacing: 0) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
-                        ForEach(TrendWorld.allCases) { w in
-                            Button {
-                                world = w
-                            } label: {
-                                Text(shortLabel(for: w))
-                                    .font(TrendyTypography.mono(11))
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 8)
-                                    .background(
-                                        Capsule()
-                                            .fill(world == w ? TrendyColors.heatCool : TrendyColors.inkElevated)
-                                    )
-                                    .foregroundStyle(world == w ? TrendyColors.inkBg : TrendyColors.textSecondary)
-                                    .overlay(
-                                        Capsule()
-                                            .stroke(TrendyColors.inkBorder, lineWidth: world == w ? 0 : 1)
-                                    )
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 16) {
+                    ScreenHint(text: "Every world, one place. Catch up without the scroll.")
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 8) {
+                            FilterChip(title: "All", isSelected: world == nil) { world = nil }
+                            ForEach(TrendWorld.allCases) { option in
+                                FilterChip(title: option.rawValue, isSelected: world == option) {
+                                    world = option
+                                }
                             }
-                            .buttonStyle(.plain)
-                            .accessibilityLabel("Filter Explore by \(w.rawValue)")
-                            .accessibilityAddTraits(world == w ? .isSelected : [])
+                        }
+                        .padding(.vertical, 2)
+                    }
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel("Filter by world")
+
+                    if items.isEmpty {
+                        emptyState
+                    } else {
+                        Text("\(items.count) \(items.count == 1 ? "trend" : "trends")")
+                            .font(TrendyTypography.mono(.caption))
+                            .foregroundStyle(TrendyColors.textSecondary)
+                        ForEach(items) { trend in
+                            TrendCard(trend: trend)
                         }
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
                 }
-                .accessibilityLabel("Trend world")
-
-                if trends.isEmpty {
-                    emptyWorld
-                } else {
-                    worldList
-                }
+                .padding(16)
+                .frame(maxWidth: 680)
+                .frame(maxWidth: .infinity)
             }
-            .background(TrendyColors.inkBg.ignoresSafeArea())
+            .scrollDismissesKeyboard(.interactively)
+            .trendyScreenBackground()
             .navigationTitle("Explore")
-            .navigationDestination(for: Trend.self) { trend in
-                OriginStoryView(trend: trend)
+            .toolbarBackground(TrendyColors.inkBg, for: .navigationBar)
+            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Filter by title or tags\u{2026}")
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
+            .navigationDestination(for: TrendRoute.self) { route in
+                TrendDetailView(trendID: route.id)
             }
         }
     }
 
-    private var worldList: some View {
-        List(trends) { trend in
-            NavigationLink(value: trend) {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Text(trend.title)
-                            .font(TrendyTypography.headline(16))
-                            .foregroundStyle(TrendyColors.textPrimary)
-                        Spacer()
-                        LifecycleChip(lifecycle: trend.lifecycle)
-                    }
-                    Text(trend.summary)
-                        .font(TrendyTypography.body(13))
-                        .foregroundStyle(TrendyColors.textSecondary)
-                        .lineLimit(2)
-                    HeatMeter(score: trend.heatScore)
-                    Text(trend.heatLevel.displayLabel)
-                        .font(TrendyTypography.mono(10))
-                        .foregroundStyle(TrendyColors.heatColor(for: trend.heatLevel))
-                }
-                .padding(.vertical, 4)
-            }
-            .listRowBackground(TrendyColors.inkElevated)
-            .listRowSeparatorTint(TrendyColors.inkBorder)
-        }
-        .scrollContentBackground(.hidden)
-        .listStyle(.plain)
-    }
-
-    private var emptyWorld: some View {
-        ContentUnavailableView {
-            Label("No trends in \(world.rawValue)", systemImage: "globe")
-        } description: {
-            Text("Try another niche — Dating, campus, sports, music, Money, and more. Mock catalog is offline-first and still growing.")
-                .font(TrendyTypography.body(14))
-        }
-        .foregroundStyle(TrendyColors.textSecondary)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-
-    private func shortLabel(for world: TrendWorld) -> String {
-        switch world {
-        case .tiktok: return "TikTok"
-        case .internetCulture: return "Internet"
-        case .abbreviations: return "Abbrevs"
-        case .gaming: return "Gaming"
-        case .dating: return "Dating"
-        case .schoolCampus: return "Campus"
-        case .sports: return "Sports"
-        case .musicFandom: return "Music"
-        case .workTech: return "Work"
-        case .money: return "Money"
+    @ViewBuilder
+    private var emptyState: some View {
+        if !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            EmptyStateView(
+                title: "No matches",
+                message: "Try another word, clear search, or pick a different world chip.",
+                systemImage: "magnifyingglass"
+            )
+        } else {
+            EmptyStateView(
+                title: "Nothing in this world",
+                message: "Try another niche \u{2014} Dating, campus, sports, music, Money, and more.",
+                systemImage: "globe"
+            )
         }
     }
-}
-
-#Preview {
-    ExploreView()
 }

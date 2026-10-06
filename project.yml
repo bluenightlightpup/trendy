@@ -1,3 +1,5 @@
+# XcodeGen spec for the native iOS app. On a Mac:  brew install xcodegen && xcodegen generate
+# See docs/app-store/release-checklist.md for signing, archive and App Store upload.
 name: Trendy
 options:
   bundleIdPrefix: com.bluenightlightpup
@@ -5,41 +7,72 @@ options:
     iOS: "17.0"
   createIntermediateGroups: true
   groupSortPosition: top
-  xcodeVersion: "15.0"
   generateEmptyDirectories: true
 
 settings:
-  SWIFT_VERSION: "5.9"
-  TARGETED_DEVICE_FAMILY: "1"
+  base:
+    # ---- Owner configuration -------------------------------------------------
+    # Bundle identifier used by the app (tests append ".tests"). Must match the
+    # App ID / App Store Connect record. Change it here, then re-run xcodegen.
+    TRENDY_BUNDLE_ID: com.bluenightlightpup.trendy
+    # Your 10-character Apple Developer Team ID (Xcode → Settings → Accounts).
+    # Left blank on purpose; set it here or pick a team in Signing & Capabilities.
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    # App Store version 1.0, build 1. Bump CURRENT_PROJECT_VERSION for every upload.
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    # --------------------------------------------------------------------------
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    DEAD_CODE_STRIPPING: YES
 
 targets:
   Trendy:
     type: application
     platform: iOS
+    deploymentTarget: "17.0"
     sources:
+      # Swift sources plus App/Resources (Assets.xcassets, PrivacyInfo.xcprivacy → Copy Bundle Resources).
       - path: App
-        excludes:
-          - "Resources/.gitkeep"
+      # Shared data, refreshed daily by the Radar bot. Bundled as-is (no copies to drift).
+      - path: web/data/trends.json
+        buildPhase: resources
+      - path: web/data/slang.json
+        buildPhase: resources
+      - path: web/data/abbreve.json
+        buildPhase: resources
+      - path: web/data/community-slang.json
+        buildPhase: resources
+      # Apache-2.0 attribution for abbreve.json (shown under You → Credits & licenses).
+      - path: web/data/ABBREVE-LICENSE
+        buildPhase: resources
+      - path: NOTICE
+        buildPhase: resources
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.bluenightlightpup.trendy
+        PRODUCT_BUNDLE_IDENTIFIER: $(TRENDY_BUNDLE_ID)
         PRODUCT_NAME: Trendy
-        MARKETING_VERSION: "1.0.0"
-        CURRENT_PROJECT_VERSION: 1
-        GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_CFBundleDisplayName: Trendy
-        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
-        INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        # iPhone only, portrait (iPad runs it in compatibility mode). XcodeGen's iOS preset
+        # defaults to "1,2", so this must be set at target level.
         TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_FILE: Config/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: YES
         SWIFT_EMIT_LOC_STRINGS: YES
+        SUPPORTS_MACCATALYST: NO
     scheme:
       testTargets:
         - TrendyTests
+      gatherCoverageData: true
 
   TrendyTests:
     type: bundle.unit-test
     platform: iOS
+    deploymentTarget: "17.0"
     sources:
       - path: Tests/TrendyTests
     dependencies:
@@ -47,4 +80,5 @@ targets:
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
-        PRODUCT_BUNDLE_IDENTIFIER: com.bluenightlightpup.trendy.tests
+        PRODUCT_BUNDLE_IDENTIFIER: $(TRENDY_BUNDLE_ID).tests
+        TARGETED_DEVICE_FAMILY: "1"

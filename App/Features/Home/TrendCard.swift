@@ -1,93 +1,57 @@
 import SwiftUI
 
+/// Feed card: title + lifecycle pill, summary, world/age/tags, heat meter, save heart.
+/// The card body is a NavigationLink to the detail; the heart sits on top as a sibling so a tap
+/// on it never also opens the card.
 struct TrendCard: View {
     let trend: Trend
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .firstTextBaseline) {
-                Text(trend.title)
-                    .font(TrendyTypography.headline(18))
-                    .foregroundStyle(TrendyColors.textPrimary)
-                    .accessibilityAddTraits(.isHeader)
-                Spacer(minLength: 8)
-                WorldChip(world: trend.world)
+        NavigationLink(value: TrendRoute(id: trend.id)) {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text(trend.displayTitle)
+                        .font(TrendyTypography.headline(.title3))
+                        .foregroundStyle(TrendyColors.textPrimary)
+                        .multilineTextAlignment(.leading)
+                        .accessibilityAddTraits(.isHeader)
+                    Spacer(minLength: 8)
+                    LifecyclePill(lifecycle: trend.lifecycle)
+                }
+
+                if !trend.summary.isEmpty {
+                    Text(trend.summary)
+                        .font(TrendyTypography.body(.subheadline))
+                        .foregroundStyle(TrendyColors.textSecondary)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(3)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                TrendMetaRow(trend: trend)
+
+                HeatMeter(score: trend.heatScore)
+                    .padding(.trailing, 44) // room for the heart
             }
-
-            Text(trend.summary)
-                .font(TrendyTypography.body(14))
-                .foregroundStyle(TrendyColors.textSecondary)
-                .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
-
-            HeatMeter(
-                score: trend.heatScore,
-                accessibilityLabel: "Heat \(trend.heatLevel.displayLabel), \(trend.lifecycle.displayLabel)"
-            )
-
-            HStack(spacing: 8) {
-                Text(trend.heatLevel.displayLabel)
-                    .font(TrendyTypography.mono(11))
-                    .foregroundStyle(TrendyColors.heatColor(for: trend.heatLevel))
-                LifecycleChip(lifecycle: trend.lifecycle)
-                Spacer(minLength: 0)
-            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(TrendyColors.inkElevated, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(TrendyColors.inkBorder, lineWidth: 1))
+            .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         }
-        .padding(16)
-        .background(TrendyColors.inkElevated)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(TrendyColors.inkBorder, lineWidth: 1)
-        )
+        .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(
-            "\(trend.title), \(trend.world.rawValue), \(trend.heatLevel.displayLabel), \(trend.lifecycle.displayLabel). \(trend.summary)"
-        )
-        .accessibilityHint("Opens origin story")
-    }
-}
-
-struct WorldChip: View {
-    let world: TrendWorld
-
-    var body: some View {
-        Text(world.rawValue.uppercased())
-            .font(TrendyTypography.mono(10))
-            .foregroundStyle(TrendyColors.textSecondary)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(TrendyColors.inkBorder.opacity(0.55))
-            .clipShape(Capsule())
-            .accessibilityLabel("World \(world.rawValue)")
-    }
-}
-
-struct LifecycleChip: View {
-    let lifecycle: TrendLifecycle
-
-    var body: some View {
-        Text(lifecycle.displayLabel.uppercased())
-            .font(TrendyTypography.mono(10))
-            .foregroundStyle(lifecycleForeground)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(lifecycleForeground.opacity(0.15))
-            .clipShape(Capsule())
-            .accessibilityLabel("Lifecycle \(lifecycle.displayLabel)")
-    }
-
-    private var lifecycleForeground: Color {
-        switch lifecycle {
-        case .rising: return TrendyColors.heatVolt
-        case .peaking: return TrendyColors.heatHot
-        case .cooling: return TrendyColors.heatCool
+        .accessibilityLabel("\(trend.displayTitle), \(trend.lifecycle.displayLabel), heat \(trend.heatPercent). \(trend.summary)")
+        .accessibilityHint("Opens the origin story")
+        .overlay(alignment: .bottomTrailing) {
+            SaveButton(trend: trend)
+                .padding(.trailing, 6)
+                .padding(.bottom, 4)
         }
     }
 }
 
-#Preview {
-    TrendCard(trend: MockTrendService.samples[0])
-        .padding()
-        .background(TrendyColors.inkBg)
+/// Navigation value for a trend detail push.
+struct TrendRoute: Hashable {
+    let id: String
 }

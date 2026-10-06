@@ -1,83 +1,144 @@
 import SwiftUI
 
+/// Home: trend feed ranked by homeRelevance (heat × lifecycle weight × recency),
+/// filtered to the worlds enabled under You, with an optional digest on top.
 struct HomeView: View {
-    @State private var viewModel = HomeViewModel()
+    @EnvironmentObject private var model: AppModel
+    @EnvironmentObject private var saved: SavedTrendsStore
+    @EnvironmentObject private var prefs: PreferencesStore
+
+    enum Filter: String, CaseIterable, Identifiable {
+        case all = "All"
+        case saved = "Saved"
+        var id: String { rawValue }
+    }
+
+    @State private var filter: Filter = .all
 
     var body: some View {
+        let ranked = TrendRanking.homeFeed(model.data.trends, disabledWorlds: prefs.disabledWorlds)
+        let savedIds = Set(saved.savedIds)
+        let items = filter == .saved ? ranked.filter { savedIds.contains($0.id) } : ranked
+        let digest = filter == .all ? TrendRanking.digest(from: ranked, frequency: prefs.digest) : []
         NavigationStack {
-            Group {
-                switch viewModel.state {
-                case .loading:
-                    loadingState
-                case .empty:
-                    emptyState
-                case .loaded(let trends):
-                    feed(trends)
-                }
-            }
-            .background(TrendyColors.inkBg.ignoresSafeArea())
-            .navigationTitle("Home")
-            .navigationDestination(for: Trend.self) { trend in
-                OriginStoryView(trend: trend)
-            }
-            .task {
-                if case .loading = viewModel.state {
-                    await viewModel.load()
-                }
-            }
-        }
-    }
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 16) {
+                    ScreenHint(text: "Signal, not scroll. Sorted by what\u{2019}s hot now.")
 
-    private var loadingState: some View {
-        VStack(spacing: 12) {
-            ProgressView()
-                .tint(TrendyColors.heatHot)
-            Text("Scanning signals…")
-                .font(TrendyTypography.mono(12))
-                .foregroundStyle(TrendyColors.textSecondary)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("Loading trends")
-    }
-
-    private var emptyState: some View {
-        ContentUnavailableView {
-            Label("Nothing heating up", systemImage: "flame")
-        } description: {
-            Text("Pull to refresh — mock signals will show up offline.")
-                .font(TrendyTypography.body(14))
-        }
-        .foregroundStyle(TrendyColors.textSecondary)
-        .refreshable {
-            await viewModel.load()
-        }
-    }
-
-    private func feed(_ trends: [Trend]) -> some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 12) {
-                Text("What’s heating up")
-                    .font(TrendyTypography.mono(12))
-                    .foregroundStyle(TrendyColors.textSecondary)
-                    .padding(.horizontal, 4)
-                    .accessibilityAddTraits(.isHeader)
-
-                ForEach(trends) { trend in
-                    NavigationLink(value: trend) {
-                        TrendCard(trend: trend)
+                    HStack(spacing: 8) {
+                        ForEach(Filter.allCases) { option in
+                            FilterChip(title: option.rawValue, isSelected: filter == option) {
+                                filter = option
+                            }
+                        }
                     }
-                    .buttonStyle(.plain)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel("Filter Home feed")
+
+                    if !digest.isEmpty {
+                        DigestCard(title: prefs.digest.headline, trends: digest)
+                    }
+
+                    if items.isEmpty {
+                        emptyState
+                    } else {
+                        if !digest.isEmpty {
+                            Text("Everything in your worlds")
+                                .font(TrendyTypography.mono(.caption))
+                                .textCase(.uppercase)
+                                .foregroundStyle(TrendyColors.textSecondary)
+                                .padding(.top, 4)
+                        }
+                        ForEach(items) { trend in
+                            TrendCard(trend: trend)
+                        }
+                    }
                 }
+                .padding(16)
+                .frame(maxWidth: 680)
+                .frame(maxWidth: .infinity)
             }
-            .padding(16)
+            .trendyScreenBackground()
+            .navigationTitle("Trendy")
+            .toolbarBackground(TrendyColors.inkBg, for: .navigationBar)
+            .navigationDestination(for: TrendRoute.self) { route in
+                TrendDetailView(trendID: route.id)
+            }
         }
-        .refreshable {
-            await viewModel.load()
+    }
+
+    @ViewBuilder
+    private var emptyState: some View {
+        if filter == .saved {
+            EmptyStateView(
+                title: "No saved trends here",
+                message: prefs.newHere
+                    ? "When something clicks, tap the heart on a card. Nothing wrong with an empty list \u{2014} you\u{2019}re just browsing."
+                    : "Save a trend from Home or Explore, then it shows up here.",
+                systemImage: "heart"
+            )
+        } else {
+            EmptyStateView(
+                title: "No trends in your worlds",
+                message: "Flip on some interests under You, or clear filters.",
+                systemImage: "globe"
+            )
         }
     }
 }
 
-#Preview {
-    HomeView()
+/// Compact digest list: rotates on the cadence picked under You → Digest.
+struct DigestCard: View {
+    let title: String
+    let trends: [Trend]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label(title, systemImage: "flame.fill")
+                .font(TrendyTypography.headline(.headline))
+                .foregroundStyle(TrendyColors.heatHot)
+            ForEach(Array(trends.enumerated()), id: \.element.id) { index, trend in
+                NavigationLink(value: TrendRoute(id: trend.id)) {
+                    HStack(spacing: 10) {
+                        Text("\(index + 1)")
+                            .font(TrendyTypography.mono(.caption))
+                            .foregroundStyle(TrendyColors.textSecondary)
+                            .frame(width: 18, alignment: .leading)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(trend.displayTitle)
+                                .font(TrendyTypography.body(.subheadline).weight(.semibold))
+                                .foregroundStyle(TrendyColors.textPrimary)
+                            if !trend.summary.isEmpty {
+                                Text(trend.summary)
+                                    .font(TrendyTypography.body(.caption))
+                                    .foregroundStyle(TrendyColors.textSecondary)
+                                    .lineLimit(1)
+                            }
+                        }
+                        Spacer(minLength: 8)
+                        Text("\(trend.heatPercent)")
+                            .font(TrendyTypography.mono(.caption))
+                            .foregroundStyle(TrendyColors.heatColor(for: trend.heatLevel))
+                        Image(systemName: "chevron.right")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(TrendyColors.textFaint)
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("\(index + 1). \(trend.displayTitle), heat \(trend.heatPercent)")
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            LinearGradient(
+                colors: [TrendyColors.heatHot.opacity(0.14), TrendyColors.heatCool.opacity(0.08)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+        )
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(TrendyColors.heatHot.opacity(0.3), lineWidth: 1))
+    }
 }

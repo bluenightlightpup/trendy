@@ -2,27 +2,27 @@ import SwiftUI
 
 /// Four-tab shell: Home, Decode, Explore, You.
 struct RootTabView: View {
+    enum Tab: Hashable { case home, decode, explore, you }
+
+    @State private var selection: Tab = .home
+
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
             HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "flame.fill")
-                }
+                .tabItem { Label("Home", systemImage: "flame.fill") }
+                .tag(Tab.home)
 
             DecodeView()
-                .tabItem {
-                    Label("Decode", systemImage: "text.bubble.fill")
-                }
+                .tabItem { Label("Decode", systemImage: "text.bubble.fill") }
+                .tag(Tab.decode)
 
             ExploreView()
-                .tabItem {
-                    Label("Explore", systemImage: "globe")
-                }
+                .tabItem { Label("Explore", systemImage: "globe") }
+                .tag(Tab.explore)
 
             YouView()
-                .tabItem {
-                    Label("You", systemImage: "person.crop.circle")
-                }
+                .tabItem { Label("You", systemImage: "person.crop.circle") }
+                .tag(Tab.you)
         }
         .tint(TrendyColors.heatHot)
         .toolbarBackground(TrendyColors.inkElevated, for: .tabBar)
@@ -32,4 +32,8 @@ struct RootTabView: View {
 
 #Preview {
     RootTabView()
+        .environmentObject(AppModel())
+        .environmentObject(SavedTrendsStore())
+        .environmentObject(PreferencesStore())
+        .preferredColorScheme(.dark)
 }

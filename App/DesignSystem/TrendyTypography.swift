@@ -1,18 +1,17 @@
 import SwiftUI
 
-/// Intended: Space Grotesk + JetBrains Mono. System fallbacks until fonts ship.
+/// System fonts with text styles so everything scales with Dynamic Type.
+/// Intended faces (Space Grotesk / JetBrains Mono) can replace these later.
 enum TrendyTypography {
-    static func headline(_ size: CGFloat = 24) -> Font {
-        // Space Grotesk → rounded system fallback
-        .system(size: size, weight: .bold, design: .rounded)
+    static func headline(_ style: Font.TextStyle = .title3) -> Font {
+        .system(style, design: .rounded).weight(.bold)
     }
 
-    static func body(_ size: CGFloat = 16) -> Font {
-        .system(size: size, weight: .regular, design: .default)
+    static func body(_ style: Font.TextStyle = .body) -> Font {
+        .system(style)
     }
 
-    static func mono(_ size: CGFloat = 12) -> Font {
-        // JetBrains Mono → monospaced system fallback
-        .system(size: size, weight: .medium, design: .monospaced)
+    static func mono(_ style: Font.TextStyle = .caption) -> Font {
+        .system(style, design: .monospaced).weight(.medium)
     }
 }
