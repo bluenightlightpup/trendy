@@ -8,7 +8,7 @@
 
 1. **CLI + MCP** (`cli/`): stdlib Python. `trendy decode|trends|radar|mcp|serve`. Installable via `pyproject.toml` (`trendy-cli`).
 2. **PWA** (`web/`): static client on the same `web/data`.
-3. **iOS / SwiftUI** (`App/`): experimental; see `docs/xcode-setup.md`.
+3. **iOS / SwiftUI** (`App/`): native app built from `project.yml` (XcodeGen), bundling `web/data/`; see `docs/xcode-setup.md`. Keep `App/Core/DecodeEngine.swift` in step with `web/decode-ai.js`, regenerate `App/Core/CoreLexicon.swift` with `node scripts/gen-core-lexicon.mjs` when CORE_ABBREVS change, and run `scripts/swift-linux-check.sh`.
 
 **Rules:**
 

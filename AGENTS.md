@@ -4,7 +4,7 @@ Guidance for AI coding agents (Cursor, Claude Code, Codex, …) working in this 
 
 ## What Trendy is
 
-A Python CLI and read-only stdio MCP server for decoding slang, abbreviations and meme trends. Agents call it. The PWA in `web/` is a client on the same data. The SwiftUI app in `App/` is experimental.
+A Python CLI and read-only stdio MCP server for decoding slang, abbreviations and meme trends. Agents call it. The PWA in `web/` is a client on the same data. The native SwiftUI app in `App/` bundles the same data (see `docs/xcode-setup.md`; `scripts/swift-linux-check.sh` checks it on Linux).
 
 ## Ground rules
 

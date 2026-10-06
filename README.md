@@ -2,7 +2,7 @@
 
 **Decode slang, texting abbreviations and meme trends, from your terminal or straight from your AI agent.**
 
-Trendy is a small, dependency-free Python CLI and a read-only **MCP server**. It works from one curated lexicon covering Gen Alpha, Gen Z and internet slang plus about 370 texting abbreviations, and a trend catalog with heat scores, lifecycle stages and age bands. It doesn't judge anyone for asking. A phone-friendly **PWA** reads the same data.
+Trendy is a small, dependency-free Python CLI and a read-only **MCP server**. It works from one curated lexicon covering Gen Alpha, Gen Z and internet slang plus about 370 texting abbreviations, and a trend catalog with heat scores, lifecycle stages and age bands. It doesn't judge anyone for asking. A phone-friendly **PWA** and a native **iOS app** read the same data.
 
 <!-- mcp-name: io.github.bluenightlightpup/trendy -->
 
@@ -110,6 +110,20 @@ trendy serve --host 0.0.0.0           # then enter URL + token in the PWA's You 
 
 The proxy binds `127.0.0.1` by default. It refuses to listen on a non-loopback address without `TRENDY_PROXY_TOKEN`, checks `Authorization: Bearer <token>`, and only allows CORS from localhost and private-LAN origins (add more with `--allow-origin`). It's meant for personal or trusted-LAN use only. See [`docs/live-decode.md`](docs/live-decode.md) and [`docs/community-lexicon.md`](docs/community-lexicon.md) (suggest → consensus).
 
+## iOS app (native SwiftUI)
+
+[`App/`](App/) holds a native iPhone app (iOS 17+, SwiftUI, no dependencies) that matches the PWA: Home (the same heat × lifecycle × recency ranking, digest card, origin stories, Save), Explore (world chips, search), Decode (an offline port of the `web/decode-ai.js` ladder, with an optional single-word dictionary lookup) and You (worlds, digest, New here, saved list). It bundles the `web/data/` JSON at build time, works offline, has no accounts or API keys, and collects no data.
+
+Building it requires a Mac with Xcode 26+:
+
+```bash
+brew install xcodegen
+xcodegen generate            # project.yml is the source of truth; Trendy.xcodeproj is gitignored
+open Trendy.xcodeproj        # set DEVELOPMENT_TEAM in project.yml first; ⌘U runs TrendyTests
+```
+
+The Foundation-only engine in `App/Core` also builds and tests on Linux: `scripts/swift-linux-check.sh` parses every Swift file, runs the Core tests and diffs Decode output against the PWA. Release docs: [`docs/xcode-setup.md`](docs/xcode-setup.md) · [`docs/testflight.md`](docs/testflight.md) · [`docs/app-store/release-checklist.md`](docs/app-store/release-checklist.md) · [`docs/app-store/app-store-listing.md`](docs/app-store/app-store-listing.md) · [privacy policy](docs/app-store/privacy-policy.md).
+
 ## Trend Radar (data refresh)
 
 `radar/run_ingest.py` merges public signals into `web/data/trends.json` and `slang.json`. A GitHub Actions job runs it **once a day**.
@@ -144,7 +158,10 @@ Repo layout:
 cli/        CLI, stdio MCP server, Live Decode proxy (installs as trendy_cli)
 web/        PWA + the shared data in web/data/
 radar/      Trend Radar ingest
-App/        SwiftUI app (experimental; see docs/xcode-setup.md)
+App/        native iOS app (SwiftUI; see docs/xcode-setup.md)
+Config/     iOS Info.plist
+Tests/      iOS unit tests (TrendyTests)
+scripts/    icon + lexicon generators, Linux Swift check
 docs/       PRD, architecture, ADRs, backlog
 ```
 
