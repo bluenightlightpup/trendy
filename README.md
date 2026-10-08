@@ -43,6 +43,8 @@ trendy decode 67                      # slang card: meaning, origin, who says it
 trendy decode lgtm --json             # machine-readable; exit code 1 if no match
 trendy trends --min-heat 0.7 --limit 10
 trendy trends --world TikTok --json
+trendy word                           # today's word of the day (alias: trendy wotd)
+trendy word --date 2026-12-25 --json  # any date, machine-readable
 trendy radar status                   # last Trend Radar run (adapters, errors, catalog size)
 trendy --version
 ```
@@ -51,7 +53,7 @@ Exit codes: `0` found, `1` no lexicon match (`decode`), `2` usage or runtime err
 
 ## MCP quickstart (Cursor, Claude Desktop, any MCP client)
 
-The server is local stdio only and exposes four **read-only** tools: `decode_term`, `search_slang`, `get_trends`, `radar_status`. It has no write tools and no network access, and it never puts API keys in results. It negotiates MCP protocol versions `2024-11-05` through `2025-11-25`.
+The server is local stdio only and exposes five **read-only** tools: `decode_term`, `search_slang`, `get_trends`, `radar_status`, `word_of_the_day`. It has no write tools and no network access, and it never puts API keys in results. It negotiates MCP protocol versions `2024-11-05` through `2025-11-25`.
 
 **Installed** (`pip install .` / `pipx install .`):
 
@@ -84,7 +86,7 @@ There's also a [`server.json`](server.json) for the MCP registry (`io.github.blu
 
 ## Phone app (PWA)
 
-A static Progressive Web App in [`web/`](web/) has four tabs: Home (what's hot now), Decode (chat-style lookups), Explore (browse by world) and You (filters, saved trends).
+A static Progressive Web App in [`web/`](web/) has four tabs: Home (word of the day plus what's hot now), Decode (chat-style lookups), Explore (browse by world) and You (filters, saved trends).
 
 ```bash
 python3 -m http.server 4173 --directory web    # or: npx --yes serve web -l 4173
@@ -112,9 +114,13 @@ trendy serve --host 0.0.0.0           # then enter URL + token in the PWA's You 
 
 The proxy binds `127.0.0.1` by default. It refuses to listen on a non-loopback address without `TRENDY_PROXY_TOKEN`, checks `Authorization: Bearer <token>`, and only allows CORS from localhost and private-LAN origins (add more with `--allow-origin`). It's meant for personal or trusted-LAN use only. See [`docs/live-decode.md`](docs/live-decode.md) and [`docs/community-lexicon.md`](docs/community-lexicon.md) (suggest → consensus).
 
+### Word of the day
+
+Every day Trendy picks one curated slang word and shows what it means, where it comes from, who says it and an example. It's on top of Home in the PWA and the iOS app, on the website, from `trendy word` and from the MCP tool `word_of_the_day`. Every surface picks the same word for a given local date, offline, with no server: a seeded shuffle of the eligible lexicon that shows each word once per cycle. Spec, eligibility rules and overrides: [`docs/word-of-the-day.md`](docs/word-of-the-day.md).
+
 ## iOS app (native SwiftUI)
 
-[`App/`](App/) holds a native iPhone app (iOS 17+, SwiftUI, no dependencies) that matches the PWA: Home (the same heat × lifecycle × recency ranking, digest card, origin stories, Save), Explore (world chips, search), Decode (an offline port of the `web/decode-ai.js` ladder, with an optional single-word dictionary lookup) and You (worlds, digest, New here, saved list). It bundles the `web/data/` JSON at build time, works offline, has no accounts or API keys, and collects no data.
+[`App/`](App/) holds a native iPhone app (iOS 17+, SwiftUI, no dependencies) that matches the PWA: Home (word of the day, the same heat × lifecycle × recency ranking, digest card, origin stories, Save), Explore (world chips, search), Decode (an offline port of the `web/decode-ai.js` ladder, with an optional single-word dictionary lookup) and You (worlds, digest, New here, saved list). It bundles the `web/data/` JSON at build time, works offline, has no accounts or API keys, and collects no data.
 
 Building it requires a Mac with Xcode 26+:
 

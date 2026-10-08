@@ -6,8 +6,8 @@ Status: **shipped.** CLI v0.1.0 plus a local stdio MCP server. Packaged as `tren
 
 | Surface | Who uses it | Example |
 |---------|-------------|---------|
-| **CLI** | Humans, scripts, CI, agents that shell out | `trendy decode 67` · `trendy trends --min-heat 0.7 --json` · `trendy radar status` |
-| **MCP server** | Cursor, Claude Desktop, any MCP client | Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status` |
+| **CLI** | Humans, scripts, CI, agents that shell out | `trendy decode 67` · `trendy trends --min-heat 0.7 --json` · `trendy word` · `trendy radar status` |
+| **MCP server** | Cursor, Claude Desktop, any MCP client | Tools: `decode_term`, `search_slang`, `get_trends`, `radar_status`, `word_of_the_day` |
 
 The Python code in `cli/` (shipped as `trendy_cli`) is the source of truth that agents call. The PWA and the experimental iOS app are clients on the same `web/data`. Trend Radar (`radar/`) refreshes that data; the CLI reads it and can start an ingest from a checkout (`trendy radar run`).
 
@@ -54,7 +54,7 @@ On Windows, use `"command": "py"` (or the full path to `python.exe`) and an esca
 
 ## Tools
 
-All tools are annotated `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true` and `openWorldHint: false`. They read only `web/data/*.json` and `radar/out/last-run.json`, or the bundled copies when installed.
+All tools are annotated `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true` and `openWorldHint: false`. They read only `web/data/*.json` (including `word-of-the-day.json`) and `radar/out/last-run.json`, or the bundled copies when installed.
 
 | Tool | Arguments | Returns |
 |------|-----------|---------|
@@ -62,6 +62,7 @@ All tools are annotated `readOnlyHint: true`, `destructiveHint: false`, `idempot
 | `search_slang` | `query` (≥ 2 chars, whole-word match), `limit` 1–50 | matching lexicon hits |
 | `get_trends` | `min_heat` 0–1, `limit` 1–50, `world` | hot trends, highest heat first |
 | `radar_status` | none | last ingest summary (adapters, errors, catalog size) |
+| `word_of_the_day` | `date` (optional, `YYYY-MM-DD`; default today on the server's clock) | `term`, `meaning`, `explain`, `example`, `origin`, `age`, `worlds`, `trend` (lifecycle + heat 0–100, or null), `yesterday`, `share`, `decode_more`, `pool_size`. Same word as the PWA, site and iOS app for that date ([spec](word-of-the-day.md)) |
 
 ## Protocol behaviour
 
@@ -93,3 +94,4 @@ The optional HTTP proxy (`trendy serve`) is a separate surface. It binds `127.0.
 | 2026-09-14 | CLI GO; MCP deferred | ADR `docs/adr/0001-cli-mcp.md` |
 | 2026-10-03 | MCP un-deferred and shipped (Option C) | Python stdio next to the CLI; read-only tools; not hosted |
 | 2026-10-05 | Productised | MCP spec compliance (version negotiation, -32602, argument validation, UTF-8 bytes), packaging (`trendy-cli`), `server.json`, proxy auth |
+| 2026-10-08 | `word_of_the_day` tool + `trendy word` | Fifth read-only tool; deterministic daily pick shared with PWA, site and iOS ([spec](word-of-the-day.md)) |

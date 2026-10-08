@@ -14,6 +14,7 @@ A Python CLI and read-only stdio MCP server for decoding slang, abbreviations an
 - Keep Decode wording judgment-free and parent-safe. If a term has a sexual meaning, say so plainly and without graphic detail.
 - MCP tools stay read-only. Ingest (`trendy radar run`) is CLI-only.
 - The Radar bot commits `web/data/*.json` and `radar/out/last-run.json` daily. Rebase before you push.
+- Word of the day is computed identically in `web/wotd.js`, `cli/wotd.py` and `App/Core/WordOfTheDay.swift`. Change all three together, and regenerate `Tests/Fixtures/wotd-golden.json` (`python3 scripts/gen-wotd-golden.py`) only on purpose. See `docs/word-of-the-day.md`.
 
 ## Checks before a PR
 
