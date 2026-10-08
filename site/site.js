@@ -1,4 +1,6 @@
-/* Trendy website: tiny Decode demo + copy buttons. No network requests, no storage. */
+/* Trendy website: Word of the Day, tiny Decode demo + copy buttons.
+ * No storage and no third-party requests: Word of the Day reads the web app's own data files
+ * (app/data/*.json, same origin) and picks the word with app/wotd.js, like the apps do. */
 (function () {
   "use strict";
 
@@ -345,7 +347,66 @@
     });
   }
 
+  function getJSON(url) {
+    return fetch(url, { credentials: "same-origin" }).then(function (res) {
+      if (!res.ok) throw new Error(url + " " + res.status);
+      return res.json();
+    });
+  }
+
+  function initWotd() {
+    var card = $("wotd-card");
+    var W = window.TrendyWOTD;
+    if (!card || !W || typeof fetch !== "function") return; // static fallback text stays
+    Promise.all([
+      getJSON("app/data/slang.json"),
+      getJSON("app/data/trends.json").catch(function () { return []; }),
+      getJSON("app/data/word-of-the-day.json").catch(function () { return {}; })
+    ]).then(function (res) {
+      var slang = res[0], trends = res[1], overrides = res[2];
+      var pool = W.buildPool(slang);
+      var today = W.localDateString();
+      var word = W.wordForDate(slang, today, { pool: pool, overrides: overrides });
+      var d = word && W.details(word, trends);
+      if (!d) return;
+      setText("wotd-term", d.term);
+      setText("wotd-date", new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" }));
+      setText("wotd-short", d.meaning);
+      setText("wotd-explain", d.explain);
+      setText("wotd-example", W.quoteExample(d.example));
+      $("wotd-example").hidden = !d.example;
+      $("wotd-example-label").hidden = !d.example;
+      setText("wotd-origin", d.origin);
+      setText("wotd-age", d.age || "Everyone, judgment-free.");
+      var tags = $("wotd-tags");
+      tags.innerHTML = "";
+      if (d.trend) {
+        var life = document.createElement("li");
+        life.className = "tag tag-volt";
+        life.textContent = (d.trend.lifecycle ? d.trend.lifecycle.charAt(0).toUpperCase() + d.trend.lifecycle.slice(1) : "Active") + " trend";
+        var heat = document.createElement("li");
+        heat.className = "tag tag-cool";
+        heat.textContent = "Heat " + d.trend.heat;
+        tags.appendChild(life);
+        tags.appendChild(heat);
+      }
+      tags.hidden = !d.trend;
+      $("wotd-decode").href = "app/?decode=" + encodeURIComponent(d.term);
+      var y = W.wordForDate(slang, W.addDays(today, -1), { pool: pool, overrides: overrides });
+      if (y) {
+        setText("wotd-yesterday", "Yesterday\u2019s word: " + y.term);
+        $("wotd-yesterday").hidden = false;
+      }
+      $("wotd-fallback").hidden = true;
+      $("wotd-details").hidden = false;
+      card.setAttribute("data-ready", "true");
+    }).catch(function () {
+      /* offline or data missing: keep the fallback that points to the app */
+    });
+  }
+
   function init() {
+    initWotd();
     initDemo();
     initCopy();
   }

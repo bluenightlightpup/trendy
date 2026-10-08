@@ -19,7 +19,9 @@ class McpToolsTest(unittest.TestCase):
         self.assertIsNotNone(listed)
         assert listed is not None
         names = [tool["name"] for tool in listed["result"]["tools"]]
-        self.assertEqual(names, ["decode_term", "search_slang", "get_trends", "radar_status"])
+        self.assertEqual(
+            names, ["decode_term", "search_slang", "get_trends", "radar_status", "word_of_the_day"]
+        )
 
         called = mcp_server.dispatch(
             {
@@ -81,7 +83,7 @@ class McpToolsTest(unittest.TestCase):
         tool_names = [t["name"] for t in bodies[1]["result"]["tools"]]
         self.assertEqual(
             tool_names,
-            ["decode_term", "search_slang", "get_trends", "radar_status"],
+            ["decode_term", "search_slang", "get_trends", "radar_status", "word_of_the_day"],
         )
         decoded = json.loads(bodies[2]["result"]["content"][0]["text"])
         self.assertTrue(decoded.get("age") or decoded.get("meaning"))
@@ -136,6 +138,10 @@ class McpToolsTest(unittest.TestCase):
             ("get_trends", {"min_heat": "hot"}),
             ("get_trends", {"limit": True}),
             ("radar_status", {"extra": 1}),
+            ("word_of_the_day", {"date": "tomorrow"}),
+            ("word_of_the_day", {"date": "2026-02-30"}),
+            ("word_of_the_day", {"date": 20261008}),
+            ("word_of_the_day", {"day": "2026-10-08"}),
         ]
         for name, args in cases:
             resp = self._call(name, args)

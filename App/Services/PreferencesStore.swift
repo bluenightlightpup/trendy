@@ -9,6 +9,7 @@ final class PreferencesStore: ObservableObject {
         static let digest = "trendy.you.digest.v1"
         static let newHere = "trendy.you.newHere.v1"
         static let dictionaryLookups = "trendy.you.dictionaryLookups.v1"
+        static let wordOfTheDay = "trendy.you.wordOfTheDay.v1"
     }
 
     /// Worlds switched off under You (stored as raw world names; unknown worlds stay visible).
@@ -30,6 +31,11 @@ final class PreferencesStore: ObservableObject {
         didSet { defaults.set(dictionaryLookups, forKey: Keys.dictionaryLookups) }
     }
 
+    /// Word of the Day card at the top of Home. Default on.
+    @Published var showWordOfTheDay: Bool {
+        didSet { defaults.set(showWordOfTheDay, forKey: Keys.wordOfTheDay) }
+    }
+
     private let defaults: UserDefaults
 
     init(defaults: UserDefaults = .standard) {
@@ -38,6 +44,7 @@ final class PreferencesStore: ObservableObject {
         self.digest = TrendRanking.DigestFrequency(rawValue: defaults.string(forKey: Keys.digest) ?? "") ?? .weekly
         self.newHere = defaults.object(forKey: Keys.newHere) as? Bool ?? true
         self.dictionaryLookups = defaults.object(forKey: Keys.dictionaryLookups) as? Bool ?? true
+        self.showWordOfTheDay = defaults.object(forKey: Keys.wordOfTheDay) as? Bool ?? true
     }
 
     func isEnabled(_ world: TrendWorld) -> Bool {

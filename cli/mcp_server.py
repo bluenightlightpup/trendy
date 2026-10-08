@@ -56,7 +56,7 @@ _SECRET_VAL = re.compile(
     re.IGNORECASE,
 )
 
-TOOL_NAMES = ("decode_term", "search_slang", "get_trends", "radar_status")
+TOOL_NAMES = ("decode_term", "search_slang", "get_trends", "radar_status", "word_of_the_day")
 
 _session: dict[str, Any] = {"protocolVersion": None}
 
@@ -255,6 +255,20 @@ def radar_status() -> dict[str, Any]:
     return scrub(payload)
 
 
+def word_of_the_day(date: str | None = None) -> dict[str, Any]:
+    """Deterministic daily word (same as the PWA, website and iOS app for that date)."""
+    trendy = _trendy()
+    try:
+        payload = trendy.word_payload(date)
+    except ValueError as exc:
+        raise ToolInputError(str(exc)) from exc
+    if payload is None:
+        raise RuntimeError("no eligible words in the lexicon")
+    if date is None:
+        payload["note"] = "date defaults to today in this machine's local time zone"
+    return payload
+
+
 def _clamp_limit(limit: Any, default: int = 20) -> int:
     try:
         value = int(limit)
@@ -369,6 +383,28 @@ def tool_definitions() -> list[dict[str, Any]]:
             },
             "annotations": {"title": "Trend Radar status", **_READ_ONLY},
         },
+        {
+            "name": "word_of_the_day",
+            "title": "Word of the day",
+            "description": (
+                "Trendy's word of the day: one curated, 13+-safe slang word per calendar date, "
+                "the same word the Trendy web app, website and iOS app show that day. Returns "
+                "term, meaning, explain, example, origin, age band, matching trend (lifecycle, "
+                "heat) and yesterday's word. Read-only and deterministic."
+            ),
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+                        "description": "Calendar date YYYY-MM-DD (default: today, local time)",
+                    }
+                },
+                "additionalProperties": False,
+            },
+            "annotations": {"title": "Word of the day", **_READ_ONLY},
+        },
     ]
 
 
@@ -406,6 +442,8 @@ def validate_arguments(name: str, arguments: dict[str, Any]) -> None:
             raise ToolInputError(f"{key} must be a{'n' if expected == 'integer' else ''} {expected}")
         if isinstance(value, str) and "minLength" in spec and len(value.strip()) < spec["minLength"]:
             raise ToolInputError(f"{key} must be at least {spec['minLength']} character(s)")
+        if isinstance(value, str) and "pattern" in spec and not re.fullmatch(spec["pattern"], value):
+            raise ToolInputError(f"{key} must match {spec['pattern']}")
         if isinstance(value, (int, float)) and not isinstance(value, bool):
             if "minimum" in spec and value < spec["minimum"]:
                 raise ToolInputError(f"{key} must be >= {spec['minimum']}")
@@ -448,6 +486,8 @@ def call_tool(name: str, arguments: dict[str, Any] | None) -> dict[str, Any]:
                 limit=args.get("limit", 20),
                 world=args.get("world"),
             )
+        elif name == "word_of_the_day":
+            result = word_of_the_day(args.get("date"))
         else:
             result = radar_status()
     except ToolInputError as exc:
@@ -506,7 +546,7 @@ def dispatch(message: Any) -> dict[str, Any] | None:
                 "instructions": (
                     "Trendy: local, read-only slang / meme / trend decoder. Use decode_term for one "
                     "term or phrase, search_slang to browse, get_trends for what is hot, "
-                    "radar_status for data freshness. No write tools; results never include API keys."
+                    "radar_status for data freshness, word_of_the_day for the daily word. No write tools; results never include API keys."
                 ),
             },
         )

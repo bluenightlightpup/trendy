@@ -1,7 +1,7 @@
 import SwiftUI
 
-/// Home: trend feed ranked by homeRelevance (heat × lifecycle weight × recency),
-/// filtered to the worlds enabled under You, with an optional digest on top.
+/// Home: Word of the Day card, then the trend feed ranked by homeRelevance (heat × lifecycle
+/// weight × recency), filtered to the worlds enabled under You, with an optional digest on top.
 struct HomeView: View {
     @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var saved: SavedTrendsStore
@@ -14,6 +14,9 @@ struct HomeView: View {
     }
 
     @State private var filter: Filter = .all
+    /// Local calendar date for Word of the Day; refreshed when the app becomes active.
+    @State private var today = WordOfTheDay.localDateString()
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         let ranked = TrendRanking.homeFeed(model.data.trends, disabledWorlds: prefs.disabledWorlds)
@@ -24,6 +27,10 @@ struct HomeView: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 16) {
                     ScreenHint(text: "Signal, not scroll. Sorted by what\u{2019}s hot now.")
+
+                    if prefs.showWordOfTheDay, let card = model.wordCard(on: today) {
+                        WordOfTheDayCard(card: card, yesterday: yesterdayWord)
+                    }
 
                     HStack(spacing: 8) {
                         ForEach(Filter.allCases) { option in
@@ -64,7 +71,19 @@ struct HomeView: View {
             .navigationDestination(for: TrendRoute.self) { route in
                 TrendDetailView(trendID: route.id)
             }
+            .navigationDestination(for: WordRoute.self) { route in
+                WordOfTheDayDetailView(date: route.date)
+            }
+            .onAppear { today = WordOfTheDay.localDateString() }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active { today = WordOfTheDay.localDateString() }
+            }
         }
+    }
+
+    private var yesterdayWord: (date: String, term: String)? {
+        guard let date = WordOfTheDay.addDays(today, -1), let word = model.wordOfTheDay(on: date) else { return nil }
+        return (date, word.term)
     }
 
     @ViewBuilder

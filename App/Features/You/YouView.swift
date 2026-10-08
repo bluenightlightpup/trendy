@@ -55,6 +55,16 @@ struct YouView: View {
                 }
 
                 Section {
+                    Toggle("Word of the day on Home", isOn: $prefs.showWordOfTheDay)
+                        .tint(TrendyColors.heatCool)
+                        .listRowBackground(TrendyColors.inkElevated)
+                } header: {
+                    Text("Daily word")
+                } footer: {
+                    Text("A new slang word every day, picked offline \u{2014} the same word in the web app and on the website.")
+                }
+
+                Section {
                     ForEach(TrendWorld.allCases) { world in
                         Toggle(world.rawValue, isOn: Binding(
                             get: { prefs.isEnabled(world) },

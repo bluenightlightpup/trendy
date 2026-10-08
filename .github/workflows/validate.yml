@@ -80,6 +80,7 @@ jobs:
           trendy --version
           trendy decode rizz
           trendy trends --limit 3
+          trendy word --date 2026-10-08
           printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}' | trendy mcp | grep -q '"serverInfo"'
           python -c "import json; json.load(open('$GITHUB_WORKSPACE/server.json'))"
 

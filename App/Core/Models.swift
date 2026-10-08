@@ -196,9 +196,18 @@ struct LexiconEntry: Hashable, Decodable {
     var confidence: String?
     /// "slang" or "abbreviation" (set on built-in core rows).
     var kind: String?
+    /// Word of the Day: `false` opts a row out; `mature: true` also keeps it out (see WordOfTheDay).
+    var wotd: Bool?
+    var mature: Bool?
+    /// Example sentence for the Word of the Day card (`example` is accepted too).
+    var wotdExample: String?
+    var example: String?
+    /// Set by Trend Radar on unverified candidates.
+    var radarSource: String?
 
     enum CodingKeys: String, CodingKey {
         case terms, short, explain, origin, age, worlds, source, confidence, kind
+        case wotd, mature, wotdExample, example, radarSource
     }
 
     init(
@@ -210,7 +219,12 @@ struct LexiconEntry: Hashable, Decodable {
         worlds: [String] = [],
         source: String? = nil,
         confidence: String? = nil,
-        kind: String? = nil
+        kind: String? = nil,
+        wotd: Bool? = nil,
+        mature: Bool? = nil,
+        wotdExample: String? = nil,
+        example: String? = nil,
+        radarSource: String? = nil
     ) {
         self.terms = terms
         self.short = short
@@ -221,6 +235,11 @@ struct LexiconEntry: Hashable, Decodable {
         self.source = source
         self.confidence = confidence
         self.kind = kind
+        self.wotd = wotd
+        self.mature = mature
+        self.wotdExample = wotdExample
+        self.example = example
+        self.radarSource = radarSource
     }
 
     init(from decoder: Decoder) throws {
@@ -242,6 +261,11 @@ struct LexiconEntry: Hashable, Decodable {
         self.source = (try? c.decodeIfPresent(String.self, forKey: .source)) ?? nil
         self.confidence = (try? c.decodeIfPresent(String.self, forKey: .confidence)) ?? nil
         self.kind = (try? c.decodeIfPresent(String.self, forKey: .kind)) ?? nil
+        self.wotd = (try? c.decodeIfPresent(Bool.self, forKey: .wotd)) ?? nil
+        self.mature = (try? c.decodeIfPresent(Bool.self, forKey: .mature)) ?? nil
+        self.wotdExample = (try? c.decodeIfPresent(String.self, forKey: .wotdExample)) ?? nil
+        self.example = (try? c.decodeIfPresent(String.self, forKey: .example)) ?? nil
+        self.radarSource = (try? c.decodeIfPresent(String.self, forKey: .radarSource)) ?? nil
     }
 
     var ageBand: AgeBand? { AgeBand(raw: age) }

@@ -77,6 +77,8 @@ enum ContentSafety {
         e.short = mask(e.short)
         e.explain = mask(e.explain)
         e.origin = mask(e.origin)
+        e.wotdExample = e.wotdExample.map(mask)
+        e.example = e.example.map(mask)
         return e
     }
 

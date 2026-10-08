@@ -1,5 +1,5 @@
 /* Trendy PWA — network-first for app/data so Decode lexicon updates stick */
-const CACHE = "trendy-v16";
+const CACHE = "trendy-v17";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -7,12 +7,14 @@ const PRECACHE = [
   "./decode-ai.js",
   "./suggest.js",
   "./saved.js",
+  "./wotd.js",
   "./app.js",
   "./manifest.webmanifest",
   "./data/trends.json",
   "./data/slang.json",
   "./data/abbreve.json",
   "./data/community-slang.json",
+  "./data/word-of-the-day.json",
   "./icons/icon.svg",
   "./icons/icon-maskable.svg",
   "./icons/favicon.svg",

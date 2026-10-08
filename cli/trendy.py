@@ -6,6 +6,7 @@ Usage (installed: `trendy ...`; from a checkout: `python3 cli/trendy.py ...`):
   trendy decode "nah id win" --json
   trendy decode "niche phrase" --live          # needs OPENAI_API_KEY / ANTHROPIC_API_KEY
   trendy trends --min-heat 0.7 --limit 20
+  trendy word [--date YYYY-MM-DD] [--json]     # word of the day (alias: wotd)
   trendy radar status
   trendy radar run [-- ...flags for run_ingest.py]   # git checkout only
   trendy mcp                                   # local stdio MCP server
@@ -38,6 +39,7 @@ SLANG_PATH = DATA / "slang.json"
 ABBREVE_PATH = DATA / "abbreve.json"
 COMMUNITY_PATH = paths.community_read_path()
 TRENDS_PATH = DATA / "trends.json"
+WOTD_PATH = DATA / "word-of-the-day.json"
 LAST_RUN_PATH = paths.last_run_path()
 INGEST_SCRIPT = paths.ingest_script()
 
@@ -305,6 +307,59 @@ def cmd_decode(args: argparse.Namespace) -> int:
     return 0
 
 
+def word_payload(date: str | None = None) -> dict[str, Any] | None:
+    """Word of the Day card for a local date (default: today on this machine). Raises ValueError."""
+    from . import wotd
+
+    day = date if date is not None else wotd.local_date_string()
+    wotd.parse_date(day)
+    slang = _load_json(SLANG_PATH, {"entries": []})
+    overrides = _load_json(WOTD_PATH, {})
+    word = wotd.word_for_date(slang, day, overrides=overrides)
+    if word is None:
+        return None
+    trends = _load_json(TRENDS_PATH, [])
+    out = wotd.details(word, trends)
+    yesterday = wotd.word_for_date(slang, wotd.add_days(day, -1), overrides=overrides)
+    out["yesterday"] = yesterday["term"] if yesterday else None
+    out["share"] = wotd.share_text(out)
+    return out
+
+
+def cmd_word(args: argparse.Namespace) -> int:
+    try:
+        payload = word_payload(args.date)
+    except ValueError as exc:
+        print(f"trendy word: {exc}", file=sys.stderr)
+        return 2
+    if payload is None:
+        print("trendy word: no eligible words in the lexicon", file=sys.stderr)
+        return 2
+    if args.json:
+        _print_json(payload)
+        return 0
+    print(f"Word of the day · {payload['date']}" + ("  (hand-picked)" if payload["override"] else ""))
+    print(f"{payload['term']}  [slang]")
+    rows = (
+        ("meaning", payload.get("meaning")),
+        ("explain", payload.get("explain")),
+        ("example", payload.get("example")),
+        ("origin", payload.get("origin")),
+        ("age", payload.get("age")),
+    )
+    for name, value in rows:
+        if value:
+            print(f"{name + ':':<8} {value}")
+    trend = payload.get("trend")
+    if trend:
+        life = (trend.get("lifecycle") or "active").capitalize()
+        print(f"{'trend:':<8} {trend['title']} · {life} · heat {trend['heat']}")
+    if payload.get("yesterday"):
+        print(f"{'before:':<8} yesterday was {payload['yesterday']}")
+    print(f"{'more:':<8} {payload['decode_more']}")
+    return 0
+
+
 def cmd_serve(args: argparse.Namespace) -> int:
     from .live_decode import run_serve
 
@@ -489,6 +544,20 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_decode.add_argument("--json", action="store_true", help="Print a JSON object")
     p_decode.set_defaults(func=cmd_decode)
+
+    p_word = sub.add_parser(
+        "word",
+        help="Word of the day: one curated slang word per local date",
+        aliases=["wotd"],
+    )
+    p_word.add_argument(
+        "--date",
+        default=None,
+        metavar="YYYY-MM-DD",
+        help="Local calendar date (default: today on this machine)",
+    )
+    p_word.add_argument("--json", action="store_true", help="Print a JSON object")
+    p_word.set_defaults(func=cmd_word)
 
     p_trends = sub.add_parser("trends", help="List hot trends, highest heat first")
     p_trends.add_argument("--min-heat", type=float, default=0.0, help="Minimum heat 0–1 (default: 0)")

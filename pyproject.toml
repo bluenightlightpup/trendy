@@ -51,6 +51,7 @@ exclude = ["cli/test_*.py", "cli/__pycache__"]
 "web/data/abbreve.json" = "trendy_cli/data/abbreve.json"
 "web/data/trends.json" = "trendy_cli/data/trends.json"
 "web/data/community-slang.json" = "trendy_cli/data/community-slang.json"
+"web/data/word-of-the-day.json" = "trendy_cli/data/word-of-the-day.json"
 "web/data/ABBREVE-LICENSE" = "trendy_cli/data/ABBREVE-LICENSE"
 "radar/out/last-run.json" = "trendy_cli/data/last-run.json"
 
@@ -61,6 +62,7 @@ include = [
   "web/data/abbreve.json",
   "web/data/trends.json",
   "web/data/community-slang.json",
+  "web/data/word-of-the-day.json",
   "web/data/ABBREVE-LICENSE",
   "radar/out/last-run.json",
   "README.md",

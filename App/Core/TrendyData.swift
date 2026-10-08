@@ -7,6 +7,8 @@ struct TrendyData {
     var slang: [LexiconEntry]
     var abbreve: [LexiconEntry]
     var community: [LexiconEntry]
+    /// Hand-picked Word of the Day dates from `word-of-the-day.json` (date → term).
+    var wotdOverrides: [String: String] = [:]
 
     static let empty = TrendyData(trends: [], slang: [], abbreve: [], community: [])
 
@@ -51,6 +53,7 @@ struct TrendyData {
             abbreve: lexicon(.abbreve),
             community: lexicon(.community)
         )
+        result.wotdOverrides = WordOfTheDay.loadOverrides(bundle: bundle, directory: directory)
         if sanitize {
             result.trends = result.trends.map(ContentSafety.sanitize)
             result.slang = result.slang.map(ContentSafety.sanitize)

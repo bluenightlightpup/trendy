@@ -21,9 +21,11 @@
     newHere: true,
     liveDecodeUrl: "",
     liveDecodeToken: "",
+    dailyWord: true,
   };
 
   const Saved = () => globalThis.TrendySaved;
+  const WOTD = () => globalThis.TrendyWOTD;
 
   const state = {
     trends: [],
@@ -38,6 +40,11 @@
     homeFilter: "all",
     detailId: null,
     detailFrom: "home",
+    wotdOverrides: {},
+    wotdPool: null,
+    savedWords: [],
+    wordDate: null,
+    wordFrom: "home",
   };
 
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -56,6 +63,7 @@
           typeof parsed.liveDecodeUrl === "string" ? parsed.liveDecodeUrl.trim() : "",
         liveDecodeToken:
           typeof parsed.liveDecodeToken === "string" ? parsed.liveDecodeToken.trim() : "",
+        dailyWord: typeof parsed.dailyWord === "boolean" ? parsed.dailyWord : DEFAULT_PREFS.dailyWord,
       };
     } catch {
       return structuredClone(DEFAULT_PREFS);
@@ -334,7 +342,246 @@
     });
   }
 
+  // ---- Word of the Day (algorithm in wotd.js, shared with the website, CLI and iOS) ----
+
+  function wotdWord(date) {
+    const W = WOTD();
+    if (!W || !state.slang) return null;
+    if (!state.wotdPool) state.wotdPool = W.buildPool(state.slang);
+    try {
+      return W.wordForDate(state.slang, date, { pool: state.wotdPool, overrides: state.wotdOverrides });
+    } catch {
+      return null;
+    }
+  }
+
+  function wotdDetails(date) {
+    const w = wotdWord(date);
+    return w ? WOTD().details(w, state.trends) : null;
+  }
+
+  function isWordSaved(term) {
+    const k = WOTD() ? WOTD().normalizeTerm(term) : String(term).toLowerCase();
+    return state.savedWords.some((w) => (WOTD() ? WOTD().normalizeTerm(w) : w.toLowerCase()) === k);
+  }
+
+  function wordSaveBtnHtml(term) {
+    const saved = isWordSaved(term);
+    return `
+      <button type="button" class="save-btn save-btn-prominent wotd-save${saved ? " is-saved" : ""}" data-save-word="${escapeHtml(term)}" aria-pressed="${saved}" aria-label="${escapeHtml(saved ? `Unsave ${term}` : `Save ${term}`)}">
+        <span class="save-glyph" aria-hidden="true">${saved ? "♥" : "♡"}</span><span class="save-text">${saved ? "Saved" : "Save"}</span>
+      </button>`;
+  }
+
+  function wordShareBtnHtml(date) {
+    return `
+      <button type="button" class="save-btn save-btn-prominent wotd-share" data-share-word="${escapeHtml(date)}" aria-label="Share this word">
+        <span class="save-glyph" aria-hidden="true">↗</span><span class="save-text">Share</span>
+      </button>`;
+  }
+
+  function wordDayLabel(date) {
+    const W = WOTD();
+    const today = W.localDateString();
+    if (date === today) return "Word of the day";
+    if (date === W.addDays(today, -1)) return "Yesterday’s word";
+    return `Word of the day · ${date}`;
+  }
+
+  function renderWotdCard() {
+    const slot = $("#wotd-slot");
+    if (!slot) return;
+    const W = WOTD();
+    if (!state.prefs.dailyWord || !W || !state.slang) {
+      slot.innerHTML = "";
+      slot.hidden = true;
+      return;
+    }
+    const today = W.localDateString();
+    const d = wotdDetails(today);
+    if (!d) {
+      slot.innerHTML = "";
+      slot.hidden = true;
+      return;
+    }
+    const yDate = W.addDays(today, -1);
+    const y = wotdWord(yDate);
+    slot.hidden = false;
+    slot.dataset.date = today;
+    slot.innerHTML = `
+      <article class="wotd-card" aria-labelledby="wotd-term">
+        <div class="wotd-body" role="button" tabindex="0" data-open-word="${escapeHtml(today)}" aria-label="Open word of the day: ${escapeHtml(d.term)}">
+          <p class="wotd-eyebrow"><span aria-hidden="true">✦</span> Word of the day</p>
+          <h3 class="wotd-term" id="wotd-term">${escapeHtml(d.term)}</h3>
+          <p class="wotd-meaning">${escapeHtml(d.meaning)}</p>
+          ${d.example ? `<p class="wotd-example">${escapeHtml(TrendyWOTD.quoteExample(d.example))}</p>` : ""}
+          <div class="wotd-meta">
+            ${ageChipHtml(d.ageBand)}
+            ${d.trend ? lifecycleHtml({ lifecycle: d.trend.lifecycle }) : ""}
+            <span class="wotd-more" aria-hidden="true">Tap for the full story →</span>
+          </div>
+        </div>
+        <div class="wotd-actions">
+          ${
+            y
+              ? `<button type="button" class="wotd-yesterday" data-open-word="${escapeHtml(yDate)}" aria-label="Yesterday’s word: ${escapeHtml(y.term)}">Yesterday: <strong>${escapeHtml(y.term)}</strong></button>`
+              : "<span></span>"
+          }
+          <span class="wotd-buttons">${wordSaveBtnHtml(d.term)}${wordShareBtnHtml(today)}</span>
+        </div>
+        <p class="wotd-toast" role="status" aria-live="polite" hidden></p>
+      </article>`;
+  }
+
+  function renderWordDetail(date) {
+    const article = $("#word-article");
+    const d = wotdDetails(date);
+    if (!d) {
+      article.innerHTML = `<p class="empty-body">Couldn’t pick a word — the word list didn’t load.</p>`;
+      return;
+    }
+    const section = (title, body) =>
+      body ? `<div class="wotd-section"><h3>${title}</h3><p>${escapeHtml(body)}</p></div>` : "";
+    article.innerHTML = `
+      <p class="wotd-eyebrow"><span aria-hidden="true">✦</span> ${escapeHtml(wordDayLabel(date))}</p>
+      <h2 class="wotd-term">${escapeHtml(d.term)}</h2>
+      <p class="trend-summary wotd-detail-meaning">${escapeHtml(d.meaning)}</p>
+      <div class="detail-actions wotd-buttons">${wordSaveBtnHtml(d.term)}${wordShareBtnHtml(date)}</div>
+      ${section("In plain words", d.explain)}
+      ${d.example ? section("Example", TrendyWOTD.quoteExample(d.example)) : ""}
+      ${section("Where it comes from", d.origin)}
+      ${section("Who says this", d.age)}
+      ${
+        d.trend
+          ? `<div class="wotd-section wotd-trend">
+              <h3>Also a trend</h3>
+              <div class="trend-card-top">
+                <button type="button" class="wotd-link" data-open-trend="${escapeHtml(d.trend.id)}">${escapeHtml(displayTitle(d.trend.title))} →</button>
+                ${lifecycleHtml({ lifecycle: d.trend.lifecycle })}
+              </div>
+              ${heatMeterHtml(d.trend.heat / 100)}
+            </div>`
+          : ""
+      }
+      <div class="button-row wotd-decode-row">
+        <button type="button" class="btn btn-primary" data-decode-word="${escapeHtml(d.term)}">Decode more</button>
+      </div>
+      <p class="wotd-toast" role="status" aria-live="polite" hidden></p>
+    `;
+  }
+
+  function openWord(date, from) {
+    state.wordDate = date;
+    state.wordFrom = from || state.tab || "home";
+    if (state.wordFrom === "word") state.wordFrom = "home";
+    setTab("word");
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise((resolve, reject) => {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy") ? resolve() : reject(new Error("copy failed"));
+      } catch (err) {
+        reject(err);
+      } finally {
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
+  function showToast(root, message) {
+    const toast = root && root.querySelector(".wotd-toast");
+    if (!toast) return;
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => {
+      toast.hidden = true;
+    }, 2600);
+  }
+
+  async function shareWord(date, root) {
+    const d = wotdDetails(date);
+    if (!d) return;
+    const text = WOTD().shareText(d);
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "Trendy word of the day", text });
+        return;
+      } catch (err) {
+        if (err && err.name === "AbortError") return;
+      }
+    }
+    try {
+      await copyText(text);
+      showToast(root, "Copied — paste it anywhere.");
+    } catch {
+      showToast(root, text);
+    }
+  }
+
+  function toggleWordSave(term) {
+    const W = WOTD();
+    if (!W) return;
+    const r = W.toggleSavedWord(state.savedWords, term);
+    state.savedWords = W.persistSavedWords(r.words);
+  }
+
+  function handleWordClick(e) {
+    const save = e.target.closest("[data-save-word]");
+    if (save) {
+      e.preventDefault();
+      toggleWordSave(save.dataset.saveWord);
+      if (state.tab === "word") renderWordDetail(state.wordDate);
+      else renderWotdCard();
+      return true;
+    }
+    const share = e.target.closest("[data-share-word]");
+    if (share) {
+      e.preventDefault();
+      shareWord(share.dataset.shareWord, share.closest(".wotd-card, .wotd-detail"));
+      return true;
+    }
+    const decode = e.target.closest("[data-decode-word]");
+    if (decode) {
+      e.preventDefault();
+      setTab("decode");
+      handleDecode(decode.dataset.decodeWord);
+      return true;
+    }
+    const trend = e.target.closest("[data-open-trend]");
+    if (trend && state.tab === "word") {
+      openDetail(trend.dataset.openTrend, "home");
+      return true;
+    }
+    const open = e.target.closest("[data-open-word]");
+    if (open) {
+      openWord(open.dataset.openWord, state.tab);
+      return true;
+    }
+    return false;
+  }
+
+  function renderSavedWords() {
+    const list = $("#you-saved-words");
+    const empty = $("#you-saved-words-empty");
+    if (!list || !empty) return;
+    empty.hidden = state.savedWords.length > 0;
+    list.innerHTML = state.savedWords
+      .map((w) => `<li><button type="button" class="chip" data-decode-saved="${escapeHtml(w)}" aria-label="Decode ${escapeHtml(w)}">${escapeHtml(w)}</button></li>`)
+      .join("");
+  }
+
   function renderHome() {
+    renderWotdCard();
     renderHomeChips();
     const feed = $("#home-feed");
     const empty = $("#home-empty");
@@ -458,6 +705,9 @@
         </label>`;
     }).join("");
 
+    const daily = $("#daily-word");
+    if (daily) daily.checked = state.prefs.dailyWord !== false;
+    renderSavedWords();
     $("#digest-freq").value = state.prefs.digest;
     $("#new-here").checked = !!state.prefs.newHere;
     const liveInput = $("#live-decode-url");
@@ -496,10 +746,12 @@
     else if (state.tab === "explore") renderExplore();
     else if (state.tab === "you") renderYouSaved();
     else if (state.tab === "detail" && state.detailId) renderDetail(state.detailId);
+    else if (state.tab === "word" && state.wordDate) renderWordDetail(state.wordDate);
   }
 
   function setTab(tab) {
     if (tab !== "detail") state.detailId = null;
+    if (tab !== "word") state.wordDate = null;
     state.tab = tab;
 
     $$(".view").forEach((v) => {
@@ -508,7 +760,11 @@
 
     $$(".tab").forEach((btn) => {
       const highlight =
-        tab === "detail" ? btn.dataset.tab === state.detailFrom : btn.dataset.tab === tab;
+        tab === "detail"
+          ? btn.dataset.tab === state.detailFrom
+          : tab === "word"
+            ? btn.dataset.tab === state.wordFrom
+            : btn.dataset.tab === tab;
       btn.setAttribute("aria-current", highlight ? "page" : "false");
     });
 
@@ -518,6 +774,7 @@
       explore: "Every world, one place.",
       you: "Your filters & tone.",
       detail: "Origin story.",
+      word: "Word of the day.",
     };
     $("#header-sub").textContent = subs[tab] || "Signal, not scroll.";
 
@@ -526,6 +783,7 @@
     if (tab === "you") renderYou();
     if (tab === "decode") seedChat();
     if (tab === "detail" && state.detailId) renderDetail(state.detailId);
+    if (tab === "word" && state.wordDate) renderWordDetail(state.wordDate);
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
@@ -748,6 +1006,39 @@
       handleSaveClick(e);
     });
 
+    $("#word-back").addEventListener("click", () => {
+      setTab(state.wordFrom || "home");
+    });
+    $("#word-article").addEventListener("click", handleWordClick);
+    const wotdSlot = $("#wotd-slot");
+    wotdSlot.addEventListener("click", handleWordClick);
+    wotdSlot.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const open = e.target.closest(".wotd-body[data-open-word]");
+      if (!open) return;
+      e.preventDefault();
+      openWord(open.dataset.openWord, "home");
+    });
+    document.addEventListener("visibilitychange", () => {
+      // New local day while the app sat in the background: refresh the card.
+      if (document.hidden || state.tab !== "home" || !WOTD()) return;
+      if (wotdSlot.dataset.date !== WOTD().localDateString()) renderWotdCard();
+    });
+
+    const dailyWord = $("#daily-word");
+    if (dailyWord) {
+      dailyWord.addEventListener("change", (e) => {
+        state.prefs.dailyWord = e.target.checked;
+        savePrefs();
+      });
+    }
+    $("#you-saved-words").addEventListener("click", (e) => {
+      const chip = e.target.closest("[data-decode-saved]");
+      if (!chip) return;
+      setTab("decode");
+      handleDecode(chip.dataset.decodeSaved);
+    });
+
     bindFeedOpen($("#home-feed"), "home");
     bindFeedOpen($("#explore-feed"), "explore");
 
@@ -851,12 +1142,13 @@
   }
 
   async function loadData() {
-    const bust = "v=16";
-    const [trendsRes, slangRes, abbreveRes, communityRes] = await Promise.all([
+    const bust = "v=17";
+    const [trendsRes, slangRes, abbreveRes, communityRes, wotdRes] = await Promise.all([
       fetch("data/trends.json?" + bust),
       fetch("data/slang.json?" + bust),
       fetch("data/abbreve.json?" + bust),
       fetch("data/community-slang.json?" + bust),
+      fetch("data/word-of-the-day.json?" + bust).catch(() => null),
     ]);
     if (!trendsRes.ok || !slangRes.ok) {
       throw new Error("Failed to load data files");
@@ -867,6 +1159,12 @@
     state.communityServer = communityRes.ok
       ? await communityRes.json()
       : { entries: [] };
+    try {
+      state.wotdOverrides = wotdRes && wotdRes.ok ? await wotdRes.json() : {};
+    } catch {
+      state.wotdOverrides = {};
+    }
+    state.wotdPool = null;
     refreshCommunityLexicon();
   }
 
@@ -878,6 +1176,7 @@
 
   async function init() {
     loadSaved();
+    state.savedWords = WOTD() ? WOTD().loadSavedWords() : [];
     bindEvents();
     try {
       await loadData();
@@ -893,6 +1192,11 @@
     seedChat();
     setTab("home");
     registerSW();
+    const deepLink = new URLSearchParams(location.search).get("decode");
+    if (deepLink && deepLink.trim()) {
+      setTab("decode");
+      handleDecode(deepLink.trim().slice(0, 160));
+    }
   }
 
   if (document.readyState === "loading") {

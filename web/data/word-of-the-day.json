@@ -1,0 +1,4 @@
+{
+  "about": "Optional Word of the Day overrides: \"YYYY-MM-DD\": \"term\". The term must match a term of an entry in the Word of the Day pool (see docs/word-of-the-day.md); unknown terms are ignored and the normal daily word shows. Overrides change only that date.",
+  "overrides": {}
+}

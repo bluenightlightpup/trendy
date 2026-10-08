@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Linux sanity checks for the iOS app (no Xcode needed):
 #   1. `swiftc -parse` every Swift file under App/ and Tests/ (syntax only; SwiftUI is not type-checked).
-#   2. Build App/Core (Foundation-only: models, decode engine, ranking, content safety) as a SwiftPM
-#      module and run the platform-neutral XCTests against web/data.
+#   2. Build App/Core (Foundation-only: models, decode engine, ranking, content safety, word of the day)
+#      as a SwiftPM module and run the platform-neutral XCTests against web/data (incl. the shared
+#      Word of the Day golden vectors in Tests/Fixtures/wotd-golden.json).
 #   3. Parity: decode a query list with the Swift engine and the PWA engine (web/decode-ai.js) and diff.
 # Needs a Swift 5.9+ toolchain on PATH (https://www.swift.org/install/linux/) and node for step 3.
 set -euo pipefail
@@ -16,7 +17,7 @@ echo "==> swiftc -parse (syntax)"
 find "$ROOT/App" "$ROOT/Tests" -name '*.swift' -print0 | xargs -0 -n1 swiftc -parse
 
 for f in "$ROOT"/App/Core/*.swift; do ln -s "$f" "$WORK/Sources/Trendy/"; done
-for f in TestSupport.swift DecodeTests.swift TrendyTests.swift; do
+for f in TestSupport.swift DecodeTests.swift TrendyTests.swift WordOfTheDayTests.swift; do
   ln -s "$ROOT/Tests/TrendyTests/$f" "$WORK/Tests/TrendyTests/$f"
 done
 
@@ -49,6 +50,7 @@ SWIFT
 
 cd "$WORK"
 export TRENDY_DATA_DIR="$ROOT/web/data"
+export TRENDY_FIXTURES_DIR="$ROOT/Tests/Fixtures"
 echo "==> swift test (App/Core + platform-neutral tests)"
 swift test 2>&1 | tail -n 25
 

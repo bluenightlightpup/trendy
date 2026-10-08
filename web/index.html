@@ -34,6 +34,7 @@
         <h2 class="view-title">Home</h2>
         <p class="view-hint">Sorted by what’s hot now</p>
       </div>
+      <div id="wotd-slot" class="wotd-slot"></div>
       <div id="home-chips" class="chip-row" role="toolbar" aria-label="Filter Home feed">
         <button type="button" class="chip" data-home-filter="all" aria-pressed="true">All</button>
         <button type="button" class="chip" data-home-filter="saved" aria-pressed="false">Saved</button>
@@ -51,6 +52,14 @@
         <span aria-hidden="true">←</span> Back
       </button>
       <article id="detail-article" class="detail-card"></article>
+    </section>
+
+    <!-- WORD OF THE DAY (detail) -->
+    <section id="view-word" class="view" data-view="word" hidden>
+      <button type="button" class="back-btn" id="word-back" aria-label="Back">
+        <span aria-hidden="true">←</span> Back
+      </button>
+      <article id="word-article" class="detail-card wotd-detail"></article>
     </section>
 
     <!-- DECODE -->
@@ -121,6 +130,21 @@
           <p class="empty-title">Nothing saved yet</p>
           <p class="empty-body">Tap the heart on any trend when you want to keep it. No rush — culture will still be there.</p>
         </div>
+      </div>
+
+      <div class="prefs-card" id="daily-word-card">
+        <h3 class="prefs-heading">Daily word</h3>
+        <label class="toggle-row">
+          <span class="toggle-text">
+            <span class="toggle-title">Word of the day on Home</span>
+            <span class="toggle-desc">A new slang word every day, picked offline. Same word on the website and the iPhone app.</span>
+          </span>
+          <input type="checkbox" id="daily-word" class="toggle-input" />
+          <span class="toggle-ui" aria-hidden="true"></span>
+        </label>
+        <p class="field-label field-label-spaced">Saved words</p>
+        <ul id="you-saved-words" class="chip-row saved-words" aria-label="Saved words"></ul>
+        <p id="you-saved-words-empty" class="prefs-desc" hidden>Tap Save on a word of the day to keep it here. Tap a saved word to decode it again.</p>
       </div>
 
       <div class="prefs-card">
@@ -218,6 +242,7 @@ trendy serve --host 0.0.0.0 --port 8787</code></pre>
   <script src="decode-ai.js" defer></script>
   <script src="suggest.js" defer></script>
   <script src="saved.js" defer></script>
+  <script src="wotd.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>

@@ -1156,3 +1156,57 @@ pre.code .s {
 .doc .card > :last-child {
   margin-bottom: 0;
 }
+
+/* ---------- Word of the day ---------- */
+.wotd-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(20px, 4vw, 40px);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .wotd-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.wotd-layout .section-head {
+  margin-bottom: 0;
+}
+
+.wotd-card {
+  background:
+    linear-gradient(135deg, rgba(200, 241, 53, 0.12), rgba(45, 226, 230, 0.07) 60%, rgba(255, 45, 149, 0.06)),
+    var(--ink-elevated);
+  border-color: rgba(200, 241, 53, 0.3);
+}
+
+.wotd-card .answer-term {
+  font-size: clamp(2rem, 5vw, 2.6rem);
+}
+
+.wotd-example {
+  font-style: italic;
+}
+
+.wotd-fallback {
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.wotd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-top: 20px;
+}
+
+.wotd-yesterday {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}

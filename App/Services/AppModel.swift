@@ -6,10 +6,21 @@ import Combine
 final class AppModel: ObservableObject {
     let data: TrendyData
     let engine: DecodeEngine
+    /// Word of the Day pool, built once (same algorithm as the PWA, website and CLI).
+    let wotdPool: [LexiconEntry]
 
     init(data: TrendyData = TrendyData.load()) {
         self.data = data
         self.engine = data.makeEngine()
+        self.wotdPool = WordOfTheDay.buildPool(data.slang)
+    }
+
+    func wordOfTheDay(on date: String) -> WordOfTheDay.Word? {
+        data.wordOfTheDay(on: date, pool: wotdPool)
+    }
+
+    func wordCard(on date: String) -> WordOfTheDay.Card? {
+        wordOfTheDay(on: date).map { WordOfTheDay.card(for: $0, trends: data.trends) }
     }
 }
 

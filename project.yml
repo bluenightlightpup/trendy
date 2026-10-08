@@ -45,6 +45,9 @@ targets:
         buildPhase: resources
       - path: web/data/community-slang.json
         buildPhase: resources
+      # Optional Word of the Day overrides (date → term).
+      - path: web/data/word-of-the-day.json
+        buildPhase: resources
       # Apache-2.0 attribution for abbreve.json (shown under You → Credits & licenses).
       - path: web/data/ABBREVE-LICENSE
         buildPhase: resources
@@ -75,6 +78,9 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: Tests/TrendyTests
+      # Golden vectors shared with the JS and Python Word of the Day tests.
+      - path: Tests/Fixtures/wotd-golden.json
+        buildPhase: resources
     dependencies:
       - target: Trendy
     settings:

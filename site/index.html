@@ -24,6 +24,7 @@
   <meta property="og:image:alt" content="Trendy app icon with the tagline: Decode slang, memes and trends.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="styles.css">
+  <script src="app/wotd.js" defer></script>
   <script src="site.js" defer></script>
 </head>
 <body>
@@ -38,6 +39,7 @@
       </a>
       <nav class="site-nav" aria-label="Main">
         <ul>
+          <li class="nav-optional"><a href="#word-of-the-day">Word of the day</a></li>
           <li class="nav-optional"><a href="#decode">Decode</a></li>
           <li class="nav-optional"><a href="#web-app">Web app</a></li>
           <li><a href="#agents">AI agents</a></li>
@@ -73,6 +75,39 @@
             <img src="images/trendy-home.png" width="780" height="1688" alt="Trendy web app Home tab: a trend feed sorted by what's hot now, with cards for Aura farming (heat 93), Crash out (91) and Glazing (90), each marked Rising with TikTok and Gen Z chips and a heat meter.">
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section wotd-section" id="word-of-the-day" aria-labelledby="wotd-title">
+      <div class="wrap wotd-layout">
+        <div class="section-head">
+          <p class="eyebrow">Word of the day</p>
+          <h2 id="wotd-title">Today’s trendy word</h2>
+          <p>A new slang word every day: what it means, where it comes from and who actually says it. It’s the same word in the web app and on iPhone, picked right on your device. No tracking, no sign-up.</p>
+        </div>
+
+        <article class="card answer wotd-card" id="wotd-card" aria-live="polite" aria-atomic="true">
+          <p class="answer-head"><span id="wotd-date">Today</span><span>Word of the day</span></p>
+          <h3 class="answer-term" id="wotd-term">Today’s word</h3>
+          <p class="wotd-fallback" id="wotd-fallback">Today’s word lives in the <a href="app/">web app</a>. Open it to see the word, its meaning and where it comes from.</p>
+          <dl id="wotd-details" hidden>
+            <dt>Meaning</dt>
+            <dd id="wotd-short"></dd>
+            <dt>In plain words</dt>
+            <dd id="wotd-explain"></dd>
+            <dt id="wotd-example-label">Example</dt>
+            <dd id="wotd-example" class="wotd-example"></dd>
+            <dt>Where it comes from</dt>
+            <dd id="wotd-origin"></dd>
+            <dt>Who says this</dt>
+            <dd id="wotd-age"></dd>
+          </dl>
+          <ul class="tag-row" id="wotd-tags" aria-label="Trend status" hidden></ul>
+          <div class="wotd-actions">
+            <a class="btn btn-primary" id="wotd-decode" href="app/">Decode more in the app</a>
+            <p class="wotd-yesterday" id="wotd-yesterday" hidden></p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -223,13 +258,14 @@ age:     Gen Alpha — mostly kids/tweens…
           </article>
 
           <article class="card code-card">
-            <h3>Four read-only tools</h3>
+            <h3>Five read-only tools</h3>
             <p>Local stdio only. No write tools, no network access, nothing to configure.</p>
             <ul class="tool-list">
               <li><code>decode_term</code><span>Meaning, origin and who says it for one term or phrase.</span></li>
               <li><code>search_slang</code><span>Find lexicon entries that match a word or topic.</span></li>
               <li><code>get_trends</code><span>The trend catalog with heat, lifecycle, world and age band.</span></li>
               <li><code>radar_status</code><span>When Trend Radar last refreshed the catalog, and from which sources.</span></li>
+              <li><code>word_of_the_day</code><span>Today’s word (or any date’s), the same one the apps show.</span></li>
             </ul>
           </article>
         </div>

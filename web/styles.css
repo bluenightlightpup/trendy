@@ -1160,3 +1160,166 @@ code {
 .suggest-note-error {
   color: #ff8fab;
 }
+
+/* —— Word of the Day —— */
+.wotd-slot {
+  margin-bottom: var(--space-md);
+}
+.wotd-card {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(200, 241, 53, 0.12), rgba(45, 226, 230, 0.07) 60%, rgba(255, 45, 149, 0.06)),
+    var(--ink-elevated);
+  border: 1px solid rgba(200, 241, 53, 0.3);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-card);
+}
+.wotd-body {
+  display: block;
+  cursor: pointer;
+  border-radius: calc(var(--radius-card) - 4px);
+}
+.wotd-body:focus-visible {
+  outline: 2px solid var(--heat-cool);
+  outline-offset: 4px;
+}
+.wotd-eyebrow {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--heat-volt);
+}
+.wotd-term {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.wotd-meaning {
+  margin: 0 0 var(--space-sm);
+  color: var(--ink-text);
+  font-size: 0.95rem;
+}
+.wotd-example {
+  margin: 0 0 var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid rgba(45, 226, 230, 0.5);
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+.wotd-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.wotd-more {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+}
+.wotd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--ink-border);
+}
+.wotd-yesterday {
+  padding: 6px 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  text-align: left;
+}
+.wotd-yesterday strong {
+  color: var(--heat-cool);
+  font-weight: 600;
+}
+.wotd-yesterday:hover strong,
+.wotd-yesterday:focus-visible strong {
+  text-decoration: underline;
+}
+.wotd-buttons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+.wotd-share {
+  color: var(--heat-cool);
+}
+.wotd-share:hover,
+.wotd-share:focus-visible {
+  color: var(--heat-cool);
+  border-color: rgba(45, 226, 230, 0.45);
+  box-shadow: 0 0 0 2px rgba(45, 226, 230, 0.25);
+}
+.wotd-toast {
+  margin: var(--space-sm) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--heat-volt);
+  overflow-wrap: anywhere;
+}
+.wotd-detail .wotd-term {
+  font-size: 2.2rem;
+}
+.wotd-detail-meaning {
+  color: var(--ink-text);
+  font-size: 1.02rem;
+}
+.wotd-section {
+  margin: var(--space-md) 0 0;
+}
+.wotd-section h3 {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--heat-cool);
+}
+.wotd-section p {
+  margin: 0;
+  color: var(--ink-text);
+  font-size: 0.95rem;
+}
+.wotd-trend {
+  padding: var(--space-md);
+  border: 1px solid var(--ink-border);
+  border-radius: calc(var(--radius-card) - 4px);
+  background: rgba(255, 255, 255, 0.02);
+}
+.wotd-link {
+  padding: 0;
+  font-weight: 650;
+  color: var(--ink-text);
+  text-align: left;
+}
+.wotd-link:hover,
+.wotd-link:focus-visible {
+  color: var(--heat-cool);
+}
+.wotd-decode-row {
+  margin-top: var(--space-lg);
+}
+.saved-words {
+  list-style: none;
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.saved-words:empty {
+  display: none;
+}

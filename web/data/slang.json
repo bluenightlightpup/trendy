@@ -11,6 +11,7 @@
       "explain": "Challenge to exaggeration or nonsense.",
       "origin": "AAVE/texting → TikTok comment speech; get real is older English reply culture.",
       "age": "Mixed",
+      "wotdExample": "You think the test is cancelled because of a little drizzle? Be so fr.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -30,6 +31,7 @@
       "explain": "“This song slaps.” “That verse went hard.”",
       "origin": "Music/hip-hop praise slang → general internet.",
       "age": "Mixed",
+      "wotdExample": "This new playlist slaps.",
       "worlds": [
         "Music",
         "Internet culture"
@@ -49,6 +51,7 @@
       "explain": "Fit check = show the clothes; drip = iced/stylish fashion.",
       "origin": "Fashion social formats on TikTok/IG; drip from hip-hop slang.",
       "age": "Gen Z",
+      "wotdExample": "Fit check before the school dance: clean sneakers, new hoodie, lots of confidence.",
       "worlds": [
         "TikTok",
         "Fashion"
@@ -65,6 +68,7 @@
       "explain": "Verb and vibe word.",
       "origin": "Vine/internet 2010s; still understood.",
       "age": "Gen Z",
+      "wotdExample": "He yeeted the paper ball straight into the recycling bin.",
       "worlds": [
         "Internet culture"
       ],
@@ -81,6 +85,7 @@
       "explain": "Classic Vine-era callout still referenced.",
       "origin": "Vine viral comedy (Charles Black “What are those!”) mid-2010s.",
       "age": "Millennial",
+      "wotdExample": "He showed up in neon-green rain boots and everyone yelled, “What are those?!”",
       "worlds": [
         "Internet culture",
         "Vine"
@@ -98,6 +103,7 @@
       "explain": "Generational clapback meme.",
       "origin": "2019 viral intergenerational meme on TikTok/Reddit/Twitter.",
       "age": "Gen Z",
+      "wotdExample": "Grandpa said nobody needs a phone, and my cousin whispered, “OK boomer.”",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -114,6 +120,7 @@
       "explain": "Soft roast for outdated aesthetics.",
       "origin": "Coined earlier, popularized ~2021 in TikTok/NYT discourse.",
       "age": "Gen Z",
+      "wotdExample": "My mom’s “Live, Laugh, Love” sign is a little cheugy, but I love it.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -130,6 +137,7 @@
       "explain": "Anime/movie fan term for characters who survive for narrative reasons.",
       "origin": "TV Tropes / fandom discourse → general meme use.",
       "age": "Mixed",
+      "wotdExample": "He fell off his bike three times today without a scratch — total plot armor.",
       "worlds": [
         "Anime",
         "Fandom"
@@ -147,6 +155,7 @@
       "explain": "Life planning jokes — studying is main quest, scrolling is side quest.",
       "origin": "Gaming vocabulary → everyday Gen Z metaphor.",
       "age": "Gen Z",
+      "wotdExample": "Going to the store for milk turned into a two-hour side quest.",
       "worlds": [
         "Gaming",
         "TikTok"
@@ -165,6 +174,7 @@
       "explain": "“Pog” = hype. From PogChamp emote culture.",
       "origin": "Twitch emotes (PogChamp) → wider gaming slang.",
       "age": "Mixed",
+      "wotdExample": "We got a snow day? Poggers!",
       "worlds": [
         "Gaming",
         "Twitch"
@@ -182,6 +192,7 @@
       "explain": "Twitch insult for tilting hard.",
       "origin": "Twitch/Forsen community slang → wider gaming.",
       "age": "Gen Z",
+      "wotdExample": "He lost to a brand-new player and was absolutely malding.",
       "worlds": [
         "Gaming",
         "Twitch"
@@ -205,7 +216,8 @@
       ],
       "source": "curated",
       "confidence": "high",
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-09-14T21:45:44Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -217,6 +229,7 @@
       "explain": "From Eminem’s song “Stan”; now general fandom verb.",
       "origin": "Eminem “Stan” (2000) → Tumblr/Twitter fandom language.",
       "age": "Mixed",
+      "wotdExample": "I stan this band so hard that I know every lyric.",
       "worlds": [
         "Fandom",
         "Twitter"
@@ -234,6 +247,7 @@
       "explain": "Adds finality to a take. “Periodt” is the emphatic spelling.",
       "origin": "AAVE / Black Twitter emphasis → general internet.",
       "age": "Gen Z",
+      "wotdExample": "Cats are better than alarm clocks. Periodt.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -253,6 +267,7 @@
       "explain": "Closely related to “it’s giving” / ballroom performance language.",
       "origin": "Ballroom culture → mainstream queer and TikTok slang.",
       "age": "Gen Z",
+      "wotdExample": "She walked into picture day serving looks.",
       "worlds": [
         "LGBTQ+",
         "TikTok"
@@ -271,6 +286,7 @@
       "explain": "Indirect read. Ballroom classic.",
       "origin": "Ballroom culture (documented in Paris Is Burning era) → mainstream pop culture.",
       "age": "Mixed",
+      "wotdExample": "“Nice of you to finally show up,” she said. That was pure shade.",
       "worlds": [
         "LGBTQ+",
         "Internet culture"
@@ -293,6 +309,7 @@
       "explain": "Drama vocabulary. “Any tea?” = updates please.",
       "origin": "Drag/LGBTQ+ and Black vernacular → RuPaul’s Drag Race popularization → mainstream.",
       "age": "Mixed",
+      "wotdExample": "Okay, spill the tea — what happened at the sleepover?",
       "worlds": [
         "LGBTQ+",
         "Internet culture"
@@ -309,6 +326,7 @@
       "explain": "Often with a hand gesture. Replaced older “damn” in some circles.",
       "origin": "Rap/internet revival; TikTok dance/reaction wave ~2021.",
       "age": "Gen Z",
+      "wotdExample": "He landed the kickflip on the first try. Sheeesh!",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -330,7 +348,8 @@
       ],
       "source": "curated",
       "confidence": "high",
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-09-14T21:45:44Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -341,6 +360,7 @@
       "explain": "Intensity dials for feelings and opinions.",
       "origin": "AAVE → mainstream youth slang.",
       "age": "Mixed",
+      "wotdExample": "I lowkey want to stay home tonight and watch movies.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -358,6 +378,7 @@
       "explain": "Food, songs, nights out “hit different.”",
       "origin": "AAVE-influenced casual speech → mainstream social captions.",
       "age": "Gen Z",
+      "wotdExample": "Hot chocolate after sledding just hits different.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -374,6 +395,7 @@
       "explain": "Compliment or meme flex. Sometimes ironic.",
       "origin": "Sports/internet praise phrase popularized in the late 2010s–2020s.",
       "age": "Gen Z",
+      "wotdExample": "She ran the mile in the rain and still beat her best time — built different.",
       "worlds": [
         "Sports",
         "Internet culture"
@@ -391,6 +413,7 @@
       "explain": "Music/career roast that applies to anyone.",
       "origin": "Hip-hop discourse → general internet.",
       "age": "Mixed",
+      "wotdExample": "My favorite YouTuber used to be so funny, but lately they fell off.",
       "worlds": [
         "Internet culture",
         "Music"
@@ -409,6 +432,7 @@
       "explain": "Dating/friendship vanishing act.",
       "origin": "2010s dating slang → fully mainstream.",
       "age": "Millennial",
+      "wotdExample": "We were texting every day, then she just ghosted me.",
       "worlds": [
         "Dating",
         "Internet culture"
@@ -443,6 +467,7 @@
       "explain": "Used way beyond dating too — any vibe check shorthand.",
       "origin": "Relationship advice language → TikTok listicle culture; “beige flag” is a later playful addition.",
       "age": "Mixed",
+      "wotdExample": "He doesn’t like dogs? Red flag.",
       "worlds": [
         "TikTok",
         "Dating"
@@ -461,6 +486,7 @@
       "explain": "Not always rational; that’s the point. Viral on dating TikTok.",
       "origin": "British/pop dating slang popularized again via Love Island and TikTok explainers.",
       "age": "Gen Z",
+      "wotdExample": "He chewed with his mouth open and I instantly got the ick.",
       "worlds": [
         "TikTok",
         "Dating"
@@ -493,6 +519,7 @@
       "explain": "Modern dating pipeline step before official labels.",
       "origin": "Gen Z dating vocabulary popularized on TikTok/Twitter.",
       "age": "Gen Z",
+      "wotdExample": "They’re still in the talking stage, so don’t call it dating yet.",
       "worlds": [
         "TikTok",
         "Dating"
@@ -510,6 +537,7 @@
       "explain": "Relationship posting strategy borrowed from product marketing.",
       "origin": "Marketing terms applied to Instagram couple reveals; TikTok dating discourse.",
       "age": "Mixed",
+      "wotdExample": "She posted a photo with just someone’s hand holding a milkshake — a classic soft launch.",
       "worlds": [
         "TikTok",
         "Instagram",
@@ -529,6 +557,7 @@
       "explain": "Taylor Swift “eras” language + TikTok identity captions.",
       "origin": "Pop fandom (esp. Swiftie “eras”) + TikTok “in my X era” format.",
       "age": "Gen Z",
+      "wotdExample": "I’m in my early-bedtime era and honestly loving it.",
       "worlds": [
         "TikTok",
         "Pop culture"
@@ -545,6 +574,7 @@
       "explain": "Used earnestly or ironically for tiny events.",
       "origin": "Pixar’s Inside Out popularized the phrase; TikTok made it caption slang.",
       "age": "Mixed",
+      "wotdExample": "Building that blanket fort with my cousins is a core memory.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -563,6 +593,7 @@
       "explain": "From the “how often do men think about the Roman Empire” viral prompt.",
       "origin": "2023 TikTok/Instagram viral question → general “my Roman Empire is X” format.",
       "age": "Gen Z",
+      "wotdExample": "That one awkward thing I said in fifth grade is my Roman Empire.",
       "worlds": [
         "TikTok",
         "Instagram",
@@ -582,6 +613,7 @@
       "explain": "Joke slogan parodying toxic girlboss culture; “girlboss” started as empowerment branding.",
       "origin": "Sophia Amoruso Girlboss branding → internet irony and the “gaslight gatekeep girlboss” meme.",
       "age": "Millennial",
+      "wotdExample": "My cat knocked my water over and stared at me like: gaslight, gatekeep, girlboss.",
       "worlds": [
         "Internet culture",
         "Twitter"
@@ -599,6 +631,7 @@
       "explain": "Fill-in format for identity jokes and soft callouts.",
       "origin": "Viral Twitter/TikTok prompt format of the early 2020s.",
       "age": "Gen Z",
+      "wotdExample": "Tell me you’re a gamer without telling me you’re a gamer.",
       "worlds": [
         "Twitter",
         "TikTok"
@@ -616,6 +649,7 @@
       "explain": "Reaction to secondhand embarrassment or bad news.",
       "origin": "Everyday slang amplified as a stock internet reaction.",
       "age": "Millennial",
+      "wotdExample": "He replied-all to the whole class with his grocery list. Big yikes.",
       "worlds": [
         "Internet culture"
       ],
@@ -633,6 +667,7 @@
       "explain": "Mild clapback to an odd humblebrag or flex.",
       "origin": "2010s meme/reaction phrase on Twitter and Instagram.",
       "age": "Millennial",
+      "wotdExample": "You’ve never seen a single superhero movie? Weird flex, but OK.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -650,6 +685,7 @@
       "explain": "Describes people (or yourself) who speak fluent meme. Not always an insult.",
       "origin": "Internet self-awareness slang widely used on Twitter/TikTok.",
       "age": "Gen Z",
+      "wotdExample": "I explained a meme to my dad and realized I’m chronically online.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -669,6 +705,7 @@
       "explain": "Like “gotcha,” but cinematic. Screenshots and receipts energy.",
       "origin": "Social-media callout slang; “4K” = ultra-clear proof. Viral on Twitter/TikTok.",
       "age": "Gen Z",
+      "wotdExample": "He said he was asleep, but his game status said online. Caught in 4K.",
       "worlds": [
         "Twitter",
         "TikTok",
@@ -689,6 +726,7 @@
       "explain": "Agreement that a take matches lived experience. More “true feelings” than media “real news.”",
       "origin": "AAVE / casual speech → TikTok comment culture.",
       "age": "Mixed",
+      "wotdExample": "“I need a nap after lunch every single day.” “That’s real.”",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -707,6 +745,7 @@
       "explain": "Stacks “fr” twice. Softens or intensifies depending on tone.",
       "origin": "AAVE → mainstream texting/TikTok; “fr” itself is older internet/texting shorthand.",
       "age": "Gen Z",
+      "wotdExample": "That was the best game of the season, fr fr.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -726,6 +765,7 @@
       "explain": "Can be sincere or ironic. Overused as a dismissal; still the default word for painful awkwardness.",
       "origin": "English “cringe” as internet judgment slang surged via early-2010s forums/YouTube; still core Gen Z vocabulary.",
       "age": "Mixed",
+      "wotdExample": "Watching my old dance videos is so cringe.",
       "worlds": [
         "Internet culture",
         "TikTok",
@@ -744,6 +784,7 @@
       "explain": "Usually posted as a silly cutaway dance. More ritual than deep meaning.",
       "origin": "Animated Distraction Dance meme audio/format popular on TikTok and YouTube Shorts.",
       "age": "Gen Z",
+      "wotdExample": "The baby was fussing, so my brother did the distraction dance and it actually worked.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -762,6 +803,7 @@
       "explain": "Referenced when something is unexpectedly hype about a mundane thing, or as a nostalgic TikTok sound callback.",
       "origin": "Recreating Recording’s “It’s Corn” video that went mega-viral on TikTok/YouTube in 2022.",
       "age": "Gen Alpha",
+      "wotdExample": "My little cousin heard we were having corn for dinner and started singing, “It’s corn!”",
       "worlds": [
         "TikTok",
         "YouTube",
@@ -784,6 +826,7 @@
       "explain": "Often stacked with “sksksk.” Now partly nostalgic/ironic, still referenced.",
       "origin": "VSCO girl meme wave (~2019); “and I oop” circulated via viral clips in that era.",
       "age": "Gen Z",
+      "wotdExample": "I tripped on the last stair in front of everyone and just went, “and I oop—”.",
       "worlds": [
         "TikTok",
         "Instagram",
@@ -802,6 +845,7 @@
       "explain": "Soft-sounding boundary with side-eye. Millennial/Gen Z texting staple.",
       "origin": "Everyday English that became a stock reaction phrase on Tumblr/Twitter in the 2010s.",
       "age": "Millennial",
+      "wotdExample": "Can you not read my texts over my shoulder?",
       "worlds": [
         "Tumblr",
         "Internet culture"
@@ -821,6 +865,7 @@
       "explain": "Format joke: paint one group as cringe average fans and another as chad enjoyers. Fill-in-the-blank meme grammar.",
       "origin": "Wojak / “average X fan vs average Y enjoyer” template from meme boards → Reddit/Twitter.",
       "age": "Gen Z",
+      "wotdExample": "Average “five more minutes” fan vs. average “up at 6 a.m.” enjoyer.",
       "worlds": [
         "Internet culture",
         "Reddit"
@@ -839,6 +884,7 @@
       "explain": "Usually paired with a panel of a character thinking “they don’t know…” about a hyper-specific interest. About secret context, not literal stealth.",
       "origin": "Feels Guy / Wojak “they don’t know” comic format popularized on meme communities and Twitter.",
       "age": "Gen Z",
+      "wotdExample": "Everyone’s hyped about the new game, and they don’t know I already beat it twice.",
       "worlds": [
         "Internet culture",
         "Twitter"
@@ -857,6 +903,7 @@
       "explain": "Used when you’re calmly coping (or ironically not coping) through chaos.",
       "origin": "KC Green’s webcomic “On Fire” (Gunshow, 2013) — the dog-in-a-burning-room panel became one of the internet’s core reaction memes.",
       "age": "Mixed",
+      "wotdExample": "Three tests tomorrow and I haven’t started studying. This is fine.",
       "worlds": [
         "Internet culture",
         "Comics"
@@ -877,6 +924,7 @@
       "explain": "Self-deprecating or cute: you’re running on aesthetic, not analysis. Meme caption staple.",
       "origin": "Tumblr/Twitter reaction caption culture; still used as a soft “brain offline” joke.",
       "age": "Gen Z",
+      "wotdExample": "Friday afternoon after a long week: no thoughts, head empty.",
       "worlds": [
         "Tumblr",
         "Twitter",
@@ -896,6 +944,7 @@
       "explain": "Agreement / green light. Close cousin of “bet.”",
       "origin": "AAVE / hip-hop vernacular → broad Gen Z and TikTok use (say less); “say no more” is older English still used the same way.",
       "age": "Gen Z",
+      "wotdExample": "“Want to get ice cream after practice?” “Say less.”",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -916,6 +965,7 @@
       "explain": "“They’re living rent free in your head” = you’re still thinking about them more than they think about you.",
       "origin": "Older idiom popularized as a stock internet dunk/self-own on Twitter and memes.",
       "age": "Mixed",
+      "wotdExample": "That jingle from the cereal ad is living rent free in my head.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -936,6 +986,7 @@
       "explain": "Compliment for hitting the mark. Often used for outfits, covers, or cameos.",
       "origin": "Black Twitter / social praise phrase that went fully mainstream on Twitter and TikTok (~2020–21).",
       "age": "Gen Z",
+      "wotdExample": "The decorations for the class party? They understood the assignment.",
       "worlds": [
         "Twitter",
         "TikTok",
@@ -955,6 +1006,7 @@
       "explain": "Stan/Twitter cadence that soft-launches a strong feeling (“the way I ran here”). Not a secret code.",
       "origin": "Stan Twitter / Black Twitter phrasing patterns → general social media.",
       "age": "Gen Z",
+      "wotdExample": "The way that I ran to the door when the pizza arrived.",
       "worlds": [
         "Twitter",
         "TikTok",
@@ -974,6 +1026,7 @@
       "explain": "Praise for competence, beauty, or dominance. “Mother” here is queer/stan honorific, not only literal mom.",
       "origin": "Ballroom / drag / stan Twitter vocabulary → TikTok.",
       "age": "Gen Z",
+      "wotdExample": "Coach just gave the best pep talk of the season — mother is mothering.",
       "worlds": [
         "LGBTQ+",
         "Stan Twitter",
@@ -994,6 +1047,7 @@
       "explain": "Like “I’m shook,” but with more performance/shade energy. In ballroom/queer slang, gagging can mean stunned by a look or read.",
       "origin": "Ballroom / Black LGBTQ+ slang → wider Twitter/TikTok use.",
       "age": "Gen Z",
+      "wotdExample": "When she hit that high note, the whole choir was gagged.",
       "worlds": [
         "LGBTQ+",
         "TikTok",
@@ -1015,6 +1069,7 @@
       "explain": "Twitter/X clapback format. “Ratio” alone means reply-count humiliation; adding “L” piles on.",
       "origin": "Twitter ratio culture; “L + ratio” became a stock reply format in the early 2020s.",
       "age": "Gen Z",
+      "wotdExample": "Someone posted that cereal is a soup, and the replies just said “L + ratio.”",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -1037,6 +1092,7 @@
       "explain": "Hyperbolic “we’re cooked.” Frequently flipped seconds later into “we are so back.”",
       "origin": "Older “it’s over” reaction memes; “it’s SO over” / over–back pairing surged on Twitter and meme communities in the early 2020s.",
       "age": "Gen Z",
+      "wotdExample": "The Wi-Fi cut out right before the final level. It’s so over.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -1058,6 +1114,7 @@
       "explain": "Said when something that looked doomed suddenly looks good again. Often paired with its twin “it’s so over.”",
       "origin": "Internet doom/hope oscillation memes; paired with “it’s over / it’s so over” on Twitter/4chan-adjacent culture (~2021–23) then everywhere.",
       "age": "Gen Z",
+      "wotdExample": "The Wi-Fi is working again. We are so back.",
       "worlds": [
         "Twitter",
         "Internet culture",
@@ -1078,6 +1135,7 @@
       "explain": "A quick aesthetic/energy read. Often playful or shade-y. Related to “serving” / vibe language. Not literal “giving a gift.”",
       "origin": "Black LGBTQ+ / ballroom and AAVE vernacular → Twitter/TikTok mainstream (esp. ~2020–21).",
       "age": "Gen Z",
+      "wotdExample": "That outfit? It’s giving movie star.",
       "worlds": [
         "TikTok",
         "Twitter",
@@ -1097,6 +1155,7 @@
       "explain": "Now mostly historical/ironic reference.",
       "origin": "VSCO app + 2019 TikTok stereotype wave.",
       "age": "Gen Z",
+      "wotdExample": "Scrunchies, a giant water bottle and “sksksk” — she went full VSCO girl for Halloween.",
       "worlds": [
         "TikTok",
         "Instagram"
@@ -1115,6 +1174,7 @@
       "explain": "References the 2020 social-deduction boom and its UI jokes.",
       "origin": "Among Us game virality (2020).",
       "age": "Gen Z",
+      "wotdExample": "Someone ate the last slice, so my sister called an emergency meeting like it was Among Us.",
       "worlds": [
         "Gaming",
         "Internet culture"
@@ -1133,6 +1193,7 @@
       "explain": "Game-balance words used for life (“they nerfed my sleep schedule”).",
       "origin": "Gaming (esp. Nerf toy brand metaphor) → everyday internet.",
       "age": "Mixed",
+      "wotdExample": "They nerfed recess to fifteen minutes and nobody is okay.",
       "worlds": [
         "Gaming"
       ],
@@ -1149,6 +1210,7 @@
       "explain": "Also a joke: “speedrunning getting ready.”",
       "origin": "Speedrunning game community → general metaphor.",
       "age": "Mixed",
+      "wotdExample": "I speedran my morning routine and still missed the bus.",
       "worlds": [
         "Gaming",
         "Internet culture"
@@ -1167,6 +1229,7 @@
       "explain": "Self-care aesthetic trend — coffee, walks, journaling as movie scenes.",
       "origin": "TikTok “romanticize your life” trend wave.",
       "age": "Gen Z",
+      "wotdExample": "I put on soft music while doing the dishes to romanticize my life a little.",
       "worlds": [
         "TikTok"
       ],
@@ -1184,6 +1247,7 @@
       "explain": "Common internet/conflict vocabulary with tone that depends on delivery.",
       "origin": "Workplace and internet validation/conflict speak.",
       "age": "Mixed",
+      "wotdExample": "Wanting pancakes for dinner is completely valid.",
       "worlds": [
         "Internet culture"
       ],
@@ -1199,6 +1263,7 @@
       "explain": "“I’m finna leave” = I’m about to leave.",
       "origin": "AAVE → wider youth slang.",
       "age": "Mixed",
+      "wotdExample": "I’m finna start my homework right after this snack.",
       "worlds": [
         "Internet culture"
       ],
@@ -1216,6 +1281,7 @@
       "explain": "Punny “facts” confirmation.",
       "origin": "Internet pun culture on “fax/facts.”",
       "age": "Gen Z",
+      "wotdExample": "“Weekends are way too short.” “Fax, no printer.”",
       "worlds": [
         "Internet culture",
         "TikTok"
@@ -1234,6 +1300,7 @@
       "explain": "Reply-guy vocabulary for rating statements.",
       "origin": "Sports/internet W/L culture applied to opinions on Twitter/TikTok.",
       "age": "Gen Z",
+      "wotdExample": "Saying summer is the worst season is an L take.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -1251,6 +1318,7 @@
       "explain": "Can be humble or self-roast. Inverse of main character energy.",
       "origin": "Main-character meme inverse; anime/gaming extras metaphor → TikTok.",
       "age": "Gen Z",
+      "wotdExample": "I spent the whole party holding everyone’s jackets — total side character energy.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -1271,6 +1339,7 @@
       "explain": "“I can’t even” = speechless overwhelm; “the audacity” = disbelief at nerve; “not the ___” points at a specific detail.",
       "origin": "2010s Tumblr/Twitter and Black Twitter reaction patterns still in heavy use.",
       "age": "Millennial",
+      "wotdExample": "This puppy is wearing tiny rain boots. I can’t even.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -1296,6 +1365,7 @@
       "explain": "People drop “nah, I’d win” when they want Gojo-level cocky energy: someone asks if you’d lose, and you answer like defeat isn’t on the table. Online it’s also used ironically when you definitely will not win. Judgment-free: it’s a meme catchphrase, not a personality diagnosis.",
       "origin": "Jujutsu Kaisen manga: Satoru Gojo’s line (notably Ch. 221 callback to Ch. 3). English “Nah, I’d win” wording spread via VIZ/fan translations; exploded as an exploitable panel + TikTok/anime-Twitter meme in late 2023.",
       "age": "Gen Z",
+      "wotdExample": "“Think you can beat me at Mario Kart?” “Nah, I’d win.”",
       "worlds": [
         "Anime",
         "TikTok",
@@ -1321,7 +1391,8 @@
         "Internet culture",
         "Gaming"
       ],
-      "updated_at": "2026-09-14T19:55:50Z"
+      "updated_at": "2026-09-14T19:55:50Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -1339,7 +1410,8 @@
         "TikTok",
         "Internet culture"
       ],
-      "updated_at": "2026-09-14T19:55:50Z"
+      "updated_at": "2026-09-14T19:55:50Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -1362,6 +1434,7 @@
       "explain": "Skibidi Toilet is a surreal animated series by DaFuq!?Boom! (Alexey Gerasimov): singing human heads in toilets fight camera-headed people (Cameramen) and other hardware-headed factions. On playgrounds and the FYP, “skibidi” is often just a nonsense chant — participation, not a secret code. Asking what it means is normal; the joke is how little dictionary sense it has.",
       "origin": "YouTube series by DaFuq!?Boom!, 2023–; exploded on TikTok and in Gen Alpha schoolyard/brainrot culture.",
       "age": "Gen Alpha",
+      "wotdExample": "My little brother has been humming the Skibidi Toilet song all day.",
       "source": "curated",
       "confidence": "high"
     },
@@ -1376,6 +1449,7 @@
       "explain": "“Only in Ohio” = this could only happen in meme-Ohio. Often paired with other brainrot vocabulary.",
       "origin": "TikTok / Gen Alpha absurdist meme where “Ohio” became shorthand for cursed Americana chaos (early–mid 2020s).",
       "age": "Gen Z",
+      "wotdExample": "A goose walked into our classroom today. Only in Ohio.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1415,6 +1489,7 @@
       "explain": "Friends joke-steal a fry/nugget and call it Fanum tax. Not a real fee.",
       "origin": "Coined around AMP streamer Fanum’s habit of tasting friends’ food; exploded via TikTok/YouTube clips.",
       "age": "Gen Alpha",
+      "wotdExample": "He took one of my fries and said, “Fanum tax.”",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1439,7 +1514,8 @@
         "TikTok",
         "Internet culture"
       ],
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-09-14T21:45:44Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -1452,6 +1528,7 @@
       "explain": "On TikTok, “sigma” is a personality meme: independent, quiet-confident, not needing the crowd. Often half-joke. Related to alpha/beta meme vocabulary.",
       "origin": "Online personality-type memes adjacent to alpha discourse; exploded on TikTok/Reels.",
       "age": "Gen Z",
+      "wotdExample": "He quietly finished his project a week early and his friends called it his sigma grindset.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1477,7 +1554,8 @@
         "TikTok",
         "Internet culture"
       ],
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-09-14T21:45:44Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -1496,7 +1574,8 @@
         "TikTok",
         "Internet culture"
       ],
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-09-14T21:45:44Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -1520,6 +1599,7 @@
       "explain": "Can be literal question or meme threat joke.",
       "origin": "2010s internet → still common on TikTok and in group chats.",
       "age": "Gen Z",
+      "wotdExample": "Vibe check: who’s ready for the weekend?",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1538,6 +1618,7 @@
       "explain": "Label for hyper-online, low-context, loop-heavy meme speech (and for yourself when you’ve watched too much of it).",
       "origin": "Older “brain rot” metaphor; Gen Alpha/TikTok FYP made “brainrot” a badge for skibidi/Ohio/67-style nonsense culture in the mid-2020s.",
       "age": "Gen Alpha",
+      "wotdExample": "I’ve watched so many cat edits today that my head is pure brainrot.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1561,6 +1642,7 @@
       "explain": "“Aura farming” = doing things that look effortlessly cool. Losing aura = the moment was embarrassing.",
       "origin": "Gaming/stream “aura” talk → TikTok scoring social moments like an RPG stat (2024–).",
       "age": "Gen Z",
+      "wotdExample": "He tripped, then turned it into a perfect spin. Plus 500 aura.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1586,7 +1668,8 @@
         "TikTok",
         "Streaming"
       ],
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-09-14T21:45:44Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -1600,6 +1683,7 @@
       "explain": "‘You’re cooked’ means you messed up or you’re about to. Opposite energy of ‘let him cook’ (let them cook = let them cook / they’re on a roll). Tone is usually playful panic.",
       "origin": "Internet slang; sports and school chats use it constantly.",
       "age": "Gen Z",
+      "wotdExample": "I forgot the essay was due today. I’m cooked.",
       "source": "curated",
       "confidence": "high"
     },
@@ -1614,6 +1698,7 @@
       "explain": "Can be affectionate (“let her yap”) or “please stop yapping.”",
       "origin": "Older slang revived as TikTok/stream chat vocabulary.",
       "age": "Gen Z",
+      "wotdExample": "She’s been yapping about her new puppy all day, and honestly I love it.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1632,6 +1717,7 @@
       "explain": "Can be literal drama or exaggerated “I almost crashed out.”",
       "origin": "AAVE → TikTok/Twitter mainstream.",
       "age": "Gen Z",
+      "wotdExample": "Don’t crash out over one bad grade — you’ve got this.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1653,6 +1739,7 @@
       "explain": "Kids shout ‘six seven’ with a hand gesture because the sound/meme is the joke. There isn’t a hidden dictionary meaning; participating in the noise is the point. You’re not late for asking.",
       "origin": "TikTok sounds (notably Skrilla’s “Doot Doot (6 7)”) and hallway copycat energy.",
       "age": "Gen Alpha",
+      "wotdExample": "My little brother yelled “six seven!” at dinner and the whole table lost it.",
       "source": "curated",
       "confidence": "high"
     },
@@ -1666,6 +1753,7 @@
       "explain": "Praise word. Context usually taste or vibe.",
       "origin": "AAVE → wider Gen Z/TikTok use.",
       "age": "Gen Z",
+      "wotdExample": "Grandma’s mac and cheese is bussin, no question.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1684,6 +1772,7 @@
       "explain": "Sports/grind phrase for deep focus (studying, competing, performing).",
       "origin": "Sports and gaming focus talk → TikTok study/grind culture catchphrase.",
       "age": "Mixed",
+      "wotdExample": "Finals week and I’m locked in — my phone is in the other room.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1705,6 +1794,7 @@
       "explain": "Give them room to finish the play, rant, or idea. “Who let him cook?” is the confused/chaotic variant.",
       "origin": "Lil B “let that boy cook” (c. 2010) → sports Twitter (“Let Russ cook,” Russell Wilson) → general TikTok/internet hype phrase.",
       "age": "Gen Z",
+      "wotdExample": "He’s putting cinnamon on the popcorn? Let him cook.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1732,7 +1822,8 @@
       "short": "If You Know, You Know.",
       "explain": "A wink that the joke or reference is for people already in on it. Used in captions when explaining would kill the vibe. Related energy: 'you had to be there.'",
       "origin": "Social captions and stan Twitter; now everywhere.",
-      "age": "Gen Z"
+      "age": "Gen Z",
+      "wotdExample": "Room 204 at lunch. Iykyk."
     },
     {
       "terms": [
@@ -1751,6 +1842,7 @@
       "explain": "Can be serious compliment or joke. Oxford’s 2023 Word of the Year spotlight cemented it.",
       "origin": "Popularized by Kai Cenat and stream culture; exploded on TikTok; Oxford Word of the Year 2023.",
       "age": "Gen Z",
+      "wotdExample": "He talked his way into an extra cookie from the lunch staff — that’s rizz.",
       "source": "curated",
       "confidence": "high",
       "worlds": [
@@ -1767,6 +1859,7 @@
       "explain": "Gaming roast that escaped into general life: failed a task? Skill issue. Often joking.",
       "origin": "Competitive gaming / Twitch chat dunk → general meme slang in the early 2020s.",
       "age": "Gen Z",
+      "wotdExample": "You lost your keys again? Skill issue.",
       "worlds": [
         "Gaming",
         "Internet culture"
@@ -1786,6 +1879,7 @@
       "explain": "Can mean unoriginal vibes or the political “NPC meme.” Context matters.",
       "origin": "Gaming term → meme culture/TikTok personality shorthand.",
       "age": "Gen Z",
+      "wotdExample": "I just stood there nodding like an NPC while the teacher explained it again.",
       "worlds": [
         "Gaming",
         "TikTok"
@@ -1803,7 +1897,8 @@
       "short": "Good game — polite match ending (EZ = toxic gloat).",
       "explain": "GG is sportsmanship after a match. GG EZ (easy) is a taunt. Many communities frown on EZ spam. Alone, GG still means 'respect, match over.'",
       "origin": "Competitive gaming etiquette.",
-      "age": "Mixed"
+      "age": "Mixed",
+      "wotdExample": "We lost the match, but everyone typed “gg” and meant it."
     },
     {
       "terms": [
@@ -1815,6 +1910,7 @@
       "explain": "Tells someone they’re too online. Can be mean or affectionate depending on delivery.",
       "origin": "Meme/gaming spaces (esp. early 2020s) → mainstream internet advice-as-insult.",
       "age": "Gen Z",
+      "wotdExample": "You’ve been gaming for eight hours straight. Go touch grass.",
       "worlds": [
         "Gaming",
         "Internet culture"
@@ -1832,6 +1928,7 @@
       "explain": "“Delulu is the solulu” = staying hopeful on purpose.",
       "origin": "K-pop / stan spaces → TikTok mainstream.",
       "age": "Gen Z",
+      "wotdExample": "I’m a little delulu thinking I can finish this puzzle tonight, but delulu is the solulu.",
       "worlds": [
         "K-pop",
         "TikTok"
@@ -1848,7 +1945,8 @@
       "short": "Fear / Joy of Missing Out.",
       "explain": "FOMO is anxiety that others are having more fun. JOMO is the flip: pleasure in missing the party on purpose. Both show up in wellness and social media discourse.",
       "origin": "Marketing / social media vocabulary (2000s–2010s).",
-      "age": "Millennial"
+      "age": "Millennial",
+      "wotdExample": "Everyone went to the concert without me and the FOMO is real."
     },
     {
       "terms": [
@@ -1861,6 +1959,7 @@
       "explain": "Compliment with ballroom/queer roots. Tone can be sincere or campy.",
       "origin": "Ballroom and LGBTQ+ vernacular → viral TikTok/Twitter.",
       "age": "Gen Z",
+      "wotdExample": "You slayed that presentation!",
       "worlds": [
         "LGBTQ+",
         "TikTok"
@@ -1880,6 +1979,7 @@
       "explain": "Truth marker or accusation of faking. Extremely common in captions and comments.",
       "origin": "AAVE (“cap” = lie) → mainstream Gen Z/TikTok; “no cap” became a default honesty tag in the late 2010s–2020s.",
       "age": "Gen Z",
+      "wotdExample": "You finished the whole book in one night? No cap?",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -1896,6 +1996,7 @@
       "explain": "Acknowledgment that plans are locked.",
       "origin": "AAVE → mainstream youth slang.",
       "age": "Mixed",
+      "wotdExample": "“Pizza at six?” “Bet.”",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -1912,7 +2013,8 @@
       "short": "Suspicious — popularized hard by Among Us.",
       "explain": "Something or someone feels off. Among Us made it ubiquitous; still used for anything shady or questionable.",
       "origin": "Older slang; exploded with Among Us (2020).",
-      "age": "Gen Z"
+      "age": "Gen Z",
+      "wotdExample": "You’re being extra nice today. Kinda sus."
     },
     {
       "terms": [
@@ -1929,7 +2031,8 @@
       ],
       "source": "curated",
       "confidence": "high",
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-09-14T21:45:44Z",
+      "wotd": false
     },
     {
       "terms": [
@@ -1941,6 +2044,7 @@
       "explain": "Default lukewarm roast.",
       "origin": "Gen Z slang / gaming adjacent → mainstream dismissive adjective.",
       "age": "Gen Z",
+      "wotdExample": "The new sequel was kinda mid, honestly.",
       "worlds": [
         "TikTok",
         "Gaming"
@@ -1962,6 +2066,7 @@
       "explain": "High praise for a look, verse, speech, or read.",
       "origin": "Black Twitter / LGBTQ+ slang → TikTok mainstream.",
       "age": "Gen Z",
+      "wotdExample": "Your science fair poster ate — the judges couldn’t stop looking at it.",
       "worlds": [
         "TikTok",
         "LGBTQ+",
@@ -2004,6 +2109,7 @@
       "explain": "Girl dinner = snack plate as a meal; girl/boy math = pseudologic justifying spending. Light meme, not a rulebook.",
       "origin": "TikTok trend/confession formats (girl dinner ~2023; girl math alongside).",
       "age": "Gen Z",
+      "wotdExample": "Crackers, cheese and three grapes — that’s girl dinner.",
       "worlds": [
         "TikTok"
       ],
@@ -2022,6 +2128,7 @@
       "explain": "Can mean confidence and presence, or gentle teasing that someone’s treating mundane life like a movie.",
       "origin": "TikTok “main character” trend/self-help-adjacent meme culture (~2020–).",
       "age": "Gen Z",
+      "wotdExample": "Walking to school in the first snow with my headphones on gave me main character energy.",
       "worlds": [
         "TikTok",
         "Internet culture"
@@ -2041,6 +2148,7 @@
       "explain": "On Twitter/X, a bad take “gets ratioed.” People reply “ratio” to try to make it happen.",
       "origin": "Twitter culture (2010s–); became a primary clapback mechanic before migrating to other apps as metaphor.",
       "age": "Gen Z",
+      "wotdExample": "His bad take about the new movie got ratioed within an hour.",
       "worlds": [
         "Twitter",
         "Internet culture"
@@ -2058,6 +2166,7 @@
       "explain": "Usually means buddy/friend, not always a literal brother. Tone can be warm, ironic, or annoyed.",
       "origin": "Short for brother; everyday casual English + internet.",
       "age": "Mixed",
+      "wotdExample": "Bro, you have to hear this new song.",
       "worlds": [
         "Internet culture"
       ],
@@ -2075,6 +2184,7 @@
       "explain": "Used after a joke or to soften a serious-sounding line.",
       "origin": "SMS/IM classic.",
       "age": "Mixed",
+      "wotdExample": "I’m never doing homework again — jk, it’s due tomorrow.",
       "worlds": [
         "Abbreviations",
         "Internet culture"
@@ -2097,6 +2207,7 @@
       "explain": "“W” is shorthand for a win, literal or not: “that’s a W”, “W friend”, “huge W”. It’s a quick thumbs-up in chats and comments. Its opposite is L (a loss).",
       "origin": "Sports win–loss records (W–L columns) → gaming and streaming chat → TikTok and Twitch comment shorthand in the late 2010s.",
       "age": "Gen Z",
+      "wotdExample": "Free pizza in the cafeteria today? Huge W.",
       "worlds": [
         "Sports",
         "Internet culture"
@@ -2119,6 +2230,7 @@
       "explain": "“L” marks a loss: “took an L”, “that’s an L take”, “L behaviour”. Taking the L gracefully means admitting you lost. Opposite of W (a win). Usually teasing, not cruel.",
       "origin": "Sports win–loss records (W–L) → hip-hop and gaming slang (“take the L”) → Twitter/TikTok comment shorthand; stacks with “ratio” as “L + ratio”.",
       "age": "Gen Z",
+      "wotdExample": "Missing the bus by ten seconds was a big L.",
       "worlds": [
         "Sports",
         "Internet culture"
@@ -2139,6 +2251,7 @@
       "explain": "“Nah” (often typed “na”) is an easygoing no: “nah I’m good” means no thanks. It can also open a reaction like “nah this is crazy”. In forms and spreadsheets N/A or NA means “not applicable” instead.",
       "origin": "Informal spoken English (centuries-old variant of “no”), everyday in texting; amplified by memes like “nah, I’d win”.",
       "age": "Mixed",
+      "wotdExample": "“Want to do extra homework?” “Nah, I’m good.”",
       "worlds": [
         "Internet culture"
       ],
