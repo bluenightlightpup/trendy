@@ -135,6 +135,23 @@ class CliSmokeTest(unittest.TestCase):
             self.assertTrue(payload["origin"], term)
             self.assertTrue(payload["age"], term)
 
+    def test_silly_insult_pack(self) -> None:
+        for term, first in (
+            ("piddlefart", "piddlefart"),
+            ("piddle-fart", "piddlefart"),
+            ("fartknocker", "fartknocker"),
+            ("nincompoop", "nincompoop"),
+            ("fuddy-duddy", "fuddy-duddy"),
+            ("fuddy duddy", "fuddy-duddy"),
+            ("you absolute numpty", "numpty"),
+        ):
+            entry, source = trendy.lookup_lexicon(term)
+            self.assertIsNotNone(entry, term)
+            self.assertEqual(source, "slang", term)
+            self.assertEqual(entry["terms"][0], first, term)
+            self.assertIs(entry.get("wotd"), False, term)
+            self.assertTrue(entry["origin"], term)
+
     def test_trends_limit_must_be_positive(self) -> None:
         import contextlib
 

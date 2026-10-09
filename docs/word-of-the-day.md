@@ -31,7 +31,7 @@ The JavaScript, Python and Swift versions must stay identical. [`Tests/Fixtures/
 ## Curating
 
 - Add `"wotdExample": "…"` to an entry to give it a natural, classroom-safe example sentence. It is shown wherever the word of the day appears.
-- Add `"wotd": false` to keep an entry out of the rotation without removing it from Decode. Words opted out today include `deadass`, `copium`, `beta`, `alpha`, `mewing`, `mogging`, `looksmaxxing`, `based` and `glazing`.
+- Add `"wotd": false` to keep an entry out of the rotation without removing it from Decode. Words opted out today include `deadass`, `copium`, `beta`, `alpha`, `mewing`, `mogging`, `looksmaxxing`, `based` and `glazing`. The silly-insult pack (`piddlefart`, `nincompoop`, `fuddy-duddy`, `numpty` and friends, added 2026-10-09) is opted out as a whole: the crude ones are never a daily word, and keeping them all out leaves the pool, and so every scheduled date, unchanged.
 - Adding or removing pool entries reshuffles future dates (N changes). Past dates may also change, which is acceptable for a daily word. If you need a fixed word on a date, use overrides. Run `python3 scripts/gen-wotd-golden.py` after deliberate lexicon changes and commit the updated fixture.
 
 ## Privacy

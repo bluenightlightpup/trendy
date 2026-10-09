@@ -2258,6 +2258,995 @@
       "source": "curated",
       "confidence": "high",
       "updated_at": "2026-10-05T00:00:00Z"
+    },
+    {
+      "terms": [
+        "piddlefart",
+        "piddle-fart",
+        "piddle fart",
+        "piddlefarting",
+        "piddlefarted"
+      ],
+      "short": "To dawdle or goof off instead of doing what you should (“quit piddlefarting around”). Also tossed around as a goofy name for someone who’s dawdling.",
+      "explain": "A silly, mildly crude way to say you’re wasting time messing about, like “fiddling around” or “goofing off”. It’s mostly a verb (“piddlefart around”). Kids sometimes use it as a jokey name-call too, but that use isn’t recorded in dictionaries. It’s goofy, not mean, and it isn’t a swear word.",
+      "origin": "No dictionary gives it a first use or inventor. It’s a playful compound of “piddle” (to dawdle or trifle, since the 1540s; from the 1790s also a childish word for pee) + “fart” (as in “fart around”, to mess about). It works like the older “fiddle-fart around”, which Green’s Dictionary of Slang records in Australian and US Southern speech (cited from 1975). Urban Dictionary has “piddlefart” = “to waste time doing nothing” from 2005.",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "fiddlefart",
+        "fiddlefarting",
+        "fiddlefarted"
+      ],
+      "short": "To waste time, dither or mess around instead of getting on with it (often spelled “fiddle-fart”).",
+      "explain": "Usually “quit fiddle-farting around!”, said by an impatient parent or coach. Mildly crude, but jokey.",
+      "origin": "A blend of “fiddle around” and “fart around”. Green’s Dictionary of Slang lists it with “fiddle-arse” as Australian slang (cited from 1975); it’s also common in US Southern and Appalachian speech.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "fartknocker",
+        "fartknockers"
+      ],
+      "short": "A jokey insult for an annoying or worthless person.",
+      "explain": "Loud, goofy and crude in a kid way, often thrown at a friend. Older cowboy slang also used “a fart knocker” for a hard fall off a horse. Some older uses were aimed at gay men, so it’s best kept to silly teasing.",
+      "origin": "US slang, compound of “fart” + “knocker”, with print citations from the early 1970s (Wiktionary). No known coiner.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "fartface",
+        "fart face",
+        "fart-face"
+      ],
+      "short": "A childish insult for someone annoying.",
+      "explain": "Pure playground name-calling. Crude in a fart-joke way, not a swear word.",
+      "origin": "Compound of “fart” + “face”, labelled childish slang (Wiktionary). No known first user.",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "poopyhead",
+        "poopy head",
+        "poopy-head",
+        "poophead",
+        "poop head",
+        "poopyheads"
+      ],
+      "short": "A babyish insult for someone being annoying.",
+      "explain": "About as mild as an insult gets. It’s often said on purpose to sound little-kid silly.",
+      "origin": "Compound of “poopy” + “head”; Wiktionary labels it childish North American slang.",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "butthead",
+        "butt-head",
+        "butt head",
+        "buttheads"
+      ],
+      "short": "A stupid, annoying or stubborn person.",
+      "explain": "Mild and jokey between friends, ruder at a stranger. It’s forever tied to the cartoon Beavis and Butt-Head.",
+      "origin": "Compound of “butt” (backside) + “head”. Merriam-Webster dates it to about 1973. The MTV cartoon Beavis and Butt-Head (1993) made it famous.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "buttface",
+        "butt face",
+        "butt-face"
+      ],
+      "short": "A childish insult for a disliked or annoying person.",
+      "explain": "Playground-level crude. It can also mean someone with an “ugly face”, which is just mean.",
+      "origin": "From “butt” + “face” (Wiktionary, colloquial and childish).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "buttmunch",
+        "buttmunches"
+      ],
+      "short": "A jokey insult for someone acting dumb or annoying.",
+      "explain": "Silly and a bit crude, a lot like “butthead”. It shows up in 1990s cartoons and movies.",
+      "origin": "North American slang, “butt” + “munch” (Wiktionary: somewhat vulgar, humorous). No documented first user.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dingleberry",
+        "dingleberries"
+      ],
+      "short": "A silly name for a foolish person. Literally, a bit of dried poop stuck to bum hair.",
+      "explain": "Gross-out humor: the insult works because the literal meaning is so disgusting. It’s also the name of a real wild berry.",
+      "origin": "Originally a US name for a mountain cranberry (an alteration of “dangleberry”). The Oxford Dictionary of Modern Slang records the gross sense and the “stupid person” sense.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "bumfluff"
+      ],
+      "short": "The patchy first mustache or beard of a teenager.",
+      "explain": "A British/Aussie tease: “shave off that bumfluff”. It mocks the fuzz, not the person.",
+      "origin": "From “bum” + “fluff”, comparing it to sparse hair on a backside. Used in British, Australian and NZ English since the late 1800s (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dillweed",
+        "dill weed",
+        "dill-weed"
+      ],
+      "short": "A dork or jerk. A goofy, harmless insult.",
+      "explain": "Silly 90s-cartoon energy. Dill weed is also just the herb.",
+      "origin": "Mike Judge, creator of Beavis and Butt-Head, told The Awl (2017) he used “dill weed” on the show as a TV-safe swap for a ruder insult that MTV’s censors rejected, and that’s how it caught on.",
+      "age": "Gen X+",
+      "worlds": [
+        "Pop culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "nincompoop",
+        "nincompoops",
+        "nincompoopery"
+      ],
+      "short": "A foolish or silly person.",
+      "explain": "Sounds funny on purpose, so it reads more playful than harsh.",
+      "origin": "Origin unknown; Merriam-Webster dates it to about 1668, and early spellings include “nicompoop” and “nickumpoop”. Samuel Johnson guessed Latin “non compos (mentis)” (“not of sound mind”), but the OED notes the early spellings don’t fit that idea. Other guesses are the name “Nicodemus” or “ninny”, plus an old verb “poop” (to fool) (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "numpty",
+        "numpties"
+      ],
+      "short": "An idiot or doofus, usually said with fond exasperation.",
+      "explain": "Very British/Scottish: “you absolute numpty”. Teasing more than harsh.",
+      "origin": "From Scots “numpty” (fool). King’s College London researchers traced uses to the 1700s, though it only spread widely from the 1980s.",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "doofus",
+        "dufus",
+        "doofuses",
+        "goofus"
+      ],
+      "short": "A goofy, clueless or foolish person.",
+      "explain": "Usually affectionate: “you big doofus”.",
+      "origin": "US slang, first known use 1960 (Merriam-Webster), perhaps from “goof”/“goofus” with a fake-Latin ending (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dweeb",
+        "dweebs",
+        "dweeby"
+      ],
+      "short": "A boring, awkward or uncool person.",
+      "explain": "Like “dork” or “nerd”, but without the hint of being smart.",
+      "origin": "US college slang from 1968, probably linked to “feeb” (feeble). The “dim-witted Eastern-educated boor” expansion is a later joke backronym (Wiktionary, Etymonline).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dorkus",
+        "dorkus malorkus"
+      ],
+      "short": "A silly, goofy person. A jokey upgrade of “dork”.",
+      "explain": "The fake-Latin “-us” ending makes it sillier and softer than plain “dork”.",
+      "origin": "A joke-Latin form of “dork” (US slang since about 1961), per Wiktionary. Fair warning: “dork” itself started out as rude slang.",
+      "age": "Millennial",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "goober",
+        "goobers"
+      ],
+      "short": "A goofy, silly or naive person, often said with affection.",
+      "explain": "“You’re such a goober” usually means you’re being lovably dorky. “Goober” is also Southern US for a peanut.",
+      "origin": "Merriam-Webster dates the “foolish person” sense to 1862 and traces it to earlier slang “goob”. The peanut sense comes from Kikongo/Kimbundu “nguba” (peanut). Sources disagree on whether the two are linked.",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "bozo",
+        "bozos"
+      ],
+      "short": "A clownish, foolish person.",
+      "explain": "Mild and a bit old-school. Online it gets used like “clown” or “L”.",
+      "origin": "American slang since the 1910s, origin uncertain (maybe Spanish “bozal”). It’s older than Bozo the Clown (1946), who made it famous (Wiktionary, Etymonline).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "pillock",
+        "pillocks"
+      ],
+      "short": "A silly or annoying fool.",
+      "explain": "Mild British name-calling, the kind a sitcom dad says.",
+      "origin": "Probably from 1500s “pillicock”, an old rude slang word for a man’s private parts. Today it just means a fool (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "plonker",
+        "plonkers"
+      ],
+      "short": "A fool or idiot, said with exasperation.",
+      "explain": "Famous from Del Boy shouting “Rodney, you plonker!” in the British sitcom Only Fools and Horses. It also has an older rude slang sense.",
+      "origin": "Built from “plonk” + “-er”. The OED dates the “foolish person” sense to 1955. The sitcom (1980s–2000s) made it a classic.",
+      "age": "Gen X+",
+      "worlds": [
+        "Pop culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "muppet",
+        "muppets"
+      ],
+      "short": "A clueless or incompetent person.",
+      "explain": "UK/Irish/Aussie banter: “what a muppet”. Mild and often affectionate.",
+      "origin": "From Jim Henson’s Muppets. The OED’s first citation for the “foolish person” sense is 1989.",
+      "age": "Mixed",
+      "worlds": [
+        "Pop culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "wazzock",
+        "wazzocks"
+      ],
+      "short": "A stupid or annoying person (Northern England).",
+      "explain": "Very British and very mild. It sounds daft, which is the point.",
+      "origin": "Origin unknown. Comedian Mike Harding used it in the 1970s–80s and said it was common in Lancashire and Yorkshire when he was a kid (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "wally",
+        "wallies"
+      ],
+      "short": "A silly, daft person.",
+      "explain": "One of the gentlest British insults. “Don’t be a wally.”",
+      "origin": "British slang recorded from the late 1960s. Origin unclear: maybe a nickname form of the name Walter (Etymonline).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "nitwit",
+        "nitwits"
+      ],
+      "short": "A scatterbrained or silly person.",
+      "explain": "Cartoonish and mild. Its British cousin “twit” (by 1934) means much the same.",
+      "origin": "First recorded in the 1910s in the US Northeast. It might come from German/Yiddish “nit” (not) + “wit”, or from “nit” (a louse egg, something tiny) + “wit” (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dimwit",
+        "dimwits",
+        "dim-witted"
+      ],
+      "short": "A slow-thinking or not-so-bright person.",
+      "explain": "Mild and a bit old-fashioned.",
+      "origin": "“Dim” + “wit”; first known use 1921 (Merriam-Webster).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "halfwit",
+        "half-wit",
+        "halfwits"
+      ],
+      "short": "Someone acting really dumb.",
+      "explain": "Sharper than “nitwit”. Use it on a cartoon villain, not a classmate.",
+      "origin": "“Half” + “wit” (mind), recorded since the 1600s (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dunderhead",
+        "dunderheads"
+      ],
+      "short": "A dunce; a slow-witted person.",
+      "explain": "Old-timey and theatrical, like something a wizard professor would say.",
+      "origin": "“Dunder” + “head”, recorded since the 1620s (Etymonline). The meaning of “dunder” is uncertain.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "lamebrain",
+        "lamebrained"
+      ],
+      "short": "A dumb or annoying person.",
+      "explain": "Mild and cartoonish.",
+      "origin": "“Lame” + “brain”; first known use 1904 (Merriam-Webster).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "chucklehead",
+        "chuckleheads"
+      ],
+      "short": "A goofy or clumsy fool.",
+      "explain": "Mild, almost fond. Nothing to do with laughing.",
+      "origin": "From old “chuckle” (clumsy, lumpish) + “head”, recorded from 1731 (Wiktionary, Etymonline).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "knucklehead",
+        "knuckleheads"
+      ],
+      "short": "A goofy, foolish person.",
+      "explain": "Very mild, often fond: “you knucklehead”.",
+      "origin": "US, first recorded in 1890. It was popularized in the 1940s by a bumbling “Knucklehead” character in US Army Air Forces training material (Etymonline, Dictionary.com).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "numbskull",
+        "numskull",
+        "numbskulls",
+        "numskulls"
+      ],
+      "short": "A dense, slow-thinking person.",
+      "explain": "Cartoon-villain-level insult.",
+      "origin": "From “numb” (deadened) + “skull” (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "meathead",
+        "meatheads"
+      ],
+      "short": "A dull or dumb person, or a big muscly guy with no brains.",
+      "explain": "Often aimed at gym bros. In the 70s sitcom All in the Family, Archie Bunker called his son-in-law “Meathead”.",
+      "origin": "“Meat” + “head”. Earlier attestations go back to 1863; Green’s dates the slang to 1929 and Etymonline to 1945. All in the Family made it famous.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "airhead",
+        "airheads"
+      ],
+      "short": "A ditzy, empty-headed person.",
+      "explain": "As if there’s only air between the ears. It’s also a candy brand.",
+      "origin": "US slang from 1972 (Etymonline): “air” + “head”, like “empty-headed”.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "birdbrain",
+        "birdbrained"
+      ],
+      "short": "A silly, scatterbrained person.",
+      "explain": "Mild, and unfair to birds (crows and parrots are clever).",
+      "origin": "“Bird” + “brain”, from the idea that small brains mean low smarts. Recorded from 1936 (Etymonline).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "smooth brain",
+        "smoothbrain",
+        "smooth-brained",
+        "smooth brained"
+      ],
+      "short": "Internet slang for someone who seems clueless (no “wrinkles” in their brain).",
+      "explain": "Often self-deprecating: “sorry, smooth brain moment”. It plays on the myth that brain wrinkles equal intelligence.",
+      "origin": "Online slang of the 2010s–2020s, common on Reddit and TikTok. It riffs on the old “wrinkly brain = smart” image. No single coiner is known.",
+      "age": "Gen Z",
+      "worlds": [
+        "Internet culture",
+        "Reddit"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "fuddy-duddy",
+        "fuddy duddy",
+        "fuddyduddy",
+        "fuddy-duddies",
+        "old fuddy-duddy"
+      ],
+      "short": "A fussy, old-fashioned person who dislikes anything new or fun.",
+      "explain": "Gentle teasing, often aimed at grown-ups or at yourself.",
+      "origin": "US, origin unknown. Etymonline traces it to 1871; the OED’s earliest evidence is 1904.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "ninnyhammer",
+        "ninnyhammers"
+      ],
+      "short": "A fool or simpleton.",
+      "explain": "Wonderfully old-fashioned. Shakespeare-era vibes.",
+      "origin": "From “ninny” plus a “-hammer” of unknown origin, recorded in the 1590s (Etymonline, Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "lickspittle",
+        "lick-spittle",
+        "lickspittles"
+      ],
+      "short": "A suck-up; someone who flatters powerful people to get ahead.",
+      "explain": "A fancy, old-fashioned way to say “teacher’s pet” or “bootlicker”.",
+      "origin": "“Lick” + “spittle” (spit). Etymonline dates it to 1741.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "scallywag",
+        "scalawag",
+        "scallawag",
+        "scallywags"
+      ],
+      "short": "A rascal or mischief-maker, often a cheeky kid.",
+      "explain": "Mostly affectionate now (“you little scallywag”), with pirate vibes.",
+      "origin": "Origin unknown; recorded from 1848 (some earlier newspaper uses). In the US after the Civil War, “scalawag” was also a political insult for white Southerners who backed Reconstruction (Etymonline, OUPblog).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "rapscallion",
+        "rapscallions"
+      ],
+      "short": "A rascal or rogue, usually a lovable one.",
+      "explain": "Old-timey and playful. Great for pets and little siblings.",
+      "origin": "A fanciful stretch of “rascallion”, from “rascal” (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "nimrod",
+        "nimrods"
+      ],
+      "short": "(US) An idiot or doofus.",
+      "explain": "In the Bible, Nimrod was “a mighty hunter”. In US slang it flipped to mean a fool.",
+      "origin": "The flip to “idiot” is unexplained. One popular theory is Bugs Bunny calling the hunter Elmer Fudd “poor little Nimrod”, but that’s not proven (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dingbat",
+        "dingbats"
+      ],
+      "short": "A silly, scatterbrained person.",
+      "explain": "Mild and old-fashioned. A dingbat is also a decorative typography symbol (✿ ➤).",
+      "origin": "US, mid-1800s, origin unknown (Wiktionary). The sitcom All in the Family made “dingbat” famous in the 1970s.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dingus",
+        "dinguses"
+      ],
+      "short": "A goofy, foolish person. Also a word for a “whatchamacallit” gadget.",
+      "explain": "Usually affectionate: “c’mon, dingus”. It also has a rare rude sense, but the goofy one is what you’ll hear.",
+      "origin": "From Dutch “dinges” (thingamajig) with a fake-Latin ending (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "galoot",
+        "galoots"
+      ],
+      "short": "A big, clumsy or oafish person.",
+      "explain": "Often fond: “you big galoot”.",
+      "origin": "Wiktionary traces it, via Egyptian Arabic, to Jalut (جالوت), the Arabic name of the giant Goliath. Other dictionaries call its origin uncertain.",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "klutz",
+        "klutzes",
+        "klutzy"
+      ],
+      "short": "A clumsy person.",
+      "explain": "Not about smarts, just dropping things and tripping over air.",
+      "origin": "From Yiddish “klots” (wooden beam, block). First known use 1959 (Merriam-Webster).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "jabroni",
+        "jabronis",
+        "jabronies"
+      ],
+      "short": "A loser, nobody or clueless person.",
+      "explain": "Wrestling trash talk that went mainstream through The Rock (“know your role, jabroni”). It’s still used in memes and gaming chat.",
+      "origin": "Earlier “jaboney/jiboney”, perhaps from regional Italian “giambone” (ham). First known use 1976 (Merriam-Webster). Pro-wrestling slang for a wrestler booked to lose; popularized by Dwayne “The Rock” Johnson.",
+      "age": "Millennial",
+      "worlds": [
+        "Sports",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "ignoramus",
+        "ignoramuses"
+      ],
+      "short": "Someone who knows nothing about something, but acts like they do.",
+      "explain": "Sounds fancy and academic, which makes it funnier.",
+      "origin": "Latin for “we do not know”. It became an insult after George Ruggle’s 1615 play “Ignoramus”, about a clueless lawyer (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "buffoon",
+        "buffoons",
+        "buffoonery"
+      ],
+      "short": "A clownish fool.",
+      "explain": "Classic insult for someone acting like a clown, on purpose or not.",
+      "origin": "From French “bouffon”, from Italian “buffone” (jester), from “buffare” (to puff out the cheeks) (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "blockhead",
+        "blockheads"
+      ],
+      "short": "A stupid or stubborn person.",
+      "explain": "Lucy’s go-to insult for Charlie Brown in Peanuts.",
+      "origin": "“Block” + “head”, recorded since the 1500s (Wiktionary dates it to 1532).",
+      "age": "Mixed",
+      "worlds": [
+        "Pop culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dunce",
+        "dunces",
+        "dunce cap"
+      ],
+      "short": "A slow learner or foolish person.",
+      "explain": "Think of the cone-shaped “dunce cap” in old cartoons.",
+      "origin": "Ironically named after John Duns Scotus (c. 1266–1308), a brilliant Scottish thinker. In the 1500s, his followers were mocked as “Dunsmen” for resisting new learning (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "simpleton",
+        "simpletons"
+      ],
+      "short": "A naive or gullible person.",
+      "explain": "Old-fashioned and a bit dramatic.",
+      "origin": "From “simple” + “-ton”, as in a surname (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "eejit",
+        "eejits",
+        "eejity"
+      ],
+      "short": "An idiot, in an Irish or Scottish accent.",
+      "explain": "Often fond: “ya big eejit”.",
+      "origin": "The Irish/Scottish pronunciation of “idiot” (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "bampot",
+        "bampots",
+        "barmpot"
+      ],
+      "short": "A nutter; a foolish or annoying person (Scotland).",
+      "explain": "Scottish banter, harsher than “numpty” but still not a swear.",
+      "origin": "Probably from northern English “barmpot” (from “barmy” + “pot”) (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "drongo",
+        "drongos"
+      ],
+      "short": "An idiot (Aussie/Kiwi slang).",
+      "explain": "Classic Australian put-down.",
+      "origin": "Named after an Australian racehorse called Drongo (raced in the 1920s), which never won a race. The horse was named after the drongo bird (Wiktionary).",
+      "age": "Gen X+",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "dum-dum",
+        "dumdum",
+        "dum dum"
+      ],
+      "short": "A dummy. A childish or affectionate word for someone being silly.",
+      "explain": "Little-kid silly and usually fond. Also a lollipop brand.",
+      "origin": "A doubled form of “dumb” (Wiktionary).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
+    },
+    {
+      "terms": [
+        "silly goose",
+        "silly geese"
+      ],
+      "short": "A silly, goofy person, said with affection.",
+      "explain": "So gentle it’s almost a compliment. Common online as a cute way to call someone (or yourself) goofy.",
+      "origin": "A long-standing English phrase from the old idea of the goose as a foolish bird (Wiktionary: informal, “a simpleton”).",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-09T00:00:00Z",
+      "wotd": false
     }
   ],
   "fallback": {

@@ -291,3 +291,34 @@ test("unknown words fail quietly without hitting the 404 definition endpoint", a
   assert.ok(seen.every((u) => u.includes("/w/api.php")), seen.join("\n"));
   assert.ok(ans.parts.length > 0);
 });
+
+test("silly insult pack decodes (piddlefart, fartknocker, nincompoop, fuddy-duddy) without hijacking words", async () => {
+  const cases = [
+    ["piddlefart", "piddlefart", /dawdle|goof off/i],
+    ["piddle-fart", "piddlefart", /dawdle|goof off/i],
+    ["stop piddlefarting around", "piddlefart", /dawdle|goof off/i],
+    ["fartknocker", "fartknocker", /annoying/i],
+    ["what does nincompoop mean?", "nincompoop", /foolish|silly/i],
+    ["fuddy-duddy", "fuddy-duddy", /old-fashioned/i],
+    ["fuddy duddy", "fuddy-duddy", /old-fashioned/i],
+    ["smooth brain", "smooth brain", /clueless/i],
+  ];
+  for (const [q, first, meaning] of cases) {
+    const hit = AI.findSlangEntry(slang, abbreve, q, null);
+    assert.ok(hit, q);
+    assert.equal(hit.entry.terms[0], first, q);
+    assert.equal(hit.entry.wotd, false, `${q} stays out of Word of the day`);
+    const ans = await AI.decodeQuery(q, { slang, abbreve, trends, newHere: false });
+    assert.equal(ans.source, "lexicon", q);
+    assert.match(bodies(ans), meaning, q);
+  }
+  // Ordinary words must not decode as one of these insults.
+  for (const q of ["twitch", "twitter", "brain", "flummoxed", "knocker", "munch", "fiddle", "hammer", "around"]) {
+    const hit = AI.findSlangEntry(slang, abbreve, q, null);
+    const first = hit ? hit.entry.terms[0] : null;
+    assert.ok(
+      !["twit", "lamebrain", "birdbrain", "lummox", "fartknocker", "buttmunch", "fiddlefart", "ninnyhammer", "piddlefart"].includes(first),
+      `${q} → ${first}`,
+    );
+  }
+});
