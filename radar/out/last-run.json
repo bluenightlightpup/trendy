@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-14T11:15:42Z",
+  "timestamp": "2026-10-15T10:54:46Z",
   "signals": 20,
   "adapters": [
     {
@@ -65,7 +65,7 @@
   "slang": {
     "added": 0,
     "updated": 0,
-    "total": 175
+    "total": 199
   },
   "paths": {
     "trends": "web/data/trends.json",
