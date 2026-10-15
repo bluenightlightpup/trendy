@@ -155,4 +155,13 @@ final class DecodeTests: XCTestCase {
         XCTAssertNil(DictionaryClient.url(for: "nah id win"))
         XCTAssertEqual(DictionaryClient.url(for: "Rizz")?.absoluteString, "https://api.dictionaryapi.dev/api/v2/entries/en/rizz")
     }
+
+    func testImCrimeDecodesWithoutHijackingCrimeQueries() {
+        for q in ["i'm crime", "im crime", "I am crime", "what does i'm crime mean?"] {
+            XCTAssertEqual(TestData.engine.findSlangEntry(q)?.entry.terms.first, "i'm crime", q)
+        }
+        for q in ["crime", "i'm criminal", "im a criminal", "crimes", "crime show", "true crime"] {
+            XCTAssertNotEqual(TestData.engine.findSlangEntry(q)?.entry.terms.first, "i'm crime", q)
+        }
+    }
 }

@@ -3247,6 +3247,25 @@
       "confidence": "high",
       "updated_at": "2026-10-09T00:00:00Z",
       "wotd": false
+    },
+    {
+      "terms": [
+        "i'm crime",
+        "im crime",
+        "i’m crime",
+        "i am crime"
+      ],
+      "short": "A joking way to say “I’m a rule-breaker” after doing something mildly bad or chaotic.",
+      "explain": "Playful, self-mocking confession, not about real crime. People say it after a small “misdeed” like putting milk before cereal, skipping to the last panel of a comic, or a harmless prank.",
+      "origin": "No single documented source for the exact phrase. It’s widely tied to the “Welcome to the Gang / Crimes Johnson” comic by Shen (Owl Turd), posted December 4, 2017 (Know Your Meme), where replies like “I’m Crimes Johnson” and “hi I’m crime” became a common joke.",
+      "age": "Mixed",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false
     }
   ],
   "fallback": {

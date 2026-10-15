@@ -239,6 +239,7 @@ struct DecodeEngine {
     private static let ambiguousTokens: Set<String> = [
         "nah", "id", "win", "the", "way", "and", "for", "you", "are", "so", "its", "it",
         "a", "an", "me", "my", "we", "he", "she", "they", "him", "her", "them", "let", "cook",
+        "crime",
     ]
 
     static func scoreTerm(_ term: String, fullQuery: String, tokens: [String]) -> ScoreResult {
@@ -303,7 +304,7 @@ struct DecodeEngine {
         }
 
         if tLen >= 3 && fullQuery.count >= 3 {
-            if tMulti && tokens.count == 1 && fullQuery.count < 5 {
+            if tMulti && tokens.count == 1 && (fullQuery.count < 5 || ambiguousTokens.contains(fullQuery)) {
                 return .zero
             }
             if wordBoundaryIncludes(fullQuery, t) || wordBoundaryIncludes(t, fullQuery) {

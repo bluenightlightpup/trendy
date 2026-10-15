@@ -322,3 +322,19 @@ test("silly insult pack decodes (piddlefart, fartknocker, nincompoop, fuddy-dudd
     );
   }
 });
+
+test("i'm crime decodes without hijacking crime/criminal queries", async () => {
+  for (const q of ["i'm crime", "im crime", "I am crime", "what does i'm crime mean?"]) {
+    const hit = AI.findSlangEntry(slang, abbreve, q, null);
+    assert.ok(hit, q);
+    assert.equal(hit.entry.terms[0], "i'm crime", q);
+    assert.equal(hit.entry.wotd, false);
+    const ans = await AI.decodeQuery(q, { slang, abbreve, trends, newHere: false });
+    assert.match(bodies(ans), /joking|rule-breaker/i, q);
+  }
+  for (const q of ["crime", "i'm criminal", "im a criminal", "crimes", "crime show", "true crime", "time"]) {
+    const hit = AI.findSlangEntry(slang, abbreve, q, null);
+    const first = hit ? hit.entry.terms[0] : null;
+    assert.notEqual(first, "i'm crime", `${q} → ${first}`);
+  }
+});

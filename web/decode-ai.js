@@ -276,6 +276,14 @@
     return 500;
   }
 
+  // Everyday words that must not unlock a multi-word meme phrase on their own
+  // ("crime" alone is not "i'm crime"; "cook" alone is not "let him cook").
+  const AMBIGUOUS_SINGLE = new Set([
+    "nah", "id", "win", "the", "way", "and", "for", "you", "are", "so", "its", "it",
+    "a", "an", "me", "my", "we", "he", "she", "they", "him", "her", "them", "let", "cook",
+    "crime",
+  ]);
+
   function scoreTermAgainstQuery(term, fullQuery, tokens) {
     const t = normalize(term);
     if (!t) return { score: 0, kind: null, termLen: 0 };
@@ -329,11 +337,7 @@
     // Do NOT let short ambiguous tokens ("nah", "id", "win", "the") unlock long meme phrases.
     if (tLen >= 3 && fullQuery.length >= 3 && wordBoundaryIncludes(t, fullQuery)) {
       const longestTok = tTokens.reduce((a, b) => (a.length >= b.length ? a : b), "");
-      const ambiguous = new Set([
-        "nah", "id", "win", "the", "way", "and", "for", "you", "are", "so", "its", "it",
-        "a", "an", "me", "my", "we", "he", "she", "they", "him", "her", "them", "let", "cook",
-      ]);
-      if (tMulti && (fullQuery.length < 5 || ambiguous.has(fullQuery))) {
+      if (tMulti && (fullQuery.length < 5 || AMBIGUOUS_SINGLE.has(fullQuery))) {
         // skip — require a more specific query for multi-word lexicon rows
       } else if (fullQuery === tTokens[0] || fullQuery === longestTok || tokens[0] === tTokens[0]) {
         return { score: 40000 + coverBonus, kind: "query-in-term", termLen: tLen };
@@ -352,7 +356,7 @@
     // Substring fallback: NEVER for terms shorter than 3 chars into longer words
     // and NEVER let a short single-token query hitch a ride inside a multi-word meme phrase.
     if (tLen >= 3 && fullQuery.length >= 3) {
-      if (tMulti && tokens.length === 1 && fullQuery.length < 5) {
+      if (tMulti && tokens.length === 1 && (fullQuery.length < 5 || AMBIGUOUS_SINGLE.has(fullQuery))) {
         return { score: 0, kind: null, termLen: 0 };
       }
       if (wordBoundaryIncludes(fullQuery, t) || wordBoundaryIncludes(t, fullQuery)) {

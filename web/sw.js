@@ -1,5 +1,5 @@
 /* Trendy PWA — network-first for app/data so Decode lexicon updates stick */
-const CACHE = "trendy-v18";
+const CACHE = "trendy-v19";
 const PRECACHE = [
   "./",
   "./index.html",
