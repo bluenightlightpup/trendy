@@ -317,8 +317,34 @@ struct DecodeEngine {
         return .zero
     }
 
+    /// Question-frame words stripped (both sides) before an exact-only comparison.
+    /// Narrower than `stopwords` so "not the" and "not me" stay different phrases.
+    static let frameWords: Set<String> = [
+        "what", "whats", "does", "do", "did", "mean", "meaning", "means", "define", "explain",
+        "please", "tell", "me", "about", "is",
+    ]
+
+    static func frameTokens(_ s: String) -> String {
+        tokenize(s).filter { !$0.isEmpty && !frameWords.contains($0) }.joined(separator: " ")
+    }
+
     static func scoreEntry(_ entry: LexiconEntry, fullQuery: String, tokens: [String]) -> ScoreResult {
         var best = ScoreResult.zero
+        if entry.match == "exact" {
+            // Everyday-word reaction slang: whole query (minus stopwords) must be the term.
+            let joined = frameTokens(fullQuery)
+            for term in entry.terms {
+                let t = normalize(term)
+                guard !t.isEmpty else { continue }
+                let tTok = frameTokens(t)
+                if t == fullQuery || (!tTok.isEmpty && tTok == joined) {
+                    let n = tokenize(t).count
+                    let got = ScoreResult(score: 100000 + (n >= 2 ? n * 20000 + t.count * 25 : t.count * 5), kind: "exact", termLen: t.count)
+                    if got.score > best.score { best = got }
+                }
+            }
+            return best
+        }
         for term in entry.terms {
             let got = scoreTerm(term, fullQuery: fullQuery, tokens: tokens)
             if got.score > best.score || (got.score == best.score && got.termLen > best.termLen) {

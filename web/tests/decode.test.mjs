@@ -330,11 +330,54 @@ test("i'm crime decodes without hijacking crime/criminal queries", async () => {
     assert.equal(hit.entry.terms[0], "i'm crime", q);
     assert.equal(hit.entry.wotd, false);
     const ans = await AI.decodeQuery(q, { slang, abbreve, trends, newHere: false });
-    assert.match(bodies(ans), /joking|rule-breaker/i, q);
+    assert.match(bodies(ans), /crying|laughing/i, q);
+    assert.match(bodies(ans), /rule-breaker/i, q);
   }
   for (const q of ["crime", "i'm criminal", "im a criminal", "crimes", "crime show", "true crime", "time"]) {
     const hit = AI.findSlangEntry(slang, abbreve, q, null);
     const first = hit ? hit.entry.terms[0] : null;
     assert.notEqual(first, "i'm crime", `${q} → ${first}`);
+  }
+});
+
+test("i'm crime leads with the TikTok 'I'm crying (laughing)' sense; crine spellings decode", () => {
+  const hit = AI.findSlangEntry(slang, abbreve, "IM CRIME", null);
+  assert.match(hit.entry.short, /crying|laughing/i);
+  assert.ok(hit.entry.short.search(/crying/i) < hit.entry.short.search(/rule-breaker/i));
+  for (const q of ["i'm crine", "im crine", "crine"]) {
+    assert.equal(AI.findSlangEntry(slang, abbreve, q, null)?.entry.terms[0], "i'm crime", q);
+  }
+});
+
+test("reaction/laughing slang pack decodes as standalone queries (wotd:false)", () => {
+  const want = {
+    "dead": "i'm dead", "I'm dead": "i'm dead", "what does dead mean?": "i'm dead",
+    "weak": "i'm weak", "crying": "i'm crying", "bro i'm crying": "i'm crying", "stop I’m crying": "i'm crying",
+    "screaming": "i'm screaming", "i can't": "i can't", "wheezing": "i'm wheezing", "deceased": "i'm deceased",
+    "i'm on the floor": "i'm on the floor", "in tears": "i'm in tears", "sobbing": "sobbing",
+    "help": "help", "HELP 😭": "help", "not me": "not me", "that sent me": "sending me", "sending me": "sending me",
+    "hollering": "i'm hollering", "howling": "i'm howling", "cackling": "i'm cackling", "losing it": "i'm losing it",
+    "screaming crying throwing up": "screaming crying throwing up", "son": "son",
+    "jail": "jail", "straight to jail": "jail", "illegal": "illegal", "wait that's illegal": "illegal",
+    "criminal": "criminal", "criminally underrated": "criminal", "violation": "violation",
+  };
+  for (const [q, first] of Object.entries(want)) {
+    const hit = AI.findSlangEntry(slang, abbreve, q, null);
+    assert.equal(hit?.entry.terms[0], first, q);
+    assert.equal(hit.entry.wotd, false, q);
+  }
+});
+
+test("everyday-word reaction rows never take over ordinary sentences", () => {
+  const pack = new Set(["i'm dead", "i'm weak", "i'm crying", "i'm screaming", "i can't", "i can't even", "i'm wheezing",
+    "i'm deceased", "i'm on the floor", "i'm in tears", "sobbing", "help", "not me", "sending me", "i'm hollering",
+    "i'm howling", "i'm cackling", "i'm losing it", "son", "jail", "illegal", "criminal", "violation", "i'm crime"]);
+  for (const q of ["my phone is dead", "dead tired", "help me with math", "can you help me", "i can't find my keys",
+    "weak wifi", "the baby is crying", "he went to jail", "illegal parking", "parking violation", "a criminal case",
+    "my mom sent me a text", "my son is 5", "it fell on the floor", "she was in tears after the movie",
+    "the dog was howling", "i'm losing it all", "not me, it was him", "screaming at the tv"]) {
+    const hit = AI.findSlangEntry(slang, abbreve, q, null);
+    const first = hit ? hit.entry.terms[0] : null;
+    assert.ok(!pack.has(first), `${q} → ${first}`);
   }
 });

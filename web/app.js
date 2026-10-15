@@ -1142,7 +1142,7 @@
   }
 
   async function loadData() {
-    const bust = "v=19";
+    const bust = "v=20";
     const [trendsRes, slangRes, abbreveRes, communityRes, wotdRes] = await Promise.all([
       fetch("data/trends.json?" + bust),
       fetch("data/slang.json?" + bust),

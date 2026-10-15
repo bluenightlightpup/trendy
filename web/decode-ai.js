@@ -371,8 +371,34 @@
     return { score: 0, kind: null, termLen: 0 };
   }
 
+  // Question-frame words stripped (both sides) before an exact-only comparison.
+  // Narrower than STOPWORDS so "not the" and "not me" stay different phrases.
+  const FRAME_WORDS = new Set([
+    "what", "whats", "does", "do", "did", "mean", "meaning", "means", "define", "explain",
+    "please", "tell", "me", "about", "is",
+  ]);
+  function frameTokens(s) {
+    return tokenize(s).filter((t) => t && !FRAME_WORDS.has(t)).join(" ");
+  }
+
   function scoreEntry(entry, fullQuery, tokens) {
     let best = { score: 0, kind: null, termLen: 0 };
+    if (entry && entry.match === "exact") {
+      // Everyday-word reaction slang (dead, help, i'm weak…): the whole query minus
+      // stopwords must be the term, so "help me with math" or "i can't find it" stay ordinary.
+      const joined = frameTokens(fullQuery);
+      for (const term of entry.terms || []) {
+        const t = normalize(term);
+        if (!t) continue;
+        const tTok = frameTokens(t);
+        if (t === fullQuery || (tTok && tTok === joined)) {
+          const n = tokenize(t).length;
+          const score = 100000 + (n >= 2 ? n * 20000 + t.length * 25 : t.length * 5);
+          if (score > best.score) best = { score, kind: "exact", termLen: t.length };
+        }
+      }
+      return best;
+    }
     for (const term of entry.terms || []) {
       const got = scoreTermAgainstQuery(term, fullQuery, tokens);
       if (got.score > best.score || (got.score === best.score && got.termLen > best.termLen)) {

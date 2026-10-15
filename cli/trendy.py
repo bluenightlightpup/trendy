@@ -169,7 +169,8 @@ def lookup_lexicon(term: str) -> tuple[dict[str, Any] | None, str | None]:
     best: tuple[int, dict[str, Any] | None, str | None] = (0, None, None)
     for label, entries in _lexicons():
         for entry in entries:
-            abbrev = is_abbreviation(entry, label)
+            # match:"exact" rows (dead, help, i'm weak…) only answer the whole query, like abbrevs
+            abbrev = is_abbreviation(entry, label) or entry.get("match") == "exact"
             for t in _entry_terms(entry):
                 sc = score_against(t, abbrev)
                 if sc <= 0:

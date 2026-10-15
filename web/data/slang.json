@@ -1346,7 +1346,8 @@
       ],
       "source": "curated",
       "confidence": "high",
-      "updated_at": "2026-09-14T21:45:44Z"
+      "updated_at": "2026-10-15T00:00:00Z",
+      "match": "exact"
     },
     {
       "terms": [
@@ -3253,19 +3254,576 @@
         "i'm crime",
         "im crime",
         "i’m crime",
-        "i am crime"
+        "i am crime",
+        "i'm crine",
+        "im crine",
+        "i’m crine",
+        "crine"
       ],
-      "short": "A joking way to say “I’m a rule-breaker” after doing something mildly bad or chaotic.",
-      "explain": "Playful, self-mocking confession, not about real crime. People say it after a small “misdeed” like putting milk before cereal, skipping to the last panel of a comic, or a harmless prank.",
-      "origin": "No single documented source for the exact phrase. It’s widely tied to the “Welcome to the Gang / Crimes Johnson” comic by Shen (Owl Turd), posted December 4, 2017 (Know Your Meme), where replies like “I’m Crimes Johnson” and “hi I’m crime” became a common joke.",
+      "short": "“I’m crying (laughing)” — said when something is so funny you can’t handle it, like “I’m dead.” Also a joking “I’m a rule-breaker.”",
+      "explain": "1) Main TikTok/X use: a reaction to something hilarious or absurd. “I’m crime” is a playful respelling of “I’m crine,” which is slang for “I’m crying” (from laughter, not sadness). It sits with “I’m dead,” “I’m weak,” and “I’m crying,” usually in all caps with 😭: “WHY IS HE DANCING LIKE THAT 😭 IM CRIME.” 2) Older joke sense: a self-mocking “I’m a criminal” after a tiny misdeed (milk before cereal, skipping to the end), as in “hi, I’m crime.” Neither sense is about real crime.",
+      "origin": "Know Your Meme traces “I’m crine” (crine = crying, from AAVE-influenced online speech) to X posts from the Bronx in 2013. It blew up again in late 2025 TikTok comment sections alongside the “Son 😭😭😭” reaction meme, and the “I’m crime” spelling spread from there as a joke typo. No single creator is documented. The rule-breaker joke is older and tied to Shen’s (Owl Turd) 2017 “Crimes Johnson” comic.",
       "age": "Mixed",
       "worlds": [
+        "TikTok",
         "Internet culture"
       ],
       "source": "curated",
       "confidence": "medium",
       "updated_at": "2026-10-15T00:00:00Z",
-      "wotd": false
+      "wotd": false,
+      "example": "Him tripping over the cat mid-TikTok dance 😭 IM CRIME."
+    },
+    {
+      "terms": [
+        "i'm dead",
+        "im dead",
+        "i’m dead",
+        "dead",
+        "i am dead",
+        "ded",
+        "im ded",
+        "deadd"
+      ],
+      "short": "That’s so funny I “died” laughing. Often typed as 💀.",
+      "explain": "A top-tier laughing reaction, stronger than lol. People also just reply with the skull emoji 💀 (or 💀💀💀) to mean the same thing. Hyperbole: it’s a reaction, not a literal statement. In other contexts “I’m dead” can also mean exhausted or “I’m in so much trouble.”",
+      "origin": "Long-running internet/AAVE-influenced hyperbole (“dying of laughter”); Urban Dictionary entries go back to at least 2013, and the 💀 emoji version took over on TikTok and X in the 2020s.",
+      "age": "Mixed",
+      "example": "He said “Wi-Fi stands for wireless fidelity” with full confidence 💀 I’m dead.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm weak",
+        "im weak",
+        "i’m weak",
+        "weak",
+        "i'm so weak",
+        "im so weak"
+      ],
+      "short": "I’m laughing so hard I’m physically weak.",
+      "explain": "Laughing reaction, like “I’m dead.” Sometimes stacked: “I’m weak 😭😭.” It’s not an insult and not about strength. (Calling something else “weak” can still mean lame.)",
+      "origin": "AAVE-rooted hyperbole popularized on Black Twitter in the 2010s; now everywhere in TikTok comments.",
+      "age": "Mixed",
+      "example": "The dog’s guilty face when she asked who ate the cake… I’m weak.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm crying",
+        "im crying",
+        "i’m crying",
+        "crying",
+        "i'm cryin",
+        "im cryin",
+        "bro i'm crying",
+        "bro im crying",
+        "stop i'm crying",
+        "stop im crying",
+        "i'm crying rn",
+        "im crying rn"
+      ],
+      "short": "That’s hilarious (I’m laughing so hard I’m tearing up). Usually with 😭.",
+      "explain": "The everyday laugh reaction behind 😭 spam: “STOP I’m crying 😭.” Context matters: after sad news it can mean real crying. Variants: “bro I’m crying,” “stop I’m crying,” and the respellings “I’m crine” / “I’m crime.”",
+      "origin": "Internet hyperbole that became the default meaning of the loudly crying face emoji 😭 in the late 2010s–2020s.",
+      "age": "Mixed",
+      "example": "Bro I’m crying, the teacher’s Zoom filter turned her into a potato.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm screaming",
+        "im screaming",
+        "i’m screaming",
+        "screaming",
+        "i screamed",
+        "i'm screaming rn"
+      ],
+      "short": "Laughing (or freaking out) so hard I’m “screaming.”",
+      "explain": "A loud-in-text reaction to something hilarious or exciting, often in ALL CAPS. Close to “I’m dead.” Usually means laughing, but fans also use it for hype (“NEW ALBUM?? I’M SCREAMING”).",
+      "origin": "Tumblr/Twitter-era hyperbole from the early 2010s; still common in TikTok comments.",
+      "age": "Mixed",
+      "example": "Not the substitute teacher pronouncing it “meme-ee” 😭 I’m screaming.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i can't",
+        "i cant",
+        "i can’t",
+        "i cannot",
+        "i can't 😭",
+        "pls i can't",
+        "i literally can't"
+      ],
+      "short": "This is too funny (or too much) to handle.",
+      "explain": "Short for “I can’t even (handle this).” Used when something is so funny, cute, or ridiculous you have no words. See also “I can’t even.” Only the bare phrase counts; “I can’t find my keys” is just normal English.",
+      "origin": "Clipped from “I can’t even,” which spread on Tumblr and Twitter in the early 2010s.",
+      "age": "Mixed",
+      "example": "Your cat sitting in the salad bowl like it’s a throne… I can’t.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm wheezing",
+        "im wheezing",
+        "i’m wheezing",
+        "wheezing",
+        "wheeze",
+        "i wheezed",
+        "wheezed"
+      ],
+      "short": "Laughing so hard I can barely breathe.",
+      "explain": "Laughing reaction suggesting the airless, squeaky kind of laugh. “I wheezed” = that made me laugh hard. Hyperbole: it’s a reaction, not a literal statement.",
+      "origin": "Internet hyperbole common on Twitter and TikTok since the late 2010s.",
+      "age": "Mixed",
+      "example": "The way he fell off the swing in slow motion, I’m wheezing.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm deceased",
+        "im deceased",
+        "i’m deceased",
+        "deceased"
+      ],
+      "short": "A dramatic “I’m dead” — that was hilarious.",
+      "explain": "An extra-formal way to say “I’m dead” from laughing, funny because it sounds like an obituary. Hyperbole: it’s a reaction, not a literal statement. In normal writing, “deceased” still just means someone died.",
+      "origin": "Spinoff of “I’m dead” used on Twitter/Tumblr and TikTok as a jokey upgrade.",
+      "age": "Mixed",
+      "example": "She tried to say “good morning” and “good night” at once and said “good mornight.” I’m deceased.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm on the floor",
+        "im on the floor",
+        "i’m on the floor",
+        "on the floor",
+        "i'm on the ground",
+        "im on the floor rn"
+      ],
+      "short": "Laughing so hard I fell over, like a spelled-out ROFL.",
+      "explain": "A reaction meaning something knocked you flat with laughter. It’s the long version of ROFL (rolling on the floor laughing). Only the bare phrase counts; “my phone is on the floor” stays literal.",
+      "origin": "From the old chatroom acronym ROFL (1990s) and its emoji 🤣.",
+      "age": "Mixed",
+      "example": "He tried to act cool and walked straight into the glass door. I’m on the floor.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm in tears",
+        "im in tears",
+        "i’m in tears",
+        "in tears"
+      ],
+      "short": "So funny I’m literally tearing up.",
+      "explain": "Laughing reaction, like “I’m crying.” It can still mean real tears after something sad, so read the room (and the emojis).",
+      "origin": "Ordinary English idiom repurposed as an online laugh reaction.",
+      "age": "Mixed",
+      "example": "Grandma sent a voice memo that was just her saying “how do I stop this.” I’m in tears.",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "sobbing",
+        "i'm sobbing",
+        "im sobbing",
+        "i’m sobbing"
+      ],
+      "short": "I’m laughing so hard (😭 energy). Sometimes real emotion.",
+      "explain": "Used like “I’m crying” for something hilarious, or for being overwhelmed by something cute or emotional. Usually paired with 😭.",
+      "origin": "TikTok/Twitter hyperbole that grew with the 😭 emoji.",
+      "age": "Mixed",
+      "example": "The baby’s side-eye when the dog sneezed… I’m sobbing.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "help",
+        "help 😭",
+        "help me",
+        "someone help",
+        "help pls",
+        "help pls 😭"
+      ],
+      "short": "“This is so funny/chaotic I can’t handle it.” Not a real call for help.",
+      "explain": "A joking reaction to something hilarious, awkward, or unhinged, often in caps with 😭: “HELP 😭.” Also opens a post: “help my mom just liked my crush’s post.” If someone actually seems to need help, take it seriously. Only the bare word counts; “help me with math” is just a request.",
+      "origin": "Gen Z TikTok/Twitter comment style of the late 2010s–2020s.",
+      "age": "Mixed",
+      "example": "HELP 😭 my little brother just called our teacher “mom” on the class call.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "not me",
+        "not me 😭",
+        "not me doing",
+        "not me crying"
+      ],
+      "short": "“Not me ___” = I’m admitting I did exactly that (awkwardly).",
+      "explain": "Ironic self-callout. “Not me forgetting my own password for the third time” means it IS you. Usually funny or embarrassing, often with 😭.",
+      "origin": "Twitter/TikTok caption format that took off around 2020.",
+      "age": "Mixed",
+      "example": "Not me waving back at someone who was waving at the person behind me.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "sending me",
+        "that sent me",
+        "sent me",
+        "it's sending me",
+        "its sending me",
+        "you're sending me",
+        "this is sending me",
+        "this sent me"
+      ],
+      "short": "That made me laugh really hard.",
+      "explain": "Something that “sends” you makes you lose it laughing. “That sent me” = past; “this is sending me” = still laughing now.",
+      "origin": "AAVE-rooted slang spread on Black Twitter and then TikTok in the late 2010s.",
+      "age": "Mixed",
+      "example": "The cat sliding off the counter in slow motion sent me.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm hollering",
+        "im hollering",
+        "i’m hollering",
+        "hollering",
+        "hollerin",
+        "i'm hollerin",
+        "im hollerin"
+      ],
+      "short": "Laughing out loud, hard.",
+      "explain": "Means you’re laughing loudly at something, like “I’m screaming.” Different from “holla at me” (hit me up).",
+      "origin": "AAVE/Southern US usage (“hollering” = yelling, laughing loud) spread on Twitter and TikTok.",
+      "age": "Mixed",
+      "example": "Unc said “these kids and their skibbity” 😭 I’m hollering.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm howling",
+        "im howling",
+        "i’m howling",
+        "howling"
+      ],
+      "short": "Laughing so hard I’m howling.",
+      "explain": "A laughing reaction, more common in UK and Irish English but used everywhere online. Only the bare phrase counts; a dog “howling at the moon” stays literal.",
+      "origin": "From UK/Irish slang “howling” (laughing hard); popular on Twitter.",
+      "age": "Mixed",
+      "example": "The bus driver doing the macarena at the red light — I’m howling.",
+      "worlds": [
+        "Internet culture",
+        "UK slang"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm cackling",
+        "im cackling",
+        "i’m cackling",
+        "cackling",
+        "not me cackling"
+      ],
+      "short": "Laughing a loud, witchy laugh.",
+      "explain": "Means something made you laugh loud and hard. “Not me cackling in the library” = you couldn’t hold it in.",
+      "origin": "From the old word “cackle” (a hen’s or witch’s laugh); popular as a TikTok reaction.",
+      "age": "Mixed",
+      "example": "Her fake British accent in the group project video… I’m cackling.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "i'm losing it",
+        "im losing it",
+        "i’m losing it",
+        "losing it"
+      ],
+      "short": "Can’t stop laughing (or freaking out).",
+      "explain": "Usually means you’re cracking up and can’t stop. It can also mean you’re stressed or overwhelmed, so check the vibe.",
+      "origin": "Long-standing English idiom used online as a laughing reaction.",
+      "age": "Mixed",
+      "example": "He used a banana as a phone in the presentation and I’m losing it.",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "screaming crying throwing up",
+        "screaming, crying, throwing up",
+        "screaming crying"
+      ],
+      "short": "A dramatic way to say I’m extremely excited or overwhelmed.",
+      "explain": "A jokey over-the-top reaction to big news, especially fandom hype (“tour dates dropped, I’m screaming crying throwing up”). Not literal.",
+      "origin": "Know Your Meme and Wiktionary document it as a Twitter/Tumblr catchphrase for over-the-top emotion from the 2010s.",
+      "age": "Mixed",
+      "example": "They announced a sequel?? Screaming crying throwing up.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "son",
+        "son 😭",
+        "son i'm crine",
+        "son im crine",
+        "son 😭😭😭"
+      ],
+      "short": "Reaction meaning “bro… are you serious?” to something ridiculous, usually laughing.",
+      "explain": "Late-2025 TikTok comment reaction: “Son 😭😭😭” mock-disappointed laughter at something absurd or embarrassing, often with “I’m crine.” Used a lot like “bruh.” Normal sentences about a son stay normal.",
+      "origin": "Know Your Meme traces the meme to an edited image of actor Anthony Mackie captioned “Son 😭😭😭😭😭,” first spotted on Reddit Sept 8, 2025 and spread through TikTok comments. Creator unknown.",
+      "age": "Mixed",
+      "example": "You studied the wrong chapter for the whole week? Son 😭😭😭.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "jail",
+        "that's jail",
+        "thats jail",
+        "go to jail",
+        "straight to jail",
+        "right to jail",
+        "jailed",
+        "jail 😭"
+      ],
+      "short": "Joking “you should be arrested for that” about something wrong or cringe.",
+      "explain": "Playful punishment for a harmless offense: “Pineapple on pizza? Jail.” “Straight to jail” is the meme version. “Jailed” can also mean someone got caught or called out. Not about real arrests.",
+      "origin": "Joke format popularized by the “Right to jail” Parks and Recreation clip and Reddit/Twitter “___? Jail.” lists in the late 2010s.",
+      "age": "Mixed",
+      "example": "You put ketchup on your mac and cheese? Straight to jail.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "illegal",
+        "that's illegal",
+        "thats illegal",
+        "wait that's illegal",
+        "wait thats illegal",
+        "this should be illegal",
+        "that should be illegal",
+        "should be illegal"
+      ],
+      "short": "Either “that’s wrong/unfair” or “that’s so good it shouldn’t be allowed.”",
+      "explain": "Two joking senses. 1) Calling out something absurd or rule-breaking (“wait, that’s illegal”). 2) Over-the-top praise: “this beat should be illegal” = it’s amazing. Not literally about laws.",
+      "origin": "“Wait, that’s illegal” is a Red vs. Blue screenshot that became a big reaction meme on Reddit in January 2019; “should be illegal” as praise is older internet hyperbole.",
+      "age": "Mixed",
+      "example": "This cookie recipe should be illegal, it’s that good.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "criminal",
+        "that's criminal",
+        "thats criminal",
+        "criminally underrated",
+        "criminally",
+        "this is a crime",
+        "that's a crime",
+        "should be a crime"
+      ],
+      "short": "Outrageously bad/unfair, or so good it’s unfair. “Criminally underrated” = way better than people realize.",
+      "explain": "Joking intensifier. “Waking up at 6 on a Saturday is criminal” = unfair. “This song is criminally underrated” = it deserves way more fans. “This is a crime” works the same way. Not about real crime. (For “I’m crime,” see that entry.)",
+      "origin": "Long-standing English hyperbole (“it’s a crime”), boosted as a compliment on music and fandom Twitter/TikTok.",
+      "age": "Mixed",
+      "example": "That show only got one season? Criminal.",
+      "worlds": [
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "high",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
+    },
+    {
+      "terms": [
+        "violation",
+        "that's a violation",
+        "thats a violation",
+        "violated",
+        "i feel violated",
+        "you violated"
+      ],
+      "short": "Somebody crossed the line — a roast or move that was way too disrespectful.",
+      "explain": "Calling out a joke, roast, or move that went too far (or was brutally funny): “Bringing up his haircut was a violation 😭.” “I feel violated” is a joking way to say you got roasted.",
+      "origin": "From sports/street slang (“violation” = a foul or disrespectful move); common in Black Twitter and TikTok comment banter.",
+      "age": "Mixed",
+      "example": "He roasted my shoes in front of the whole class, that’s a violation.",
+      "worlds": [
+        "TikTok",
+        "Internet culture"
+      ],
+      "source": "curated",
+      "confidence": "medium",
+      "updated_at": "2026-10-15T00:00:00Z",
+      "wotd": false,
+      "match": "exact"
     }
   ],
   "fallback": {

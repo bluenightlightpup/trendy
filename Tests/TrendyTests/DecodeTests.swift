@@ -164,4 +164,39 @@ final class DecodeTests: XCTestCase {
             XCTAssertNotEqual(TestData.engine.findSlangEntry(q)?.entry.terms.first, "i'm crime", q)
         }
     }
+
+    func testImCrimeLeadsWithCryingLaughingSense() {
+        let hit = TestData.engine.findSlangEntry("IM CRIME")
+        XCTAssertTrue(hit?.entry.short.lowercased().contains("crying") ?? false)
+        for q in ["i'm crine", "im crine", "crine"] {
+            XCTAssertEqual(TestData.engine.findSlangEntry(q)?.entry.terms.first, "i'm crime", q)
+        }
+    }
+
+    func testReactionSlangPackDecodesStandalone() {
+        let want: [(String, String)] = [
+            ("dead", "i'm dead"), ("I'm dead", "i'm dead"), ("what does dead mean?", "i'm dead"),
+            ("weak", "i'm weak"), ("bro i'm crying", "i'm crying"), ("screaming", "i'm screaming"),
+            ("i can't", "i can't"), ("help", "help"), ("HELP 😭", "help"), ("that sent me", "sending me"),
+            ("not me", "not me"), ("son", "son"), ("straight to jail", "jail"), ("illegal", "illegal"),
+            ("criminally underrated", "criminal"), ("violation", "violation"), ("wheezing", "i'm wheezing"),
+        ]
+        for (q, first) in want {
+            let hit = TestData.engine.findSlangEntry(q)
+            XCTAssertEqual(hit?.entry.terms.first, first, q)
+            XCTAssertEqual(hit?.entry.wotd, false, q)
+        }
+    }
+
+    func testReactionSlangDoesNotHijackOrdinarySentences() {
+        let pack: Set<String> = ["i'm dead", "i'm weak", "i'm crying", "i'm screaming", "i can't", "i can't even",
+            "help", "not me", "sending me", "son", "jail", "illegal", "criminal", "violation", "i'm on the floor",
+            "i'm in tears", "i'm howling", "i'm losing it", "i'm crime"]
+        for q in ["my phone is dead", "dead tired", "help me with math", "i can't find my keys", "weak wifi",
+                  "the baby is crying", "he went to jail", "illegal parking", "parking violation",
+                  "my mom sent me a text", "my son is 5", "it fell on the floor", "the dog was howling"] {
+            let first = TestData.engine.findSlangEntry(q)?.entry.terms.first
+            XCTAssertFalse(first.map { pack.contains($0) } ?? false, "\(q) → \(first ?? "nil")")
+        }
+    }
 }

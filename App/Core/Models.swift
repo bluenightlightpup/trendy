@@ -204,10 +204,13 @@ struct LexiconEntry: Hashable, Decodable {
     var example: String?
     /// Set by Trend Radar on unverified candidates.
     var radarSource: String?
+    /// `"exact"`: everyday-word rows (dead, help, i'm weak…) only answer when the whole
+    /// query (minus stopwords) is the term, so they never take over ordinary sentences.
+    var match: String?
 
     enum CodingKeys: String, CodingKey {
         case terms, short, explain, origin, age, worlds, source, confidence, kind
-        case wotd, mature, wotdExample, example, radarSource
+        case wotd, mature, wotdExample, example, radarSource, match
     }
 
     init(
@@ -224,7 +227,8 @@ struct LexiconEntry: Hashable, Decodable {
         mature: Bool? = nil,
         wotdExample: String? = nil,
         example: String? = nil,
-        radarSource: String? = nil
+        radarSource: String? = nil,
+        match: String? = nil
     ) {
         self.terms = terms
         self.short = short
@@ -240,6 +244,7 @@ struct LexiconEntry: Hashable, Decodable {
         self.wotdExample = wotdExample
         self.example = example
         self.radarSource = radarSource
+        self.match = match
     }
 
     init(from decoder: Decoder) throws {
@@ -266,6 +271,7 @@ struct LexiconEntry: Hashable, Decodable {
         self.wotdExample = (try? c.decodeIfPresent(String.self, forKey: .wotdExample)) ?? nil
         self.example = (try? c.decodeIfPresent(String.self, forKey: .example)) ?? nil
         self.radarSource = (try? c.decodeIfPresent(String.self, forKey: .radarSource)) ?? nil
+        self.match = (try? c.decodeIfPresent(String.self, forKey: .match)) ?? nil
     }
 
     var ageBand: AgeBand? { AgeBand(raw: age) }
